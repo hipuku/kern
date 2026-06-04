@@ -11,7 +11,7 @@ export function ExternalLink({ href, children }: ExternalLinkProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="cursor-pointer text-[--primary] underline underline-offset-[3px] hover:opacity-80 transition-colors duration-150"
+      className="cursor-pointer text-(--link) underline underline-offset-[3px] hover:opacity-80 transition-opacity duration-150"
     >
       {children}<span className="sr-only"> (opens in new tab)</span>
     </a>

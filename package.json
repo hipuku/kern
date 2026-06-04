@@ -10,14 +10,16 @@
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.14.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
     "tailwind-merge": "^3.6.0"
   },
+  "peerDependencies": {
+    "lucide-react": ">=0.400.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
   "devDependencies": {
-    "@storybook/addon-a11y": "^10.4.2",
-    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/addon-a11y": "^8.6.0",
+    "@storybook/addon-essentials": "^8.6.18",
     "@storybook/react": "^8.6.0",
     "@storybook/react-vite": "^8.6.0",
     "@tailwindcss/vite": "^4.3.0",

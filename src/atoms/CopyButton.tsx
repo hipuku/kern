@@ -28,7 +28,7 @@ export function CopyButton({ text }: CopyButtonProps) {
       className="cursor-pointer text-void-50 hover:text-void-90 transition-colors duration-150"
     >
       {copied
-        ? <Check className="w-3.5 h-3.5 text-[--primary]" />
+        ? <Check className="w-3.5 h-3.5 text-(--primary)" />
         : <Copy className="w-3.5 h-3.5" />}
       <span aria-live="polite" className="sr-only">{copied ? 'Copied' : ''}</span>
     </button>

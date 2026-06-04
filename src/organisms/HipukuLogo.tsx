@@ -18,7 +18,7 @@ const DEFAULT_FILLS: HoverFills = {
   ku: 'var(--color-tidal)',
 }
 
-export function HipukuLogo({ href = '/', className, hoverFills = DEFAULT_FILLS }: HipukuLogoProps) {
+export function HipukuLogo({ href = 'https://hipuku.dev', className, hoverFills = DEFAULT_FILLS }: HipukuLogoProps) {
   const [hovered, setHovered] = useState(false)
 
   const hoverVars: CSSProperties = hovered ? {

@@ -12,40 +12,22 @@ const meta = {
 export default meta
 type Story = StoryObj
 
-const ALL_VARIANTS: { colour: string; label: string }[] = [
-  { colour: 'text-nebula   hover:text-nebula-light',   label: 'Name a colour →'        },
-  { colour: 'text-aurora   hover:text-aurora-light',   label: 'Audit a palette →'      },
-  { colour: 'text-tidal    hover:text-tidal-light',    label: 'Analyse contrast →'     },
-  { colour: 'text-orbit    hover:text-orbit-light',    label: 'Map a palette →'        },
-  { colour: 'text-pulsar   hover:text-pulsar-light',   label: 'Compare colours →'      },
-  { colour: 'text-quasar   hover:text-quasar-light',   label: 'Inspect tokens →'       },
-  { colour: 'text-corona   hover:text-corona-light',   label: 'Review a theme →'       },
-  { colour: 'text-dusk     hover:text-dusk-light',     label: 'Explore gradients →'    },
-  { colour: 'text-flare    hover:text-flare-light',    label: 'Debug errors →'         },
-  { colour: 'text-solstice hover:text-solstice-light', label: 'Analyse a selector →'   },
-  { colour: 'text-supernova hover:text-supernova-light', label: 'Rank a stylesheet →'  },
-]
-
-export const AllVariants: Story = {
-  name: 'All colour variants',
+export const Default: Story = {
   render: () => (
-    <div className="flex flex-col gap-4">
-      {ALL_VARIANTS.map(({ colour, label }) => (
-        <ToolLink key={label} colour={colour} onClick={() => {}}>
-          {label}
-        </ToolLink>
-      ))}
-    </div>
+    <ToolLink onClick={() => {}} colour="pulsar">Name a colour →</ToolLink>
   ),
 }
 
-export const FocusVisible: Story = {
-  name: 'Focus ring (keyboard)',
+export const AllAccents: Story = {
+  name: 'All accent colours',
   render: () => (
-    <div className="flex flex-col gap-4">
-      <ToolLink colour="text-pulsar hover:text-pulsar-light" onClick={() => {}}>Name a colour →</ToolLink>
-      <ToolLink colour="text-orbit hover:text-orbit-light" onClick={() => {}}>Map a palette →</ToolLink>
-      <ToolLink colour="text-solstice hover:text-solstice-light" onClick={() => {}}>Analyse a selector →</ToolLink>
+    <div className="flex flex-col gap-3">
+      <ToolLink onClick={() => {}} colour="pulsar">pulsar — hexicon primary →</ToolLink>
+      <ToolLink onClick={() => {}} colour="solstice">solstice — specifi primary →</ToolLink>
+      <ToolLink onClick={() => {}} colour="tidal">tidal →</ToolLink>
+      <ToolLink onClick={() => {}} colour="orbit">orbit →</ToolLink>
+      <ToolLink onClick={() => {}} colour="nebula">nebula →</ToolLink>
+      <ToolLink onClick={() => {}} colour="flare">flare →</ToolLink>
     </div>
   ),
 }
@@ -59,10 +41,7 @@ export const InSection: Story = {
           <p className="type-p-sm text-void-60">
             Enter a hex code to find its closest English name using CIEDE2000 perceptual distance.
           </p>
-          <ToolLink
-            colour="text-pulsar hover:text-pulsar-light"
-            onClick={() => setActive('name')}
-          >
+          <ToolLink onClick={() => setActive('name')} colour="pulsar">
             Name a colour →
           </ToolLink>
         </Section>
@@ -72,4 +51,15 @@ export const InSection: Story = {
       </div>
     )
   },
+}
+
+export const FocusVisible: Story = {
+  name: 'Focus ring (keyboard)',
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <ToolLink onClick={() => {}} colour="pulsar">Name a colour →</ToolLink>
+      <ToolLink onClick={() => {}} colour="pulsar">Map a palette →</ToolLink>
+      <ToolLink onClick={() => {}} colour="pulsar">Compare two colours →</ToolLink>
+    </div>
+  ),
 }
