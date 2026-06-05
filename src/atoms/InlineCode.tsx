@@ -5,6 +5,8 @@ type ColorToken =
   | 'text-nebula' | 'text-aurora' | 'text-tidal'  | 'text-orbit'
   | 'text-pulsar' | 'text-quasar' | 'text-corona' | 'text-dusk'
   | 'text-flare'  | 'text-solstice' | 'text-supernova'
+  | 'text-void-40' | 'text-void-50' | 'text-void-60'
+  | 'text-void-70' | 'text-void-80' | 'text-void-90'
 
 interface InlineCodeProps {
   children: ReactNode
