@@ -7,7 +7,7 @@ The shared component library and design tokens behind the hipuku experiments —
 - **18 components** across atoms, molecules, and organisms, each with a Storybook story.
 - **A single token layer** (`src/tokens.css`) — void neutral scale, named accent palettes, type scale, motion — consumed by every experiment.
 - **Source-only distribution.** No build, no bundle. Consumers alias `@kern/*` straight at the source tree, so there is never a stale compiled copy to reason about.
-- **Accessible by default** — semantic HTML first, focus-visible rings, aria-labelled controls; a Storybook a11y addon on every story.
+- **Accessible by default** — semantic HTML first, focus-visible rings, aria-labelled controls, and a Storybook a11y addon on every story.
 
 ## Stack
 
@@ -35,8 +35,7 @@ resolve: {
 }
 ```
 
-Tailwind v4 only scans within the project root, so each consumer's `index.css` must
-also register kern's source for class scanning:
+Tailwind v4 only scans within the project root, so each consumer's `index.css` must also register kern's source for class scanning:
 
 ```css
 @source "../node_modules/kern/src";
@@ -59,8 +58,7 @@ npm install
 npm run storybook   # localhost:6006
 ```
 
-To see kern edits live inside a consuming experiment, symlink it (the git install is a
-copy):
+To see kern edits live inside a consuming experiment, symlink it (the git install is a copy):
 
 ```bash
 cd kern && npm link
