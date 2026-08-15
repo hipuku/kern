@@ -1,11 +1,13 @@
 import { type ComponentType, type ReactNode } from 'react'
-import { type LucideIcon, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { cn } from '../lib/utils'
 
 export interface NavItem {
   id: string
   label: string
-  icon: LucideIcon
+  // ComponentType rather than LucideIcon so that consumers on a different
+  // lucide-react version don't hit a nominal type mismatch via npm link.
+  icon: ComponentType<{ className?: string }>
 }
 
 export interface SocialLink {
