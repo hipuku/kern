@@ -4,6 +4,7 @@ import { ViewHeader } from './ViewHeader'
 const meta = {
   title: 'Molecules/ViewHeader',
   component: ViewHeader,
+  tags: ['autodocs'],
   parameters: { layout: 'padded' },
 } satisfies Meta<typeof ViewHeader>
 

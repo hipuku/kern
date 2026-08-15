@@ -4,6 +4,7 @@ import { CalloutCard } from './CalloutCard'
 const meta = {
   title: 'Molecules/CalloutCard',
   component: CalloutCard,
+  tags: ['autodocs'],
   args: {
     colour:   'supernova',
     label:    '3 near-identical pairs',

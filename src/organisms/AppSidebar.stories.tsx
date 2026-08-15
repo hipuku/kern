@@ -8,6 +8,7 @@ import { GitHubIcon }  from '../atoms/GitHubIcon'
 const meta = {
   title: 'Organisms/AppSidebar',
   component: AppSidebar,
+  tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   decorators: [
     (Story) => (

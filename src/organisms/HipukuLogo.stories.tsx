@@ -4,6 +4,7 @@ import { HipukuLogo } from './HipukuLogo'
 const meta = {
   title: 'Organisms/HipukuLogo',
   component: HipukuLogo,
+  tags: ['autodocs'],
 } satisfies Meta<typeof HipukuLogo>
 
 export default meta

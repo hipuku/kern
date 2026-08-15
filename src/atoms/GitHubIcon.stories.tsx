@@ -5,6 +5,7 @@ import { GitHubIcon } from './GitHubIcon'
 const meta = {
   title: 'Atoms/GitHubIcon',
   component: GitHubIcon,
+  tags: ['autodocs'],
 } satisfies Meta<typeof GitHubIcon>
 
 export default meta

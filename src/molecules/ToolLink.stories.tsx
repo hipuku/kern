@@ -6,6 +6,7 @@ import { Section } from './Section'
 const meta = {
   title: 'Molecules/ToolLink',
   component: ToolLink,
+  tags: ['autodocs'],
   parameters: { layout: 'padded' },
 } satisfies Meta
 

@@ -5,6 +5,13 @@ import { IconButton } from './IconButton'
 const meta = {
   title: 'Atoms/IconButton',
   component: IconButton,
+  tags: ['autodocs'],
+  args: { 'aria-label': 'Reset', onClick: () => {}, children: <RotateCcw className="w-3.5 h-3.5" /> },
+  argTypes: {
+    'aria-label': { control: 'text', description: 'Accessible name — describe the action, not the icon.' },
+    onClick: { action: 'clicked', description: 'Click handler.' },
+    children: { control: false, description: 'The icon element.' },
+  },
 } satisfies Meta<typeof IconButton>
 
 export default meta

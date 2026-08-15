@@ -5,6 +5,17 @@ import { ParamSlider } from './ParamSlider'
 const meta = {
   title: 'Molecules/ParamSlider',
   component: ParamSlider,
+  tags: ['autodocs'],
+  args: { label: 'f — feed rate', value: 0.035, min: 0.01, max: 0.08, step: 0.001, onChange: () => {} },
+  argTypes: {
+    label: { control: 'text', description: 'Parameter name shown above the track.' },
+    value: { control: 'number', description: 'Current value.' },
+    min: { control: 'number' },
+    max: { control: 'number' },
+    step: { control: 'number' },
+    onChange: { action: 'changed', description: 'Fires with the parsed number on input.' },
+    format: { control: false, description: 'Formats the value read-out (defaults to 3 dp).' },
+  },
 } satisfies Meta<typeof ParamSlider>
 
 export default meta

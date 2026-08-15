@@ -4,6 +4,7 @@ import { DataTable } from './DataTable'
 const meta = {
   title: 'Molecules/DataTable',
   component: DataTable,
+  tags: ['autodocs'],
   parameters: { layout: 'padded' },
 } satisfies Meta<typeof DataTable>
 

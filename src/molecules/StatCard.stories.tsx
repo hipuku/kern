@@ -4,6 +4,7 @@ import { StatCard } from './StatCard'
 const meta = {
   title: 'Molecules/StatCard',
   component: StatCard,
+  tags: ['autodocs'],
   args: { label: 'Metric', value: '42' },
   argTypes: {
     variant: {

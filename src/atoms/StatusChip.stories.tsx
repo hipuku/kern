@@ -4,6 +4,16 @@ import { StatusChip } from './StatusChip'
 const meta = {
   title: 'Atoms/StatusChip',
   component: StatusChip,
+  tags: ['autodocs'],
+  args: { children: 'Contested zone', colour: 'orbit' },
+  argTypes: {
+    colour: {
+      control: 'select',
+      options: ['nebula', 'aurora', 'tidal', 'orbit', 'pulsar', 'quasar', 'corona', 'dusk', 'flare', 'solstice', 'supernova', 'neutral'],
+      description: 'Named accent that tints the chip.',
+    },
+    children: { control: 'text', description: 'Chip label.' },
+  },
 } satisfies Meta<typeof StatusChip>
 
 export default meta

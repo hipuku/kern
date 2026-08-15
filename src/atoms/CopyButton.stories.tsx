@@ -4,6 +4,7 @@ import { CopyButton } from './CopyButton'
 const meta = {
   title: 'Atoms/CopyButton',
   component: CopyButton,
+  tags: ['autodocs'],
   args: { text: 'Midnight Blue' },
 } satisfies Meta<typeof CopyButton>
 

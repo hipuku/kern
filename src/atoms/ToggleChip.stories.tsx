@@ -5,6 +5,14 @@ import { ToggleChip } from './ToggleChip'
 const meta = {
   title: 'Atoms/ToggleChip',
   component: ToggleChip,
+  tags: ['autodocs'],
+  args: { active: false, onClick: () => {}, children: 'Leopard', mono: false },
+  argTypes: {
+    active: { control: 'boolean', description: 'Whether the chip is selected.' },
+    mono: { control: 'boolean', description: 'Render the label in the monospace face.' },
+    onClick: { action: 'toggled', description: 'Click handler.' },
+    children: { control: 'text', description: 'Chip label.' },
+  },
 } satisfies Meta<typeof ToggleChip>
 
 export default meta

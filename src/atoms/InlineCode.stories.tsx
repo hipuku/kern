@@ -4,6 +4,7 @@ import { InlineCode } from './InlineCode'
 const meta = {
   title: 'Atoms/InlineCode',
   component: InlineCode,
+  tags: ['autodocs'],
   args: { children: '.nav-link' },
   argTypes: {
     colour: {

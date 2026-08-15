@@ -4,6 +4,7 @@ import { ExternalLink } from './ExternalLink'
 const meta = {
   title: 'Atoms/ExternalLink',
   component: ExternalLink,
+  tags: ['autodocs'],
   args: { href: 'https://example.com', children: 'CIEDE2000' },
 } satisfies Meta<typeof ExternalLink>
 

@@ -6,6 +6,7 @@ import { ExternalLink } from '@/atoms/ExternalLink'
 const meta = {
   title: 'Molecules/Section',
   component: Section,
+  tags: ['autodocs'],
   parameters: { layout: 'padded' },
 } satisfies Meta
 

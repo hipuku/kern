@@ -4,6 +4,7 @@ import { BulletItem } from './BulletItem'
 const meta = {
   title: 'Atoms/BulletItem',
   component: BulletItem,
+  tags: ['autodocs'],
   args: { children: 'Equal steps in L, C, or H produce equal-feeling changes.' },
 } satisfies Meta<typeof BulletItem>
 
