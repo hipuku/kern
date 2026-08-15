@@ -6,7 +6,7 @@ const meta = {
   component: InlineCode,
   args: { children: '.nav-link' },
   argTypes: {
-    color: {
+    colour: {
       control: 'select',
       options: [
         'text-nebula', 'text-aurora', 'text-tidal', 'text-orbit',
@@ -23,7 +23,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const ALL_COLORS = [
+const ALL_COLOURS = [
   'text-nebula', 'text-aurora', 'text-tidal',  'text-orbit',
   'text-pulsar', 'text-quasar', 'text-corona', 'text-dusk',
   'text-flare',  'text-solstice', 'text-supernova',
@@ -33,10 +33,10 @@ export const AllVariants: Story = {
   name: 'All colour variants',
   render: () => (
     <div className="flex flex-col gap-2">
-      {ALL_COLORS.map((color) => (
-        <div key={color} className="flex items-center gap-3">
-          <InlineCode color={color}>{`.${color.replace('text-', '')}`}</InlineCode>
-          <span className="type-annotation text-void-40">{color}</span>
+      {ALL_COLOURS.map((colour) => (
+        <div key={colour} className="flex items-center gap-3">
+          <InlineCode colour={colour}>{`.${colour.replace('text-', '')}`}</InlineCode>
+          <span className="type-annotation text-void-40">{colour}</span>
         </div>
       ))}
     </div>
@@ -46,7 +46,7 @@ export const AllVariants: Story = {
 export const InSentence: Story = {
   render: () => (
     <p className="type-p-sm text-void-60">
-      Use <InlineCode>.is()</InlineCode> to match any selector in a list, or <InlineCode color="text-tidal">:where()</InlineCode> for zero-specificity grouping.
+      Use <InlineCode>.is()</InlineCode> to match any selector in a list, or <InlineCode colour="text-tidal">:where()</InlineCode> for zero-specificity grouping.
     </p>
   ),
 }
