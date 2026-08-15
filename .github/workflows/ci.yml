@@ -18,5 +18,11 @@ jobs:
 
       - run: npm install
 
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
       - name: Build Storybook
         run: npm run build-storybook
