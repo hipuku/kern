@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { HipukuLogo } from './HipukuLogo'
 
 const meta = {
-  title: 'Organisms/HipukuLogo',
+  title: 'Atoms/HipukuLogo',
   component: HipukuLogo,
   tags: ['autodocs'],
 } satisfies Meta<typeof HipukuLogo>

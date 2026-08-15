@@ -16,11 +16,11 @@ interface StatCardProps {
   sub?: string
   badge?: string
   variant?: BadgeVariant
-  badgeColor?: StatusChipColour
+  badgeColour?: StatusChipColour
 }
 
-export function StatCard({ label, value, sub, badge, variant, badgeColor }: StatCardProps) {
-  const chipColour: StatusChipColour = variant ? VARIANT_CHIP[variant] : (badgeColor ?? 'neutral')
+export function StatCard({ label, value, sub, badge, variant, badgeColour }: StatCardProps) {
+  const chipColour: StatusChipColour = variant ? VARIANT_CHIP[variant] : (badgeColour ?? 'neutral')
 
   return (
     <div className="flex flex-col gap-2 p-4 rounded-xl border bg-void-20 border-void-30">

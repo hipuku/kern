@@ -10,9 +10,9 @@ const meta = {
     variant: {
       control: 'select',
       options: [undefined, 'positive', 'warning', 'neutral', 'info'],
-      description: 'Semantic variant — controls badge colour. Takes precedence over badgeColor when both are set.',
+      description: 'Semantic variant — controls badge colour. Takes precedence over badgeColour when both are set.',
     },
-    badgeColor: {
+    badgeColour: {
       control: 'select',
       options: [undefined, 'nebula', 'aurora', 'tidal', 'orbit', 'pulsar', 'quasar', 'corona', 'dusk', 'flare', 'solstice', 'supernova', 'neutral'],
       description: 'Escape hatch — pick a specific accent colour for the badge chip when none of the four named variants apply. Ignored when variant is set.',
@@ -99,18 +99,18 @@ export const AllVariants: Story = {
 }
 
 export const EscapeHatch: Story = {
-  name: 'badgeColor escape hatch',
+  name: 'badgeColour escape hatch',
   parameters: {
     docs: {
       description: {
-        story: '`badgeColor` accepts any `StatusChipColour` for one-off cases not covered by the four named variants. It is ignored when `variant` is also set — `variant` always wins.',
+        story: '`badgeColour` accepts any `StatusChipColour` for one-off cases not covered by the four named variants. It is ignored when `variant` is also set — `variant` always wins.',
       },
     },
   },
   render: () => (
     <div className="flex flex-col gap-3 w-64">
-      <StatCard label="Custom colour"   value="bezier" badge="alpha"        badgeColor="quasar" />
-      <StatCard label="Variant + color" value="ignored" badge="variant wins" variant="info" badgeColor="quasar" sub="badgeColor is ignored — variant takes precedence." />
+      <StatCard label="Custom colour"   value="bezier" badge="alpha"        badgeColour="quasar" />
+      <StatCard label="Variant + color" value="ignored" badge="variant wins" variant="info" badgeColour="quasar" sub="badgeColour is ignored — variant takes precedence." />
     </div>
   ),
 }

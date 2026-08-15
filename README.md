@@ -4,7 +4,7 @@ The shared component library and design tokens behind the hipuku experiments —
 
 ## Features
 
-- **18 components** across atoms, molecules, and organisms, each with a Storybook story.
+- **19 components** across atoms, molecules, and organisms, each with a Storybook story.
 - **A single token layer** (`src/tokens.css`) — void neutral scale, named accent palettes, type scale, motion — consumed by every experiment.
 - **Source-only distribution.** No build, no bundle. Consumers alias `@kern/*` straight at the source tree, so there is never a stale compiled copy to reason about.
 - **Accessible by default** — semantic HTML first, focus-visible rings, aria-labelled controls, a Storybook a11y addon on every story, and axe smoke tests on the load-bearing components.

@@ -10,19 +10,14 @@ export interface NavItem {
   icon: ComponentType<{ className?: string }>
 }
 
-export interface SocialLink {
-  Icon: ComponentType<{ className?: string }>
-  label: string
-  href?: string
-}
-
 interface AppSidebarProps {
   logo: ReactNode
   navItems: NavItem[]
   activeId: string
   onNavigate: (id: string) => void
   accentActiveClass?: string
-  socialLinks?: SocialLink[]
+  /** Social links shown in the header, right of the logo — typically a `SocialBar`. */
+  social?: ReactNode
   colophon?: ReactNode
   mobileOpen?: boolean
   onMobileToggle?: () => void
@@ -34,7 +29,7 @@ export function AppSidebar({
   activeId,
   onNavigate,
   accentActiveClass = 'text-(--primary)',
-  socialLinks = [],
+  social,
   colophon,
   mobileOpen = false,
   onMobileToggle,
@@ -83,20 +78,7 @@ export function AppSidebar({
           <div className="flex items-center justify-between w-full">
             {/* On mobile, indent logo to clear the hamburger button */}
             <div className="lg:contents max-lg:pl-10">{logo}</div>
-            {socialLinks.length > 0 && (
-              <div className="flex items-center gap-4">
-                {socialLinks.map(({ Icon, label, href = '#' }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="text-void-60 inline-flex transition-all duration-200 motion-safe:hover:scale-125 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) rounded"
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                ))}
-              </div>
-            )}
+            {social}
           </div>
 
           <nav className="flex flex-col gap-4 w-full">

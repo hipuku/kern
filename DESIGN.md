@@ -36,13 +36,14 @@ The matching `tsconfig` `paths` entry mirrors it for the type checker.
 Atomic design, one direction of dependency only:
 
 ```
-atoms/       Stateless, single-purpose. Depend on tokens only.
-             BulletItem, CopyButton, ExternalLink, GitHubIcon, IconButton,
-             InlineCode, StatusChip, ToggleChip
+atoms/       Single-purpose primitives. Depend on tokens only.
+             BulletItem, CopyButton, ExternalLink, GitHubIcon, HipukuLogo,
+             IconButton, InlineCode, StatusChip, ToggleChip
 molecules/   Composed from atoms + layout.
-             CalloutCard, DataTable, ParamSlider, Section, StatCard, ToolLink, ViewHeader
+             CalloutCard, DataTable, ParamSlider, Section, SocialBar,
+             StatCard, ToolLink, ViewHeader
 organisms/   Full UI regions; may own local state.
-             AppSidebar, ErrorBoundary, HipukuLogo
+             AppSidebar, ErrorBoundary
 ```
 
 Atoms never import molecules or organisms; molecules may use atoms; organisms may use both. `src/lib/utils.ts` holds only the `cn()` class-merge helper. `src/tokens/` holds Storybook-only token documentation pages.
