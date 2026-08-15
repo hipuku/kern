@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { axe } from 'jest-axe'
+import { axe } from 'vitest-axe'
 import { RotateCcw } from 'lucide-react'
 import { IconButton } from './IconButton'
 
@@ -19,6 +19,6 @@ describe('IconButton', () => {
         <RotateCcw />
       </IconButton>,
     )
-    expect(await axe(container)).toHaveNoViolations()
+    expect((await axe(container)).violations).toEqual([])
   })
 })

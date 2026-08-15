@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { axe } from 'jest-axe'
+import { axe } from 'vitest-axe'
 import { Beaker } from 'lucide-react'
 import { AppSidebar } from './AppSidebar'
 
@@ -31,6 +31,6 @@ describe('AppSidebar', () => {
         onNavigate={() => {}}
       />,
     )
-    expect(await axe(container)).toHaveNoViolations()
+    expect((await axe(container)).violations).toEqual([])
   })
 })
