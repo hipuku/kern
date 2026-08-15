@@ -30,6 +30,16 @@ export const SpecifiPalette: Story = {
   ),
 }
 
+export const GrayScottPalette: Story = {
+  name: 'Gray-Scott palette (nebula / supernova / solstice)',
+  render: () => (
+    <div className="flex items-center gap-2 type-p-sm text-void-60">
+      <span>2026 © gray-scott by</span>
+      <HipukuLogo hoverFills={{ hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' }} />
+    </div>
+  ),
+}
+
 export const ReducedMotion: Story = {
   name: 'Reduced motion',
   parameters: {
