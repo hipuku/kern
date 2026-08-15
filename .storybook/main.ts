@@ -4,6 +4,10 @@ import path from 'path'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
+  staticDirs: [
+    { from: '../logo.svg', to: '/brand/logo.svg' },
+    { from: '../wordmark.svg', to: '/brand/wordmark.svg' },
+  ],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
   framework: {
     name: '@storybook/react-vite',

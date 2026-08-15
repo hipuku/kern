@@ -6,6 +6,7 @@ import { create } from '@storybook/theming'
 const theme = create({
   base: 'dark',
   brandTitle: 'kern',
+  brandImage: '/brand/wordmark.svg',
   brandUrl: 'https://kern.hipuku.dev',
   brandTarget: '_self',
   colorPrimary: '#7193ED',
