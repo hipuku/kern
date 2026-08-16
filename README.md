@@ -1,6 +1,6 @@
 # kern
 
-The shared component library and design tokens behind the hipuku experiments — consumed as TypeScript source, no build step.
+The shared component library and design tokens behind the hipuku experiments — consumed as TypeScript source, no build step. Live Storybook at [kern.hipuku.dev](https://kern.hipuku.dev).
 
 ## Features
 
