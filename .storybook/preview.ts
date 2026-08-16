@@ -13,7 +13,9 @@ const preview: Preview = {
     layout: 'padded',
     options: {
       storySort: {
-        order: ['Tokens', 'Atoms', 'Molecules', 'Organisms'],
+        // Lead each group sensibly: the Icons catalog opens Atoms (the shared
+        // vocabulary), then the rest alphabetically.
+        order: ['Tokens', 'Atoms', ['Icons', '*'], 'Molecules', 'Organisms'],
       },
     },
   },

@@ -32,14 +32,14 @@ type Icon = ComponentType<{ className?: string }>
 
 function IconGrid({ icons }: { icons: { name: string; Icon: Icon }[] }) {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(96px,1fr))] gap-3">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3">
       {icons.map(({ name, Icon }) => (
         <div
           key={name}
-          className="flex flex-col items-center gap-2 p-4 rounded-xl border bg-void-20 border-void-30 text-void-80"
+          className="flex items-center gap-3 px-4 py-3 rounded-xl border bg-void-20 border-void-30 text-void-80"
         >
-          <Icon className="w-5 h-5" />
-          <span className="type-annotation text-void-60 text-center break-all">{name}</span>
+          <Icon className="w-5 h-5 shrink-0" />
+          <span className="type-code text-void-60 truncate">{name}</span>
         </div>
       ))}
     </div>
