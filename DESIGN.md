@@ -48,6 +48,8 @@ organisms/   Full UI regions; may own local state.
 
 Atoms never import molecules or organisms; molecules may use atoms; organisms may use both. `src/lib/utils.ts` holds only the `cn()` class-merge helper. `src/tokens/` holds Storybook-only token documentation pages.
 
+**Icons.** Interface glyphs come from **lucide-react**; brand marks lucide doesn't provide (e.g. the GitHub logo) are hand-rolled `currentColor` SVGs in `atoms/Icons.tsx`. Both kinds are plain `ComponentType<{ className?: string }>`, so they drop into any icon slot interchangeably — `IconButton`, `SocialBar`, `AppSidebar` nav items. The `Atoms/Icons` story is a catalog of the full icon vocabulary used across kern and the experiments.
+
 ## Token system
 
 `src/tokens.css` is the single source of truth. Two tiers:
