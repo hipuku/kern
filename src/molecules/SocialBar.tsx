@@ -1,6 +1,6 @@
 import { type ComponentType } from 'react'
 import { Globe } from 'lucide-react'
-import { GitHubIcon } from '../atoms/GitHubIcon'
+import { GitHubIcon } from '../atoms/Icons'
 import { cn } from '../lib/utils'
 
 /** The portfolio's home site. The globe icon links here by default. */

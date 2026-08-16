@@ -37,8 +37,8 @@ Atomic design, one direction of dependency only:
 
 ```
 atoms/       Single-purpose primitives. Depend on tokens only.
-             BulletItem, CopyButton, ExternalLink, GitHubIcon, HipukuLogo,
-             IconButton, InlineCode, StatusChip, ToggleChip
+             BulletItem, CopyButton, ExternalLink, HipukuLogo, IconButton,
+             Icons (custom brand SVGs), InlineCode, StatusChip, ToggleChip
 molecules/   Composed from atoms + layout.
              CalloutCard, DataTable, ParamSlider, Section, SocialBar,
              StatCard, ToolLink, ViewHeader
