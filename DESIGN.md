@@ -54,7 +54,7 @@ Atoms never import molecules or organisms; molecules may use atoms; organisms ma
 
 `src/tokens.css` is the single source of truth. Two tiers:
 
-- **Primitives** — the void neutral scale (`--void-0…--void-90`) and named accent palettes (nebula, pulsar, aurora, …) as raw hex.
+- **Primitives** — the void neutral scale (`--color-void-0…--color-void-90`) and named accent palettes (nebula, pulsar, aurora, …) as raw hex.
 - **Semantics** — role aliases components consume: `--primary` / `--ring` (pulsar), surface and text roles, plus a per-experiment override seam so an experiment can retint the shared components without forking them.
 
 Type is role-based (annotation, code, heading roles) with a matching class per role; motion is a small set of easing + duration tokens. The **Storybook token pages are the living reference** — kern documents its tokens by rendering them, not by listing values in prose that can go stale.
