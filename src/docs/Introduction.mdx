@@ -11,8 +11,6 @@ import { Meta } from '@storybook/addon-docs/blocks'
   </div>
 </div>
 
-<div className="h-px bg-void-20 my-10" />
-
 ## What this is
 
 Three independent apps, each its own repository and deployment. Left alone they
@@ -71,26 +69,6 @@ re-litigate them.
   Never the `uppercase` class.
 - **Every experiment picks one accent** as its `--primary`. Components reference
   the semantic role, never a named colour, so retinting is a one-line change.
-
-## Where to go next
-
-<div className="flex flex-col gap-3 my-6">
-  {[
-    ['Installation', 'Add kern to an experiment and wire up the alias and Tailwind scanning.', '?path=/docs/getting-started-installation--docs'],
-    ['Contributing', 'Change a token, add a component, decide which layer it belongs in.', '?path=/docs/getting-started-contributing--docs'],
-    ['Colours', 'The full palette, with contrast ratios and an OKLCH plot.', '?path=/story/tokens-colours--all'],
-    ['AppShell', 'The layout every experiment is built on.', '?path=/story/templates-appshell--default'],
-  ].map(([title, description, href]) => (
-    <a
-      key={title}
-      href={href}
-      className="flex flex-col gap-1 no-underline rounded-xl px-4 py-3 bg-void-10 border border-void-20 hover:border-void-40 transition-colors"
-    >
-      <span className="type-p-sm font-medium text-(--primary)">{title}</span>
-      <span className="type-annotation text-void-60">{description}</span>
-    </a>
-  ))}
-</div>
 
 <div className="h-px bg-void-20 my-10" />
 

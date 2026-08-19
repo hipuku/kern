@@ -169,3 +169,101 @@
   box-shadow: none;
   border: 1px solid var(--color-void-30);
 }
+
+/* ─── Code block copy button ─────────────────────────────────────────────── */
+
+/*
+ * Storybook renders its own copy control in a flex bar at the foot of every
+ * code block. Against kern's rounded, bordered `pre` it sat flush into the
+ * bottom-right corner, where the 12px radius clipped it — a pale unstyled pill
+ * half-escaping the block.
+ *
+ * Lifted out of the flow and into the top-right corner as a proper kern
+ * surface button. Storybook's own class names are emotion hashes that change
+ * between builds, so everything here hangs off `.docblock-source`, which is a
+ * stable public class.
+ *
+ * Unlike the element defaults above, these selectors deliberately do *not* use
+ * `:where()`. `:where()` zeroes the specificity of everything inside it, so
+ * `.sbdocs :where(.docblock-source button)` scores only (0,1,0) and loses to
+ * Storybook's own (0,1,0) emotion class on source order. These rules exist
+ * precisely to override that component, so they take their full specificity.
+ */
+
+.sbdocs .docblock-source {
+  position: relative;
+}
+
+/* The wrapper holding the button — the last child of the source block. */
+.sbdocs .docblock-source > div:last-of-type {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+}
+
+.sbdocs .docblock-source button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+
+  font-family: var(--font-sans);
+  font-size: var(--text-annotation);
+  font-weight: var(--text-annotation-weight);
+  letter-spacing: var(--text-annotation-tracking);
+
+  color: var(--color-void-60);
+  background: var(--color-void-20);
+  border: 1px solid var(--color-void-30);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+/*
+ * Revealed on hover, and — the part that is easy to forget — on keyboard focus,
+ * so the control is not unreachable for anyone not using a mouse.
+ */
+.sbdocs .docblock-source:hover button,
+.sbdocs .docblock-source button:focus-visible {
+  opacity: 1;
+}
+
+.sbdocs .docblock-source button:hover {
+  color: var(--color-void-90);
+  border-color: var(--color-void-40);
+}
+
+.sbdocs .docblock-source button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+/*
+ * The lucide `copy` glyph, kern's icon library — masked rather than used as a
+ * background image so it takes the button's colour and follows it on hover.
+ */
+.sbdocs .docblock-source button::before {
+  content: '';
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask-image: var(--icon-copy);
+  mask-image: var(--icon-copy);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+:root {
+  --icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='14' height='14' x='8' y='8' rx='2' ry='2'/%3E%3Cpath d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'/%3E%3C/svg%3E");
+}
