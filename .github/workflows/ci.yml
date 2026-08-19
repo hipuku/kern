@@ -24,6 +24,9 @@ jobs:
       - name: Check token CSS is in sync
         run: npm run tokens:check
 
+      - name: Lint
+        run: npm run lint
+
       - name: Typecheck
         run: npm run typecheck
 
