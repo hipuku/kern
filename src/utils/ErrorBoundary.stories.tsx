@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ErrorBoundary } from './ErrorBoundary'
 
 const meta = {
-  title: 'Organisms/ErrorBoundary',
+  title: 'Utilities/ErrorBoundary',
   component: ErrorBoundary,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },

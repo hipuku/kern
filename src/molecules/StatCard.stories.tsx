@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { StatCard } from './StatCard'
+import { accentColours } from '../lib/accent'
 
 const meta = {
   title: 'Molecules/StatCard',
@@ -7,110 +8,70 @@ const meta = {
   tags: ['autodocs'],
   args: { label: 'Metric', value: '42' },
   argTypes: {
-    variant: {
-      control: 'select',
-      options: [undefined, 'positive', 'warning', 'neutral', 'info'],
-      description: 'Semantic variant — controls badge colour. Takes precedence over badgeColour when both are set.',
-    },
     badgeColour: {
       control: 'select',
-      options: [undefined, 'nebula', 'aurora', 'tidal', 'orbit', 'pulsar', 'quasar', 'corona', 'dusk', 'flare', 'solstice', 'supernova', 'neutral'],
-      description: 'Escape hatch — pick a specific accent colour for the badge chip when none of the four named variants apply. Ignored when variant is set.',
+      options: accentColours,
+      description: 'Accent for the badge chip. Defaults to neutral.',
     },
-    badge:  { control: 'text',    description: 'Short qualifier displayed next to the value (e.g. "uniform", "high").' },
-    sub:    { control: 'text',    description: 'Supporting sentence below the value.' },
-    value:  { control: 'text',    description: 'Primary metric value. Accepts ReactNode for inline formatting.' },
-    label:  { control: 'text',    description: 'Section label — rendered as annotation-sc above the value.' },
+    badge:  { control: 'text', description: 'Short qualifier displayed next to the value (e.g. "uniform", "high").' },
+    sub:    { control: 'text', description: 'Supporting sentence below the value.' },
+    value:  { control: 'text', description: 'Primary metric value. Accepts a ReactNode for inline formatting.' },
+    label:  { control: 'text', description: 'Section label — rendered as annotation-sc above the value.' },
   },
 } satisfies Meta<typeof StatCard>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Positive: Story = {
+export const Default: Story = {
+  args: {
+    label: 'Hue arc',
+    value: '142°',
+    sub: 'Colours sweep 142° of the hue wheel with monotonic rotation.',
+  },
+}
+
+export const WithBadge: Story = {
   args: {
     label: 'Lightness uniformity',
     value: 'σ 4.2',
     badge: 'uniform',
-    variant: 'positive',
+    badgeColour: 'nebula',
     sub: 'Std dev of lightness steps between sorted colours. Lower = more even progression.',
   },
 }
 
-export const Info: Story = {
-  args: {
-    label: 'CIEDE2000 difference',
-    value: 'ΔE 12.4',
-    badge: 'distinct',
-    variant: 'info',
-    sub: 'Colours are perceptually distinct — clearly different to the average observer.',
-  },
-}
-
-export const Warning: Story = {
-  args: {
-    label: 'Selector specificity',
-    value: '(2,1,3)',
-    badge: 'high',
-    variant: 'warning',
-    sub: 'Two ID selectors give this rule very high specificity.',
-  },
-}
-
-export const Neutral: Story = {
-  args: {
-    label: 'Hue arc',
-    value: '142°',
-    badge: 'monotonic',
-    variant: 'neutral',
-    sub: 'Colours sweep 142° of the hue wheel with monotonic rotation.',
-  },
-}
-
-export const WithoutBadge: Story = {
-  args: {
-    label: 'Hue arc',
-    value: '142°',
-    sub: 'Colours sweep 142° of the hue wheel with monotonic rotation.',
-  },
-}
-
 export const Grid: Story = {
+  name: 'In a results grid',
   render: () => (
     <div className="grid grid-cols-2 gap-3 w-96">
       <StatCard label="Specificity A" value="2" sub="ID selectors" />
       <StatCard label="Specificity B" value="1" sub="Class selectors" />
       <StatCard label="Specificity C" value="3" sub="Type selectors" />
-      <StatCard label="Total" value="(2,1,3)" badge="high" variant="warning" />
+      <StatCard label="Total" value="(2,1,3)" badge="high" badgeColour="flare" />
     </div>
   ),
 }
 
-export const AllVariants: Story = {
-  name: 'All variants',
-  render: () => (
-    <div className="grid grid-cols-2 gap-3 w-[480px]">
-      <StatCard label="Lightness uniformity" value="σ 4.2" badge="uniform"   variant="positive" sub="Even perceptual progression." />
-      <StatCard label="Selector specificity" value="(2,1,3)" badge="high"    variant="warning"  sub="Two ID selectors — high specificity." />
-      <StatCard label="Hue arc"              value="142°"  badge="monotonic" variant="neutral"  sub="Colours sweep 142° monotonically." />
-      <StatCard label="CIEDE2000 difference" value="ΔE 12.4" badge="distinct" variant="info"    sub="Perceptually distinct colours." />
-    </div>
-  ),
-}
-
-export const EscapeHatch: Story = {
-  name: 'badgeColour escape hatch',
+export const BadgeColours: Story = {
+  name: 'Reading the badge as a signal',
   parameters: {
     docs: {
       description: {
-        story: '`badgeColour` accepts any `StatusChipColour` for one-off cases not covered by the four named variants. It is ignored when `variant` is also set — `variant` always wins.',
+        story:
+          'The badge accent is chosen at the call site rather than through a fixed set of semantic variants. ' +
+          'These four are the conventional readings — nebula for a good result, flare for one that needs attention, ' +
+          'orbit for neutral information, and the default neutral grey when the badge is a plain qualifier rather ' +
+          'than a judgement.',
       },
     },
   },
   render: () => (
-    <div className="flex flex-col gap-3 w-64">
-      <StatCard label="Custom colour"   value="bezier" badge="alpha"        badgeColour="quasar" />
-      <StatCard label="Variant + color" value="ignored" badge="variant wins" variant="info" badgeColour="quasar" sub="badgeColour is ignored — variant takes precedence." />
+    <div className="grid grid-cols-2 gap-3 w-[480px]">
+      <StatCard label="Lightness uniformity" value="σ 4.2"    badge="uniform"   badgeColour="nebula"  sub="Even perceptual progression." />
+      <StatCard label="Selector specificity" value="(2,1,3)"  badge="high"      badgeColour="flare"   sub="Two ID selectors — high specificity." />
+      <StatCard label="CIEDE2000 difference" value="ΔE 12.4"  badge="distinct"  badgeColour="orbit"   sub="Perceptually distinct colours." />
+      <StatCard label="Hue arc"              value="142°"     badge="monotonic" sub="Colours sweep 142° monotonically." />
     </div>
   ),
 }

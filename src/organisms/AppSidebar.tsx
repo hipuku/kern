@@ -1,6 +1,7 @@
 import { type ComponentType, type ReactNode } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '../lib/utils'
+import { focusRing } from '../lib/focus'
 
 export interface NavItem {
   id: string
@@ -10,7 +11,7 @@ export interface NavItem {
   icon: ComponentType<{ className?: string }>
 }
 
-interface AppSidebarProps {
+export interface AppSidebarProps {
   logo: ReactNode
   navItems: NavItem[]
   activeId: string
@@ -44,7 +45,7 @@ export function AppSidebar({
         className={cn(
           'lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg',
           'bg-void-20 text-void-60 hover:text-void-90 hover:bg-void-30',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring)',
+          focusRing,
           'transition-colors duration-200',
         )}
       >
@@ -87,6 +88,7 @@ export function AppSidebar({
               return (
                 <button
                   key={id}
+                  type="button"
                   onClick={() => {
                     onNavigate(id)
                     // Close sidebar on mobile after navigation
@@ -98,7 +100,7 @@ export function AppSidebar({
                     'type-p-sm transition-all duration-200',
                     'bg-void-20 hover:bg-void-30',
                     'text-void-60 hover:text-void-90 motion-safe:hover:translate-x-1',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring)',
+                    focusRing,
                     isActive && cn('bg-void-30 font-medium motion-safe:hover:translate-x-0', accentActiveClass),
                   )}
                 >

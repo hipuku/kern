@@ -19,7 +19,15 @@ const preview: Preview = {
         // Docs first, then the system bottom-up: tokens, then each atomic tier.
         // Within Atoms the Icons catalog leads, since it is the shared vocabulary
         // the other components draw on.
-        order: ['Getting started', 'Tokens', 'Atoms', ['Icons', '*'], 'Molecules', 'Organisms'],
+        order: [
+          'Getting started',
+          'Tokens',
+          'Atoms', ['Icons', '*'],
+          'Molecules',
+          'Organisms',
+          'Templates',
+          'Utilities',
+        ],
       },
     },
     a11y: {

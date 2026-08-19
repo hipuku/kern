@@ -2,6 +2,7 @@ import { type ComponentType } from 'react'
 import { Globe } from 'lucide-react'
 import { GitHubIcon } from '../atoms/Icons'
 import { cn } from '../lib/utils'
+import { focusRing } from '../lib/focus'
 
 /** The portfolio's home site. The globe icon links here by default. */
 const HIPUKU_URL = 'https://www.hipuku.dev'
@@ -30,7 +31,7 @@ function SocialIconLink({ Icon, label, href }: IconLink) {
     <a
       href={href}
       aria-label={label}
-      className="text-void-60 inline-flex transition-all duration-200 motion-safe:hover:scale-125 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) rounded"
+      className={cn('text-void-60 inline-flex transition-all duration-200 motion-safe:hover:scale-125 rounded', focusRing)}
     >
       <Icon className="w-4 h-4" />
     </a>

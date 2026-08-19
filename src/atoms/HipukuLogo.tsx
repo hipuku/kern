@@ -1,12 +1,12 @@
 import { useState, type CSSProperties } from 'react'
 
-interface HoverFills {
+export interface HoverFills {
   hi: string   // CSS color for h + i
   pu: string   // CSS color for p + u1
   ku: string   // CSS color for k + u2
 }
 
-interface HipukuLogoProps {
+export interface HipukuLogoProps {
   href?: string
   className?: string
   hoverFills?: HoverFills

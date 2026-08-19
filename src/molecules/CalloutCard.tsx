@@ -1,39 +1,34 @@
+import type { ComponentPropsWithRef, ReactNode } from 'react'
 import { cn } from '../lib/utils'
-import type { StatusChipColour } from '../atoms/StatusChip'
-import type { ReactNode } from 'react'
+import { accentText, type AccentColour } from '../lib/accent'
 
-const LABEL_TEXT: Record<StatusChipColour, string> = {
-  nebula:    'text-nebula',
-  aurora:    'text-aurora',
-  tidal:     'text-tidal',
-  orbit:     'text-orbit',
-  pulsar:    'text-pulsar',
-  quasar:    'text-quasar',
-  corona:    'text-corona',
-  dusk:      'text-dusk',
-  flare:     'text-flare',
-  solstice:  'text-solstice',
-  supernova: 'text-supernova',
-  neutral:   'text-void-50',
-}
-
-interface CalloutCardProps {
-  colour: StatusChipColour
+export interface CalloutCardProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
+  /** Accent for the label. The card chrome stays neutral either way. */
+  colour: AccentColour
+  /** Optional heading line, tinted with `colour`. */
   label?: ReactNode
-  children: ReactNode
 }
 
-export function CalloutCard({ colour, label, children }: CalloutCardProps) {
+/**
+ * A short aside in a view — a caveat, a definition, a rule of thumb.
+ *
+ * Only the label carries the accent; the surface stays neutral so a column of
+ * callouts in different colours still reads as one column rather than as a
+ * stack of unrelated alerts.
+ */
+export function CalloutCard({ colour, label, children, className, ...props }: CalloutCardProps) {
   return (
-    <div className="rounded-xl px-4 py-3 bg-void-20 border border-void-30 flex flex-col gap-1">
-      {label != null && (
-        <p className={cn('type-annotation', LABEL_TEXT[colour])}>
-          {label}
-        </p>
+    <div
+      className={cn(
+        'rounded-xl px-4 py-3 bg-void-20 border border-void-30 flex flex-col gap-1',
+        className,
       )}
-      <p className="type-annotation text-void-60">
-        {children}
-      </p>
+      {...props}
+    >
+      {label != null && (
+        <p className={cn('type-annotation', accentText[colour])}>{label}</p>
+      )}
+      <p className="type-annotation text-void-60">{children}</p>
     </div>
   )
 }

@@ -1,18 +1,36 @@
-import type { ReactNode } from 'react'
+import type { ComponentPropsWithRef, ReactNode } from 'react'
+import { cn } from '../lib/utils'
 
-interface DataTableProps {
+export interface DataTableProps extends Omit<ComponentPropsWithRef<'table'>, 'children'> {
   columns: string[]
   rows: ReactNode[][]
+  /**
+   * Names the table for assistive technology. A bare `<table>` is announced
+   * only as "table"; on a page with several, that is not enough to tell them
+   * apart. Rendered as a visually-hidden `<caption>`.
+   */
+  caption?: string
 }
 
-export function DataTable({ columns, rows }: DataTableProps) {
+/**
+ * A compact reference table — a legend, a lookup, a short comparison. Not a
+ * data grid: no sorting, no pagination, no virtualisation.
+ *
+ * Rows are `ReactNode[][]` rather than objects, because the tables this serves
+ * are hand-written reference material where cells are often formatted markup
+ * rather than plain values.
+ */
+export function DataTable({ columns, rows, caption, className, ...props }: DataTableProps) {
   return (
-    <div className="rounded-xl border border-void-30 overflow-hidden">
-      <table className="w-full">
+    <div className="rounded-xl border border-void-30 overflow-x-auto">
+      <table className={cn('w-full', className)} {...props}>
+        {caption && <caption className="sr-only">{caption}</caption>}
         <thead>
           <tr className="border-b border-void-20">
-            {columns.map((col, i) => (
-              <th key={i} className="text-left px-4 py-2 type-annotation-sc text-void-60">
+            {columns.map((col) => (
+              // scope="col" is what lets a screen reader announce the column
+              // heading with each cell as the user moves across a row.
+              <th key={col} scope="col" className="text-left px-4 py-2 type-annotation-sc text-void-60">
                 {col}
               </th>
             ))}

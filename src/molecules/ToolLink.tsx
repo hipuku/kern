@@ -1,41 +1,35 @@
-import type { ReactNode } from 'react'
 import { cn } from '../lib/utils'
-import type { StatusChipColour } from '../atoms/StatusChip'
+import { Button, type ButtonProps } from '../atoms/Button'
+import { accentText, accentTextHover, type AccentColour } from '../lib/accent'
 
-const LINK_CLASSES: Record<StatusChipColour, string> = {
-  nebula:    'text-nebula hover:text-nebula-light',
-  aurora:    'text-aurora hover:text-aurora-light',
-  tidal:     'text-tidal hover:text-tidal-light',
-  orbit:     'text-orbit hover:text-orbit-light',
-  pulsar:    'text-pulsar hover:text-pulsar-light',
-  quasar:    'text-quasar hover:text-quasar-light',
-  corona:    'text-corona hover:text-corona-light',
-  dusk:      'text-dusk hover:text-dusk-light',
-  flare:     'text-flare hover:text-flare-light',
-  solstice:  'text-solstice hover:text-solstice-light',
-  supernova: 'text-supernova hover:text-supernova-light',
-  neutral:   'text-void-50 hover:text-void-60',
+export interface ToolLinkProps extends Omit<ButtonProps, 'variant' | 'size'> {
+  /**
+   * Tint the link with a specific accent. Omit to use the experiment's
+   * `--primary`, which is the usual case — pass one only when the link points
+   * at something the palette already colour-codes.
+   */
+  colour?: AccentColour
 }
 
-interface ToolLinkProps {
-  onClick: () => void
-  children: ReactNode
-  colour?: StatusChipColour
-}
-
-export function ToolLink({ onClick, children, colour }: ToolLinkProps) {
+/**
+ * An in-prose control that navigates within the app — "compare these two",
+ * "open this in the analyser".
+ *
+ * It looks like a link and behaves like a button, which is correct: it changes
+ * app state rather than the URL, so it must not be an anchor. Screen reader
+ * users get "button", which is what it is.
+ */
+export function ToolLink({ colour, className, ...props }: ToolLinkProps) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
+    <Button
+      variant="link"
+      size="md"
       className={cn(
-        'cursor-pointer type-p-sm font-medium text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--ring) rounded',
-        colour
-          ? cn(LINK_CLASSES[colour], 'transition-colors duration-150')
-          : 'text-(--primary) hover:opacity-70 transition-opacity duration-150',
+        'type-p-sm font-medium text-left',
+        colour && cn(accentText[colour], accentTextHover[colour], 'hover:opacity-100'),
+        className,
       )}
-    >
-      {children}
-    </button>
+      {...props}
+    />
   )
 }

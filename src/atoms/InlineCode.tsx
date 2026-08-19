@@ -1,23 +1,30 @@
+import type { ComponentPropsWithRef } from 'react'
 import { cn } from '../lib/utils'
-import type { ReactNode } from 'react'
+import { accentText, type AccentColour } from '../lib/accent'
 
-type ColourToken =
-  | 'text-nebula' | 'text-aurora' | 'text-tidal'  | 'text-orbit'
-  | 'text-pulsar' | 'text-quasar' | 'text-corona' | 'text-dusk'
-  | 'text-flare'  | 'text-solstice' | 'text-supernova'
-  | 'text-void-40' | 'text-void-50' | 'text-void-60'
-  | 'text-void-70' | 'text-void-80' | 'text-void-90'
-
-interface InlineCodeProps {
-  children: ReactNode
-  colour?: ColourToken
-  className?: string
+export interface InlineCodeProps extends ComponentPropsWithRef<'code'> {
+  /**
+   * Which accent to render the code in. Takes an accent *name* — `"orbit"` —
+   * where this component previously took a raw Tailwind class, `"text-orbit"`.
+   * That leaked the styling implementation through the API and disagreed with
+   * every other accent-carrying component in kern.
+   */
+  colour?: AccentColour
 }
 
-export function InlineCode({ children, colour = 'text-orbit' as ColourToken, className }: InlineCodeProps) {
+/**
+ * A code fragment inside a line of prose — a hex value, a selector, a property
+ * name. For a whole block, use a `<pre>`; this is deliberately inline-only.
+ */
+export function InlineCode({ colour = 'orbit', className, ...props }: InlineCodeProps) {
   return (
-    <code className={cn('type-code bg-void-20 px-[5px] py-[1px] rounded-[4px]', colour, className)}>
-      {children}
-    </code>
+    <code
+      className={cn(
+        'type-code bg-void-20 px-[5px] py-[1px] rounded-[4px]',
+        accentText[colour],
+        className,
+      )}
+      {...props}
+    />
   )
 }

@@ -1,14 +1,16 @@
-import type { ElementType, ReactNode } from 'react'
+import type { ComponentPropsWithRef } from 'react'
+import { cn } from '../lib/utils'
 
-interface SectionProps {
+export interface SectionProps extends Omit<ComponentPropsWithRef<'section'>, 'title'> {
   title: string
-  children: ReactNode
-  as?: ElementType
+  /** Heading level for the section title. See `ViewHeader` on heading order. */
+  as?: 'h2' | 'h3' | 'h4'
 }
 
-export function Section({ title, children, as: Heading = 'h2' }: SectionProps) {
+/** A titled block within a view. */
+export function Section({ title, children, as: Heading = 'h2', className, ...props }: SectionProps) {
   return (
-    <section className="flex flex-col gap-4">
+    <section className={cn('flex flex-col gap-4', className)} {...props}>
       <Heading className="type-h4 text-void-90">{title}</Heading>
       {children}
     </section>
