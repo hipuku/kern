@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { RotateCcw, ChevronRight, X } from 'lucide-react'
 import { IconButton } from './IconButton'
 

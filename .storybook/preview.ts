@@ -1,14 +1,13 @@
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/react-vite'
 import '../src/index.css'
 
 const preview: Preview = {
   parameters: {
     backgrounds: {
-      default: 'void',
-      values: [
-        { name: 'void',    value: '#121213' },
-        { name: 'surface', value: '#1F1F20' },
-      ],
+      options: {
+        void: { name: 'void',    value: '#121213' },
+        surface: { name: 'surface', value: '#1F1F20' }
+      }
     },
     layout: 'padded',
     options: {
@@ -19,6 +18,12 @@ const preview: Preview = {
       },
     },
   },
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'void'
+    }
+  }
 }
 
 export default preview

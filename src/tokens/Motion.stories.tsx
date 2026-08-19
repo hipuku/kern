@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { RotateCcw } from 'lucide-react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TokenPage } from './TokenPage'
 
 const meta = {
