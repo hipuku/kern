@@ -47,7 +47,7 @@ export const InSection: Story = {
           </ToolLink>
         </Section>
         {active && (
-          <p className="type-annotation text-void-40">Navigated to: {active}</p>
+          <p className="type-annotation text-void-60">Navigated to: {active}</p>
         )}
       </div>
     )

@@ -29,7 +29,7 @@ export const AllVariants: Story = {
       {accentColours.map((colour) => (
         <div key={colour} className="flex items-center gap-3">
           <InlineCode colour={colour}>{`.${colour}`}</InlineCode>
-          <span className="type-annotation text-void-40">{colour}</span>
+          <span className="type-annotation text-void-60">{colour}</span>
         </div>
       ))}
     </div>

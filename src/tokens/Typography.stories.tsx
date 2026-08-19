@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { TokenPage } from './TokenPage'
+import { TokenPage, ScrollRegion } from './TokenPage'
 import { typeScale, typeRoles, type TypeRole } from './tokens'
 
 const meta = {
@@ -58,16 +58,16 @@ export const Scale: Story = {
   name: 'Type scale',
   render: () => (
     <TokenPage title="Typography" description="All type styles available as .type-* utility classes.">
-      <div className="rounded-xl border border-void-30 overflow-x-auto">
+      <ScrollRegion label="Type scale">
         <table className="w-auto min-w-full">
           <thead>
             <tr className="border-b border-void-20">
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Class</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Size</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">wt</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">lh</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">ls</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Sample</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Class</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Size</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">wt</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">lh</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">ls</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Sample</th>
             </tr>
           </thead>
           <tbody>
@@ -77,16 +77,16 @@ export const Scale: Story = {
                   <code className="type-annotation font-mono text-pulsar">.{label}</code>
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <span className="type-annotation font-mono text-void-40">{size}</span>
+                  <span className="type-annotation font-mono text-void-60">{size}</span>
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <span className="type-annotation font-mono text-void-40">{weight}</span>
+                  <span className="type-annotation font-mono text-void-60">{weight}</span>
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <span className="type-annotation font-mono text-void-40">{lh}</span>
+                  <span className="type-annotation font-mono text-void-60">{lh}</span>
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <span className="type-annotation font-mono text-void-40">{tracking}</span>
+                  <span className="type-annotation font-mono text-void-60">{tracking}</span>
                 </td>
                 <td className="px-4 py-3">
                   <span className={`${cls} text-void-90 whitespace-nowrap block`}>{sample}</span>
@@ -95,7 +95,7 @@ export const Scale: Story = {
             ))}
           </tbody>
         </table>
-      </div>
+      </ScrollRegion>
     </TokenPage>
   ),
 }

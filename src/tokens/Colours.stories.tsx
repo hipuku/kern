@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { TokenPage, TokenSection } from './TokenPage'
+import { TokenPage, TokenSection, ScrollRegion } from './TokenPage'
 import { palette, accentNames, voidScale } from './tokens'
 
 const meta = {
@@ -95,8 +95,8 @@ function OklchPolarPlot({ points, size = 300 }: { points: { hex: string; L: numb
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-label="Polar plot of palette colours in OKLCH colour space">
       {CHROMA_RINGS.map(c => <circle key={c} cx={cx} cy={cy} r={(c / MAX_CHROMA) * R} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={1} />)}
       {[0, 90, 180, 270].map(deg => { const rad = ((deg - 90) * Math.PI) / 180; return <line key={deg} x1={cx} y1={cy} x2={cx + R * Math.cos(rad)} y2={cy + R * Math.sin(rad)} stroke="rgba(255,255,255,0.06)" strokeWidth={1} /> })}
-      {hueLabels.map(({ angle, label }) => { const rad = ((angle - 90) * Math.PI) / 180; return <text key={angle} x={cx + (R + 16) * Math.cos(rad)} y={cy + (R + 16) * Math.sin(rad)} textAnchor="middle" dominantBaseline="middle" fontSize={9} fill="rgba(255,255,255,0.2)" fontFamily="'Geist Mono', monospace">{label}</text> })}
-      {CHROMA_RINGS.map(c => <text key={c} x={cx + 4} y={cy - (c / MAX_CHROMA) * R - 3} fontSize={8} fill="rgba(255,255,255,0.18)" fontFamily="'Geist Mono', monospace">{c}</text>)}
+      {hueLabels.map(({ angle, label }) => { const rad = ((angle - 90) * Math.PI) / 180; return <text key={angle} x={cx + (R + 16) * Math.cos(rad)} y={cy + (R + 16) * Math.sin(rad)} textAnchor="middle" dominantBaseline="middle" fontSize={9} fill="rgba(255,255,255,0.5)" fontFamily="'Geist Mono', monospace">{label}</text> })}
+      {CHROMA_RINGS.map(c => <text key={c} x={cx + 4} y={cy - (c / MAX_CHROMA) * R - 3} fontSize={8} fill="rgba(255,255,255,0.5)" fontFamily="'Geist Mono', monospace">{c}</text>)}
       <circle cx={cx} cy={cy} r={2} fill="rgba(255,255,255,0.15)" />
       {points.map(pt => { const { x, y } = toXY(pt.C, pt.H, R, cx, cy); return <g key={pt.hex}><circle cx={x} cy={y} r={10} fill="rgba(0,0,0,0.4)" /><circle cx={x} cy={y} r={9} fill={pt.hex} stroke="rgba(255,255,255,0.2)" strokeWidth={1.5} /></g> })}
     </svg>
@@ -111,7 +111,7 @@ function ColourSwatch({ hex, label }: { hex: string; label: string }) {
       <div className="h-12 rounded-lg border border-white/5" style={{ backgroundColor: hex }} />
       <div className="flex flex-col gap-0.5">
         <span className="type-annotation font-mono text-void-80">{label}</span>
-        <span className="type-annotation font-mono text-void-40">{hex.toUpperCase()}</span>
+        <span className="type-annotation font-mono text-void-60">{hex.toUpperCase()}</span>
       </div>
     </div>
   )
@@ -121,7 +121,7 @@ function ContrastBadge({ ratio }: { ratio: number }) {
   const pass3 = ratio >= 3
   const pass45 = ratio >= 4.5
   const pass7 = ratio >= 7
-  const bg = pass7 ? 'bg-nebula/20 text-nebula' : pass45 ? 'bg-aurora/20 text-aurora' : pass3 ? 'bg-solstice/20 text-solstice' : 'bg-void-20 text-void-40'
+  const bg = pass7 ? 'bg-nebula/20 text-nebula' : pass45 ? 'bg-aurora/20 text-aurora' : pass3 ? 'bg-solstice/20 text-solstice' : 'bg-void-20 text-void-60'
   return (
     <span className={`type-annotation font-mono rounded px-1 py-0.5 ${bg}`}>
       {ratio.toFixed(1)}
@@ -175,13 +175,13 @@ export const ContrastMatrix: Story = {
         title="Contrast matrix"
         description="WCAG contrast ratios against void-0 and void-10 backgrounds. AA large ≥ 3, AA ≥ 4.5, AAA ≥ 7."
       >
-        <div className="rounded-xl border border-void-30 overflow-x-auto">
+        <ScrollRegion label="Contrast matrix">
           <table className="w-auto min-w-full">
             <thead>
               <tr className="border-b border-void-20">
-                <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Colour</th>
+                <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Colour</th>
                 {backgrounds.map(bg => (
-                  <th key={bg.hex} className="type-annotation-sc text-void-40 text-right px-4 py-2 font-normal whitespace-nowrap">
+                  <th key={bg.hex} className="type-annotation-sc text-void-60 text-right px-4 py-2 font-normal whitespace-nowrap">
                     on {bg.label}
                   </th>
                 ))}
@@ -205,12 +205,12 @@ export const ContrastMatrix: Story = {
               ))}
             </tbody>
           </table>
-        </div>
+        </ScrollRegion>
         <div className="flex gap-4 flex-wrap">
           <span className="type-annotation text-nebula">≥ 7 AAA</span>
           <span className="type-annotation text-aurora">≥ 4.5 AA</span>
           <span className="type-annotation text-solstice">≥ 3 AA large</span>
-          <span className="type-annotation text-void-40">fail</span>
+          <span className="type-annotation text-void-60">fail</span>
         </div>
       </TokenPage>
     )
@@ -251,8 +251,8 @@ export const OklchPlot: Story = {
             ))}
           </div>
           <div className="flex justify-between mt-1">
-            <span className="type-annotation text-void-40">dark</span>
-            <span className="type-annotation text-void-40">light</span>
+            <span className="type-annotation text-void-60">dark</span>
+            <span className="type-annotation text-void-60">light</span>
           </div>
         </TokenSection>
       </TokenPage>

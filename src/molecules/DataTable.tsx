@@ -1,5 +1,6 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react'
 import { cn } from '../lib/utils'
+import { focusRing } from '../lib/focus'
 
 export interface DataTableProps extends Omit<ComponentPropsWithRef<'table'>, 'children'> {
   columns: string[]
@@ -22,7 +23,22 @@ export interface DataTableProps extends Omit<ComponentPropsWithRef<'table'>, 'ch
  */
 export function DataTable({ columns, rows, caption, className, ...props }: DataTableProps) {
   return (
-    <div className="rounded-xl border border-void-30 overflow-x-auto">
+    // A container that scrolls must be reachable by keyboard, or a keyboard-only
+    // user cannot scroll it at all — there is nothing focusable inside a table
+    // of plain text to arrow across. tabIndex makes it focusable; the labelled
+    // region gives the resulting tab stop a name rather than announcing an
+    // anonymous group.
+    <div
+      tabIndex={0}
+      // A region with no accessible name is its own violation, so only claim
+      // the role when there is a caption to name it with.
+      role={caption ? 'region' : undefined}
+      aria-label={caption}
+      className={cn(
+        'rounded-xl border border-void-30 overflow-x-auto',
+        focusRing,
+      )}
+    >
       <table className={cn('w-full', className)} {...props}>
         {caption && <caption className="sr-only">{caption}</caption>}
         <thead>

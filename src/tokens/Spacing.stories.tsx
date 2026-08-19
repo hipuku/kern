@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { TokenPage } from './TokenPage'
+import { TokenPage, ScrollRegion } from './TokenPage'
 import { spacing } from './tokens'
 
 const meta = {
@@ -38,15 +38,15 @@ export const Scale: Story = {
   name: 'Spacing scale',
   render: () => (
     <TokenPage title="Spacing" description="Base-4 spacing scale mapped to CSS custom properties.">
-      <div className="rounded-xl border border-void-30 overflow-x-auto">
+      <ScrollRegion label="Spacing scale">
         <table className="w-auto min-w-full">
           <thead>
             <tr className="border-b border-void-20">
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Token</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">px</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">rem</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Tailwind</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Visual</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Token</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">px</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">rem</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Tailwind</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Visual</th>
             </tr>
           </thead>
           <tbody>
@@ -59,10 +59,10 @@ export const Scale: Story = {
                   <span className="type-annotation font-mono text-void-50">{px}</span>
                 </td>
                 <td className="px-4 py-2.5 whitespace-nowrap">
-                  <span className="type-annotation font-mono text-void-40">{rem}</span>
+                  <span className="type-annotation font-mono text-void-60">{rem}</span>
                 </td>
                 <td className="px-4 py-2.5 whitespace-nowrap">
-                  <span className="type-annotation font-mono text-void-40">{tw}</span>
+                  <span className="type-annotation font-mono text-void-60">{tw}</span>
                 </td>
                 <td className="px-4 py-2.5 whitespace-nowrap">
                   <div
@@ -74,7 +74,7 @@ export const Scale: Story = {
             ))}
           </tbody>
         </table>
-      </div>
+      </ScrollRegion>
     </TokenPage>
   ),
 }
@@ -83,13 +83,13 @@ export const InContext: Story = {
   name: 'Common gap values',
   render: () => (
     <TokenPage title="Common gap values" description="Typical gap sizes and where to apply them.">
-      <div className="rounded-xl border border-void-30 overflow-x-auto">
+      <ScrollRegion label="Gap usage">
         <table className="w-auto min-w-full">
           <thead>
             <tr className="border-b border-void-20">
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Gap</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Use</th>
-              <th className="type-annotation-sc text-void-40 text-left px-4 py-2 font-normal whitespace-nowrap">Preview</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Gap</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Use</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Preview</th>
             </tr>
           </thead>
           <tbody>
@@ -112,7 +112,7 @@ export const InContext: Story = {
             ))}
           </tbody>
         </table>
-      </div>
+      </ScrollRegion>
     </TokenPage>
   ),
 }
