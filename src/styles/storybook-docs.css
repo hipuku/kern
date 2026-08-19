@@ -1,0 +1,171 @@
+/*
+ * Makes Storybook's generated docs pages look like kern.
+ *
+ * Storybook ships its own typography for docs content. Left alone, an MDX page
+ * renders in Storybook's font at Storybook's sizes: the documentation for a
+ * type system, set in someone else's type.
+ *
+ * Every rule below maps a docs element onto an existing kern type role using
+ * the same custom properties the shipped classes use. Nothing here restates a
+ * token value, so this file follows the type scale automatically.
+ *
+ * Scoped to `.sbdocs` so it touches only docs pages, never a rendered story.
+ *
+ * **Deliberately unlayered.** The obvious move is `@layer components`, so that
+ * Tailwind's `utilities` layer can still override these. It does not work:
+ * Storybook's docs CSS is itself unlayered, and unlayered rules beat layered
+ * ones outright, whatever their specificity — so a layered version of this file
+ * loses every conflict it exists to win. Unlayered it is, with every element
+ * selector wrapped in `:where()` to hold it to a single class of specificity,
+ * so a rule that genuinely needs to win still can.
+ *
+ * The practical consequence: inside a docs page, do not reach for a `.type-*`
+ * class on a bare `<p>` or `<h2>` — the element default here will win. Put it
+ * on a `<div>` or `<span>`, which these selectors do not touch.
+ */
+.sbdocs.sbdocs-wrapper {
+  background: var(--color-void-0);
+  padding: 2rem 1.5rem 4rem;
+}
+
+.sbdocs.sbdocs-content {
+  max-width: 68ch;
+  font-family: var(--font-sans);
+  color: var(--color-void-60);
+}
+
+/* ─── Headings ───────────────────────────────────────────────────────────── */
+
+.sbdocs :where(h1) {
+  font-size: var(--text-h2);
+  font-weight: var(--text-h2-weight);
+  line-height: var(--text-h2-lh);
+  letter-spacing: var(--text-h2-tracking);
+  color: var(--color-void-90);
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+}
+
+.sbdocs :where(h2) {
+  font-size: var(--text-h4);
+  font-weight: var(--text-h4-weight);
+  line-height: var(--text-h4-lh);
+  letter-spacing: var(--text-h4-tracking);
+  color: var(--color-void-90);
+  border-bottom: 1px solid var(--color-void-20);
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+}
+
+.sbdocs :where(h3) {
+  font-size: var(--text-h5);
+  font-weight: var(--text-h5-weight);
+  line-height: var(--text-h5-lh);
+  letter-spacing: var(--text-h5-tracking);
+  color: var(--color-void-90);
+  margin-top: 2rem;
+}
+
+.sbdocs :where(h4, h5, h6) {
+  font-size: var(--text-h6);
+  font-weight: var(--text-h6-weight);
+  line-height: var(--text-h6-lh);
+  color: var(--color-void-90);
+}
+
+/* ─── Prose ──────────────────────────────────────────────────────────────── */
+
+.sbdocs :where(p, li) {
+  font-size: var(--text-p-sm);
+  font-weight: var(--text-p-sm-weight);
+  line-height: var(--text-p-sm-lh);
+  letter-spacing: var(--text-p-sm-tracking);
+  color: var(--color-void-60);
+}
+
+.sbdocs :where(strong) { color: var(--color-void-80); font-weight: 600; }
+.sbdocs :where(em) { color: var(--color-void-70); }
+
+.sbdocs :where(a) {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sbdocs :where(a):hover { opacity: 0.8; }
+
+.sbdocs :where(hr) {
+  border: none;
+  border-top: 1px solid var(--color-void-20);
+  margin: 2.5rem 0;
+}
+
+.sbdocs :where(blockquote) {
+  border-left: 2px solid var(--color-void-30);
+  color: var(--color-void-50);
+  padding-left: 1rem;
+}
+
+/* ─── Code ───────────────────────────────────────────────────────────────── */
+
+.sbdocs :where(code) {
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
+  color: var(--color-orbit);
+  background: var(--color-void-20);
+  border: none;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.sbdocs :where(pre, .docblock-source) {
+  background: var(--color-void-10);
+  border: 1px solid var(--color-void-20);
+  border-radius: 0.75rem;
+  box-shadow: none;
+}
+
+.sbdocs :where(pre code) {
+  background: transparent;
+  padding: 0;
+  color: var(--color-void-70);
+}
+
+/* ─── Tables ─────────────────────────────────────────────────────────────── */
+
+.sbdocs :where(table) {
+  border: 1px solid var(--color-void-30);
+  border-radius: 0.75rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.sbdocs :where(table th) {
+  font-size: var(--text-annotation-sc);
+  font-weight: var(--text-annotation-sc-weight);
+  letter-spacing: var(--text-annotation-sc-tracking);
+  font-variant-caps: all-small-caps;
+  color: var(--color-void-60);
+  background: var(--color-void-10);
+  text-align: left;
+  border-bottom: 1px solid var(--color-void-20);
+}
+
+.sbdocs :where(table td) {
+  font-size: var(--text-annotation);
+  line-height: var(--text-annotation-lh);
+  color: var(--color-void-60);
+  background: transparent;
+  border-bottom: 1px solid var(--color-void-20);
+}
+
+.sbdocs :where(table tr:last-child td) { border-bottom: none; }
+
+/*
+ * The props table the autodocs addon generates is its own component, not
+ * markdown, so it needs the same treatment separately.
+ */
+.sbdocs :where(.docblock-argstable-body) {
+  box-shadow: none;
+  border: 1px solid var(--color-void-30);
+}

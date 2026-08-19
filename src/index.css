@@ -5,3 +5,4 @@
 
 @import "tailwindcss";
 @import "./kern.css";
+@import "./styles/storybook-docs.css";

@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 import { voidScale } from '../src/tokens/tokens'
+import { kernTheme } from './theme'
 import '../src/index.css'
 
 const preview: Preview = {
@@ -17,10 +18,11 @@ const preview: Preview = {
     options: {
       storySort: {
         // Docs first, then the system bottom-up: tokens, then each atomic tier.
-        // Within Atoms the Icons catalog leads, since it is the shared vocabulary
-        // the other components draw on.
+        // The nested arrays pin the order inside a group; without them the
+        // sidebar falls back to alphabetical, which puts Contributing before
+        // Introduction and buries the front door.
         order: [
-          'Getting started',
+          'Getting started', ['Introduction', 'Installation', 'Contributing'],
           'Tokens',
           'Atoms', ['Icons', '*'],
           'Molecules',
@@ -29,6 +31,11 @@ const preview: Preview = {
           'Utilities',
         ],
       },
+    },
+    docs: {
+      // Without an explicit theme the docs pages render in Storybook's default
+      // light palette — the documentation for a dark-only system, on white.
+      theme: kernTheme,
     },
     a11y: {
       // Surface violations in the panel; the axe smoke tests in *.test.tsx are

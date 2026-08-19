@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting started/Contributing" />
+
+# Contributing
+
+## Changing a token
+
+Every token value is declared exactly once, in `src/tokens/tokens.ts`. Edit it
+there and regenerate:
+
+```bash
+npm run tokens
+```
+
+That writes `src/styles/primitives.css` and `src/styles/typography.css`. Both
+are committed — kern ships as source, so a consumer must never need to run a
+build — and both carry a `GENERATED FILE — DO NOT EDIT` banner. Editing them
+directly is pointless: the next regeneration overwrites your change, and CI
+fails first.
+
+```bash
+npm run tokens:check   # what CI runs; exits 1 if the committed CSS is stale
+```
+
+Nothing else should hardcode a token value. The Storybook token pages render
+straight from `tokens.ts`, which is the point: documentation that is *computed*
+from the system cannot describe a system that no longer ships.
+
+## Adding a component
+
+**First ask whether it belongs here at all.** kern holds what more than one
+experiment shares. One experiment needing something is not evidence; build it
+there, and move it here when a second one needs it. Extracting a pattern into
+kern means removing the inline copy from the source experiment, not leaving
+both.
+
+**Then decide the layer.** The test is what it depends on, not how big it looks:
+
+| Layer | Test |
+|---|---|
+| Atom | Uses tokens only. No other kern component. |
+| Molecule | Composes atoms. Has one job. |
+| Organism | A region of the interface. May own local state. |
+| Template | Arranges regions. Knows nothing about what fills them. |
+| Utility | Behaviour with no UI of its own in the ordinary case. |
+
+Dependencies point one way. An atom that imports a molecule is a sign the
+boundary is in the wrong place.
+
+## What every component owes
+
+These are not style preferences; each one exists because its absence caused a
+real bug in this library.
+
+- **Extend the native element.** `interface FooProps extends ComponentPropsWithRef<'button'>`.
+  Nine components once accepted only the props someone happened to need, which
+  meant no `disabled`, no `type`, no `title`, no `ref`, and nine components that
+  silently dropped `className`.
+- **Take and merge `className`.** Always through `cn()`, always last, so a call
+  site can override.
+- **Reach for the shared foundations.** `focusRing` for focus, `lib/accent` for
+  accent colours, `buttonVariants` for anything button-shaped. Every one of
+  these was previously copied per component, and copies diverge.
+- **Get the semantics right before the styling.** A control that changes app
+  state is a `<button>`, even when it looks like a link. A toggle sets
+  `aria-pressed`. An icon-only control has a required `aria-label`. A label is a
+  real `<label htmlFor>`, not an `aria-label` that can disagree with the visible
+  text.
+- **Write the story.** A component without one is invisible on this site, which
+  means it will be rebuilt by someone who could not find it.
+
+## Stories
+
+Use `tags: ['autodocs']` for a generated docs page with a props table. Write
+`argTypes` descriptions — they are the props table, and a table of undocumented
+props is worse than none.
+
+Cover the states that are easy to get wrong, not just the happy path: disabled,
+empty, overflowing, mobile. The a11y panel runs on every story; the axe smoke
+tests in `*.test.tsx` are what actually gate CI.
+
+## Before you push
+
+```bash
+npm run tokens:check
+npm run lint
+npm run typecheck
+npm test
+npm run build-storybook
+```
+
+CI runs all five. `main` deploys to
+[kern.hipuku.dev](https://kern.hipuku.dev) automatically.
+
+## Breaking changes
+
+Consuming experiments pin a git tag, so a breaking change does not reach them
+until they choose to bump the ref. That is what makes it safe to change an API
+properly rather than accumulating compatibility shims. Tag a new major, note the
+migration in the release, and let each experiment adopt on its own schedule.

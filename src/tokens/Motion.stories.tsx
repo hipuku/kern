@@ -195,7 +195,6 @@ export const ReducedMotion: Story = {
 }
 
 export const Durations: Story = {
-  name: 'Durations',
   render: () => (
     <TokenPage title="Motion" description="Easing curves and durations for all transitions.">
       <div className="rounded-xl border border-void-30 overflow-x-auto">

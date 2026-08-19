@@ -1,0 +1,100 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting started/Introduction" />
+
+<div className="flex flex-col gap-4">
+  <h1 className="type-h2 text-void-90">kern</h1>
+  <div className="type-p-lg text-void-60 max-w-[60ch]">
+    The design system behind the hipuku experiments — a small, opinionated set of
+    tokens and components shared by <strong className="text-void-80">hexicon</strong>,{' '}
+    <strong className="text-void-80">specifi</strong> and <strong className="text-void-80">gray-scott</strong>.
+  </div>
+</div>
+
+<div className="h-px bg-void-20 my-10" />
+
+## What this is
+
+Three independent apps, each its own repository and deployment. Left alone they
+would drift — three subtly different buttons, three spacing scales, three
+definitions of "muted text". kern exists so that everything a visitor
+recognises as *hipuku* is defined **once**.
+
+It is deliberately small. This is not a general-purpose UI kit; it is the
+specific set of parts these three experiments actually share, and nothing is
+added here speculatively. A pattern earns a place in kern by appearing in more
+than one experiment.
+
+## How it is organised
+
+The library follows [Brad Frost's atomic design](https://atomicdesign.bradfrost.com/),
+with one direction of dependency: a layer may use the layers below it and never
+the ones above.
+
+<div className="flex flex-col gap-2 my-6">
+  {[
+    ['Tokens',    'The values everything else is built from — colour, type, spacing, motion. Generated from one source file.'],
+    ['Atoms',     'Single-purpose primitives. Depend on tokens only. Button, StatusChip, InlineCode…'],
+    ['Molecules', 'Small compositions of atoms plus layout. StatCard, ParamSlider, DataTable…'],
+    ['Organisms', 'Full regions of the interface, which may own local state. AppSidebar.'],
+    ['Templates', 'Page structure, independent of the content that fills it. AppShell.'],
+    ['Utilities', 'Behaviour with no UI of its own in the ordinary case. ErrorBoundary.'],
+  ].map(([name, description]) => (
+    <div key={name} className="flex gap-4 items-baseline">
+      <span className="type-annotation-sc text-void-90 w-24 shrink-0">{name}</span>
+      <span className="type-p-sm text-void-60">{description}</span>
+    </div>
+  ))}
+</div>
+
+The last two are departures from the canonical five layers, and both are
+deliberate. **Utilities** exists because `ErrorBoundary` renders nothing in the
+ordinary case — atomic design classifies UI, and filing control flow under
+"organism" made the word mean two different things. There is no **Pages** layer
+because kern has no pages: the experiments are the pages, and they live in their
+own repositories.
+
+## What is already decided
+
+These are settled. They are recorded here so that a new experiment does not
+re-litigate them.
+
+- **Dark only.** There is no light theme and no plan for one. The void scale
+  runs dark-to-light, the opposite of a conventional grey ramp.
+- **Tailwind v4 plus CSS custom properties.** No CSS-in-JS, no per-component
+  stylesheet. Use `(--var)` parenthesis syntax, never `[--var]` — the bracket
+  form generates invalid CSS in v4 and is silently dropped.
+- **Type is role-based.** You reach for `.type-annotation` because the text is
+  an annotation, not because you want 13px. Raw Tailwind size, weight,
+  leading and tracking utilities are replaced by the `.type-*` composites.
+- **Small caps come from `font-variant-caps`,** applied by `.type-annotation-sc`.
+  Never the `uppercase` class.
+- **Every experiment picks one accent** as its `--primary`. Components reference
+  the semantic role, never a named colour, so retinting is a one-line change.
+
+## Where to go next
+
+<div className="flex flex-col gap-3 my-6">
+  {[
+    ['Installation', 'Add kern to an experiment and wire up the alias and Tailwind scanning.', '?path=/docs/getting-started-installation--docs'],
+    ['Contributing', 'Change a token, add a component, decide which layer it belongs in.', '?path=/docs/getting-started-contributing--docs'],
+    ['Colours', 'The full palette, with contrast ratios and an OKLCH plot.', '?path=/story/tokens-colours--all-colours'],
+    ['AppShell', 'The layout every experiment is built on.', '?path=/story/templates-appshell--a-complete-experiment'],
+  ].map(([title, description, href]) => (
+    <a
+      key={title}
+      href={href}
+      className="flex flex-col gap-1 no-underline rounded-xl px-4 py-3 bg-void-10 border border-void-20 hover:border-void-40 transition-colors"
+    >
+      <span className="type-p-sm font-medium text-(--primary)">{title}</span>
+      <span className="type-annotation text-void-60">{description}</span>
+    </a>
+  ))}
+</div>
+
+<div className="h-px bg-void-20 my-10" />
+
+<p className="type-annotation text-void-50">
+  Source on <a href="https://github.com/hipuku/kern" className="text-(--link)">GitHub</a>.
+  Architecture and the reasoning behind these decisions are in <code className="type-code">DESIGN.md</code>.
+</p>

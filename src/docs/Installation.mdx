@@ -1,0 +1,118 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Getting started/Installation" />
+
+# Installation
+
+kern ships as **TypeScript source with no build step**. There is no npm publish
+and no compiled bundle: consumers point a Vite alias straight at kern's `src/`
+and compile it as if it were their own code.
+
+That is a deliberate choice, not an omission. It removes the whole
+stale-artefact class of bug, removes the publish step between an edit and a
+consumer seeing it, and avoids fighting Tailwind's content scanning — which
+cannot see inside a pre-built bundle.
+
+## 1. Add the dependency
+
+Pin a tag. An unpinned `github:hipuku/kern` resolves to whatever `main` happens
+to be at install time, which means an unrelated change to the library can break
+your build on a routine reinstall.
+
+```jsonc
+// package.json
+"dependencies": {
+  "kern": "github:hipuku/kern#v1.0.0"
+}
+```
+
+## 2. Alias `@kern` at the source tree
+
+```ts
+// vite.config.ts
+resolve: {
+  alias: {
+    '@kern': path.resolve(__dirname, 'node_modules/kern/src'),
+  },
+}
+```
+
+Mirror it in `tsconfig.json` so the type checker agrees with the bundler:
+
+```jsonc
+"paths": { "@kern/*": ["./node_modules/kern/src/*"] }
+```
+
+## 3. Import the stylesheet and register the source
+
+Two lines, and both are required. Tailwind v4 only scans within the project
+root, so without the `@source` directive kern's utility classes are simply
+absent from your generated CSS — components render unstyled with no error.
+
+```css
+/* src/index.css */
+@import "tailwindcss";
+@import "../node_modules/kern/src/kern.css";
+@source "../node_modules/kern/src";
+```
+
+`kern.css` is the full library — tokens plus the component CSS that cannot be
+expressed as utilities. If you want the token layer alone, import
+`kern/src/tokens.css` instead.
+
+## 4. Pick your accent
+
+Components reference semantic roles, never named colours. Set the roles once and
+every shared component follows:
+
+```css
+:root {
+  --primary: var(--color-solstice);
+  --ring:    var(--color-solstice);
+  --link:    var(--color-supernova);
+}
+```
+
+## 5. Import components
+
+```ts
+import { AppShell, ToggleChip, StatCard } from 'kern'
+```
+
+Prefer the package root. Layer barrels — `kern/atoms`, `kern/molecules` — exist
+when you want to be explicit about which tier you are reaching into. Avoid
+deep-importing individual files: those paths are not part of the public API and
+components do move between layers.
+
+## Local development
+
+To see kern edits live inside a consuming experiment, symlink it — the git
+install is a copy, so edits to `node_modules/kern` are not edits to kern.
+
+```bash
+cd kern && npm link
+cd ../gray-scott && npm link kern
+```
+
+The symlink does not survive `npm install`. Re-run `npm link kern` after any
+reinstall.
+
+## Peer dependencies
+
+`react`, `react-dom` (both **>= 19**) and `lucide-react` are peers — the
+consumer owns the single copy. React 19 is required because kern's components
+take `ref` as an ordinary prop rather than through `forwardRef`.
+
+If TypeScript reports a nominal type mismatch on a lucide icon, your app and
+kern have resolved two different copies of `lucide-react`. Deduplicate it:
+
+```ts
+// vite.config.ts
+alias: {
+  'lucide-react': path.resolve(__dirname, 'node_modules/lucide-react'),
+}
+```
+
+This is also why `NavItem.icon` is typed as `ComponentType<{ className?: string }>`
+rather than lucide's own `LucideIcon` — a structural type survives the
+duplication that a nominal one does not.
