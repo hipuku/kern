@@ -10,7 +10,8 @@
     "test": "vitest run",
     "tokens": "vite-node scripts/build-tokens.mjs",
     "tokens:check": "vite-node scripts/build-tokens.mjs -- --check",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:links": "node scripts/check-doc-links.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

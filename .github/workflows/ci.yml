@@ -35,3 +35,9 @@ jobs:
 
       - name: Build Storybook
         run: npm run build-storybook
+
+      # Story IDs come from the export name, not the displayed name, so a
+      # hand-written docs link can look right and 404. Checked against the
+      # index.json the build just emitted.
+      - name: Check docs links resolve
+        run: npm run check:links
