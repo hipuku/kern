@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { RotateCcw } from 'lucide-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TokenPage } from './TokenPage'
+import { easing, duration } from './tokens'
 
 const meta = {
   title: 'Tokens/Motion',
@@ -13,22 +14,23 @@ type Story = StoryObj
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const EASINGS = [
-  { token: '--ease-standard',   name: 'ease-standard',   curve: 'cubic-bezier(0.2, 0, 0, 1)',      description: 'Default for most transitions' },
-  { token: '--ease-decelerate', name: 'ease-decelerate', curve: 'cubic-bezier(0, 0, 0.2, 1)',      description: 'Elements entering the screen' },
-  { token: '--ease-accelerate', name: 'ease-accelerate', curve: 'cubic-bezier(0.4, 0, 1, 1)',      description: 'Elements leaving the screen' },
-  { token: '--ease-sharp',      name: 'ease-sharp',      curve: 'cubic-bezier(0.4, 0, 0.6, 1)',    description: 'Quick, snappy actions' },
-  { token: '--ease-smooth',     name: 'ease-smooth',     curve: 'cubic-bezier(0.45, 0, 0.55, 1)', description: 'Logo fill transitions' },
-]
+// Derived from the token source — curve values and usage notes both live in
+// tokens.ts, so the motion documentation and the shipped easings are one thing.
 
-const DURATIONS = [
-  { token: '--duration-instant', name: 'instant', value: '0.1s',  ms: '100ms', use: 'Focus rings, immediate feedback' },
-  { token: '--duration-fast',    name: 'fast',    value: '0.15s', ms: '150ms', use: 'Hover states, colour swaps' },
-  { token: '--duration-base',    name: 'base',    value: '0.2s',  ms: '200ms', use: 'Default for most transitions' },
-  { token: '--duration-slow',    name: 'slow',    value: '0.3s',  ms: '300ms', use: 'Panels, dropdowns expanding' },
-  { token: '--duration-enter',   name: 'enter',   value: '0.4s',  ms: '400ms', use: 'Page entry, logo letters' },
-  { token: '--duration-reduced', name: 'reduced', value: '0s',    ms: '0ms',   use: 'Use with motion-safe: for prefers-reduced-motion' },
-]
+const EASINGS = Object.entries(easing).map(([name, { value, use }]) => ({
+  token: `--ease-${name}`,
+  name: `ease-${name}`,
+  curve: value,
+  description: use,
+}))
+
+const DURATIONS = Object.entries(duration).map(([name, { value, use }]) => ({
+  token: `--duration-${name}`,
+  name,
+  value,
+  ms: `${parseFloat(value) * 1000}ms`,
+  use,
+}))
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 

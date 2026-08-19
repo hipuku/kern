@@ -1,0 +1,53 @@
+/*
+ * HipukuLogo — the per-letter hover animation.
+ *
+ * Component CSS, not tokens: it lives here rather than in the component file
+ * because @property registrations and keyframes cannot be expressed as Tailwind
+ * utilities, and Tailwind v4 needs to see them from the stylesheet entry.
+ * Consumed via kern.css.
+ */
+
+@property --fill-h  { syntax: '<color>'; inherits: true; initial-value: #BF9FF1; }
+@property --fill-i  { syntax: '<color>'; inherits: true; initial-value: #BF9FF1; }
+@property --fill-p  { syntax: '<color>'; inherits: true; initial-value: #F28BAD; }
+@property --fill-u1 { syntax: '<color>'; inherits: true; initial-value: #E15E42; }
+@property --fill-k  { syntax: '<color>'; inherits: true; initial-value: #F78D2C; }
+@property --fill-u2 { syntax: '<color>'; inherits: true; initial-value: #7193ED; }
+
+.logo-h  { fill: var(--fill-h);  transition: fill var(--duration-enter) var(--ease-smooth); }
+.logo-i  { fill: var(--fill-i);  transition: fill var(--duration-enter) var(--ease-smooth); }
+.logo-p  { fill: var(--fill-p);  transition: fill var(--duration-enter) var(--ease-smooth); }
+.logo-u1 { fill: var(--fill-u1); transition: fill var(--duration-enter) var(--ease-smooth); }
+.logo-k  { fill: var(--fill-k);  transition: fill var(--duration-enter) var(--ease-smooth); }
+.logo-u2 { fill: var(--fill-u2); transition: fill var(--duration-enter) var(--ease-smooth); }
+
+.logo-h, .logo-i, .logo-p, .logo-u1, .logo-k, .logo-u2 {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+@keyframes letter-bounce {
+  0%   { transform: translateY(0);    }
+  28%  { transform: translateY(-8px); }
+  52%  { transform: translateY(2px);  }
+  72%  { transform: translateY(-4px); }
+  86%  { transform: translateY(1px);  }
+  95%  { transform: translateY(-1px); }
+  100% { transform: translateY(0);    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hipuku-logo:hover .logo-h  { animation: letter-bounce 0.55s linear 0ms   both; }
+  .hipuku-logo:hover .logo-i  { animation: letter-bounce 0.55s linear 45ms  both; }
+  .hipuku-logo:hover .logo-p  { animation: letter-bounce 0.55s linear 90ms  both; }
+  .hipuku-logo:hover .logo-u1 { animation: letter-bounce 0.55s linear 135ms both; }
+  .hipuku-logo:hover .logo-k  { animation: letter-bounce 0.55s linear 180ms both; }
+  .hipuku-logo:hover .logo-u2 { animation: letter-bounce 0.55s linear 225ms both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-h, .logo-i, .logo-p, .logo-u1, .logo-k, .logo-u2 {
+    transition: none;
+    animation: none !important;
+  }
+}

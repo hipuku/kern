@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TokenPage, TokenSection } from './TokenPage'
+import { palette, accentNames, voidScale } from './tokens'
 
 const meta = {
   title: 'Tokens/Colours',
@@ -10,33 +11,13 @@ export default meta
 type Story = StoryObj
 
 // ─── Palette ──────────────────────────────────────────────────────────────────
+// Derived from the token source, never re-typed. Every swatch, hex label and
+// contrast ratio on this page is computed from the same objects that generate
+// the shipped CSS, so the documentation cannot drift away from the system.
 
-const NAMED = [
-  { name: 'nebula',     dark: '#0D7A4F', base: '#15AD70', light: '#B4EDCF' },
-  { name: 'aurora',     dark: '#5A9E3A', base: '#82D25D', light: '#C5F0A9' },
-  { name: 'tidal',      dark: '#3FA8A1', base: '#68D0CA', light: '#B3EBE4' },
-  { name: 'orbit',      dark: '#4A9FD0', base: '#73BDE7', light: '#C4E5F7' },
-  { name: 'pulsar',     dark: '#4468D8', base: '#7193ED', light: '#C2CFFA' },
-  { name: 'quasar',     dark: '#9B72E6', base: '#BF9FF1', light: '#E4D6FB' },
-  { name: 'corona',     dark: '#F28BAD', base: '#F9C3D6', light: '#FCE4EE' },
-  { name: 'dusk',       dark: '#E0B090', base: '#F5D4C0', light: '#FAF0E8' },
-  { name: 'flare',      dark: '#C83D25', base: '#E15E42', light: '#F0A090' },
-  { name: 'solstice',   dark: '#D46A0A', base: '#F78D2C', light: '#FDE4C0' },
-  { name: 'supernova',  dark: '#D4A000', base: '#FFC700', light: '#FFE480' },
-]
+const NAMED = accentNames.map((name) => ({ name, ...palette[name] }))
 
-const VOID_STEPS = [
-  { step: '0',  hex: '#121213' },
-  { step: '10', hex: '#1F1F20' },
-  { step: '20', hex: '#2B2B2C' },
-  { step: '30', hex: '#383839' },
-  { step: '40', hex: '#575759' },
-  { step: '50', hex: '#838385' },
-  { step: '60', hex: '#B1B1B3' },
-  { step: '70', hex: '#D3D3D5' },
-  { step: '80', hex: '#E8E8EA' },
-  { step: '90', hex: '#F1F1F4' },
-]
+const VOID_STEPS = Object.entries(voidScale).map(([step, hex]) => ({ step, hex }))
 
 // All colours flat for contrast/lightness/oklch views
 const ALL_COLOURS: { label: string; hex: string }[] = [
@@ -180,11 +161,10 @@ export const All: Story = {
 export const ContrastMatrix: Story = {
   name: 'Contrast matrix',
   render: () => {
-    const BG = '#121213'
-    const SURFACE = '#1F1F20'
+    const BG = voidScale[0]
     const backgrounds = [
-      { label: 'void-0',  hex: BG      },
-      { label: 'void-10', hex: SURFACE },
+      { label: 'void-0',  hex: voidScale[0]  },
+      { label: 'void-10', hex: voidScale[10] },
     ]
     const foregrounds = ALL_COLOURS.filter(c =>
       relLuminance(c.hex) > relLuminance(BG) + 0.02

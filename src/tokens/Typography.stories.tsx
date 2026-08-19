@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TokenPage } from './TokenPage'
+import { typeScale, typeRoles, type TypeRole } from './tokens'
 
 const meta = {
   title: 'Tokens/Typography',
@@ -11,22 +12,45 @@ type Story = StoryObj
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const TYPE_STYLES = [
-  { cls: 'type-display',       label: 'display',       size: 'clamp(3.5rem → 7.125rem)',     weight: '800', lh: '0.95',  tracking: '-0.03em',  sample: 'ΔE 12.4' },
-  { cls: 'type-h1',            label: 'h1',            size: 'clamp(2.625rem → 5.1875rem)',  weight: '100', lh: '1.05',  tracking: '-0.025em', sample: 'Perceptual colour distance' },
-  { cls: 'type-h2',            label: 'h2',            size: 'clamp(2rem → 3.75rem)',        weight: '100', lh: '1.1',   tracking: '-0.02em',  sample: 'Perceptual colour distance' },
-  { cls: 'type-h3',            label: 'h3',            size: 'clamp(1.5rem → 2.5rem)',       weight: '600', lh: '1.2',   tracking: '-0.015em', sample: 'Name a colour' },
-  { cls: 'type-h4',            label: 'h4',            size: 'clamp(1.25rem → 1.75rem)',     weight: '600', lh: '1.3',   tracking: '-0.01em',  sample: 'Name a colour' },
-  { cls: 'type-h5',            label: 'h5',            size: 'clamp(1.125rem → 1.375rem)',   weight: '500', lh: '1.4',   tracking: '-0.005em', sample: 'Name a colour' },
-  { cls: 'type-h6',            label: 'h6',            size: '1.125rem',                     weight: '500', lh: '1.5',   tracking: '0em',      sample: 'Name a colour' },
-  { cls: 'type-p-lg',          label: 'p-lg',          size: '1.375rem',                     weight: '400', lh: '1.4',   tracking: '0em',      sample: 'Enter a hex code to find its closest English name.' },
-  { cls: 'type-p-base',        label: 'p-base',        size: '1.125rem',                     weight: '400', lh: '1.15',  tracking: '0em',      sample: 'Enter a hex code to find its closest English name.' },
-  { cls: 'type-p-sm',          label: 'p-sm',          size: '1rem',                         weight: '400', lh: '1.7',   tracking: '0.01em',   sample: 'Enter a hex code to find its closest English name using CIEDE2000 perceptual distance.' },
-  { cls: 'type-annotation',    label: 'annotation',    size: '0.8125rem',                    weight: '400', lh: '1.7',   tracking: '0.01em',   sample: 'Registered 3 Jan 2026, pending review' },
-  { cls: 'type-annotation-sc', label: 'annotation-sc', size: '1rem (small caps)',            weight: '400', lh: '1.5',   tracking: '0.08em',   sample: 'Naming confidence' },
-  { cls: 'type-button',        label: 'button',        size: '1rem',                         weight: '600', lh: '1.0',   tracking: '0.02em',   sample: 'Compare colours' },
-  { cls: 'type-code',          label: 'code',          size: '0.9375rem',                    weight: '400', lh: '1.7',   tracking: '0em',      sample: '#7193ED · .nav-link:hover · (2,1,3)' },
-]
+// Every column but the sample is read from the token source, so this table is
+// a rendering of the shipped CSS rather than a transcription of it. Only the
+// sample strings live here — they are editorial, not tokens.
+
+const SAMPLES: Record<TypeRole, string> = {
+  'display':       'ΔE 12.4',
+  'h1':            'Perceptual colour distance',
+  'h2':            'Perceptual colour distance',
+  'h3':            'Name a colour',
+  'h4':            'Name a colour',
+  'h5':            'Name a colour',
+  'h6':            'Name a colour',
+  'p-lg':          'Enter a hex code to find its closest English name.',
+  'p-base':        'Enter a hex code to find its closest English name.',
+  'p-sm':          'Enter a hex code to find its closest English name using CIEDE2000 perceptual distance.',
+  'annotation':    'Registered 3 Jan 2026, pending review',
+  'annotation-sc': 'Naming confidence',
+  'button':        'Compare colours',
+  'code':          '#7193ED · .nav-link:hover · (2,1,3)',
+}
+
+/** `clamp(a, b, c)` reads as `clamp(a → c)` in the table: the ends are what matter. */
+function formatSize(size: string): string {
+  const clamp = size.match(/^clamp\(([^,]+),[^,]+,([^)]+)\)$/)
+  return clamp ? `clamp(${clamp[1].trim()} → ${clamp[2].trim()})` : size
+}
+
+const TYPE_STYLES = typeRoles.map((role) => {
+  const { size, weight, lineHeight, tracking, smallCaps } = typeScale[role]
+  return {
+    cls: `type-${role}`,
+    label: role,
+    size: formatSize(size) + (smallCaps ? ' (small caps)' : ''),
+    weight: String(weight),
+    lh: String(lineHeight),
+    tracking,
+    sample: SAMPLES[role],
+  }
+})
 
 // ─── Stories ──────────────────────────────────────────────────────────────────
 

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TokenPage } from './TokenPage'
+import { spacing } from './tokens'
 
 const meta = {
   title: 'Tokens/Spacing',
@@ -11,20 +12,16 @@ type Story = StoryObj
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const STEPS = [
-  { token: '--space-1',  name: 'space-1',  px: '4px',   rem: '0.25rem', tw: 'p-1 / gap-1'   },
-  { token: '--space-2',  name: 'space-2',  px: '8px',   rem: '0.5rem',  tw: 'p-2 / gap-2'   },
-  { token: '--space-3',  name: 'space-3',  px: '12px',  rem: '0.75rem', tw: 'p-3 / gap-3'   },
-  { token: '--space-4',  name: 'space-4',  px: '16px',  rem: '1rem',    tw: 'p-4 / gap-4'   },
-  { token: '--space-5',  name: 'space-5',  px: '20px',  rem: '1.25rem', tw: 'p-5 / gap-5'   },
-  { token: '--space-6',  name: 'space-6',  px: '24px',  rem: '1.5rem',  tw: 'p-6 / gap-6'   },
-  { token: '--space-8',  name: 'space-8',  px: '32px',  rem: '2rem',    tw: 'p-8 / gap-8'   },
-  { token: '--space-10', name: 'space-10', px: '40px',  rem: '2.5rem',  tw: 'p-10 / gap-10' },
-  { token: '--space-12', name: 'space-12', px: '48px',  rem: '3rem',    tw: 'p-12 / gap-12' },
-  { token: '--space-16', name: 'space-16', px: '64px',  rem: '4rem',    tw: 'p-16 / gap-16' },
-  { token: '--space-20', name: 'space-20', px: '80px',  rem: '5rem',    tw: 'p-20 / gap-20' },
-  { token: '--space-24', name: 'space-24', px: '96px',  rem: '6rem',    tw: 'p-24 / gap-24' },
-]
+// Derived from the token source: name, rem value and the Tailwind utilities
+// each step generates are all mechanical. Only the usage notes are editorial.
+
+const STEPS = Object.entries(spacing).map(([step, rem]) => ({
+  token: `--space-${step}`,
+  name: `space-${step}`,
+  px: `${parseFloat(rem) * 16}px`,
+  rem,
+  tw: `p-${step} / gap-${step}`,
+}))
 
 const GAP_USAGE = [
   { gap: 'gap-1', label: 'Tight list items'    },

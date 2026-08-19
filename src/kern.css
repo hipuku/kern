@@ -1,0 +1,13 @@
+/*
+ * The kern stylesheet entry — tokens plus the component CSS that cannot be
+ * expressed as utilities. This is what a consuming experiment imports:
+ *
+ *   @import "../node_modules/kern/src/kern.css";
+ *   @source "../node_modules/kern/src";
+ *
+ * It deliberately does not import Tailwind itself; the consumer owns that, so
+ * its own @theme and @source directives compose with kern's.
+ */
+
+@import "./tokens.css";
+@import "./styles/hipuku-logo.css";

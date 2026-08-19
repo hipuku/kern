@@ -18,6 +18,12 @@ jobs:
 
       - run: npm install
 
+      # The token CSS is generated from src/tokens/tokens.ts but committed, so
+      # that kern stays source-only with no build step for consumers. This is
+      # what keeps the committed copy honest.
+      - name: Check token CSS is in sync
+        run: npm run tokens:check
+
       - name: Typecheck
         run: npm run typecheck
 

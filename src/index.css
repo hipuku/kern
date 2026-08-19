@@ -1,2 +1,7 @@
+/*
+ * Storybook's stylesheet entry. Consumers use kern.css instead — kern does not
+ * bring its own Tailwind, but its Storybook has to.
+ */
+
 @import "tailwindcss";
-@import "./tokens.css";
+@import "./kern.css";
