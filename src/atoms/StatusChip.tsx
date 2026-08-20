@@ -18,7 +18,7 @@ export function StatusChip({ colour, className, ...props }: StatusChipProps) {
   return (
     <span
       className={cn(
-        'type-annotation font-medium px-2 py-0.5 rounded-full',
+        'type-annotation font-medium px-2 py-0.5 rounded-pill',
         accentText[colour],
         accentTint[colour],
         className,

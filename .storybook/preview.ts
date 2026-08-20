@@ -23,7 +23,7 @@ const preview: Preview = {
         // Introduction and buries the front door.
         order: [
           'Getting started', ['Introduction', 'Installation', 'Contributing'],
-          'Tokens', ['Colours', 'Semantic roles', 'Typography', 'Spacing', 'Motion'],
+          'Tokens', ['Colours', 'Semantic roles', 'Typography', 'Spacing', 'Radius', 'Layout', 'Motion'],
           'Atoms', ['Icons', '*'],
           'Molecules',
           'Organisms',
