@@ -23,7 +23,7 @@
   --text-p-sm-weight:          400;  --text-p-sm-lh:          1.7;   --text-p-sm-tracking:          0.01em;
   --text-annotation-weight:    400;  --text-annotation-lh:    1.7;   --text-annotation-tracking:    0.01em;
   --text-annotation-sc-weight: 400;  --text-annotation-sc-lh: 1.5;   --text-annotation-sc-tracking: 0.08em;
-  --text-button-weight:        600;  --text-button-lh:        1;     --text-button-tracking:        0.02em;
+  --text-button-weight:        500;  --text-button-lh:        1;     --text-button-tracking:        0.02em;
   --text-code-weight:          400;  --text-code-lh:          1.7;   --text-code-tracking:          0em;
 }
 

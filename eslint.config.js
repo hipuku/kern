@@ -32,6 +32,10 @@ export default defineConfig([
     files: ['**/*.stories.tsx'],
     rules: {
       'react-hooks/rules-of-hooks': 'off',
+      // Placeholder handlers in story args exist to declare a signature, so
+      // their parameters are deliberately unused. The leading underscore is the
+      // convention for that everywhere else in the config's defaults.
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
   {

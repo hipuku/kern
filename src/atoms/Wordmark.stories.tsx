@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Wordmark } from './Wordmark'
+import { experiments } from './wordmarks'
 
 const meta = {
   title: 'Atoms/Wordmark',
@@ -36,6 +37,29 @@ export const Sizes: Story = {
         <div key={size} className="flex flex-col items-start gap-2">
           <Wordmark src="/brand/wordmark.svg" name="kern" size={size} />
           <span className="type-annotation font-mono text-ink-muted">{size}</span>
+        </div>
+      ))}
+    </div>
+  ),
+}
+
+export const TheExperiments: Story = {
+  name: 'The three experiments',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The actual marks the three experiments ship, at the shared `md` height — which is the drift this ' +
+          'atom exists to stop.',
+      },
+    },
+  },
+  render: () => (
+    <div className="flex flex-col gap-6">
+      {experiments.map(({ name, src }) => (
+        <div key={name} className="flex items-center gap-6">
+          <Wordmark src={src} name={name} />
+          <span className="type-annotation font-mono text-ink-muted">{name}</span>
         </div>
       ))}
     </div>

@@ -4,6 +4,8 @@ import { Info, Search, GitCompare, ListChecks } from 'lucide-react'
 import { AppShell } from './AppShell'
 import { SocialBar } from '../molecules/SocialBar'
 import { Colophon } from '../molecules/Colophon'
+import { Wordmark } from '../atoms/Wordmark'
+import { experiments } from '../atoms/wordmarks'
 import { ViewHeader } from '../molecules/ViewHeader'
 import { Section } from '../molecules/Section'
 import { StatCard } from '../molecules/StatCard'
@@ -36,15 +38,7 @@ const NAV = [
   { id: 'rank',    label: 'Rank a stylesheet',      icon: ListChecks },
 ]
 
-const SPECIFI_FILLS = {
-  hi: 'var(--color-orbit)',
-  pu: 'var(--color-solstice)',
-  ku: 'var(--color-supernova)',
-}
-
-function Wordmark({ label }: { label: string }) {
-  return <span className="type-h5 text-void-90">{label}</span>
-}
+const [, specifi] = experiments
 
 export const Default: Story = {
   name: 'A complete experiment',
@@ -52,13 +46,13 @@ export const Default: Story = {
     const [active, setActive] = useState('analyse')
     return (
       <AppShell
-        logo={<Wordmark label="specifi" />}
+        logo={<Wordmark src={specifi.src} name={specifi.name} />}
         navItems={NAV}
         activeId={active}
         onNavigate={setActive}
         accentActiveClass="text-solstice"
         social={<SocialBar siteName="specifi" githubUrl="https://github.com/hipuku/specifi" />}
-        colophon={<Colophon name="specifi" hoverFills={SPECIFI_FILLS} />}
+        colophon={<Colophon name="specifi" hoverFills={specifi.hoverFills} />}
       >
         <div className="flex flex-col gap-8 max-w-2xl">
           <ViewHeader
@@ -84,7 +78,7 @@ export const Minimal: Story = {
     const [active, setActive] = useState('about')
     return (
       <AppShell
-        logo={<Wordmark label="kern" />}
+        logo={<Wordmark src="/brand/wordmark.svg" name="kern" />}
         navItems={NAV}
         activeId={active}
         onNavigate={setActive}
@@ -113,12 +107,12 @@ export const Mobile: Story = {
     const [active, setActive] = useState('analyse')
     return (
       <AppShell
-        logo={<Wordmark label="specifi" />}
+        logo={<Wordmark src={specifi.src} name={specifi.name} />}
         navItems={NAV}
         activeId={active}
         onNavigate={setActive}
         accentActiveClass="text-solstice"
-        colophon={<Colophon name="specifi" hoverFills={SPECIFI_FILLS} />}
+        colophon={<Colophon name="specifi" hoverFills={specifi.hoverFills} />}
       >
         <ViewHeader title="Analyse a selector" description="Tap the hamburger to open the navigation." />
       </AppShell>

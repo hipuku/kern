@@ -11,6 +11,11 @@ const meta = {
   title: 'Atoms/Icons',
   tags: ['autodocs'],
   parameters: {
+    // These stories need local state or a throwing child, so they cannot be
+    // driven by args. Hiding the panel is honest; leaving it visible advertises
+    // controls that do nothing.
+    controls: { disable: true },
+
     layout: 'padded',
     docs: {
       description: {

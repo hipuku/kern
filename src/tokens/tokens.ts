@@ -261,7 +261,7 @@ const TYPE_SCALE = {
   'p-sm':          { size: '1rem',                                      weight: 400, lineHeight: 1.7,  tracking: '0.01em'   },
   'annotation':    { size: '0.8125rem',                                 weight: 400, lineHeight: 1.7,  tracking: '0.01em'   },
   'annotation-sc': { size: '1rem',                                      weight: 400, lineHeight: 1.5,  tracking: '0.08em', smallCaps: true },
-  'button':        { size: '1rem',                                      weight: 600, lineHeight: 1.0,  tracking: '0.02em'   },
+  'button':        { size: '1rem',                                      weight: 500, lineHeight: 1.0,  tracking: '0.02em'   },
   'code':          { size: '0.9375rem',                                 weight: 400, lineHeight: 1.7,  tracking: '0em',    mono: true },
 } as const satisfies Record<string, TypeStyle>
 

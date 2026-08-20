@@ -11,11 +11,17 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Bound to args rather than a render function, so the controls in the docs
+ * panel actually drive it. Every story in this file used to be render-based,
+ * which left the documented argTypes inert — a props table advertising
+ * controls that did nothing.
+ */
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <div className="flex items-center gap-2">
-      <span className="type-h4 text-void-90">Midnight Blue</span>
-      <CopyButton text="Midnight Blue" />
+      <span className="type-h4 text-ink-title">{args.text}</span>
+      <CopyButton {...args} />
     </div>
   ),
 }

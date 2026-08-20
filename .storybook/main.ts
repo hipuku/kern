@@ -14,6 +14,11 @@ const config: StorybookConfig = {
     { from: '../logo.svg', to: '/favicon.svg' },
     { from: '../logo.svg', to: '/brand/logo.svg' },
     { from: '../wordmark.svg', to: '/brand/wordmark.svg' },
+    // The consuming experiments' own wordmarks. Copies, so that the sidebar and
+    // shell stories can show the real marks rather than a text placeholder or a
+    // hand-transcribed SVG path — the latter is asset data that goes stale
+    // silently when the source file is redrawn.
+    { from: '../brand', to: '/brand' },
   ],
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
   framework: {

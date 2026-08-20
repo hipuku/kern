@@ -8,12 +8,26 @@ const meta = {
   component: Section,
   tags: ['autodocs'],
   parameters: { layout: 'padded' },
-} satisfies Meta
+  args: {
+    title: 'How it works',
+    children: <p className="type-p-sm text-ink-body">The body of the section.</p>,
+  },
+  argTypes: {
+    title: { control: 'text', description: 'Section heading.' },
+    as: { control: 'radio', options: ['h2', 'h3', 'h4'], description: 'Heading level. See ViewHeader on heading order.' },
+  },
+} satisfies Meta<typeof Section>
 
 export default meta
-type Story = StoryObj
+type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+/**
+ * Bound to args so the controls in the docs panel drive it. Every story in this
+ * file used to be render-based, which left the documented argTypes inert.
+ */
+export const Default: Story = {}
+
+export const WithContent: Story = {
   render: () => (
     <Section title="How it works">
       <p className="type-p-sm text-void-60">

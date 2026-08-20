@@ -6,7 +6,7 @@ const meta = {
   title: 'Molecules/ParamSlider',
   component: ParamSlider,
   tags: ['autodocs'],
-  args: { label: 'f — feed rate', value: 0.035, min: 0.01, max: 0.08, step: 0.001, onChange: () => {} },
+  args: { label: 'f — feed rate', value: 0.035, min: 0.01, max: 0.08, step: 0.001, onChange: (_value: number) => {} },
   argTypes: {
     label: { control: 'text', description: 'Parameter name shown above the track.' },
     value: { control: 'number', description: 'Current value.' },
@@ -21,12 +21,24 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Bound to args so the controls drive it. ParamSlider is a controlled input, so
+ * the story holds the value locally and seeds it from `args.value` — passing
+ * args straight through would render a slider that cannot move.
+ */
 export const Default: Story = {
-  render: () => {
-    const [f, setF] = useState(0.035)
+  render: (args) => {
+    const [value, setValue] = useState(args.value)
     return (
-      <div className="w-56 flex flex-col gap-4">
-        <ParamSlider label="f — feed rate" value={f} min={0.01} max={0.08} step={0.001} onChange={setF} />
+      <div className="w-80">
+        <ParamSlider
+          {...args}
+          value={value}
+          onChange={(v) => {
+            setValue(v)
+            args.onChange(v)
+          }}
+        />
       </div>
     )
   },

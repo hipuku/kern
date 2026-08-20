@@ -2,22 +2,33 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ToolLink } from './ToolLink'
 import { Section } from './Section'
+import { accentColours } from '../lib/accent'
 
 const meta = {
   title: 'Molecules/ToolLink',
   component: ToolLink,
   tags: ['autodocs'],
   parameters: { layout: 'padded' },
-} satisfies Meta
+  args: { children: 'Name a colour →', onClick: () => {} },
+  argTypes: {
+    colour: {
+      control: 'select',
+      options: [undefined, ...accentColours],
+      description: 'Tint the link with a specific accent. Omit to use the experiment --primary.',
+    },
+    children: { control: 'text' },
+    onClick: { action: 'clicked' },
+  },
+} satisfies Meta<typeof ToolLink>
 
 export default meta
-type Story = StoryObj
+type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  render: () => (
-    <ToolLink onClick={() => {}} colour="pulsar">Name a colour →</ToolLink>
-  ),
-}
+/**
+ * Bound to args so the controls in the docs panel drive it. Every story in this
+ * file used to be render-based, which left the documented argTypes inert.
+ */
+export const Default: Story = {}
 
 export const AllAccents: Story = {
   name: 'All accent colours',

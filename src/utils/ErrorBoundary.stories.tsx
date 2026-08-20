@@ -5,7 +5,12 @@ const meta = {
   title: 'Utilities/ErrorBoundary',
   component: ErrorBoundary,
   tags: ['autodocs'],
-  parameters: { layout: 'fullscreen' },
+  parameters: {
+    // These stories need local state or a throwing child, so they cannot be
+    // driven by args. Hiding the panel is honest; leaving it visible advertises
+    // controls that do nothing.
+    controls: { disable: true },
+ layout: 'fullscreen' },
   args: { children: null },
 } satisfies Meta<typeof ErrorBoundary>
 
