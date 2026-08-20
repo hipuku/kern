@@ -52,7 +52,7 @@ export const Hexicon: Story = {
     const [active, setActive] = useState('name')
     return (
       <AppSidebar
-        logo={<Wordmark src={hexicon.src} name={hexicon.name} />}
+        logo={<Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />}
         navItems={hexiconNav}
         activeId={active}
         onNavigate={setActive}
@@ -69,7 +69,7 @@ export const Specifi: Story = {
     const [active, setActive] = useState('analyse')
     return (
       <AppSidebar
-        logo={<Wordmark src={specifi.src} name={specifi.name} />}
+        logo={<Wordmark src={specifi.src} name={specifi.name} xHeightRatio={specifi.xHeightRatio} />}
         navItems={specifiNav}
         activeId={active}
         onNavigate={setActive}
@@ -94,7 +94,7 @@ export const GrayScott: Story = {
     const [active, setActive] = useState('simulate')
     return (
       <AppSidebar
-        logo={<Wordmark src={grayScott.src} name={grayScott.name} />}
+        logo={<Wordmark src={grayScott.src} name={grayScott.name} xHeightRatio={grayScott.xHeightRatio} />}
         navItems={grayScottNav}
         activeId={active}
         onNavigate={setActive}
@@ -112,7 +112,7 @@ export const Minimal: Story = {
     const [active, setActive] = useState('about')
     return (
       <AppSidebar
-        logo={<Wordmark src={hexicon.src} name={hexicon.name} />}
+        logo={<Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />}
         navItems={hexiconNav}
         activeId={active}
         onNavigate={setActive}
@@ -134,7 +134,7 @@ export const KeyboardNav: Story = {
     const [active, setActive] = useState('about')
     return (
       <AppSidebar
-        logo={<Wordmark src={hexicon.src} name={hexicon.name} />}
+        logo={<Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />}
         navItems={hexiconNav}
         activeId={active}
         onNavigate={setActive}

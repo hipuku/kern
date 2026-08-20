@@ -46,7 +46,7 @@ export const Default: Story = {
     const [active, setActive] = useState('analyse')
     return (
       <AppShell
-        logo={<Wordmark src={specifi.src} name={specifi.name} />}
+        logo={<Wordmark src={specifi.src} name={specifi.name} xHeightRatio={specifi.xHeightRatio} />}
         navItems={NAV}
         activeId={active}
         onNavigate={setActive}
@@ -107,7 +107,7 @@ export const Mobile: Story = {
     const [active, setActive] = useState('analyse')
     return (
       <AppShell
-        logo={<Wordmark src={specifi.src} name={specifi.name} />}
+        logo={<Wordmark src={specifi.src} name={specifi.name} xHeightRatio={specifi.xHeightRatio} />}
         navItems={NAV}
         activeId={active}
         onNavigate={setActive}

@@ -56,10 +56,46 @@ export const TheExperiments: Story = {
   },
   render: () => (
     <div className="flex flex-col gap-6">
-      {experiments.map(({ name, src }) => (
+      {experiments.map(({ name, src, xHeightRatio }) => (
         <div key={name} className="flex items-center gap-6">
-          <Wordmark src={src} name={name} />
+          <Wordmark src={src} name={name} xHeightRatio={xHeightRatio} />
           <span className="type-annotation font-mono text-ink-muted">{name}</span>
+        </div>
+      ))}
+    </div>
+  ),
+}
+
+export const Normalisation: Story = {
+  name: 'Why size means x-height',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Left: every mark at the same box height, which is what a shared `h-7` gives you. The marks read as ' +
+          'different sizes because the box is a typographic accident — "specifi" spends its height on the ' +
+          'descender of the p, "hexicon" on the ascender of the h. Measured at a uniform 28px box the ' +
+          'x-heights came out 18.3, 14.9 and 16.3 px.\n\n' +
+          'Right: the same marks normalised on x-height. The boxes now differ; the letterforms match.',
+      },
+    },
+  },
+  render: () => (
+    <div className="flex gap-16">
+      {([
+        ['Same box height', false],
+        ['Same x-height', true],
+      ] as const).map(([heading, normalised]) => (
+        <div key={heading} className="flex flex-col gap-5">
+          <span className="type-annotation-sc text-ink-muted">{heading}</span>
+          {experiments.map(({ name, src, xHeightRatio }) => (
+            <Wordmark
+              key={name}
+              src={src}
+              name={name}
+              xHeightRatio={normalised ? xHeightRatio : undefined}
+            />
+          ))}
         </div>
       ))}
     </div>
