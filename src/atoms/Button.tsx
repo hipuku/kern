@@ -24,11 +24,11 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         /** The default: a raised control on the void surface. */
-        surface: 'bg-void-20 border border-void-30 text-void-60 hover:text-void-90 hover:border-void-40',
+        surface: 'bg-surface-raised border border-line text-ink-body hover:text-ink-title hover:border-line-strong',
         /** Carries the experiment accent. For the one primary action in a view. */
         accent: 'bg-(--primary)/15 border border-(--primary)/40 text-(--primary) hover:bg-(--primary)/25',
         /** No chrome until hovered. For dense toolbars and repeated controls. */
-        ghost: 'text-void-60 hover:text-void-90 hover:bg-void-20',
+        ghost: 'text-ink-body hover:text-ink-title hover:bg-surface-raised',
         /**
          * Reads as a link, behaves as a button. For in-prose actions that
          * navigate the app rather than the web — those are genuinely buttons and
@@ -37,10 +37,10 @@ export const buttonVariants = cva(
         link: 'text-(--primary) hover:opacity-70 transition-opacity underline-offset-[3px] hover:underline',
       },
       size: {
-        sm:   'type-annotation px-2.5 py-1 rounded-lg',
-        md:   'type-button px-4 py-2 rounded-xl',
+        sm:   'type-annotation px-2.5 py-1 rounded-control',
+        md:   'type-button px-4 py-2 rounded-card',
         /** Square, for a single icon. Pair with a required `aria-label`. */
-        icon: 'p-2 rounded-xl',
+        icon: 'p-2 rounded-card',
       },
     },
     compoundVariants: [

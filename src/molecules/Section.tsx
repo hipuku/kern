@@ -11,7 +11,7 @@ export interface SectionProps extends Omit<ComponentPropsWithRef<'section'>, 'ti
 export function Section({ title, children, as: Heading = 'h2', className, ...props }: SectionProps) {
   return (
     <section className={cn('flex flex-col gap-4', className)} {...props}>
-      <Heading className="type-h4 text-void-90">{title}</Heading>
+      <Heading className="type-h4 text-ink-title">{title}</Heading>
       {children}
     </section>
   )

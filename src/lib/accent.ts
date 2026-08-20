@@ -46,12 +46,16 @@ export const accentText: Record<AccentColour, string> = {
   flare:     'text-flare',
   solstice:  'text-solstice',
   supernova: 'text-supernova',
-  neutral:   'text-void-50',
+  neutral:   'text-ink-body',
 }
 
 /**
  * A 15% wash of the accent, for chip and badge backgrounds. Neutral uses a flat
- * void step instead: a 15% wash of grey on a grey surface is invisible.
+ * surface step instead: a 15% wash of grey on a grey surface is invisible.
+ *
+ * The neutral pairing is `ink-body` on `surface-hover` (5.47:1), not the
+ * `ink-muted` it used to be — that measured 3.77:1 and was the one place in the
+ * system putting the lowest ink on the highest surface.
  */
 export const accentTint: Record<AccentColour, string> = {
   nebula:    'bg-nebula/15',
@@ -65,7 +69,7 @@ export const accentTint: Record<AccentColour, string> = {
   flare:     'bg-flare/15',
   solstice:  'bg-solstice/15',
   supernova: 'bg-supernova/15',
-  neutral:   'bg-void-30',
+  neutral:   'bg-surface-hover',
 }
 
 /** Hover state for interactive text in the accent — steps up to the light ramp. */
@@ -81,5 +85,5 @@ export const accentTextHover: Record<AccentColour, string> = {
   flare:     'hover:text-flare-light',
   solstice:  'hover:text-solstice-light',
   supernova: 'hover:text-supernova-light',
-  neutral:   'hover:text-void-60',
+  neutral:   'hover:text-ink-title',
 }

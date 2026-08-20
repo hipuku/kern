@@ -22,10 +22,18 @@ import {
   typeRoles,
   fonts,
   bodyTypeRole,
-  spacing,
+  spacingBase,
+  spacingRoles,
+  radiusRoles,
+  zIndexRoles,
+  breakpoints,
   easing,
   duration,
-  semanticRoles,
+  surfaceRoles,
+  inkRoles,
+  lineRoles,
+  accentRoles,
+  baseRoles,
 } from '../src/tokens/tokens.ts'
 
 const stylesDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'styles')
@@ -42,8 +50,11 @@ const BANNER = `/*
  */
 `
 
-/** Pads `s` to `width` so generated columns line up like the hand-written file did. */
+/** Pads `s` to `width` so generated columns line up like a hand-written file. */
 const pad = (s, width) => s.padEnd(width)
+
+/** All semantic colour roles that resolve to a void step, in emission order. */
+const stepRoles = { ...surfaceRoles, ...inkRoles, ...lineRoles, ...baseRoles }
 
 // ─── primitives.css ──────────────────────────────────────────────────────────
 
@@ -67,8 +78,24 @@ function buildPrimitives() {
   lines.push('')
 
   lines.push('  /* ─── Spacing ─────────────────────────────────────────────────────────── */')
-  for (const [step, value] of Object.entries(spacing)) {
-    lines.push(`  ${pad(`--space-${step}:`, 12)} ${value};`)
+  lines.push('  /* Every numeric utility multiplies this base: p-4 = calc(--spacing * 4). */')
+  lines.push(`  --spacing: ${spacingBase};`)
+  const spaceWidth = Math.max(...Object.keys(spacingRoles).map((k) => k.length)) + 12
+  for (const [name, { value }] of Object.entries(spacingRoles)) {
+    lines.push(`  ${pad(`--spacing-${name}:`, spaceWidth)} ${value};`)
+  }
+  lines.push('')
+
+  lines.push('  /* ─── Radius ──────────────────────────────────────────────────────────── */')
+  const radiusWidth = Math.max(...Object.keys(radiusRoles).map((k) => k.length)) + 11
+  for (const [name, { value }] of Object.entries(radiusRoles)) {
+    lines.push(`  ${pad(`--radius-${name}:`, radiusWidth)} ${value};`)
+  }
+  lines.push('')
+
+  lines.push('  /* ─── Breakpoints ─────────────────────────────────────────────────────── */')
+  for (const [name, px] of Object.entries(breakpoints)) {
+    lines.push(`  ${pad(`--breakpoint-${name}:`, 20)} ${px / 16}rem;`)
   }
   lines.push('')
 
@@ -83,7 +110,7 @@ function buildPrimitives() {
   }
   lines.push('')
 
-  lines.push('  /* ─── Colour palette ──────────────────────────────────────────────────── */')
+  lines.push('  /* ─── Colour primitives ───────────────────────────────────────────────── */')
   const accentWidth = Math.max(...Object.keys(palette).map((k) => k.length))
   for (const [name, ramp] of Object.entries(palette)) {
     const dark = pad(`--color-${name}-dark:`, accentWidth + 15)
@@ -91,7 +118,6 @@ function buildPrimitives() {
     const light = pad(`--color-${name}-light:`, accentWidth + 16)
     lines.push(`  ${dark} ${ramp.dark}; ${base} ${ramp.base}; ${light} ${ramp.light};`)
   }
-  // Three void steps per line, matching how the scale reads as a ramp.
   const steps = Object.entries(voidScale)
   for (let i = 0; i < steps.length; i += 3) {
     const row = steps
@@ -102,18 +128,40 @@ function buildPrimitives() {
   }
   lines.push('')
 
-  lines.push('  /* ─── Semantic tokens ─────────────────────────────────────────────────── */')
-  for (const role of Object.keys(semanticRoles)) {
-    lines.push(`  ${pad(`--color-${role}:`, 20)} var(--${role});`)
+  lines.push('  /* ─── Semantic colour roles ───────────────────────────────────────────── */')
+  lines.push('  /* Utilities: bg-surface-raised, text-ink-body, border-line-subtle, … */')
+  const roleWidth = Math.max(...Object.keys({ ...stepRoles, ...accentRoles }).map((k) => k.length)) + 11
+  for (const role of Object.keys(stepRoles)) {
+    lines.push(`  ${pad(`--color-${role}:`, roleWidth)} var(--${role});`)
+  }
+  for (const role of Object.keys(accentRoles)) {
+    lines.push(`  ${pad(`--color-${role}:`, roleWidth)} var(--${role});`)
+  }
+  lines.push('}')
+  lines.push('')
+
+  lines.push('/* ─── Layering ────────────────────────────────────────────────────────── */')
+  lines.push('/* Not a Tailwind namespace — reach for these as z-(--z-panel). */')
+  lines.push(':root {')
+  const zWidth = Math.max(...Object.keys(zIndexRoles).map((k) => k.length)) + 6
+  for (const [name, { value }] of Object.entries(zIndexRoles)) {
+    lines.push(`  ${pad(`--z-${name}:`, zWidth)} ${value};`)
   }
   lines.push('}')
   lines.push('')
 
   lines.push('/* ─── Theme (dark-only) ───────────────────────────────────────────────── */')
+  lines.push('/*')
+  lines.push(' * The override seam. An experiment redefines any of these in its own')
+  lines.push(' * index.css and every kern component follows, without forking anything.')
+  lines.push(' */')
   lines.push(':root {')
-  const roleWidth = Math.max(...Object.keys(semanticRoles).map((k) => k.length)) + 3
-  for (const [role, { value }] of Object.entries(semanticRoles)) {
-    lines.push(`  ${pad(`--${role}:`, roleWidth)} ${value};`)
+  const themeWidth = Math.max(...Object.keys({ ...stepRoles, ...accentRoles }).map((k) => k.length)) + 4
+  for (const [role, { step }] of Object.entries(stepRoles)) {
+    lines.push(`  ${pad(`--${role}:`, themeWidth)} var(--color-void-${step});`)
+  }
+  for (const [role, { value }] of Object.entries(accentRoles)) {
+    lines.push(`  ${pad(`--${role}:`, themeWidth)} ${value};`)
   }
   lines.push('}')
   lines.push('')
@@ -195,7 +243,7 @@ const outputs = {
 }
 
 const check = process.argv.includes('--check')
-let stale = []
+const stale = []
 
 if (!check && !existsSync(stylesDir)) mkdirSync(stylesDir, { recursive: true })
 

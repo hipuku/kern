@@ -31,7 +31,7 @@ function SocialIconLink({ Icon, label, href }: IconLink) {
     <a
       href={href}
       aria-label={label}
-      className={cn('text-void-60 inline-flex transition-all duration-200 motion-safe:hover:scale-125 rounded', focusRing)}
+      className={cn('text-ink-body inline-flex transition-all duration-200 motion-safe:hover:scale-125 rounded', focusRing)}
     >
       <Icon className="w-4 h-4" />
     </a>

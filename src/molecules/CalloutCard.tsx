@@ -20,7 +20,7 @@ export function CalloutCard({ colour, label, children, className, ...props }: Ca
   return (
     <div
       className={cn(
-        'rounded-xl px-4 py-3 bg-void-20 border border-void-30 flex flex-col gap-1',
+        'rounded-card px-4 py-3 bg-surface-raised border border-line flex flex-col gap-1',
         className,
       )}
       {...props}
@@ -28,7 +28,7 @@ export function CalloutCard({ colour, label, children, className, ...props }: Ca
       {label != null && (
         <p className={cn('type-annotation', accentText[colour])}>{label}</p>
       )}
-      <p className="type-annotation text-void-60">{children}</p>
+      <p className="type-annotation text-ink-body">{children}</p>
     </div>
   )
 }

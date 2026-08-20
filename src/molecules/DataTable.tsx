@@ -35,18 +35,18 @@ export function DataTable({ columns, rows, caption, className, ...props }: DataT
       role={caption ? 'region' : undefined}
       aria-label={caption}
       className={cn(
-        'rounded-xl border border-void-30 overflow-x-auto',
+        'rounded-card border border-line overflow-x-auto',
         focusRing,
       )}
     >
       <table className={cn('w-full', className)} {...props}>
         {caption && <caption className="sr-only">{caption}</caption>}
         <thead>
-          <tr className="border-b border-void-20">
+          <tr className="border-b border-line-subtle">
             {columns.map((col) => (
               // scope="col" is what lets a screen reader announce the column
               // heading with each cell as the user moves across a row.
-              <th key={col} scope="col" className="text-left px-4 py-2 type-annotation-sc text-void-60">
+              <th key={col} scope="col" className="text-left px-4 py-2 type-annotation-sc text-ink-body">
                 {col}
               </th>
             ))}
@@ -54,9 +54,9 @@ export function DataTable({ columns, rows, caption, className, ...props }: DataT
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className={i < rows.length - 1 ? 'border-b border-void-20' : ''}>
+            <tr key={i} className={i < rows.length - 1 ? 'border-b border-line-subtle' : ''}>
               {row.map((cell, j) => (
-                <td key={j} className="px-4 py-2.5 type-annotation text-void-60">
+                <td key={j} className="px-4 py-2.5 type-annotation text-ink-body">
                   {cell}
                 </td>
               ))}

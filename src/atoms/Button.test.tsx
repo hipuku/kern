@@ -48,7 +48,7 @@ describe('Button', () => {
     const button = screen.getByRole('button', { name: 'Merged' })
     expect(button).toHaveClass('mt-4')
     // Still carries its variant classes.
-    expect(button.className).toMatch(/bg-void-20/)
+    expect(button.className).toMatch(/bg-surface-raised/)
   })
 
   it('has no axe violations across variants', async () => {

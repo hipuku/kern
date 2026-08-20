@@ -56,8 +56,8 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
         className="flex items-center justify-center h-screen bg-background text-foreground"
       >
         <div className="flex flex-col gap-4 max-w-md w-full text-center p-8">
-          <p className="type-h4 text-void-90">Something went wrong</p>
-          <p className="type-code text-void-60">{error.message}</p>
+          <p className="type-h4 text-ink-title">Something went wrong</p>
+          <p className="type-code text-ink-body">{error.message}</p>
           <Button onClick={this.reset} className="self-center">Try again</Button>
         </div>
       </div>

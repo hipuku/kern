@@ -48,10 +48,10 @@ export function ParamSlider({
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
       <div className="flex items-center justify-between">
-        <label htmlFor={id} className="type-annotation-sc text-void-60 cursor-pointer">
+        <label htmlFor={id} className="type-annotation-sc text-ink-body cursor-pointer">
           {label}
         </label>
-        <span aria-hidden="true" className="type-code text-void-80">{format(value)}</span>
+        <span aria-hidden="true" className="type-code text-ink-strong">{format(value)}</span>
       </div>
       <input
         id={id}
@@ -62,7 +62,7 @@ export function ParamSlider({
         value={value}
         onChange={(e) => onChange(parseFloat(e.target.value))}
         className={cn(
-          'w-full h-1 rounded-full appearance-none cursor-pointer bg-void-30 accent-(--primary)',
+          'w-full h-1 rounded-full appearance-none cursor-pointer bg-surface-hover accent-(--primary)',
           focusRing,
           inputClassName,
         )}

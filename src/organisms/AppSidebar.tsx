@@ -2,6 +2,7 @@ import { type ComponentType, type ReactNode } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '../lib/utils'
 import { focusRing } from '../lib/focus'
+import { breakpoints } from '../tokens/tokens'
 
 export interface NavItem {
   id: string
@@ -43,8 +44,8 @@ export function AppSidebar({
         aria-expanded={mobileOpen}
         onClick={onMobileToggle}
         className={cn(
-          'lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg',
-          'bg-void-20 text-void-60 hover:text-void-90 hover:bg-void-30',
+          'lg:hidden fixed top-4 left-4 z-(--z-control) p-2 rounded-control',
+          'bg-surface-raised text-ink-body hover:text-ink-title hover:bg-surface-hover',
           focusRing,
           'transition-colors duration-200',
         )}
@@ -57,7 +58,7 @@ export function AppSidebar({
         <div
           aria-hidden="true"
           onClick={onMobileToggle}
-          className="lg:hidden fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 z-(--z-backdrop) bg-black/60 backdrop-blur-sm"
         />
       )}
 
@@ -66,11 +67,11 @@ export function AppSidebar({
         aria-label="Main navigation"
         className={cn(
           'flex flex-col justify-between shrink-0 h-full overflow-y-auto p-8 w-[360px]',
-          'bg-void-10 border-r border-void-20',
+          'bg-surface-panel border-r border-line-subtle',
           // Desktop: always visible, relative in flow
           'lg:relative lg:translate-x-0',
           // Mobile: fixed overlay, slide in/out
-          'max-lg:fixed max-lg:inset-y-0 max-lg:left-0 max-lg:z-40',
+          'max-lg:fixed max-lg:inset-y-0 max-lg:left-0 max-lg:z-(--z-panel)',
           'max-lg:transition-transform max-lg:duration-300 max-lg:ease-(--ease-standard)',
           mobileOpen ? 'max-lg:translate-x-0' : 'max-lg:-translate-x-full',
         )}
@@ -91,17 +92,21 @@ export function AppSidebar({
                   type="button"
                   onClick={() => {
                     onNavigate(id)
-                    // Close sidebar on mobile after navigation
-                    if (onMobileToggle && window.innerWidth < 1024) onMobileToggle()
+                    // Close the sidebar after navigating, but only while it is
+                    // an overlay. `breakpoints.lg` is the same value the `lg:`
+                    // classes above compile against — it was a bare 1024 with
+                    // nothing tying it to them, so changing the breakpoint in
+                    // one place would have silently desynced the other.
+                    if (onMobileToggle && window.innerWidth < breakpoints.lg) onMobileToggle()
                   }}
                   aria-current={isActive ? 'page' : undefined}
                   className={cn(
-                    'group flex items-center gap-3 w-full text-left px-4 py-3 rounded-xl cursor-pointer',
+                    'group flex items-center gap-3 w-full text-left px-4 py-3 rounded-card cursor-pointer',
                     'type-p-sm transition-all duration-200',
-                    'bg-void-20 hover:bg-void-30',
-                    'text-void-60 hover:text-void-90 motion-safe:hover:translate-x-1',
+                    'bg-surface-raised hover:bg-surface-hover',
+                    'text-ink-body hover:text-ink-title motion-safe:hover:translate-x-1',
                     focusRing,
-                    isActive && cn('bg-void-30 font-medium motion-safe:hover:translate-x-0', accentActiveClass),
+                    isActive && cn('bg-surface-hover font-medium motion-safe:hover:translate-x-0', accentActiveClass),
                   )}
                 >
                   <Icon className="w-4 h-4 shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-110" />
@@ -113,7 +118,7 @@ export function AppSidebar({
         </div>
 
         {colophon && (
-          <div className="type-p-sm text-void-60">{colophon}</div>
+          <div className="type-p-sm text-ink-body">{colophon}</div>
         )}
       </aside>
     </>

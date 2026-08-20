@@ -20,7 +20,7 @@ export function InlineCode({ colour = 'orbit', className, ...props }: InlineCode
   return (
     <code
       className={cn(
-        'type-code bg-void-20 px-[5px] py-[1px] rounded-[4px]',
+        'type-code bg-surface-raised px-[5px] py-[1px] rounded-inline',
         accentText[colour],
         className,
       )}

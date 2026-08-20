@@ -37,15 +37,15 @@ export function StatCard({
 }: StatCardProps) {
   return (
     <div
-      className={cn('flex flex-col gap-2 p-4 rounded-xl border bg-void-20 border-void-30', className)}
+      className={cn('flex flex-col gap-2 p-4 rounded-card border bg-surface-raised border-line', className)}
       {...props}
     >
-      <span className="type-annotation-sc text-void-60">{label}</span>
+      <span className="type-annotation-sc text-ink-body">{label}</span>
       <div className="flex items-baseline gap-2">
-        <span className="type-h4 text-void-90">{value}</span>
+        <span className="type-h4 text-ink-title">{value}</span>
         {badge && <StatusChip colour={badgeColour}>{badge}</StatusChip>}
       </div>
-      {sub && <p className="type-annotation text-void-60">{sub}</p>}
+      {sub && <p className="type-annotation text-ink-body">{sub}</p>}
     </div>
   )
 }

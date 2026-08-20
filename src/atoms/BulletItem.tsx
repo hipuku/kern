@@ -17,8 +17,8 @@ export function BulletItem({ children, className, ...props }: BulletItemProps) {
         mt-[0.55em]: optical alignment to cap-height of the first line of type-p-sm.
         Both values are deliberate; do not replace with a spacing token.
       */}
-      <span aria-hidden="true" className="mt-[0.55em] w-[5px] h-[5px] rounded-full bg-void-40 shrink-0" />
-      <p className="type-p-sm text-void-60 m-0">{children}</p>
+      <span aria-hidden="true" className="mt-[0.55em] w-[5px] h-[5px] rounded-full bg-line-strong shrink-0" />
+      <p className="type-p-sm text-ink-body m-0">{children}</p>
     </li>
   )
 }

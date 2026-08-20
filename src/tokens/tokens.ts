@@ -1,7 +1,7 @@
 /**
  * The kern token source of truth.
  *
- * Every token value in the system is declared here exactly once. Two things
+ * Every token value in the system is declared here exactly once. Three things
  * consume it:
  *
  *   1. `scripts/build-tokens.mjs` generates the CSS in `src/styles/` from it.
@@ -9,22 +9,28 @@
  *      consumers), and `npm run tokens:check` fails CI if it drifts.
  *   2. The Storybook token pages render straight from these objects, so the
  *      published documentation cannot disagree with the shipped CSS.
- *
- * Before this module existed, the palette was typed out by hand in three
- * places — `tokens.css`, `Colours.stories.tsx`, and the Storybook background
- * config — and the type scale in two. Documentation drifting away from the
- * tokens it documents is the exact failure a token system exists to prevent.
+ *   3. `contrast.test.ts` asserts every ink/surface pairing clears WCAG AA, so
+ *      an inaccessible combination fails the build rather than shipping.
  *
  * Editing a value here and running `npm run tokens` is the only supported way
  * to change a token.
  */
 
-// ─── Colour ──────────────────────────────────────────────────────────────────
+// ─── Colour primitives ───────────────────────────────────────────────────────
 
 /** A named accent, in the three steps every accent provides. */
 export interface ColourRamp {
+  /**
+   * The variant for use on *light* backgrounds. kern is dark-only, so nothing
+   * in the system currently reaches for it — it is kept for a consumer
+   * embedding kern's palette on a light surface, and for a future light theme.
+   * Do not use it as a "pressed" or "active" state on dark: it is darker than
+   * the base and loses contrast against the void surfaces.
+   */
   dark: string
+  /** The default. Text, icons, and active states on dark surfaces. */
   base: string
+  /** The hover state for interactive text carrying this accent. */
   light: string
 }
 
@@ -52,9 +58,34 @@ export type AccentName = keyof typeof palette
 export const accentNames = Object.keys(palette) as AccentName[]
 
 /**
- * The neutral ramp, dark to light. `void-0` is the app background and
- * `void-90` the primary text colour — the system is dark-only, so the scale
- * runs in the opposite direction to a conventional grey scale.
+ * The opacity, in percent, of an accent used as a background wash — chips,
+ * badges, the active state of a toggle. Declared here so the value is stated
+ * once even though Tailwind requires the class itself (`bg-nebula/15`) to be
+ * written literally to be scannable. `accent.test.ts` asserts every tint class
+ * in `lib/accent.ts` uses this number.
+ */
+export const accentTintPercent = 15
+
+/**
+ * The neutral ramp, dark to light. `void-0` is the page background and
+ * `void-90` the brightest text — the system is dark-only, so the scale runs in
+ * the opposite direction to a conventional grey scale.
+ *
+ * **The ramp has two zones, and that is deliberate.** Steps 0–30 are surfaces
+ * and sit close together (ΔL ≈ 0.05), which is what an elevation step should
+ * be; their low contrast *ratios* against each other are not a defect, because
+ * contrast ratio is the wrong measure for two adjacent surfaces. Steps 50–90
+ * carry text and are spread far enough apart that each clears AA on every
+ * surface it is placed on. Step 40 is the transition between the two and is
+ * **decorative only** — at 2.60:1 on the page background it must never carry
+ * text. It exists for borders, which have no contrast requirement.
+ *
+ * Two steps were corrected in v1.1 after measuring every pairing:
+ *   - `void-50` was #838385, which failed AA on three of the four surfaces it
+ *     was used on (3.10:1 on the hover surface). Raised until it clears 4.5 on
+ *     the raised surface.
+ *   - `void-80` was #E8E8EA, only ΔL 0.027 from `void-90` — two tokens doing
+ *     one job. Moved to sit evenly between `void-70` and `void-90`.
  */
 export const voidScale = {
   '0':  '#121213',
@@ -62,14 +93,118 @@ export const voidScale = {
   '20': '#2B2B2C',
   '30': '#383839',
   '40': '#575759',
-  '50': '#838385',
+  '50': '#929295',
   '60': '#B1B1B3',
   '70': '#D3D3D5',
-  '80': '#E8E8EA',
+  '80': '#E2E2E5',
   '90': '#F1F1F4',
 } as const
 
 export type VoidStep = keyof typeof voidScale
+
+// ─── Semantic colour roles ───────────────────────────────────────────────────
+
+/**
+ * The named decisions the components actually make.
+ *
+ * Before these existed, the neutral half of the system had no semantic layer at
+ * all: components reached straight for `bg-void-20` and `text-void-60`, and the
+ * roles were real but unnamed — `text-void-60` appeared 136 times across four
+ * codebases, always meaning "body text". The cost showed up when a contrast fix
+ * meant editing 44 call sites instead of one token.
+ *
+ * Each role is a `:root` custom property pointing at a primitive, so an
+ * experiment can retint any of them without forking a component.
+ */
+export const surfaceRoles = {
+  'surface-page':   { step: '0',  description: 'The page background.' },
+  'surface-panel':  { step: '10', description: 'Sidebar, code blocks — regions recessed from the page.' },
+  'surface-raised': { step: '20', description: 'Cards, chips, controls. The most common surface text sits on.' },
+  'surface-hover':  { step: '30', description: 'Hover state of a raised control.' },
+} as const satisfies Record<string, { step: VoidStep; description: string }>
+
+export type SurfaceRole = keyof typeof surfaceRoles
+
+/**
+ * Each ink role declares the surfaces it may be placed on, and
+ * `contrast.test.ts` checks exactly those pairings.
+ *
+ * Only `ink-muted` is barred from `surface-hover`, and only because it measures
+ * 3.77:1 there. An earlier draft of this restricted every mid-scale ink from
+ * the hover surface on the theory that controls brighten their text as they
+ * darken — which is true of the nav items but was too broad a rule: `ink-body`
+ * measures 5.47:1 on the hover surface and is exactly right for a chip that
+ * sits at that elevation. The declaration follows the measurement, not the
+ * theory.
+ */
+export const inkRoles = {
+  'ink-title': {
+    step: '90',
+    description: 'View titles and headings. The brightest text.',
+    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  },
+  'ink-strong': {
+    step: '80',
+    description: 'Emphasised values inside body copy — a stat figure, a readout.',
+    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  },
+  'ink-lead': {
+    step: '70',
+    description: 'Introductory and descriptive text below a title.',
+    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  },
+  'ink-body': {
+    step: '60',
+    description: 'Default body and label text. The workhorse of the system.',
+    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  },
+  'ink-muted': {
+    step: '50',
+    description: 'Annotations, captions, deliberately de-emphasised detail.',
+    surfaces: ['surface-page', 'surface-panel', 'surface-raised'],
+  },
+} as const satisfies Record<string, { step: VoidStep; description: string; surfaces: readonly SurfaceRole[] }>
+
+/**
+ * `on` records the surface each line is drawn against, because a border is only
+ * a border if it can be seen. `line-subtle` is the same value as
+ * `surface-raised` by design — it is a divider for content sitting directly on
+ * the page, and drawing it on a raised surface makes it disappear. Use `line`
+ * inside a card.
+ */
+export const lineRoles = {
+  'line-subtle': { step: '20', description: 'Dividers between rows of content on the page.', on: 'surface-page' },
+  'line':        { step: '30', description: 'The edge of a card or control.',                 on: 'surface-page' },
+  'line-strong': { step: '40', description: 'Hover state of a control edge. Decorative — never text.', on: 'surface-raised' },
+} as const satisfies Record<string, { step: VoidStep; description: string; on: SurfaceRole }>
+
+export type InkRole = keyof typeof inkRoles
+export type LineRole = keyof typeof lineRoles
+
+/**
+ * The accent seam. Components reference these and never a named colour, so an
+ * experiment sets them once in its own `index.css` and every shared component
+ * follows. kern's own default is pulsar; specifi uses solstice, gray-scott
+ * nebula.
+ */
+export const accentRoles = {
+  primary: { value: 'var(--color-pulsar)', description: 'The experiment accent — active states, emphasis.' },
+  ring:    { value: 'var(--color-pulsar)', description: 'Focus ring. Tracks the accent.' },
+  link:    { value: 'var(--color-pulsar)', description: 'Inline links in prose.' },
+} as const
+
+export type AccentRole = keyof typeof accentRoles
+
+/**
+ * Aliases kept for the base layer and for components that style a whole page
+ * region (`bg-background text-foreground`). They are the same decisions as
+ * `surface-page` and `ink-title`, under the names Tailwind's own conventions
+ * expect.
+ */
+export const baseRoles = {
+  background: { step: '0',  description: 'Alias of surface-page, for the body element.' },
+  foreground: { step: '90', description: 'Alias of ink-title, for the body element.' },
+} as const satisfies Record<string, { step: VoidStep; description: string }>
 
 // ─── Type ────────────────────────────────────────────────────────────────────
 
@@ -81,6 +216,7 @@ export type VoidStep = keyof typeof voidScale
 export interface TypeStyle {
   /** `font-size`, occasionally a clamp() for the fluid heading roles. */
   size: string
+  /** Must be a weight Parkinsans actually ships — see `fontWeights`. */
   weight: number
   lineHeight: number
   tracking: string
@@ -91,14 +227,19 @@ export interface TypeStyle {
 }
 
 /**
- * Every type role, in scale order. Each generates a `--text-*` size token, a
- * matching set of `--text-*-weight` / `-lh` / `-tracking` axis tokens, and a
- * `.type-*` composite class that applies all four together.
+ * The weights Parkinsans ships, and therefore the only weights a type role may
+ * declare. Google Fonts returns HTTP 400 for anything outside this range.
+ *
+ * `h1` and `h2` declared weight 100 until v1.1. It was never available, so the
+ * browser silently substituted 300 — the token had never described what
+ * rendered. Both now declare 300 explicitly.
  */
+export const fontWeights = [300, 400, 500, 600, 700, 800] as const
+
 const TYPE_SCALE = {
-  'display':     { size: 'clamp(3.5rem, 7vw + 1rem, 7.125rem)',      weight: 800, lineHeight: 0.95, tracking: '-0.03em'  },
-  'h1':            { size: 'clamp(2.625rem, 5vw + 0.75rem, 5.1875rem)', weight: 100, lineHeight: 1.05, tracking: '-0.025em' },
-  'h2':            { size: 'clamp(2rem, 3.5vw + 0.5rem, 3.75rem)',      weight: 100, lineHeight: 1.1,  tracking: '-0.02em'  },
+  'display':       { size: 'clamp(3.5rem, 7vw + 1rem, 7.125rem)',      weight: 800, lineHeight: 0.95, tracking: '-0.03em'  },
+  'h1':            { size: 'clamp(2.625rem, 5vw + 0.75rem, 5.1875rem)', weight: 300, lineHeight: 1.05, tracking: '-0.025em' },
+  'h2':            { size: 'clamp(2rem, 3.5vw + 0.5rem, 3.75rem)',      weight: 300, lineHeight: 1.1,  tracking: '-0.02em'  },
   'h3':            { size: 'clamp(1.5rem, 2.5vw + 0.25rem, 2.5rem)',    weight: 600, lineHeight: 1.2,  tracking: '-0.015em' },
   'h4':            { size: 'clamp(1.25rem, 1.5vw + 0.25rem, 1.75rem)',  weight: 600, lineHeight: 1.3,  tracking: '-0.01em'  },
   'h5':            { size: 'clamp(1.125rem, 1vw + 0.25rem, 1.375rem)',  weight: 500, lineHeight: 1.4,  tracking: '-0.005em' },
@@ -136,23 +277,87 @@ export const bodyTypeRole: TypeRole = 'p-sm'
 
 // ─── Spacing ─────────────────────────────────────────────────────────────────
 
-/** A 4px-based scale, thinned to the steps the system actually uses. */
-export const spacing = {
-  '1':  '0.25rem',
-  '2':  '0.5rem',
-  '3':  '0.75rem',
-  '4':  '1rem',
-  '5':  '1.25rem',
-  '6':  '1.5rem',
-  '8':  '2rem',
-  '10': '2.5rem',
-  '12': '3rem',
-  '16': '4rem',
-  '20': '5rem',
-  '24': '6rem',
+/**
+ * Tailwind v4 derives every spacing utility from one base unit, multiplying it:
+ * `p-4` compiles to `calc(var(--spacing) * 4)`. Declaring it here means kern
+ * owns the value rather than inheriting Tailwind's default.
+ *
+ * kern previously shipped a twelve-step `--space-*` enumeration. It generated
+ * nothing: Tailwind's namespace is `--spacing`, not `--space`, so no utility
+ * ever referenced those custom properties. They looked correct only because
+ * both scales happen to be 4px-based.
+ */
+export const spacingBase = '0.25rem'
+
+/**
+ * Named spacing for the layout decisions that recur. These are the rhythm the
+ * Spacing token page used to describe in prose while the tokens themselves were
+ * an unnamed numeric ladder.
+ *
+ * Reach for a raw multiple (`gap-2`) for one-off spacing inside a component;
+ * reach for these when you are making the same layout decision the rest of the
+ * system makes.
+ */
+export const spacingRoles = {
+  tight:   { value: '0.25rem', description: 'Between items in a dense list.' },
+  field:   { value: '0.5rem',  description: 'Between a label and its control.' },
+  card:    { value: '0.75rem', description: 'Between elements inside a card.' },
+  section: { value: '1rem',    description: 'Between blocks within a section.' },
+  view:    { value: '1.5rem',  description: 'Between sections of a view.' },
+  major:   { value: '2rem',    description: 'Between major regions of the page.' },
 } as const
 
-export type SpacingStep = keyof typeof spacing
+export type SpacingRole = keyof typeof spacingRoles
+
+// ─── Radius ──────────────────────────────────────────────────────────────────
+
+/**
+ * Four decisions, named by what they wrap. The system was already consistent
+ * about these — 37 `rounded-xl`, 13 `rounded-lg`, 8 `rounded-full` across four
+ * codebases — but expressed as sizes, plus two arbitrary `rounded-[4px]` and
+ * `rounded-[3px]` escape hatches that were really a missing fourth step.
+ */
+export const radiusRoles = {
+  inline:  { value: '4px',    description: 'Inline code and other in-text chrome.' },
+  control: { value: '8px',    description: 'Chips, small buttons, inputs.' },
+  card:    { value: '12px',   description: 'Cards, panels, medium buttons.' },
+  pill:    { value: '9999px', description: 'Status chips and anything fully rounded.' },
+} as const
+
+export type RadiusRole = keyof typeof radiusRoles
+
+// ─── Layering ────────────────────────────────────────────────────────────────
+
+/**
+ * The stacking order of the app shell. Three values, previously spelled as
+ * `z-30` / `z-40` / `z-50` at the point of use in `AppSidebar`, where the
+ * relationship between them had to be reconstructed by reading all three.
+ */
+export const zIndexRoles = {
+  backdrop: { value: 30, description: 'The scrim behind an open mobile sidebar.' },
+  panel:    { value: 40, description: 'The sidebar panel itself, above the scrim.' },
+  control:  { value: 50, description: 'The hamburger, which stays reachable above the panel.' },
+} as const
+
+export type ZIndexRole = keyof typeof zIndexRoles
+
+// ─── Breakpoints ─────────────────────────────────────────────────────────────
+
+/**
+ * Tailwind's defaults, restated so they exist as values rather than only as
+ * class prefixes. `lg` is the one that matters: it is where the sidebar becomes
+ * an overlay, and `AppSidebar` needs the number in JavaScript to decide whether
+ * a navigation should close the panel. That `1024` was a magic number with no
+ * stated connection to the `lg:` classes it had to agree with.
+ */
+export const breakpoints = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+} as const
+
+export type Breakpoint = keyof typeof breakpoints
 
 // ─── Motion ──────────────────────────────────────────────────────────────────
 
@@ -176,22 +381,3 @@ export const duration = {
 } as const
 
 export type DurationName = keyof typeof duration
-
-// ─── Semantic roles ──────────────────────────────────────────────────────────
-
-/**
- * The seam an experiment retints. kern's components reference these roles and
- * never a named accent directly, so an experiment sets `--primary` once in its
- * own `index.css` and every shared component follows.
- *
- * kern's own default is pulsar; specifi uses solstice, gray-scott nebula.
- */
-export const semanticRoles = {
-  background: { value: 'var(--color-void-0)',  description: 'Page background.' },
-  foreground: { value: 'var(--color-void-90)', description: 'Primary text.' },
-  primary:    { value: 'var(--color-pulsar)',  description: 'The experiment accent — active states, emphasis.' },
-  ring:       { value: 'var(--color-pulsar)',  description: 'Focus ring. Tracks the accent.' },
-  link:       { value: 'var(--color-pulsar)',  description: 'Inline links in prose.' },
-} as const
-
-export type SemanticRole = keyof typeof semanticRoles

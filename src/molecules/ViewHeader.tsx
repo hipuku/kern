@@ -17,8 +17,8 @@ export interface ViewHeaderProps extends Omit<ComponentPropsWithRef<'div'>, 'tit
 export function ViewHeader({ title, description, as: Heading = 'h1', className, ...props }: ViewHeaderProps) {
   return (
     <div className={cn('flex flex-col gap-2', className)} {...props}>
-      <Heading className="type-h4 text-void-90">{title}</Heading>
-      <p className="type-p-sm text-void-70">{description}</p>
+      <Heading className="type-h4 text-ink-title">{title}</Heading>
+      <p className="type-p-sm text-ink-lead">{description}</p>
     </div>
   )
 }
