@@ -27,6 +27,34 @@ Nothing else should hardcode a token value. The Storybook token pages render
 straight from `tokens.ts`, which is the point: documentation that is *computed*
 from the system cannot describe a system that no longer ships.
 
+`contrast.test.ts` asserts every permitted ink/surface pairing clears WCAG AA,
+so changing a colour to something inaccessible fails the build rather than
+shipping. If you need an ink role on a surface it does not currently declare,
+add the surface to its `surfaces` list — the test will tell you immediately
+whether that pairing is actually readable.
+
+## Reaching for a colour
+
+Use a **semantic role**, not a void step:
+
+| Instead of | Use |
+|---|---|
+| `bg-void-20` | `bg-surface-raised` |
+| `bg-void-10` | `bg-surface-panel` |
+| `text-void-90` | `text-ink-title` |
+| `text-void-60` | `text-ink-body` |
+| `text-void-50` | `text-ink-muted` |
+| `border-void-20` | `border-line-subtle` |
+| `border-void-30` | `border-line` |
+
+The primitives are the ramp; the roles are what the ramp is for. A component
+reaching for `void-40` directly is the tell that a role is missing — that step
+fails AA on every surface and exists only for borders.
+
+Likewise `rounded-card` / `rounded-control` / `rounded-inline` rather than
+`rounded-xl` / `rounded-lg` / `rounded-[4px]`, and `z-(--z-panel)` rather than a
+bare `z-40`.
+
 ## Adding a component
 
 **First ask whether it belongs here at all.** kern holds what more than one

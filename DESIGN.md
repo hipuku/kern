@@ -74,17 +74,26 @@ There is no `pages/` layer, and there will not be one. kern has no pages: the ex
 
 Before v1 the palette was typed out by hand in three places — `tokens.css`, the Colours story, and the Storybook background config — and the type scale in two, with nothing connecting them. Documentation drifting away from the tokens it documents is the exact failure a token system exists to prevent.
 
-Two tiers, as before:
+Three tiers, not two:
 
-- **Primitives** — the void neutral scale (`--color-void-0…--color-void-90`) and the named accent ramps (nebula, pulsar, aurora, …) as raw hex.
-- **Semantics** — role aliases components consume: `--primary`, `--ring`, `--link`, `--background`, `--foreground`. Components reference roles and never a named colour, which is the seam an experiment retints without forking anything.
+- **Primitives** — the void neutral ramp (`--color-void-0…90`) and the named accent ramps (nebula, pulsar, aurora, …) as raw hex. The ramp, not what the ramp is for.
+- **Semantic roles** — the decisions components actually make. Surfaces (`surface-page`, `surface-panel`, `surface-raised`, `surface-hover`), ink (`ink-title`, `ink-strong`, `ink-lead`, `ink-body`, `ink-muted`), and lines (`line-subtle`, `line`, `line-strong`), each generating a Tailwind utility: `bg-surface-raised`, `text-ink-body`, `border-line-subtle`.
+- **The accent seam** — `--primary`, `--ring`, `--link`. Components reference these and never a named colour, so an experiment retints every shared component from its own `index.css`.
 
-Type is role-based (annotation, code, heading roles) with a matching `.type-*` composite class per role; motion is a small set of easing and duration tokens.
+The middle tier was missing until v1.1. The neutral half of the system had no semantic layer at all: components reached straight for `bg-void-20` and `text-void-60`, and the roles were real but unnamed — `text-void-60` appeared 136 times across four codebases, always meaning "body text". The cost surfaced when a contrast fix meant editing 44 call sites instead of one token.
+
+**The ramp has two zones, deliberately.** Steps 0–30 are surfaces and sit close together (ΔL ≈ 0.05), which is what an elevation step should be; their low contrast *ratios* against each other are not a defect, because contrast ratio is the wrong measure for two adjacent surfaces. Steps 50–90 carry text. Step 40 is the transition and is decorative only — at 2.60:1 on the page background it must never carry text, which is why it is named `line-strong` and not an ink role.
+
+**Contrast is enforced.** Each ink role declares the surfaces it is permitted on, and `contrast.test.ts` asserts exactly those pairings clear WCAG AA. kern previously had a contrast matrix that measured every colour and prevented nothing — it was possible to ship a 2.6:1 label underneath it, and kern did. The colour maths lives in `lib/colour.ts` so the test and the published matrix compute identically.
+
+**Spacing is a multiplier, not a ladder.** Tailwind derives every spacing utility from one base unit: `p-4` compiles to `calc(var(--spacing) * 4)`. kern shipped a twelve-step `--space-*` enumeration alongside this until v1.1; it generated nothing, because Tailwind's namespace is `--spacing`. Six named layout roles (`gap-tight` … `gap-major`) cover the decisions that recur.
+
+Type is role-based with a matching `.type-*` composite class per role, and a role may only declare a weight Parkinsans actually ships — `h1` and `h2` declared weight 100 until v1.1, which the font does not have, so the browser silently substituted 300.
 
 **Stylesheet layout.** Each file's name says what it holds:
 
 ```
-styles/primitives.css       generated — @theme colours, sizes, spacing, motion
+styles/primitives.css       generated — primitives, semantic roles, radius, motion
 styles/typography.css       generated — type axes, body defaults, .type-* classes
 styles/hipuku-logo.css      hand-written component CSS (@property + keyframes)
 styles/storybook-docs.css   hand-written, Storybook docs only
