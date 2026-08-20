@@ -3,11 +3,11 @@ import { Meta } from '@storybook/addon-docs/blocks'
 <Meta title="Getting started/Introduction" />
 
 <div className="flex flex-col gap-4">
-  <h1 className="type-h2 text-void-90">kern</h1>
-  <div className="type-p-lg text-void-60 max-w-[60ch]">
+  <h1 className="type-h2 text-ink-title">kern</h1>
+  <div className="type-p-lg text-ink-body max-w-[60ch]">
     The design system behind the hipuku experiments — a small, opinionated set of
-    tokens and components shared by <strong className="text-void-80">hexicon</strong>,{' '}
-    <strong className="text-void-80">specifi</strong> and <strong className="text-void-80">gray-scott</strong>.
+    tokens and components shared by <strong className="text-ink-strong">hexicon</strong>,{' '}
+    <strong className="text-ink-strong">specifi</strong> and <strong className="text-ink-strong">gray-scott</strong>.
   </div>
 </div>
 
@@ -32,15 +32,15 @@ the ones above.
 <div className="flex flex-col gap-2 my-6">
   {[
     ['Tokens',    'The values everything else is built from — colour, type, spacing, motion. Generated from one source file.'],
-    ['Atoms',     'Single-purpose primitives. Depend on tokens only. Button, StatusChip, InlineCode…'],
-    ['Molecules', 'Small compositions of atoms plus layout. StatCard, ParamSlider, DataTable…'],
+    ['Atoms',     'Single-purpose primitives. Depend on tokens only. Button, Input, Label, StatusChip…'],
+    ['Molecules', 'Small compositions of atoms plus layout. Field, StatCard, ParamSlider, DataTable…'],
     ['Organisms', 'Full regions of the interface, which may own local state. AppSidebar.'],
     ['Templates', 'Page structure, independent of the content that fills it. AppShell.'],
     ['Utilities', 'Behaviour with no UI of its own in the ordinary case. ErrorBoundary.'],
   ].map(([name, description]) => (
     <div key={name} className="flex gap-4 items-baseline">
-      <span className="type-annotation-sc text-void-90 w-24 shrink-0">{name}</span>
-      <span className="type-p-sm text-void-60">{description}</span>
+      <span className="type-annotation-sc text-ink-title w-24 shrink-0">{name}</span>
+      <span className="type-p-sm text-ink-body">{description}</span>
     </div>
   ))}
 </div>
@@ -70,9 +70,9 @@ re-litigate them.
 - **Every experiment picks one accent** as its `--primary`. Components reference
   the semantic role, never a named colour, so retinting is a one-line change.
 
-<div className="h-px bg-void-20 my-10" />
+<div className="h-px bg-line-subtle my-10" />
 
-<p className="type-annotation text-void-50">
+<p className="type-annotation text-ink-muted">
   Source on <a href="https://github.com/hipuku/kern" className="text-(--link)">GitHub</a>.
   Architecture and the reasoning behind these decisions are in <code className="type-code">DESIGN.md</code>.
 </p>

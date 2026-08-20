@@ -37,12 +37,12 @@ Atomic design, one direction of dependency only:
 
 ```
 atoms/       Single-purpose primitives. Depend on tokens only.
-             BulletItem, Button, CopyButton, ExternalLink, HipukuLogo,
-             IconButton, Icons (custom brand SVGs), InlineCode, StatusChip,
-             ToggleChip
+             BulletItem, Button, CopyButton, ExternalLink, IconButton,
+             Icons (custom brand SVGs), InlineCode, Input, Label, Logo,
+             StatusChip, Textarea, ToggleChip, Wordmark
 molecules/   Composed from atoms + layout.
-             CalloutCard, Colophon, DataTable, ParamSlider, Section, SocialBar,
-             StatCard, ToolLink, ViewHeader
+             CalloutCard, Colophon, DataTable, Field, ParamSlider, Section,
+             SocialBar, StatCard, ToolLink, ViewHeader
 organisms/   Full UI regions; may own local state.
              AppSidebar
 templates/   Page structure, independent of the content that fills it.

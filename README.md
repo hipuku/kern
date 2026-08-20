@@ -4,7 +4,7 @@ The shared component library and design tokens behind the hipuku experiments —
 
 ## Features
 
-- **22 components** across atoms, molecules, organisms, templates and utilities, each with a Storybook story.
+- **27 components** across atoms, molecules, organisms, templates and utilities, each with a Storybook story.
 - **One token source.** Every value is declared once in `src/tokens/tokens.ts`; the CSS is generated from it and the Storybook token pages render from it, so the documentation cannot drift from what ships.
 - **Source-only distribution.** No build, no bundle. Consumers alias `@kern/*` straight at the source tree, so there is never a stale compiled copy to reason about.
 - **A real public API.** `src/index.ts` and the per-layer barrels are the supported surface; file paths are not.
