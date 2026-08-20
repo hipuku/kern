@@ -25,7 +25,7 @@ export function ExternalLink({ href, children, className, ...props }: ExternalLi
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'cursor-pointer text-(--link) underline underline-offset-[3px] rounded',
+        'cursor-pointer text-(--link) underline underline-offset-[3px] rounded-inline',
         'hover:opacity-80 transition-opacity duration-(--duration-fast)',
         focusRing,
         className,

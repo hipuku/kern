@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from 'react'
 import { cn } from '../lib/utils'
-import { HipukuLogo, type HoverFills } from '../atoms/HipukuLogo'
+import { Logo, type HoverFills } from '../atoms/Logo'
 
 export interface ColophonProps extends ComponentPropsWithRef<'div'> {
   /** The experiment's name, as it should read in the credit line. */
@@ -19,7 +19,7 @@ export interface ColophonProps extends ComponentPropsWithRef<'div'> {
  * The credit line at the foot of the sidebar: "2026 © specifi by hipuku".
  *
  * Each experiment used to assemble this by hand from a `<span>` and a
- * `HipukuLogo`, which is exactly the kind of small, repeated, always-identical
+ * `Logo`, which is exactly the kind of small, repeated, always-identical
  * markup a component library exists to absorb.
  */
 export function Colophon({
@@ -32,7 +32,7 @@ export function Colophon({
   return (
     <div className={cn('flex items-center gap-2', className)} {...props}>
       <span>{year} © {name} by</span>
-      <HipukuLogo hoverFills={hoverFills} />
+      <Logo hoverFills={hoverFills} />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { useId, type ComponentPropsWithRef } from 'react'
 import { cn } from '../lib/utils'
 import { focusRing } from '../lib/focus'
+import { Label } from '../atoms/Label'
 
 export interface ParamSliderProps
   extends Omit<ComponentPropsWithRef<'input'>, 'onChange' | 'value' | 'type'> {
@@ -48,9 +49,7 @@ export function ParamSlider({
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
       <div className="flex items-center justify-between">
-        <label htmlFor={id} className="type-annotation-sc text-ink-body cursor-pointer">
-          {label}
-        </label>
+        <Label htmlFor={id} className="cursor-pointer">{label}</Label>
         <span aria-hidden="true" className="type-code text-ink-strong">{format(value)}</span>
       </div>
       <input

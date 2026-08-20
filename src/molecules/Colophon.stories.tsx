@@ -15,7 +15,7 @@ const meta = {
       description: {
         component:
           'The credit line at the foot of the sidebar. Each experiment used to assemble this by hand from a span ' +
-          'and a HipukuLogo, with the year hardcoded — so every footer would have quietly gone stale on 1 January.',
+          'and a Logo, with the year hardcoded — so every footer would have quietly gone stale on 1 January.',
       },
     },
   },

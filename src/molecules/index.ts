@@ -2,6 +2,7 @@
 export { CalloutCard, type CalloutCardProps } from './CalloutCard'
 export { Colophon, type ColophonProps } from './Colophon'
 export { DataTable, type DataTableProps } from './DataTable'
+export { Field, type FieldProps } from './Field'
 export { ParamSlider, type ParamSliderProps } from './ParamSlider'
 export { Section, type SectionProps } from './Section'
 export { SocialBar, type SocialBarProps } from './SocialBar'

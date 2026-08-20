@@ -1,14 +1,21 @@
 import { useState, type CSSProperties } from 'react'
+import { cn } from '../lib/utils'
+import { focusRing } from '../lib/focus'
 
+/**
+ * The three colour pairs the lettermark animates to on hover, one per syllable.
+ */
 export interface HoverFills {
   hi: string   // CSS color for h + i
   pu: string   // CSS color for p + u1
   ku: string   // CSS color for k + u2
 }
 
-export interface HipukuLogoProps {
-  href?: string
+export interface LogoProps {
+  /** Where the mark links. Pass `null` to render it as a plain, non-linked mark. */
+  href?: string | null
   className?: string
+  /** Retints the hover animation to an experiment's own palette. */
   hoverFills?: HoverFills
 }
 
@@ -18,7 +25,18 @@ const DEFAULT_FILLS: HoverFills = {
   ku: 'var(--color-tidal)',
 }
 
-export function HipukuLogo({ href = 'https://hipuku.dev', className, hoverFills = DEFAULT_FILLS }: HipukuLogoProps) {
+/**
+ * The hipuku brand lettermark, with its per-letter hover animation.
+ *
+ * Named `Logo` rather than `HipukuLogo`: a design system should not carry a
+ * component named after one brand, and within this system there is only one
+ * logo. An experiment's own wordmark is a `Wordmark`.
+ *
+ * The animation is CSS, in `styles/logo.css` — `@property` registrations and
+ * keyframes cannot be expressed as utilities. It is suppressed wholesale under
+ * `prefers-reduced-motion`.
+ */
+export function Logo({ href = 'https://hipuku.dev', className, hoverFills = DEFAULT_FILLS }: LogoProps) {
   const [hovered, setHovered] = useState(false)
 
   const hoverVars: CSSProperties = hovered ? {
@@ -30,14 +48,13 @@ export function HipukuLogo({ href = 'https://hipuku.dev', className, hoverFills 
     '--fill-u2': hoverFills.ku,
   } as CSSProperties : {}
 
-  return (
-    <a href={href} aria-label="hipuku" style={{ display: 'inline-flex' }}>
-      <svg
+  const mark = (
+    <svg
         width="64" height="21" viewBox="0 0 105 35"
         fill="none" overflow="visible"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
-        className={['hipuku-logo', className].filter(Boolean).join(' ')}
+        className={cn('brand-logo', className)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{ cursor: 'pointer', ...hoverVars }}
@@ -55,6 +72,20 @@ export function HipukuLogo({ href = 'https://hipuku.dev', className, hoverFills 
           <path className="logo-u2" d="M99.7447 24.452V8.29681H104.534V26.9815H102.274C101.51 26.9815 100.891 26.7567 100.419 26.307C99.9695 25.8348 99.7447 25.2165 99.7447 24.452ZM93.9437 27.2176C92.4597 27.2176 91.1668 26.9028 90.0651 26.2732C88.9858 25.6437 88.1539 24.733 87.5693 23.5414C86.9847 22.3497 86.6924 20.9107 86.6924 19.2243V8.29681H91.4142V18.4149C91.4142 19.9213 91.7964 21.0905 92.5609 21.9225C93.3253 22.7319 94.3259 23.1366 95.5626 23.1366C96.417 23.1366 97.159 22.923 97.7885 22.4958C98.4181 22.0461 98.9015 21.4391 99.2388 20.6746C99.5761 19.9101 99.7447 19.0444 99.7447 18.0776L100.487 19.0557C100.419 20.9219 100.071 22.4621 99.4411 23.6763C98.8341 24.8904 98.0471 25.7898 97.0803 26.3744C96.1359 26.9365 95.0904 27.2176 93.9437 27.2176Z" />
         </g>
       </svg>
+  )
+
+  if (href == null) return mark
+
+  return (
+    <a
+      href={href}
+      aria-label="hipuku"
+      // The lettermark is aria-hidden, so the anchor carries the name. It also
+      // needs a visible focus indicator: this was an interactive element with
+      // no focus treatment at all, invisible to anyone navigating by keyboard.
+      className={cn('inline-flex rounded-inline', focusRing)}
+    >
+      {mark}
     </a>
   )
 }

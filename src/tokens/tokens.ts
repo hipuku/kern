@@ -58,13 +58,25 @@ export type AccentName = keyof typeof palette
 export const accentNames = Object.keys(palette) as AccentName[]
 
 /**
- * The opacity, in percent, of an accent used as a background wash — chips,
- * badges, the active state of a toggle. Declared here so the value is stated
- * once even though Tailwind requires the class itself (`bg-nebula/15`) to be
- * written literally to be scannable. `accent.test.ts` asserts every tint class
- * in `lib/accent.ts` uses this number.
+ * The three opacities at which an accent is used as chrome rather than as text.
+ *
+ * Only `tint` was declared before; `Button`'s accent variant carried a bare
+ * `/25` and `/40` that no token described, which meant two thirds of the accent
+ * chrome system was undocumented and unenforceable. Tailwind needs the class
+ * itself written literally to be scannable, so these cannot be interpolated in —
+ * `accent.test.ts` and `Button`'s own test assert the literals match.
  */
-export const accentTintPercent = 15
+export const accentOpacity = {
+  /** Background wash for chips, badges and the resting state of a toggle. */
+  tint: 15,
+  /** The same wash, on hover. */
+  tintHover: 25,
+  /** Border of an accent-carrying control. */
+  border: 40,
+} as const
+
+/** @deprecated Use `accentOpacity.tint`. Kept so the name resolves during migration. */
+export const accentTintPercent = accentOpacity.tint
 
 /**
  * The neutral ramp, dark to light. `void-0` is the page background and

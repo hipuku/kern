@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { HipukuLogo } from './HipukuLogo'
+import { Logo } from './Logo'
 
 const meta = {
-  title: 'Atoms/HipukuLogo',
-  component: HipukuLogo,
+  title: 'Atoms/Logo',
+  component: Logo,
   tags: ['autodocs'],
-} satisfies Meta<typeof HipukuLogo>
+} satisfies Meta<typeof Logo>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -15,7 +15,7 @@ export const HexiconPalette: Story = {
   render: () => (
     <div className="flex items-center gap-2 type-p-sm text-void-60">
       <span>2026 © hexicon by</span>
-      <HipukuLogo />
+      <Logo />
     </div>
   ),
 }
@@ -25,7 +25,7 @@ export const SpecifiPalette: Story = {
   render: () => (
     <div className="flex items-center gap-2 type-p-sm text-void-60">
       <span>2026 © specifi by</span>
-      <HipukuLogo hoverFills={{ hi: 'var(--color-orbit)', pu: 'var(--color-solstice)', ku: 'var(--color-supernova)' }} />
+      <Logo hoverFills={{ hi: 'var(--color-orbit)', pu: 'var(--color-solstice)', ku: 'var(--color-supernova)' }} />
     </div>
   ),
 }
@@ -35,7 +35,7 @@ export const GrayScottPalette: Story = {
   render: () => (
     <div className="flex items-center gap-2 type-p-sm text-void-60">
       <span>2026 © gray-scott by</span>
-      <HipukuLogo hoverFills={{ hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' }} />
+      <Logo hoverFills={{ hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' }} />
     </div>
   ),
 }

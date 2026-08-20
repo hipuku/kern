@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { createRef } from 'react'
 import { Button } from './Button'
+import { accentOpacity } from '../tokens/tokens'
 
 describe('Button', () => {
   it('defaults to type="button" so it does not submit a surrounding form', async () => {
@@ -49,6 +50,17 @@ describe('Button', () => {
     expect(button).toHaveClass('mt-4')
     // Still carries its variant classes.
     expect(button.className).toMatch(/bg-surface-raised/)
+  })
+
+  it('uses the declared accent opacities, not ad-hoc ones', () => {
+    // The accent variant carried a bare /25 and /40 that no token described.
+    // Tailwind needs these written literally to scan them, so this is what
+    // keeps the literals and tokens.ts agreeing.
+    render(<Button variant="accent">Accent</Button>)
+    const cls = screen.getByRole('button', { name: 'Accent' }).className
+    expect(cls).toContain(`bg-(--primary)/${accentOpacity.tint}`)
+    expect(cls).toContain(`hover:bg-(--primary)/${accentOpacity.tintHover}`)
+    expect(cls).toContain(`border-(--primary)/${accentOpacity.border}`)
   })
 
   it('has no axe violations across variants', async () => {

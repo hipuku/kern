@@ -33,7 +33,7 @@ export {
   zIndexRoles,
   breakpoints,
   fontWeights,
-  accentTintPercent,
+  accentOpacity,
   easing,
   duration,
   surfaceRoles,

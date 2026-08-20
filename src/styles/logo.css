@@ -1,5 +1,5 @@
 /*
- * HipukuLogo — the per-letter hover animation.
+ * Logo — the per-letter hover animation on the brand lettermark.
  *
  * Component CSS, not tokens: it lives here rather than in the component file
  * because @property registrations and keyframes cannot be expressed as Tailwind
@@ -37,12 +37,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .hipuku-logo:hover .logo-h  { animation: letter-bounce 0.55s linear 0ms   both; }
-  .hipuku-logo:hover .logo-i  { animation: letter-bounce 0.55s linear 45ms  both; }
-  .hipuku-logo:hover .logo-p  { animation: letter-bounce 0.55s linear 90ms  both; }
-  .hipuku-logo:hover .logo-u1 { animation: letter-bounce 0.55s linear 135ms both; }
-  .hipuku-logo:hover .logo-k  { animation: letter-bounce 0.55s linear 180ms both; }
-  .hipuku-logo:hover .logo-u2 { animation: letter-bounce 0.55s linear 225ms both; }
+  .brand-logo:hover .logo-h  { animation: letter-bounce 0.55s linear 0ms   both; }
+  .brand-logo:hover .logo-i  { animation: letter-bounce 0.55s linear 45ms  both; }
+  .brand-logo:hover .logo-p  { animation: letter-bounce 0.55s linear 90ms  both; }
+  .brand-logo:hover .logo-u1 { animation: letter-bounce 0.55s linear 135ms both; }
+  .brand-logo:hover .logo-k  { animation: letter-bounce 0.55s linear 180ms both; }
+  .brand-logo:hover .logo-u2 { animation: letter-bounce 0.55s linear 225ms both; }
 }
 
 @media (prefers-reduced-motion: reduce) {

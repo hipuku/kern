@@ -1,5 +1,5 @@
 import { accentTint, accentText, accentTextHover, accentColours } from './accent'
-import { accentTintPercent, accentNames, palette } from '../tokens/tokens'
+import { accentOpacity, accentNames, palette } from '../tokens/tokens'
 import { contrastRatio } from './colour'
 import { voidScale, surfaceRoles } from '../tokens/tokens'
 
@@ -18,8 +18,8 @@ describe('accent maps', () => {
     // the shared value cannot be interpolated in. This is what keeps the
     // literals honest against the number declared in tokens.ts.
     for (const name of accentNames) {
-      expect(accentTint[name], `${name} tint does not use /${accentTintPercent}`)
-        .toBe(`bg-${name}/${accentTintPercent}`)
+      expect(accentTint[name], `${name} tint does not use /${accentOpacity.tint}`)
+        .toBe(`bg-${name}/${accentOpacity.tint}`)
     }
   })
 

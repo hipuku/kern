@@ -46,6 +46,9 @@ export function DataTable({ columns, rows, caption, className, ...props }: DataT
             {columns.map((col) => (
               // scope="col" is what lets a screen reader announce the column
               // heading with each cell as the user moves across a row.
+              // Not the Label atom: a <th> is already the naming element for
+              // its column, and wrapping one in a <label> or <span> would add a
+              // redundant node. It borrows the same type role.
               <th key={col} scope="col" className="text-left px-4 py-2 type-annotation-sc text-ink-body">
                 {col}
               </th>

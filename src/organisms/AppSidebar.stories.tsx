@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Info, Hash, Map, GitCompare, Search, ListChecks } from 'lucide-react'
 import { AppSidebar } from './AppSidebar'
-import { HipukuLogo } from '../atoms/HipukuLogo'
+import { Logo } from '../atoms/Logo'
 import { SocialBar } from '../molecules/SocialBar'
 
 const meta = {
@@ -85,7 +85,7 @@ export const Hexicon: Story = {
         onNavigate={setActive}
         accentActiveClass="text-pulsar"
         social={<SocialBar siteName="hexicon" githubUrl="https://github.com/hipuku/hexicon" />}
-        colophon={<div className="flex items-center gap-2"><span>2026 © hexicon by</span><HipukuLogo /></div>}
+        colophon={<div className="flex items-center gap-2"><span>2026 © hexicon by</span><Logo /></div>}
       />
     )
   },
@@ -102,7 +102,7 @@ export const Specifi: Story = {
         onNavigate={setActive}
         accentActiveClass="text-solstice"
         social={<SocialBar siteName="specifi" githubUrl="https://github.com/hipuku/specifi" />}
-        colophon={<div className="flex items-center gap-2"><span>2026 © specifi by</span><HipukuLogo hoverFills={SPECIFI_HOVER_FILLS} /></div>}
+        colophon={<div className="flex items-center gap-2"><span>2026 © specifi by</span><Logo hoverFills={SPECIFI_HOVER_FILLS} /></div>}
       />
     )
   },
@@ -144,7 +144,7 @@ export const KeyboardNav: Story = {
         social={<SocialBar siteName="hexicon" githubUrl="https://github.com/hipuku/hexicon" />}
         colophon={
           <div className="flex items-center gap-2">
-            <span>2026 © hexicon by</span><HipukuLogo />
+            <span>2026 © hexicon by</span><Logo />
           </div>
         }
       />

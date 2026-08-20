@@ -1,6 +1,7 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react'
 import { cn } from '../lib/utils'
 import { StatusChip } from '../atoms/StatusChip'
+import { Label } from '../atoms/Label'
 import type { AccentColour } from '../lib/accent'
 
 export interface StatCardProps extends ComponentPropsWithRef<'div'> {
@@ -40,7 +41,8 @@ export function StatCard({
       className={cn('flex flex-col gap-2 p-4 rounded-card border bg-surface-raised border-line', className)}
       {...props}
     >
-      <span className="type-annotation-sc text-ink-body">{label}</span>
+      {/* as="span": this names the card, not a form control. */}
+      <Label as="span">{label}</Label>
       <div className="flex items-baseline gap-2">
         <span className="type-h4 text-ink-title">{value}</span>
         {badge && <StatusChip colour={badgeColour}>{badge}</StatusChip>}
