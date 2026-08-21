@@ -15,6 +15,14 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children
   error?: string
   /** Shown below the control when there is no error. */
   hint?: string
+  /**
+   * Trailing content in the label row, set hard right — a live count, a detected
+   * format, a status. Style it yourself (`type-annotation text-ink-muted`); the
+   * field only places it. Purely visual meta, so it is *not* wired into the
+   * control's accessible description: the label row would otherwise read the
+   * count aloud as part of the field's name.
+   */
+  aside?: ReactNode
 }
 
 /**
@@ -35,14 +43,21 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children
  * </Field>
  * ```
  */
-export function Field({ label, children, error, hint, className, ...props }: FieldProps) {
+export function Field({ label, children, error, hint, aside, className, ...props }: FieldProps) {
   const id = useId()
   const messageId = `${id}-message`
   const message = error ?? hint
 
   return (
     <div className={cn('flex flex-col gap-field', className)} {...props}>
-      <Label htmlFor={id}>{label}</Label>
+      {aside != null ? (
+        <div className="flex items-baseline justify-between gap-2">
+          <Label htmlFor={id}>{label}</Label>
+          {aside}
+        </div>
+      ) : (
+        <Label htmlFor={id}>{label}</Label>
+      )}
       {children({ id, 'aria-describedby': message ? messageId : undefined })}
       {message && (
         <p

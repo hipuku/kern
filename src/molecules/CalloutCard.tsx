@@ -1,5 +1,6 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react'
 import { cn } from '../lib/utils'
+import { Card } from '../atoms/Card'
 import { accentText, type AccentColour } from '../lib/accent'
 
 export interface CalloutCardProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
@@ -18,17 +19,11 @@ export interface CalloutCardProps extends Omit<ComponentPropsWithRef<'div'>, 'ti
  */
 export function CalloutCard({ colour, label, children, className, ...props }: CalloutCardProps) {
   return (
-    <div
-      className={cn(
-        'rounded-card px-4 py-3 bg-surface-raised border border-line flex flex-col gap-1',
-        className,
-      )}
-      {...props}
-    >
+    <Card padding="sm" className={cn('flex flex-col gap-1', className)} {...props}>
       {label != null && (
         <p className={cn('type-annotation', accentText[colour])}>{label}</p>
       )}
       <p className="type-annotation text-ink-body">{children}</p>
-    </div>
+    </Card>
   )
 }

@@ -42,6 +42,19 @@ describe('Field', () => {
     expect(screen.getByLabelText('Selector')).toHaveAccessibleDescription('Unclosed bracket')
   })
 
+  it('renders aside content without folding it into the accessible name', () => {
+    render(
+      <Field label="Palette input" aside={<span>4 colours found</span>}>
+        {(c) => <Input {...c} />}
+      </Field>,
+    )
+    // The meta is on the page…
+    expect(screen.getByText('4 colours found')).toBeInTheDocument()
+    // …but the field's name is still just its label, not "Palette input 4 colours found".
+    expect(screen.getByLabelText('Palette input')).toBeInTheDocument()
+    expect(screen.queryByLabelText(/4 colours found/)).not.toBeInTheDocument()
+  })
+
   it('has no axe violations', async () => {
     const { container } = render(
       <Field label="Hex code" error="Not a valid hex code">

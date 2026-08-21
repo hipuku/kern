@@ -1,6 +1,7 @@
-import { useState, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import { cn } from '../lib/utils'
 import { AppSidebar, type NavItem } from '../organisms/AppSidebar'
+import { ViewportGate } from './ViewportGate'
 import { ErrorBoundary } from '../utils/ErrorBoundary'
 
 export interface AppShellProps {
@@ -20,6 +21,12 @@ export interface AppShellProps {
   /** Class for the `<main>` scroll region, if a view needs different padding. */
   mainClassName?: string
   /**
+   * On-brand copy for the desktop-only notice shown below the `lg` breakpoint.
+   * Defaults to `ViewportGate`'s plain message; pass a node for something with
+   * the experiment's own voice.
+   */
+  smallScreenNotice?: ReactNode
+  /**
    * Wrap the tree in an `ErrorBoundary`. On by default: a render error in one
    * view should show a recoverable fallback rather than a blank page.
    */
@@ -34,13 +41,13 @@ export interface AppShellProps {
  * structure lives — the arrangement of regions, independent of what fills them.
  * kern had no such layer, so all three experiments hand-wrote the same
  * `App.tsx`: the same flex container, the same `<main>` classes, the same
- * `mobileOpen` state and toggle, the same `ErrorBoundary` wrapper. Four copies
- * of a layout is four places for it to drift.
+ * `ErrorBoundary` wrapper. Three copies of a layout is three places for it to
+ * drift.
  *
- * The mobile open/closed state is owned here rather than lifted to the
- * consumer. It is presentation state with no meaning outside this layout, and
- * every experiment previously declared the identical `useState` to feed it
- * straight back in.
+ * **Desktop-only.** The whole shell is wrapped in a `ViewportGate`, so below the
+ * `lg` breakpoint the viewer gets a short notice instead of a squeezed layout.
+ * kern used to carry a responsive sidebar collapse here; these tools are not
+ * built for small screens, so it now says so plainly rather than degrading.
  */
 export function AppShell({
   logo,
@@ -52,33 +59,26 @@ export function AppShell({
   colophon,
   children,
   mainClassName,
+  smallScreenNotice,
   errorBoundary = true,
 }: AppShellProps) {
-  const [mobileOpen, setMobileOpen] = useState(false)
-
   const shell = (
-    <div className="flex h-screen overflow-hidden bg-background text-foreground">
-      <AppSidebar
-        logo={logo}
-        navItems={navItems}
-        activeId={activeId}
-        onNavigate={onNavigate}
-        accentActiveClass={accentActiveClass}
-        social={social}
-        colophon={colophon}
-        mobileOpen={mobileOpen}
-        onMobileToggle={() => setMobileOpen((open) => !open)}
-      />
-      {/*
-        max-lg:pt-16 clears the hamburger, which is `fixed top-4 left-4` and so
-        sits above the content rather than in the flow. AppSidebar already
-        indents its own logo for this; every experiment's <main> did not, and
-        the first line of every view was overlapped on mobile.
-      */}
-      <main className={cn('flex-1 h-full overflow-y-auto p-10 max-lg:pt-16', mainClassName)}>
-        {children}
-      </main>
-    </div>
+    <ViewportGate notice={smallScreenNotice}>
+      <div className="flex h-screen overflow-hidden bg-background text-foreground">
+        <AppSidebar
+          logo={logo}
+          navItems={navItems}
+          activeId={activeId}
+          onNavigate={onNavigate}
+          accentActiveClass={accentActiveClass}
+          social={social}
+          colophon={colophon}
+        />
+        <main className={cn('flex-1 h-full overflow-y-auto p-10', mainClassName)}>
+          {children}
+        </main>
+      </div>
+    </ViewportGate>
   )
 
   return errorBoundary ? <ErrorBoundary>{shell}</ErrorBoundary> : shell

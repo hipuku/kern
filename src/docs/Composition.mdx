@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Label } from '../atoms/Label'
+import { Input } from '../atoms/Input'
+import { StatusChip } from '../atoms/StatusChip'
+import { Field } from '../molecules/Field'
+import { Metric } from '../molecules/Metric'
+import { StatCard } from '../molecules/StatCard'
+
+<Meta title="Getting started/Composition" />
+
+<div className="flex flex-col gap-4">
+  <h1 className="type-h2 text-ink-title">Composition</h1>
+  <div className="type-p-lg text-ink-body max-w-[60ch]">
+    Atomic design is one rule read in one direction: <strong className="text-ink-strong">bigger
+    things are made of smaller things, and a layer only ever reaches down.</strong> This page
+    takes a single screen — specifi's <em>Analyse a selector</em> view — and rebuilds it one
+    layer at a time, so you can see where each part comes from.
+  </div>
+</div>
+
+The finished screen lives in **Templates → AppShell → A complete view**. Everything below is
+what it is made of.
+
+## 1. Atoms — the primitives
+
+Atoms depend on tokens and nothing else. On their own they do one small job.
+
+<div className="flex flex-wrap items-center gap-4 p-6 my-4 rounded-card border border-line bg-surface-raised">
+  <Label>Selector</Label>
+  <Input value="nav > ul li.active" readOnly className="max-w-xs" />
+  <StatusChip colour="orbit">class</StatusChip>
+</div>
+
+A `Label`, an `Input`, a `StatusChip`. None of them knows anything about the others, and none
+reaches up to a molecule or a view.
+
+## 2. Molecules — atoms plus a job
+
+A molecule is a few atoms wired together so the wiring can't be got wrong. `Field` composes a
+`Label` and whatever control you hand it, generating the `id` and `aria-describedby` so the
+label, the control and the error can never disagree:
+
+<div className="p-6 my-4 rounded-card border border-line bg-surface-raised">
+  <Field label="Selector" hint="Specificity is highest-wins per axis, never a carry.">
+    {(control) => <Input value="nav > ul li.active:not([hidden])::before" readOnly {...control} />}
+  </Field>
+</div>
+
+`Metric` composes the `Card` atom with a `Label` to make one figure in a results row; `StatCard`
+adds a `StatusChip` and a line of context. Same atoms, arranged for different jobs:
+
+<div className="grid grid-cols-2 gap-3 p-6 my-4 rounded-card border border-line bg-surface-raised">
+  <Metric label="[b] classes" value={2} valueClassName="type-h4 font-mono text-orbit" />
+  <StatCard label="Specificity" value="0,2,3" badge="class-heavy" badgeColour="orbit" sub="Two classes, three types." />
+</div>
+
+The point is that neither `Metric` nor `StatCard` re-implements a surface, a label or a chip.
+They *name* the atoms they need. If the `Card` surface changes, both change with it — that is
+the whole return on building down a layer instead of across.
+
+## 3. Organisms — a region that owns itself
+
+An organism is a whole region of the interface, and it may own local state. kern has one,
+`AppSidebar`: it arranges the `SocialBar` and `Colophon` **molecules** and the `Logo` and
+`IconLink` **atoms** into the navigation rail, and tracks which item is active.
+
+It is deliberately the only organism. With three small tools there is exactly one region big
+enough to earn the layer — inventing more to fill the shelf would make the word mean less. See
+it in **Organisms → AppSidebar**.
+
+## 4. Templates — the arrangement, not the content
+
+A template is page structure with the content left as slots. `AppShell` places the `AppSidebar`
+organism beside a scrolling `<main>`, wraps the whole thing in a `ViewportGate` (desktop-only)
+and an `ErrorBoundary`, and fills the main region with a `ViewContainer` — itself a template,
+the centred column a view stacks into.
+
+Drop the molecules of section 2 into that column and the screen is complete, without a line of
+bespoke layout:
+
+<div className="flex flex-col gap-2 my-6">
+  {[
+    ['Template', 'AppShell → ViewportGate + AppSidebar + main + ViewContainer'],
+    ['Organism', 'AppSidebar (+ SocialBar, Colophon molecules)'],
+    ['Molecules', 'ViewHeader, Field, Section, Metric, CalloutCard, DataTable, BulletList'],
+    ['Atoms', 'Wordmark, Input, Label, InlineCode, BulletItem, StatusChip'],
+    ['Tokens', 'colour, type, spacing, radius, motion'],
+  ].map(([layer, parts]) => (
+    <div key={layer} className="flex gap-4 items-baseline">
+      <span className="type-annotation-sc text-ink-title w-28 shrink-0">{layer}</span>
+      <span className="type-p-sm text-ink-body">{parts}</span>
+    </div>
+  ))}
+</div>
+
+Read top to bottom, every layer is spent on the one below it and never the reverse. That is the
+only structural rule kern enforces — and the reason a change to a token, an atom or a molecule
+reaches the whole system at once instead of being copied into it.
+
+<div className="h-px bg-line-subtle my-10" />
+
+<p className="type-annotation text-ink-muted">
+  The assembled result: <strong className="text-ink-strong">Templates → AppShell → A complete
+  view</strong>. Why the layer boundaries fall where they do: <strong className="text-ink-strong">Getting
+  started → Introduction</strong>.
+</p>

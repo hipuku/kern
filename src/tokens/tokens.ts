@@ -346,9 +346,9 @@ export type RadiusRole = keyof typeof radiusRoles
  * relationship between them had to be reconstructed by reading all three.
  */
 export const zIndexRoles = {
-  backdrop: { value: 30, description: 'The scrim behind an open mobile sidebar.' },
-  panel:    { value: 40, description: 'The sidebar panel itself, above the scrim.' },
-  control:  { value: 50, description: 'The hamburger, which stays reachable above the panel.' },
+  backdrop: { value: 30, description: 'A scrim behind a floating panel or overlay.' },
+  panel:    { value: 40, description: 'A floating panel, above the scrim.' },
+  control:  { value: 50, description: 'A control that must stay above a floating panel.' },
 } as const
 
 export type ZIndexRole = keyof typeof zIndexRoles

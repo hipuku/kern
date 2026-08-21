@@ -22,7 +22,7 @@ const preview: Preview = {
         // sidebar falls back to alphabetical, which puts Contributing before
         // Introduction and buries the front door.
         order: [
-          'Getting started', ['Introduction', 'Installation', 'Contributing'],
+          'Getting started', ['Introduction', 'Composition', 'Installation', 'Contributing'],
           'Tokens', ['Colours', 'Semantic roles', 'Typography', 'Spacing', 'Radius', 'Layout', 'Motion'],
           'Atoms', ['Icons', '*'],
           'Molecules',

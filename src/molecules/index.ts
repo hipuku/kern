@@ -1,8 +1,11 @@
 /** Molecules — composed from atoms plus layout. */
+export { BulletList, type BulletListProps } from './BulletList'
 export { CalloutCard, type CalloutCardProps } from './CalloutCard'
+export { ChipGroup, type ChipGroupProps } from './ChipGroup'
 export { Colophon, type ColophonProps } from './Colophon'
 export { DataTable, type DataTableProps } from './DataTable'
 export { Field, type FieldProps } from './Field'
+export { Metric, type MetricProps } from './Metric'
 export { ParamSlider, type ParamSliderProps } from './ParamSlider'
 export { Section, type SectionProps } from './Section'
 export { SocialBar, type SocialBarProps } from './SocialBar'
