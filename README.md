@@ -4,11 +4,20 @@ The shared component library and design tokens behind the hipuku experiments —
 
 ## Features
 
-- **27 components** across atoms, molecules, organisms, templates and utilities, each with a Storybook story.
+- **38 components** in four layers: 16 atoms, 16 molecules, 3 organisms and 3 templates, plus an `ErrorBoundary` utility. Every one has a Storybook story.
 - **One token source.** Every value is declared once in `src/tokens/tokens.ts`; the CSS is generated from it and the Storybook token pages render from it, so the documentation cannot drift from what ships.
 - **Source-only distribution.** No build, no bundle. Consumers alias `@kern/*` straight at the source tree, so there is never a stale compiled copy to reason about.
 - **A real public API.** `src/index.ts` and the per-layer barrels are the supported surface; file paths are not.
+- **Desktop only, gated in CSS.** These are wide-canvas tools, so v1 gates the whole app rather than asking each one to degrade its own layout. `templates/ViewportGate` renders the interface at `lg` and above and a short notice below it. The switch is `lg:` / `max-lg:`, not a `matchMedia` read held in state, so there is no resize listener to leak and no flash of the wrong branch on first paint.
 - **Accessible by default** — semantic HTML first, one shared focus ring, aria-labelled controls, a Storybook a11y addon on every story, and axe assertions on every test.
+
+## Relationship to haus
+
+kern and [haus](https://github.com/hipuku/haus) are both design systems, kept deliberately apart.
+
+haus is the full one: W3C DTCG tokens, four published npm packages, built to be consumed by anyone. kern is a lab layer, github-pinned and source-only, and it holds the specific set of parts three in-house tools actually share.
+
+Merging them would mean one contract serving two audiences, and the smaller one would lose. kern can make a breaking change on a Tuesday because it knows all three of its consumers by name, and a published package cannot. That freedom is the whole point of the split: v1 was a breaking rebuild, and it was adoptable one app at a time precisely because each consumer pins a tag rather than tracking a branch.
 
 ## Stack
 
@@ -31,7 +40,7 @@ kern is installed from GitHub and resolved via a Vite path alias — no build st
 
 ```jsonc
 // package.json
-"dependencies": { "kern": "github:hipuku/kern#v0.1.0" }
+"dependencies": { "kern": "github:hipuku/kern#v1.2.0" }
 ```
 
 ```ts

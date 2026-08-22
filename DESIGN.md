@@ -36,20 +36,28 @@ The matching `tsconfig` `paths` entry mirrors it for the type checker.
 Atomic design, one direction of dependency only:
 
 ```
-atoms/       Single-purpose primitives. Depend on tokens only.
-             BulletItem, Button, CopyButton, ExternalLink, IconButton,
-             Icons (custom brand SVGs), InlineCode, Input, Label, Logo,
-             StatusChip, Textarea, ToggleChip, Wordmark
-molecules/   Composed from atoms + layout.
-             CalloutCard, Colophon, DataTable, Field, ParamSlider, Section,
-             SocialBar, StatCard, ToolLink, ViewHeader
-organisms/   Full UI regions; may own local state.
-             AppSidebar
-templates/   Page structure, independent of the content that fills it.
-             AppShell
-utils/       Behaviour with no UI of its own in the ordinary case.
+atoms/       Single-purpose primitives. Depend on tokens only.              (16)
+             BulletItem, Button, Card, CopyButton, ExternalLink, IconButton,
+             IconLink, Icons (custom brand SVGs), InlineCode, Input, Label,
+             Logo, StatusChip, Textarea, ToggleChip, Wordmark
+molecules/   Composed from atoms + layout.                                  (16)
+             BulletList, CalloutCard, CanvasStage, ChipGroup, Colophon,
+             DataTable, EmptyState, Field, Metric, ParamSlider, Section,
+             SocialBar, StatCard, ToolLink, TransportControls, ViewHeader
+organisms/   Full UI regions; may own local state.                           (3)
+             AppSidebar, ToolView, Workbench
+templates/   Page structure, independent of the content that fills it.       (3)
+             AppShell, ViewContainer, ViewportGate
+utils/       Behaviour with no UI of its own in the ordinary case.           (1)
              ErrorBoundary
 ```
+
+**38 components across the four UI layers**, plus `ErrorBoundary`. The organisms and templates
+layers are v1 additions: before the rebuild there was one of each, and the three experiments were
+each hand-rolling the parts that are now `ToolView`, `Workbench`, `CanvasStage`,
+`TransportControls`, `Card`, `IconLink`, `BulletList`, `ChipGroup`, `Metric` and `EmptyState`. Those
+were the components most likely to drift, because every app had its own copy and no two were
+reviewed together.
 
 Atoms never import molecules or organisms; molecules may use atoms; organisms may use both; templates arrange organisms. `src/lib/` holds the shared foundations components compose rather than re-derive: `utils.ts` (the `cn()` class-merge helper), `focus.ts` (the focus ring), and `accent.ts` (the accent colour vocabulary). `src/tokens/` holds the token source and its Storybook documentation pages.
 
@@ -113,10 +121,20 @@ index.css                   Storybook's entry: Tailwind + kern.css + docs CSS
 kern is versioned by git tag, and consumers pin one:
 
 ```jsonc
-"kern": "github:hipuku/kern#v0.1.0"
+"kern": "github:hipuku/kern#v1.2.0"
 ```
 
 Until v1 the experiments depended on an unpinned `github:hipuku/kern`, which resolves to whatever `main` is at install time — so an unrelated change to the library could break an experiment on a routine reinstall, and no breaking change to kern was ever really safe. Pinning is what makes it possible to change an API properly instead of accumulating compatibility shims: tag a new major, and each experiment adopts on its own schedule by bumping one line.
+
+**v1 is released, at `v1.2.0`, and all three experiments are on it.** It was a breaking rebuild: the
+templates layer arrived (`AppShell`, `ViewContainer`, `ViewportGate`), organisms grew from one to
+three, and every component gained the API contract described above. specifi, hexicon and gray-scott
+each bumped `#v0.1.0` to `#v1.2.0` and adopted the new layers, one repository at a time.
+
+That staging is the argument for tag-pinning made concrete. A breaking change to a library three
+apps track by branch has to land everywhere at once, which in practice means it never lands. Pinned,
+the rebuild could ship, sit unused for as long as it needed to, and be adopted per app on whatever
+day suited that app.
 
 ## Open questions
 
