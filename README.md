@@ -4,12 +4,12 @@ The shared component library and design tokens behind the hipuku experiments, co
 
 ## Features
 
-- **38 components** in four layers: 16 atoms, 16 molecules, 3 organisms and 3 templates, plus an `ErrorBoundary` utility. 36 of them have a Storybook story; `Textarea` and `Field` are the two without one.
+- **38 components** in four layers: 16 atoms, 16 molecules, 3 organisms and 3 templates, plus an `ErrorBoundary` utility. Every one has its own Storybook story, and a test fails if one loses it.
 - **One token source.** Every value is declared once in `src/tokens/tokens.ts`; the CSS is generated from it and the Storybook token pages render from it, so the documentation cannot drift from what ships.
 - **Source-only distribution.** No build, no bundle. Consumers alias `@kern/*` straight at the source tree, so there is never a stale compiled copy to reason about.
 - **A public API.** `src/index.ts` and the per-layer barrels are the supported surface; file paths are not.
 - **Desktop only, gated in CSS.** These are wide-canvas tools, so v1 gates the whole app rather than asking each one to degrade its own layout. `templates/ViewportGate` renders the interface at `lg` and above and a short notice below it. The switch is `lg:` / `max-lg:` in CSS, so there is no resize listener to leak and no flash of the wrong branch on first paint.
-- **Accessible by default.** Semantic HTML first, one shared focus ring, aria-labelled controls, a Storybook a11y addon on every story, and axe assertions in all 14 component test suites. The other two test files cover the token contrast maths, where axe has nothing to look at.
+- **Accessible by default.** Semantic HTML first, one shared focus ring, aria-labelled controls, a Storybook a11y addon on every story, and axe assertions in every component test suite. The three remaining test files cover the accent vocabulary, the token contrast maths and the story coverage, where axe has nothing to look at.
 
 ## Relationship to haus
 
