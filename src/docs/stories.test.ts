@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { readdirSync } from 'node:fs'
+import { existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
 /**
@@ -15,7 +15,14 @@ import { join } from 'node:path'
  * would pass. It exists so the README's claim cannot quietly stop being true.
  */
 const LAYERS = ['atoms', 'molecules', 'organisms', 'templates', 'utils'] as const
-const SRC = new URL('..', import.meta.url).pathname
+
+/**
+ * Vitest runs from the project root, so the layers are one join away. This read
+ * `new URL('..', import.meta.url).pathname` until it was first run, which
+ * resolved to `/src/index.ts` under Vitest's module graph and made every case
+ * fail with ENOENT rather than with anything about stories.
+ */
+const SRC = join(process.cwd(), 'src')
 
 function componentsIn(layer: string): string[] {
   return readdirSync(join(SRC, layer))
@@ -24,6 +31,11 @@ function componentsIn(layer: string): string[] {
 }
 
 describe('every component has a story', () => {
+  it('resolves the source tree', () => {
+    // Fails with the path it tried, rather than an ENOENT inside a filter.
+    expect(existsSync(join(SRC, 'index.ts')), `no src/index.ts under ${SRC}`).toBe(true)
+  })
+
   for (const layer of LAYERS) {
     it(layer, () => {
       const files = new Set(readdirSync(join(SRC, layer)))
