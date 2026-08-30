@@ -5,7 +5,7 @@ import { experiments } from './wordmarks'
 
 describe('Wordmark', () => {
   it('uses the name as alt text', () => {
-    // A wordmark is meaningful content, not decoration — an unlabelled one
+    // A wordmark is meaningful content rather than decoration, so an unlabelled one
     // leaves a screen reader announcing the filename.
     render(<Wordmark src="/specifi.svg" name="specifi" />)
     expect(screen.getByAltText('specifi')).toBeInTheDocument()

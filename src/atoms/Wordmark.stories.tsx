@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'All three experiments hand-wrote this as a bare `<img>` in their App.tsx — and had already drifted: ' +
+          'All three experiments hand-wrote this as a bare `<img>` in their App.tsx, and had already drifted: ' +
           'hexicon rendered at `h-5` while specifi and gray-scott used `h-7`, so the sidebar header sat at a ' +
           'different height depending on which experiment you were looking at.\n\n' +
           'For the hipuku brand lettermark itself, use `Logo`.',
@@ -49,7 +49,7 @@ export const TheExperiments: Story = {
     docs: {
       description: {
         story:
-          'The actual marks the three experiments ship, at the shared `md` height — which is the drift this ' +
+          'The actual marks the three experiments ship, at the shared `md` height, which is the drift this ' +
           'atom exists to stop.',
       },
     },
@@ -73,7 +73,7 @@ export const Normalisation: Story = {
       description: {
         story:
           'Left: every mark at the same box height, which is what a shared `h-7` gives you. The marks read as ' +
-          'different sizes because the box is a typographic accident — "specifi" spends its height on the ' +
+          'different sizes because the box is a typographic accident: "specifi" spends its height on the ' +
           'descender of the p, "hexicon" on the ascender of the h. Measured at a uniform 28px box the ' +
           'x-heights came out 18.3, 14.9 and 16.3 px.\n\n' +
           'Right: the same marks normalised on x-height. The boxes now differ; the letterforms match.',
@@ -105,7 +105,7 @@ export const Normalisation: Story = {
 export const Linked: Story = {
   name: 'As a link',
   parameters: {
-    docs: { description: { story: 'Tab to it — a linked wordmark takes the standard focus ring.' } },
+    docs: { description: { story: 'Tab to it: a linked wordmark takes the standard focus ring.' } },
   },
   args: { href: 'https://kern.hipuku.dev' },
 }

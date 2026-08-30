@@ -24,7 +24,7 @@ const SPEEDS  = ['×1', '×4', '×8']
 /**
  * Bound to args rather than a render function, so the controls in the docs
  * panel actually drive it. Every story in this file used to be render-based,
- * which left the documented argTypes inert — a props table advertising
+ * which left the documented argTypes inert: a props table advertising
  * controls that did nothing.
  */
 export const Default: Story = {}

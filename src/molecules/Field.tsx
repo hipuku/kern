@@ -16,7 +16,7 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children
   /** Shown below the control when there is no error. */
   hint?: string
   /**
-   * Trailing content in the label row, set hard right — a live count, a detected
+   * Trailing content in the label row, set hard right: a live count, a detected
    * format, a status. Style it yourself (`type-annotation text-ink-muted`); the
    * field only places it. Purely visual meta, so it is *not* wired into the
    * control's accessible description: the label row would otherwise read the
@@ -31,7 +31,7 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children
  * The house pattern for this was documented in prose, and prose cannot enforce
  * the part that actually matters: connecting the label to the control. Every
  * hand-rolled copy had to remember `htmlFor`, a matching `id`, and
- * `aria-describedby` for the error — three things that fail silently when
+ * `aria-describedby` for the error, three things that fail silently when
  * missed, because the field still looks correct.
  *
  * The render-prop shape means the ids are generated here and handed to the

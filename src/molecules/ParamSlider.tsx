@@ -21,7 +21,7 @@ export interface ParamSliderProps
 const defaultFormat = (v: number) => v.toFixed(3)
 
 /**
- * A labelled range input with a live readout — the control the simulation
+ * A labelled range input with a live readout: the control the simulation
  * experiments are largely built from.
  *
  * The label is a real `<label htmlFor>` rather than an `aria-label` on the

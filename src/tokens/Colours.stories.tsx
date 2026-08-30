@@ -235,7 +235,7 @@ export const OklchPlot: Story = {
         title="OKLCH scale"
         description="Polar plot of all colours in the OKLCH colour space. Angle = hue, radius = chroma, colour = actual swatch."
       >
-        <TokenSection title="Polar plot — hue vs chroma">
+        <TokenSection title="Polar plot: hue vs chroma">
           <OklchPolarPlot points={points} size={400} />
         </TokenSection>
 

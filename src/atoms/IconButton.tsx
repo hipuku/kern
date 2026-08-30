@@ -17,7 +17,7 @@ export interface IconButtonProps extends Omit<ButtonProps, 'size' | 'children'> 
  *
  * A thin specialisation of `Button` rather than its own implementation: it
  * fixes `size` to `icon` and makes `aria-label` mandatory, and inherits
- * everything else — variants, focus ring, disabled handling, native button
+ * everything else: variants, focus ring, disabled handling, native button
  * props. It previously duplicated Button's styling and accepted only `onClick`.
  */
 export function IconButton({ children, ...props }: IconButtonProps) {

@@ -5,14 +5,14 @@ import { accentText, accentTextHover, type AccentColour } from '../lib/accent'
 export interface ToolLinkProps extends Omit<ButtonProps, 'variant' | 'size'> {
   /**
    * Tint the link with a specific accent. Omit to use the experiment's
-   * `--primary`, which is the usual case — pass one only when the link points
+   * `--primary`, which is the usual case. Pass one only when the link points
    * at something the palette already colour-codes.
    */
   colour?: AccentColour
 }
 
 /**
- * An in-prose control that navigates within the app — "compare these two",
+ * An in-prose control that navigates within the app: "compare these two",
  * "open this in the analyser".
  *
  * It looks like a link and behaves like a button, which is correct: it changes

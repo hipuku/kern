@@ -15,7 +15,7 @@ const meta = {
     docs: {
       description: {
         component:
-          '`type-annotation-sc text-ink-body` appeared 77 times across kern and the three experiments — the ' +
+          '`type-annotation-sc text-ink-body` appeared 77 times across kern and the three experiments, so the ' +
           'single most repeated class pair in the system, and one that had already drifted onto `text-ink-muted` ' +
           'in one place.\n\n' +
           'Small caps come from `font-variant-caps` via the type role, never from the `uppercase` class: ' +

@@ -8,7 +8,7 @@ export interface StatusChipProps extends ComponentPropsWithRef<'span'> {
 }
 
 /**
- * A small, non-interactive status label — a state, a category, a count
+ * A small, non-interactive status label: a state, a category, a count
  * qualifier. Not a button: if it can be clicked, reach for `ToggleChip`.
  *
  * The twelve-entry colour map this used to carry now lives in `lib/accent`,

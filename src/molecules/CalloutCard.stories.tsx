@@ -40,7 +40,7 @@ export const AllColours: Story = {
         Colours within ΔE 2.5 may be indistinguishable at small sizes.
       </CalloutCard>
       <CalloutCard colour="flare" label="Collision risk">
-        Two selectors have equal specificity and overlapping scope — source order is decisive.
+        Two selectors have equal specificity and overlapping scope, so source order is decisive.
       </CalloutCard>
       <CalloutCard colour="nebula" label="Clean palette">
         All colours are perceptually distinct and evenly spaced in OKLCH.

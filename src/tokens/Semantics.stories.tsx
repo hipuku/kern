@@ -41,7 +41,7 @@ export const Roles: Story = {
   render: () => (
     <TokenPage
       title="Semantic roles"
-      description="The named decisions components make. Reach for these, not for a void step — the primitives are the ramp, these are what the ramp is for."
+      description="The named decisions components make. Reach for these rather than for a void step. The primitives carry the values; these name the decisions."
     >
       <TokenSection title="Surfaces">
         <ScrollRegion label="Surface roles">
@@ -71,7 +71,7 @@ export const Roles: Story = {
       <TokenSection title="Ink on every surface it is allowed on">
         <p className="type-annotation text-ink-muted max-w-[62ch]">
           Each ink role declares which surfaces it may sit on, and the build fails if any of these
-          drops below 4.5:1. A blank cell is a pairing the system does not permit —{' '}
+          drops below 4.5:1. A blank cell is a pairing the system does not permit,{' '}
           <code className="type-code">ink-muted</code> is barred from the hover surface because it
           measures 3.8:1 there.
         </p>

@@ -25,7 +25,7 @@ const meta = {
         component:
           'The raised-panel surface (`rounded-card border bg-surface-raised border-line`) that `StatCard`, ' +
           '`CalloutCard` and the sidebar hamburger previously each spelled out by hand. It is deliberately only the ' +
-          'surface — flex, gap and typography stay with the consumer.',
+          'surface. Flex, gap and typography stay with the consumer.',
       },
     },
   },
@@ -43,9 +43,9 @@ export const Default: Story = {
 export const Padding: Story = {
   render: () => (
     <div className="flex flex-col gap-3 w-[320px]">
-      <Card padding="md" className="type-annotation text-ink-body">padding=&quot;md&quot; — p-4</Card>
-      <Card padding="sm" className="type-annotation text-ink-body">padding=&quot;sm&quot; — px-4 py-3</Card>
-      <Card padding="none" className="type-annotation text-ink-body p-2">padding=&quot;none&quot; — consumer supplies its own</Card>
+      <Card padding="md" className="type-annotation text-ink-body">padding=&quot;md&quot;: p-4</Card>
+      <Card padding="sm" className="type-annotation text-ink-body">padding=&quot;sm&quot;: px-4 py-3</Card>
+      <Card padding="none" className="type-annotation text-ink-body p-2">padding=&quot;none&quot;: consumer supplies its own</Card>
     </div>
   ),
 }

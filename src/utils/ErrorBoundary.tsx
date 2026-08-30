@@ -9,7 +9,7 @@ export interface ErrorBoundaryProps {
    * boundary.
    */
   fallback?: (error: Error, reset: () => void) => ReactNode
-  /** Called when an error is caught — for reporting to an external service. */
+  /** Called when an error is caught, for reporting to an external service. */
   onError?: (error: Error, info: ErrorInfo) => void
 }
 
@@ -21,7 +21,7 @@ interface ErrorBoundaryState {
  * Catches render errors below it and shows a recoverable fallback.
  *
  * **Filed under `utils/`, not `organisms/`.** It was previously an organism,
- * but it is not a region of the interface — it renders nothing of its own in
+ * but it is not a region of the interface: it renders nothing of its own in
  * the ordinary case, and its job is control flow. Atomic design classifies UI;
  * a component with no UI in its normal state does not belong in the hierarchy,
  * and putting it there made "organism" mean two different things.

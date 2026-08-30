@@ -14,7 +14,7 @@ export interface DataTableProps extends Omit<ComponentPropsWithRef<'table'>, 'ch
 }
 
 /**
- * A compact reference table — a legend, a lookup, a short comparison. Not a
+ * A compact reference table: a legend, a lookup, a short comparison. Not a
  * data grid: no sorting, no pagination, no virtualisation.
  *
  * Rows are `ReactNode[][]` rather than objects, because the tables this serves
@@ -24,7 +24,7 @@ export interface DataTableProps extends Omit<ComponentPropsWithRef<'table'>, 'ch
 export function DataTable({ columns, rows, caption, className, ...props }: DataTableProps) {
   return (
     // A container that scrolls must be reachable by keyboard, or a keyboard-only
-    // user cannot scroll it at all — there is nothing focusable inside a table
+    // user cannot scroll it at all, since there is nothing focusable inside a table
     // of plain text to arrow across. tabIndex makes it focusable; the labelled
     // region gives the resulting tab stop a name rather than announcing an
     // anonymous group.

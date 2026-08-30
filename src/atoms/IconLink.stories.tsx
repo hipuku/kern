@@ -50,7 +50,7 @@ export const Internal: Story = {
     docs: {
       description: {
         story:
-          'Without `external`, the link stays in the same tab and its accessible name is the bare `aria-label` — for ' +
+          'Without `external`, the link stays in the same tab and its accessible name is the bare `aria-label`, so ' +
           'a link that points within the site.',
       },
     },

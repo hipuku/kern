@@ -14,8 +14,8 @@ npm run tokens
 ```
 
 That writes `src/styles/primitives.css` and `src/styles/typography.css`. Both
-are committed — kern ships as source, so a consumer must never need to run a
-build — and both carry a `GENERATED FILE — DO NOT EDIT` banner. Editing them
+are committed, because kern ships as source and a consumer must never need to run
+a build, and both carry a `GENERATED FILE: DO NOT EDIT` banner. Editing them
 directly is pointless: the next regeneration overwrites your change, and CI
 fails first.
 
@@ -30,7 +30,7 @@ from the system cannot describe a system that no longer ships.
 `contrast.test.ts` asserts every permitted ink/surface pairing clears WCAG AA,
 so changing a colour to something inaccessible fails the build rather than
 shipping. If you need an ink role on a surface it does not currently declare,
-add the surface to its `surfaces` list — the test will tell you immediately
+add the surface to its `surfaces` list, and the test will tell you immediately
 whether that pairing is actually readable.
 
 ## Reaching for a colour
@@ -48,7 +48,7 @@ Use a **semantic role**, not a void step:
 | `border-void-30` | `border-line` |
 
 The primitives are the ramp; the roles are what the ramp is for. A component
-reaching for `void-40` directly is the tell that a role is missing — that step
+reaching for `void-40` directly is the tell that a role is missing: that step
 fails AA on every surface and exists only for borders.
 
 Likewise `rounded-card` / `rounded-control` / `rounded-inline` rather than
@@ -101,7 +101,7 @@ real bug in this library.
 ## Stories
 
 Use `tags: ['autodocs']` for a generated docs page with a props table. Write
-`argTypes` descriptions — they are the props table, and a table of undocumented
+`argTypes` descriptions. They are the props table, and a table of undocumented
 props is worse than none.
 
 Cover the states that are easy to get wrong, not just the happy path: disabled,

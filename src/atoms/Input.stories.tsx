@@ -15,8 +15,8 @@ const meta = {
     docs: {
       description: {
         component:
-          'The house input pattern was written down in DESIGN_SYSTEM.md — the surface, the border-only focus, ' +
-          'the placeholder rule, the error state — but existed only as prose, and three files across two ' +
+          'The house input pattern was written down in DESIGN_SYSTEM.md, the surface, the border-only focus, ' +
+          'the placeholder rule and the error state, but it existed only as prose, and three files across two ' +
           'experiments implemented it by hand.\n\n' +
           'Focus is a border change rather than a ring: this is the one deliberate exception to kern\'s focus ' +
           'treatment, because a ring drawn outside a full-width field crowds the fields above and below it.',

@@ -2,7 +2,7 @@
  * The consuming experiments, for stories that need a real wordmark.
  *
  * The sidebar and shell stories previously hand-transcribed hexicon's and
- * specifi's SVG paths inline — hundreds of characters of asset data duplicated
+ * specifi's SVG paths inline, hundreds of characters of asset data duplicated
  * into a story file, which goes stale silently the moment a mark is redrawn,
  * and gray-scott had no mark at all so its story used a text placeholder.
  * These are served from `brand/` as static assets instead.
@@ -29,7 +29,7 @@ export const experiments: ExperimentBrand[] = [
   {
     name: 'hexicon',
     src: '/brand/hexicon.svg',
-    // 15.7 / 24 — no descender, so the box is mostly ascender.
+    // 15.7 / 24, no descender, so the box is mostly ascender.
     xHeightRatio: 0.654,
     accentClass: 'text-pulsar',
     hoverFills: { hi: 'var(--color-pulsar)', pu: 'var(--color-orbit)', ku: 'var(--color-tidal)' },
@@ -37,7 +37,7 @@ export const experiments: ExperimentBrand[] = [
   {
     name: 'specifi',
     src: '/brand/specifi.svg',
-    // 18.6 / 35 — the p's descender makes this the tallest box of the three,
+    // 18.6 / 35. The p's descender makes this the tallest box of the three,
     // which is why it looked smallest at a shared box height.
     xHeightRatio: 0.531,
     accentClass: 'text-solstice',
@@ -46,7 +46,7 @@ export const experiments: ExperimentBrand[] = [
   {
     name: 'gray-scott',
     src: '/brand/gray-scott.svg',
-    // 16.3 / 28 — descenders on g and y.
+    // 16.3 / 28, descenders on g and y.
     xHeightRatio: 0.582,
     accentClass: 'text-nebula',
     hoverFills: { hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' },

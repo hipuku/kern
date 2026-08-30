@@ -11,7 +11,7 @@ export interface CalloutCardProps extends Omit<ComponentPropsWithRef<'div'>, 'ti
 }
 
 /**
- * A short aside in a view — a caveat, a definition, a rule of thumb.
+ * A short aside in a view: a caveat, a definition, a rule of thumb.
  *
  * Only the label carries the accent; the surface stays neutral so a column of
  * callouts in different colours still reads as one column rather than as a

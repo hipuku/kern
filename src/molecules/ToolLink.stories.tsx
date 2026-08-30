@@ -34,8 +34,8 @@ export const AllAccents: Story = {
   name: 'All accent colours',
   render: () => (
     <div className="flex flex-col gap-3">
-      <ToolLink onClick={() => {}} colour="pulsar">pulsar — hexicon primary →</ToolLink>
-      <ToolLink onClick={() => {}} colour="solstice">solstice — specifi primary →</ToolLink>
+      <ToolLink onClick={() => {}} colour="pulsar">pulsar, hexicon primary →</ToolLink>
+      <ToolLink onClick={() => {}} colour="solstice">solstice, specifi primary →</ToolLink>
       <ToolLink onClick={() => {}} colour="tidal">tidal →</ToolLink>
       <ToolLink onClick={() => {}} colour="orbit">orbit →</ToolLink>
       <ToolLink onClick={() => {}} colour="nebula">nebula →</ToolLink>

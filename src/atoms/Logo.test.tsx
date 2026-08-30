@@ -9,7 +9,7 @@ describe('Logo', () => {
   })
 
   it('carries a visible focus indicator', () => {
-    // It was an interactive element with no focus treatment at all — invisible
+    // It was an interactive element with no focus treatment at all, invisible
     // to anyone navigating by keyboard.
     render(<Logo />)
     expect(screen.getByRole('link', { name: 'hipuku' }).className).toMatch(/focus-visible:ring-2/)

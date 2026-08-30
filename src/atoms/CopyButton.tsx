@@ -30,7 +30,7 @@ export function CopyButton({ text, feedbackMs = 1500, className, ...props }: Cop
     } catch (err) {
       // Clipboard access is refused in insecure contexts and when the user
       // denies permission. Neither is exceptional, and neither should surface
-      // a false confirmation — so bail before setting the copied state.
+      // a false confirmation, so bail before setting the copied state.
       if (import.meta.env.DEV) console.warn('[CopyButton] clipboard write failed', err)
       return
     }

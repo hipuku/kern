@@ -16,7 +16,7 @@ const meta = {
     size: {
       control: 'select',
       options: ['sm', 'md', 'icon'],
-      description: '`icon` is square, for a single glyph — prefer the IconButton wrapper, which also requires an aria-label.',
+      description: '`icon` is square, for a single glyph. Prefer the IconButton wrapper, which also requires an aria-label.',
     },
     disabled: { control: 'boolean' },
     children: { control: 'text' },
@@ -26,7 +26,7 @@ const meta = {
       description: {
         component:
           'The button primitive. It extends the native `<button>`, so `type`, `disabled`, `title`, `aria-*` and every ' +
-          'event handler pass through — kern previously had no Button at all, and the three places that hand-rolled ' +
+          'event handler pass through. kern previously had no Button at all, and the three places that hand-rolled ' +
           'one each accepted only `onClick`.',
       },
     },
@@ -88,7 +88,7 @@ export const InAForm: Story = {
       description: {
         story:
           'Buttons default to `type="button"`, because an unspecified `type` inside a form is `"submit"` per the ' +
-          'HTML spec — which silently reloads the page when a design-system button is used for anything else. ' +
+          'HTML spec, which silently reloads the page when a design-system button is used for anything else. ' +
           'Opt in with `type="submit"` when you do want to submit.',
       },
     },

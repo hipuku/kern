@@ -14,7 +14,7 @@ type Story = StoryObj
 
 // Every column but the sample is read from the token source, so this table is
 // a rendering of the shipped CSS rather than a transcription of it. Only the
-// sample strings live here — they are editorial, not tokens.
+// sample strings live here. They are editorial rather than tokens.
 
 const SAMPLES: Record<TypeRole, string> = {
   'display':       'ΔE 12.4',

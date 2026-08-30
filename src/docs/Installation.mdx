@@ -10,7 +10,7 @@ and compile it as if it were their own code.
 
 That is a deliberate choice, not an omission. It removes the whole
 stale-artefact class of bug, removes the publish step between an edit and a
-consumer seeing it, and avoids fighting Tailwind's content scanning — which
+consumer seeing it, and avoids fighting Tailwind's content scanning, which
 cannot see inside a pre-built bundle.
 
 ## 1. Add the dependency
@@ -47,7 +47,7 @@ Mirror it in `tsconfig.json` so the type checker agrees with the bundler:
 
 Two lines, and both are required. Tailwind v4 only scans within the project
 root, so without the `@source` directive kern's utility classes are simply
-absent from your generated CSS — components render unstyled with no error.
+absent from your generated CSS, and components render unstyled with no error.
 
 ```css
 /* src/index.css */
@@ -56,7 +56,7 @@ absent from your generated CSS — components render unstyled with no error.
 @source "../node_modules/kern/src";
 ```
 
-`kern.css` is the full library — tokens plus the component CSS that cannot be
+`kern.css` is the full library: tokens plus the component CSS that cannot be
 expressed as utilities. If you want the token layer alone, import
 `kern/src/tokens.css` instead.
 
@@ -79,14 +79,14 @@ every shared component follows:
 import { AppShell, ToggleChip, StatCard } from 'kern'
 ```
 
-Prefer the package root. Layer barrels — `kern/atoms`, `kern/molecules` — exist
+Prefer the package root. Layer barrels (`kern/atoms`, `kern/molecules`) exist
 when you want to be explicit about which tier you are reaching into. Avoid
 deep-importing individual files: those paths are not part of the public API and
 components do move between layers.
 
 ## Local development
 
-To see kern edits live inside a consuming experiment, symlink it — the git
+To see kern edits live inside a consuming experiment, symlink it, since the git
 install is a copy, so edits to `node_modules/kern` are not edits to kern.
 
 ```bash
@@ -99,7 +99,7 @@ reinstall.
 
 ## Peer dependencies
 
-`react`, `react-dom` (both **>= 19**) and `lucide-react` are peers — the
+`react`, `react-dom` (both **>= 19**) and `lucide-react` are peers: the
 consumer owns the single copy. React 19 is required because kern's components
 take `ref` as an ordinary prop rather than through `forwardRef`.
 
@@ -114,5 +114,5 @@ alias: {
 ```
 
 This is also why `NavItem.icon` is typed as `ComponentType<{ className?: string }>`
-rather than lucide's own `LucideIcon` — a structural type survives the
+rather than lucide's own `LucideIcon`, because a structural type survives the
 duplication that a nominal one does not.

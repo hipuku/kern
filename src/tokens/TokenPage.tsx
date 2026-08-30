@@ -34,7 +34,7 @@ export function TokenSection({ title, children }: { title: string; children: Rea
  * pages.
  *
  * The `tabIndex` is the point: a container that scrolls must be reachable by
- * keyboard, or a keyboard-only user cannot scroll it — there is nothing
+ * keyboard, or a keyboard-only user cannot scroll it, since there is nothing
  * focusable inside a table of plain text to arrow across. axe reports this as
  * `scrollable-region-focusable`, and every token page was failing it. The
  * labelled region gives the resulting tab stop a name instead of announcing an

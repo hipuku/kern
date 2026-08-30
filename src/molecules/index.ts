@@ -1,4 +1,4 @@
-/** Molecules — composed from atoms plus layout. */
+/** Molecules: composed from atoms plus layout. */
 export { BulletList, type BulletListProps } from './BulletList'
 export { CalloutCard, type CalloutCardProps } from './CalloutCard'
 export { CanvasStage, type CanvasStageProps } from './CanvasStage'

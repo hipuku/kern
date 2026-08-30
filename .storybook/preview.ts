@@ -34,7 +34,7 @@ const preview: Preview = {
     },
     docs: {
       // Without an explicit theme the docs pages render in Storybook's default
-      // light palette — the documentation for a dark-only system, on white.
+      // light palette: the documentation for a dark-only system, on white.
       theme: kernTheme,
     },
     a11y: {

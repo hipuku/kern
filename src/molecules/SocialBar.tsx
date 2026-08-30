@@ -33,7 +33,7 @@ interface Link {
  * repo URL instead of hand-rolling an identical array.
  *
  * Both destinations are off-site, so the links open in a new tab via
- * `IconLink`'s `external` — which keeps the experiment open behind them and adds
+ * `IconLink`'s `external`, which keeps the experiment open behind them and adds
  * the `rel="noopener"` and new-tab announcement the hand-rolled version lacked.
  */
 export function SocialBar({ githubUrl, siteName, websiteUrl = HIPUKU_URL, className }: SocialBarProps) {

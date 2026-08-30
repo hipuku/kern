@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A single figure with its label — the compact sibling of `StatCard`, without the badge or sub-text. ' +
+          'A single figure with its label: the compact sibling of `StatCard`, without the badge or sub-text. ' +
           'Unifies the score cards, mini-scores, spec chips and ΔE cells the experiments each reinvented.',
       },
     },

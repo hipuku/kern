@@ -14,13 +14,13 @@
  * **Deliberately unlayered.** The obvious move is `@layer components`, so that
  * Tailwind's `utilities` layer can still override these. It does not work:
  * Storybook's docs CSS is itself unlayered, and unlayered rules beat layered
- * ones outright, whatever their specificity — so a layered version of this file
+ * ones outright, whatever their specificity, so a layered version of this file
  * loses every conflict it exists to win. Unlayered it is, with every element
  * selector wrapped in `:where()` to hold it to a single class of specificity,
  * so a rule that genuinely needs to win still can.
  *
  * The practical consequence: inside a docs page, do not reach for a `.type-*`
- * class on a bare `<p>` or `<h2>` — the element default here will win. Put it
+ * class on a bare `<p>` or `<h2>`, the element default here will win. Put it
  * on a `<div>` or `<span>`, which these selectors do not touch.
  */
 .sbdocs.sbdocs-wrapper {
@@ -175,7 +175,7 @@
 /*
  * Storybook renders its own copy control in a flex bar at the foot of every
  * code block. Against kern's rounded, bordered `pre` it sat flush into the
- * bottom-right corner, where the 12px radius clipped it — a pale unstyled pill
+ * bottom-right corner, where the 12px radius clipped it: a pale unstyled pill
  * half-escaping the block.
  *
  * Lifted out of the flow and into the top-right corner as a proper kern
@@ -194,7 +194,7 @@
   position: relative;
 }
 
-/* The wrapper holding the button — the last child of the source block. */
+/* The wrapper holding the button, the last child of the source block. */
 .sbdocs .docblock-source > div:last-of-type {
   position: absolute;
   top: 0.5rem;
@@ -228,7 +228,7 @@
 }
 
 /*
- * Revealed on hover, and — the part that is easy to forget — on keyboard focus,
+ * Revealed on hover, and, the part that is easy to forget, on keyboard focus,
  * so the control is not unreachable for anyone not using a mouse.
  */
 .sbdocs .docblock-source:hover button,
@@ -247,7 +247,7 @@
 }
 
 /*
- * The lucide `copy` glyph, kern's icon library — masked rather than used as a
+ * The lucide `copy` glyph, kern's icon library, masked rather than used as a
  * background image so it takes the button's colour and follows it on hover.
  */
 .sbdocs .docblock-source button::before {

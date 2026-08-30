@@ -40,7 +40,7 @@ const stylesDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'st
 
 const BANNER = `/*
  * ─────────────────────────────────────────────────────────────────────────────
- * GENERATED FILE — DO NOT EDIT.
+ * GENERATED FILE: DO NOT EDIT.
  *
  * Source:    src/tokens/tokens.ts
  * Regenerate: npm run tokens
@@ -141,7 +141,7 @@ function buildPrimitives() {
   lines.push('')
 
   lines.push('/* ─── Layering ────────────────────────────────────────────────────────── */')
-  lines.push('/* Not a Tailwind namespace — reach for these as z-(--z-panel). */')
+  lines.push('/* Not a Tailwind namespace; reach for these as z-(--z-panel). */')
   lines.push(':root {')
   const zWidth = Math.max(...Object.keys(zIndexRoles).map((k) => k.length)) + 6
   for (const [name, { value }] of Object.entries(zIndexRoles)) {

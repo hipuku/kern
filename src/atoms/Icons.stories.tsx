@@ -24,7 +24,7 @@ const meta = {
           'Interface glyphs come from **lucide-react**; brand marks that lucide does ' +
           'not provide live as hand-rolled SVGs in `atoms/Icons.tsx`. Every icon is a ' +
           '`currentColor` component taking a `className`, so they are interchangeable ' +
-          'in any icon slot — `IconButton`, `SocialBar`, `AppSidebar` nav items.',
+          'in any icon slot: `IconButton`, `SocialBar`, `AppSidebar` nav items.',
       },
     },
   },
@@ -83,11 +83,11 @@ export const Catalog: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <section className="flex flex-col gap-3">
-        <h3 className="type-annotation-sc text-void-60">Brand — custom SVGs (atoms/Icons.tsx)</h3>
+        <h3 className="type-annotation-sc text-void-60">Brand: custom SVGs (atoms/Icons.tsx)</h3>
         <IconGrid icons={brand} />
       </section>
       <section className="flex flex-col gap-3">
-        <h3 className="type-annotation-sc text-void-60">Interface — lucide-react</h3>
+        <h3 className="type-annotation-sc text-void-60">Interface: lucide-react</h3>
         <IconGrid icons={lucide} />
       </section>
     </div>

@@ -16,7 +16,7 @@ const meta = {
     badge:  { control: 'text', description: 'Short qualifier displayed next to the value (e.g. "uniform", "high").' },
     sub:    { control: 'text', description: 'Supporting sentence below the value.' },
     value:  { control: 'text', description: 'Primary metric value. Accepts a ReactNode for inline formatting.' },
-    label:  { control: 'text', description: 'Section label — rendered as annotation-sc above the value.' },
+    label:  { control: 'text', description: 'Section label, rendered as annotation-sc above the value.' },
   },
 } satisfies Meta<typeof StatCard>
 
@@ -60,7 +60,7 @@ export const BadgeColours: Story = {
       description: {
         story:
           'The badge accent is chosen at the call site rather than through a fixed set of semantic variants. ' +
-          'These four are the conventional readings — nebula for a good result, flare for one that needs attention, ' +
+          'These four are the conventional readings: nebula for a good result, flare for one that needs attention, ' +
           'orbit for neutral information, and the default neutral grey when the badge is a plain qualifier rather ' +
           'than a judgement.',
       },
@@ -69,7 +69,7 @@ export const BadgeColours: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-3 w-[480px]">
       <StatCard label="Lightness uniformity" value="σ 4.2"    badge="uniform"   badgeColour="nebula"  sub="Even perceptual progression." />
-      <StatCard label="Selector specificity" value="(2,1,3)"  badge="high"      badgeColour="flare"   sub="Two ID selectors — high specificity." />
+      <StatCard label="Selector specificity" value="(2,1,3)"  badge="high"      badgeColour="flare"   sub="Two ID selectors, high specificity." />
       <StatCard label="CIEDE2000 difference" value="ΔE 12.4"  badge="distinct"  badgeColour="orbit"   sub="Perceptually distinct colours." />
       <StatCard label="Hue arc"              value="142°"     badge="monotonic" sub="Colours sweep 142° monotonically." />
     </div>

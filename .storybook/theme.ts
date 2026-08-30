@@ -6,7 +6,7 @@ import { voidScale, palette, fonts } from '../src/tokens/tokens'
  * of hardcoded hexes.
  *
  * Used in two places: the manager chrome (sidebar, toolbar) and the docs pages.
- * The docs pages need it explicitly — without a theme they render in
+ * The docs pages need it explicitly. Without a theme they render in
  * Storybook's default light palette, which on a dark-only design system means
  * the documentation contradicts the thing it documents.
  */

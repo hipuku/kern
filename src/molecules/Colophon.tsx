@@ -7,7 +7,7 @@ export interface ColophonProps extends ComponentPropsWithRef<'div'> {
   name: string
   /**
    * Year shown in the credit. Defaults to the current year, so the footer of a
-   * long-lived experiment does not quietly go stale — every experiment
+   * long-lived experiment does not quietly go stale. Every experiment
    * previously hardcoded `2026`.
    */
   year?: number

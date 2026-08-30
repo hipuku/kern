@@ -5,7 +5,7 @@ import { ViewportGate } from './ViewportGate'
 describe('ViewportGate', () => {
   it('renders both the app and the notice (CSS decides which is shown)', () => {
     // The switch is display-none, not conditional rendering, so both branches
-    // are in the DOM at once — the test asserts the gate does not unmount either.
+    // are in the DOM at once, and the test asserts the gate does not unmount either.
     render(
       <ViewportGate notice={<span>Come back on desktop</span>}>
         <main>The app</main>

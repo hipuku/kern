@@ -19,7 +19,7 @@ const COMMON_MULTIPLES = [1, 1.5, 2, 2.5, 3, 4, 6, 8, 10, 16]
 
 /**
  * The gap utility for each role, spelled out. Tailwind scans for complete class
- * strings, so `gap-${name}` would compile to nothing — the same constraint that
+ * strings, so `gap-${name}` would compile to nothing, the same constraint that
  * governs the accent maps in lib/accent.ts.
  */
 const ROLE_GAP: Record<keyof typeof spacingRoles, string> = {
@@ -53,7 +53,7 @@ export const Scale: Story = {
           Tailwind derives every spacing utility from a single custom property.{' '}
           <code className="type-code text-orbit">p-4</code> compiles to{' '}
           <code className="type-code text-orbit">calc(var(--spacing) * 4)</code>, so the scale is
-          the multiplier itself rather than a fixed ladder of named steps — any multiple is
+          the multiplier itself rather than a fixed ladder of named steps, so any multiple is
           available, including halves.
         </p>
         <p className="type-p-sm text-ink-muted max-w-[62ch]">

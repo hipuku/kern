@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A framed, clipped, `position: relative` container for a `<canvas>` and its overlays. The chrome only — ' +
+          'A framed, clipped, `position: relative` container for a `<canvas>` and its overlays. The chrome only: ' +
           'the pixels, worker and readouts stay with the view.',
       },
     },
@@ -22,7 +22,7 @@ const meta = {
 export default meta
 type Story = StoryObj
 
-// A stand-in for the simulation canvas — a simple gradient fill.
+// A stand-in for the simulation canvas: a simple gradient fill.
 const FakeCanvas = () => (
   <div
     className="w-full h-full"

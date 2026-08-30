@@ -2,9 +2,9 @@ import type { ComponentPropsWithRef, ReactNode } from 'react'
 import { cn } from '../lib/utils'
 
 export interface WorkbenchProps extends ComponentPropsWithRef<'div'> {
-  /** The visual stage — typically a `CanvasStage`. Takes the remaining width. */
+  /** The visual stage, typically a `CanvasStage`. Takes the remaining width. */
   stage: ReactNode
-  /** The control rail — `ChipGroup`s, `ParamSlider`s, `TransportControls`. */
+  /** The control rail: `ChipGroup`s, `ParamSlider`s, `TransportControls`. */
   controls: ReactNode
   /** Width class for the control rail. Defaults to `w-52`. */
   railClassName?: string
@@ -14,8 +14,8 @@ export interface WorkbenchProps extends ComponentPropsWithRef<'div'> {
  * The stage-and-rail region a simulation view is built from: a visual stage
  * taking the free width, beside a fixed control rail that scrolls on its own.
  *
- * gray-scott's Simulate view hand-wrote this two-column region — `flex flex-1`,
- * a centred stage, a `w-52 shrink-0` rail — around its canvas and controls.
+ * gray-scott's Simulate view hand-wrote this two-column region (`flex flex-1`,
+ * a centred stage, a `w-52 shrink-0` rail) around its canvas and controls.
  * `Workbench` is that arrangement as a region with two slots: it owns how the
  * stage and rail sit together, and the view fills them with a `CanvasStage` and
  * the control molecules.

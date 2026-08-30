@@ -16,7 +16,7 @@ const config: StorybookConfig = {
     { from: '../wordmark.svg', to: '/brand/wordmark.svg' },
     // The consuming experiments' own wordmarks. Copies, so that the sidebar and
     // shell stories can show the real marks rather than a text placeholder or a
-    // hand-transcribed SVG path — the latter is asset data that goes stale
+    // hand-transcribed SVG path. The latter is asset data that goes stale
     // silently when the source file is redrawn.
     { from: '../brand', to: '/brand' },
   ],
@@ -26,7 +26,7 @@ const config: StorybookConfig = {
     options: {},
   },
   // kern's Storybook is a published reference site, not a working Storybook.
-  // Suppress the first-run affordances Storybook shows by default — the
+  // Suppress the first-run affordances Storybook shows by default: the
   // onboarding checklist and update toasts are noise for a visitor who is here
   // to read the system, and there is no local project for them to onboard to.
   core: {

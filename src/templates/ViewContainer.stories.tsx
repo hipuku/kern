@@ -14,7 +14,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'The centred, width-capped column a single view fills — the content-column counterpart to `AppShell`. ' +
+          'The centred, width-capped column a single view fills: the content-column counterpart to `AppShell`. ' +
           'All three experiments hand-wrote this frame at the top of every view.',
       },
     },
@@ -34,7 +34,7 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          'The column a view fills — here holding the `ViewHeader`, `Section`, `StatCard` and `CalloutCard` ' +
+          'The column a view fills, here holding the `ViewHeader`, `Section`, `StatCard` and `CalloutCard` ' +
           'molecules at the container\'s gap. `AppShell` wraps this; the two together are the full page.',
       },
     },
@@ -62,10 +62,10 @@ export const Widths: Story = {
   render: () => (
     <div className="p-10 bg-background flex flex-col gap-8">
       <ViewContainer width="md" className="ring-1 ring-line rounded-card p-4">
-        <span className="type-annotation-sc text-ink-body">width=&quot;md&quot; — max-w-2xl</span>
+        <span className="type-annotation-sc text-ink-body">width=&quot;md&quot;: max-w-2xl</span>
       </ViewContainer>
       <ViewContainer width="lg" className="ring-1 ring-line rounded-card p-4">
-        <span className="type-annotation-sc text-ink-body">width=&quot;lg&quot; — max-w-3xl</span>
+        <span className="type-annotation-sc text-ink-body">width=&quot;lg&quot;: max-w-3xl</span>
       </ViewContainer>
     </div>
   ),

@@ -8,7 +8,7 @@ const meta = {
   tags: ['autodocs'],
   args: { 'aria-label': 'Reset', onClick: () => {}, children: <RotateCcw className="w-3.5 h-3.5" /> },
   argTypes: {
-    'aria-label': { control: 'text', description: 'Accessible name — describe the action, not the icon.' },
+    'aria-label': { control: 'text', description: 'Accessible name. Describe the action rather than the icon.' },
     onClick: { action: 'clicked', description: 'Click handler.' },
     children: { control: false, description: 'The icon element.' },
   },
@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>
 /**
  * Bound to args rather than a render function, so the controls in the docs
  * panel actually drive it. Every story in this file used to be render-based,
- * which left the documented argTypes inert — a props table advertising
+ * which left the documented argTypes inert: a props table advertising
  * controls that did nothing.
  */
 export const Default: Story = {}

@@ -9,8 +9,8 @@ export interface MetricProps extends Omit<ComponentPropsWithRef<'div'>, 'childre
   /** The figure itself. */
   value: ReactNode
   /**
-   * `vertical` (default) stacks a large centred value над its label — the score
-   * tile in a results row. `horizontal` sets a compact value beside its label —
+   * `vertical` (default) stacks a large centred value above its label: the score
+   * tile in a results row. `horizontal` sets a compact value beside its label,
    * the inline chip a per-axis breakdown is built from.
    */
   orientation?: 'vertical' | 'horizontal'
@@ -21,13 +21,13 @@ export interface MetricProps extends Omit<ComponentPropsWithRef<'div'>, 'childre
   surface?: boolean
   /**
    * Class for the value span. The default is `type-h4 font-mono text-ink-title`;
-   * override it to colour the value — e.g. a specificity axis in its own accent.
+   * override it to colour the value, e.g. a specificity axis in its own accent.
    */
   valueClassName?: string
 }
 
 /**
- * A single figure with its label — the compact sibling of `StatCard`.
+ * A single figure with its label: the compact sibling of `StatCard`.
  *
  * `StatCard` is the left-aligned card with a badge and a line of context;
  * `Metric` is just the value and its name, which the experiments reinvented four

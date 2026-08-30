@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'The `<ul>` wrapper for `BulletItem`s. Completes the pair kern previously shipped half of — every About ' +
+          'The `<ul>` wrapper for `BulletItem`s. Completes the pair kern previously shipped half of. Every About ' +
           'view hand-wrote the same `list-none p-0 m-0` list.',
       },
     },
@@ -25,13 +25,13 @@ export const Default: Story = {
   render: () => (
     <BulletList className="w-[520px]">
       <BulletItem>
-        <strong className="text-ink-strong font-semibold">Lightness uniformity</strong> — standard deviation of lightness steps between sorted colours.
+        <strong className="text-ink-strong font-semibold">Lightness uniformity</strong>: standard deviation of lightness steps between sorted colours.
       </BulletItem>
       <BulletItem>
-        <strong className="text-ink-strong font-semibold">Chroma coherence</strong> — standard deviation of C values across the palette.
+        <strong className="text-ink-strong font-semibold">Chroma coherence</strong>: standard deviation of C values across the palette.
       </BulletItem>
       <BulletItem>
-        <strong className="text-ink-strong font-semibold">Hue arc</strong> — degrees of the hue wheel covered, and whether rotation is monotonic.
+        <strong className="text-ink-strong font-semibold">Hue arc</strong>: degrees of the hue wheel covered, and whether rotation is monotonic.
       </BulletItem>
     </BulletList>
   ),

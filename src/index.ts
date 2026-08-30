@@ -18,7 +18,7 @@
  */
 
 // ─── Tokens ──────────────────────────────────────────────────────────────────
-// The token source, for programmatic access to palette and scale values —
+// The token source, for programmatic access to palette and scale values,
 // building a colour picker from the palette, driving a canvas with the accents.
 export {
   palette,

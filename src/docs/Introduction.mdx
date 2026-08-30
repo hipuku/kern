@@ -5,7 +5,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 <div className="flex flex-col gap-4">
   <h1 className="type-h2 text-ink-title">kern</h1>
   <div className="type-p-lg text-ink-body max-w-[60ch]">
-    The design system behind the hipuku experiments — a small, opinionated set of
+    The design system behind the hipuku experiments: a small, opinionated set of
     tokens and components shared by <strong className="text-ink-strong">hexicon</strong>,{' '}
     <strong className="text-ink-strong">specifi</strong> and <strong className="text-ink-strong">gray-scott</strong>.
   </div>
@@ -14,7 +14,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 ## What this is
 
 Three independent apps, each its own repository and deployment. Left alone they
-would drift — three subtly different buttons, three spacing scales, three
+would drift: three subtly different buttons, three spacing scales, three
 definitions of "muted text". kern exists so that everything a visitor
 recognises as *hipuku* is defined **once**.
 
@@ -31,7 +31,7 @@ the ones above.
 
 <div className="flex flex-col gap-2 my-6">
   {[
-    ['Tokens',    'The values everything else is built from — colour, type, spacing, motion. Generated from one source file.'],
+    ['Tokens',    'The values everything else is built from: colour, type, spacing, motion. Generated from one source file.'],
     ['Atoms',     'Single-purpose primitives. Depend on tokens only. Button, Input, Label, StatusChip…'],
     ['Molecules', 'Small compositions of atoms plus layout. Field, StatCard, ParamSlider, DataTable…'],
     ['Organisms', 'Full regions of the interface, which may own local state. AppSidebar.'],
@@ -47,7 +47,7 @@ the ones above.
 
 The last two are departures from the canonical five layers, and both are
 deliberate. **Utilities** exists because `ErrorBoundary` renders nothing in the
-ordinary case — atomic design classifies UI, and filing control flow under
+ordinary case. Atomic design classifies UI, and filing control flow under
 "organism" made the word mean two different things. There is no **Pages** layer
 because kern has no pages: the experiments are the pages, and they live in their
 own repositories.
@@ -60,7 +60,7 @@ re-litigate them.
 - **Dark only.** There is no light theme and no plan for one. The void scale
   runs dark-to-light, the opposite of a conventional grey ramp.
 - **Tailwind v4 plus CSS custom properties.** No CSS-in-JS, no per-component
-  stylesheet. Use `(--var)` parenthesis syntax, never `[--var]` — the bracket
+  stylesheet. Use `(--var)` parenthesis syntax rather than `[--var]`, since the bracket
   form generates invalid CSS in v4 and is silently dropped.
 - **Type is role-based.** You reach for `.type-annotation` because the text is
   an annotation, not because you want 13px. Raw Tailwind size, weight,

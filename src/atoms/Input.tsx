@@ -28,7 +28,7 @@ export const inputInvalid = 'border-flare text-flare focus:border-flare'
 export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'type'> {
   /**
    * Restricted to the text-like types. `checkbox`, `radio` and `range` are
-   * different controls with different chrome — `range` is `ParamSlider` — and
+   * different controls with different chrome (`range` is `ParamSlider`) and
    * accepting them here would render them with a text field's padding.
    */
   type?: 'text' | 'search' | 'url' | 'email' | 'number' | 'tel' | 'password'
@@ -39,8 +39,8 @@ export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'type'>
 /**
  * A single-line text field.
  *
- * The house input pattern was written down in DESIGN_SYSTEM.md — the surface,
- * the border-only focus, the placeholder rule, the error state — but existed
+ * The house input pattern was written down in DESIGN_SYSTEM.md: the surface,
+ * the border-only focus, the placeholder rule and the error state. It existed
  * only as prose, and three files across two experiments implemented it by hand.
  *
  * Renders in the mono face by default: every text input across the experiments

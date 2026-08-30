@@ -6,7 +6,7 @@ const meta = {
   title: 'Molecules/ParamSlider',
   component: ParamSlider,
   tags: ['autodocs'],
-  args: { label: 'f — feed rate', value: 0.035, min: 0.01, max: 0.08, step: 0.001, onChange: (_value: number) => {} },
+  args: { label: 'f (feed rate)', value: 0.035, min: 0.01, max: 0.08, step: 0.001, onChange: (_value: number) => {} },
   argTypes: {
     label: { control: 'text', description: 'Parameter name shown above the track.' },
     value: { control: 'number', description: 'Current value.' },
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>
 
 /**
  * Bound to args so the controls drive it. ParamSlider is a controlled input, so
- * the story holds the value locally and seeds it from `args.value` — passing
+ * the story holds the value locally and seeds it from `args.value`, since passing
  * args straight through would render a slider that cannot move.
  */
 export const Default: Story = {
@@ -52,10 +52,10 @@ export const MultipleSliders: Story = {
     const [dv, setDv] = useState(0.1050)
     return (
       <div className="w-56 flex flex-col gap-4">
-        <ParamSlider label="f — feed rate"     value={f}  min={0.01}  max={0.08}  step={0.001}  onChange={setF}  />
-        <ParamSlider label="k — kill rate"     value={k}  min={0.04}  max={0.075} step={0.001}  onChange={setK}  />
-        <ParamSlider label="Du — substrate"    value={du} min={0.05}  max={0.50}  step={0.001}  onChange={setDu} />
-        <ParamSlider label="Dv — activator"    value={dv} min={0.025} max={0.25}  step={0.0005} onChange={setDv} format={v => v.toFixed(4)} />
+        <ParamSlider label="f (feed rate)"     value={f}  min={0.01}  max={0.08}  step={0.001}  onChange={setF}  />
+        <ParamSlider label="k (kill rate)"     value={k}  min={0.04}  max={0.075} step={0.001}  onChange={setK}  />
+        <ParamSlider label="Du (substrate)"    value={du} min={0.05}  max={0.50}  step={0.001}  onChange={setDu} />
+        <ParamSlider label="Dv (activator)"    value={dv} min={0.025} max={0.25}  step={0.0005} onChange={setDv} format={v => v.toFixed(4)} />
       </div>
     )
   },

@@ -15,7 +15,7 @@ type Story = StoryObj
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-// Derived from the token source — curve values and usage notes both live in
+// Derived from the token source: curve values and usage notes both live in
 // tokens.ts, so the motion documentation and the shipped easings are one thing.
 
 const EASINGS = Object.entries(easing).map(([name, { value, use }]) => ({
@@ -191,7 +191,7 @@ export const ReducedMotion: Story = {
                 }}
               />
             </div>
-            <span className="type-annotation text-void-50">Always instant — 0s duration</span>
+            <span className="type-annotation text-void-50">Always instant, 0s duration</span>
           </div>
         </div>
       </TokenPage>

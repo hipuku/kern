@@ -1,6 +1,6 @@
 /*
  * ─────────────────────────────────────────────────────────────────────────────
- * GENERATED FILE — DO NOT EDIT.
+ * GENERATED FILE: DO NOT EDIT.
  *
  * Source:    src/tokens/tokens.ts
  * Regenerate: npm run tokens
@@ -106,7 +106,7 @@
 }
 
 /* ─── Layering ────────────────────────────────────────────────────────── */
-/* Not a Tailwind namespace — reach for these as z-(--z-panel). */
+/* Not a Tailwind namespace; reach for these as z-(--z-panel). */
 :root {
   --z-backdrop:  30;
   --z-panel:     40;

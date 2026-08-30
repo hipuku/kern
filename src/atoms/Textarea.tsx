@@ -6,7 +6,7 @@ export interface TextareaProps extends ComponentPropsWithRef<'textarea'> {
   /** Applies the error treatment and sets `aria-invalid`. */
   invalid?: boolean
   /**
-   * Which axes the user may resize. Defaults to vertical — free resizing lets a
+   * Which axes the user may resize. Defaults to vertical, since free resizing lets a
    * textarea be dragged wider than its container and break the layout.
    */
   resize?: 'none' | 'vertical'
@@ -21,7 +21,7 @@ const RESIZE: Record<NonNullable<TextareaProps['resize']>, string> = {
  * A multi-line text field, for pasting a stylesheet or a list of colours.
  *
  * Shares `inputChrome` with `Input` rather than restating it, so the two cannot
- * drift — they were separate hand-rolled copies in hexicon and specifi.
+ * drift. They were separate hand-rolled copies in hexicon and specifi.
  */
 export function Textarea({ invalid, resize = 'vertical', className, ...props }: TextareaProps) {
   return (

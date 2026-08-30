@@ -4,7 +4,7 @@ import { accentText, type AccentColour } from '../lib/accent'
 
 export interface InlineCodeProps extends ComponentPropsWithRef<'code'> {
   /**
-   * Which accent to render the code in. Takes an accent *name* — `"orbit"` —
+   * Which accent to render the code in. Takes an accent *name*, `"orbit"`,
    * where this component previously took a raw Tailwind class, `"text-orbit"`.
    * That leaked the styling implementation through the API and disagreed with
    * every other accent-carrying component in kern.
@@ -13,7 +13,7 @@ export interface InlineCodeProps extends ComponentPropsWithRef<'code'> {
 }
 
 /**
- * A code fragment inside a line of prose — a hex value, a selector, a property
+ * A code fragment inside a line of prose: a hex value, a selector, a property
  * name. For a whole block, use a `<pre>`; this is deliberately inline-only.
  */
 export function InlineCode({ colour = 'orbit', className, ...props }: InlineCodeProps) {

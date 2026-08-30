@@ -1,5 +1,5 @@
 /*
- * Logo — the per-letter hover animation on the brand lettermark.
+ * Logo: the per-letter hover animation on the brand lettermark.
  *
  * Component CSS, not tokens: it lives here rather than in the component file
  * because @property registrations and keyframes cannot be expressed as Tailwind

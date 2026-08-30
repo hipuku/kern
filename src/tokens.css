@@ -1,5 +1,5 @@
 /*
- * kern's token layer — every custom property and the .type-* composite classes.
+ * kern's token layer: every custom property and the .type-* composite classes.
  *
  * Both halves are generated from src/tokens/tokens.ts by `npm run tokens`.
  * Import this if you want kern's tokens without kern's components; import

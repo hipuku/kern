@@ -29,7 +29,7 @@ const meta = {
       description: {
         component:
           'The full-page layout every experiment is built on. Atomic design puts page structure in the template ' +
-          'layer — the arrangement of regions, independent of what fills them — and kern had no such layer, so all ' +
+          'layer, the arrangement of regions independent of what fills them, and kern had no such layer, so all ' +
           'three experiments hand-wrote the same App.tsx: the same flex container, the same `<main>` classes, the ' +
           'same ErrorBoundary wrapper.\n\n' +
           'Desktop-only: the shell is wrapped in a `ViewportGate`, so below the `lg` breakpoint the viewer sees a ' +
@@ -84,7 +84,7 @@ export const Default: Story = {
 }
 
 export const CompleteView: Story = {
-  name: 'A complete view — every layer',
+  name: 'A complete view, every layer',
   parameters: {
     docs: {
       description: {
@@ -135,7 +135,7 @@ export const CompleteView: Story = {
           </Section>
 
           <CalloutCard colour="orbit" label="Class-heavy">
-            Most of this selector's weight is on the class axis — <InlineCode>.active</InlineCode> and{' '}
+            Most of this selector's weight is on the class axis: <InlineCode>.active</InlineCode> and{' '}
             <InlineCode>:not()</InlineCode>. Dropping either lowers specificity fastest.
           </CalloutCard>
 
@@ -157,7 +157,7 @@ export const CompleteView: Story = {
               <BulletItem>
                 <Label as="span" className="text-ink-strong">Pseudo-elements</Label> count as types, pseudo-classes as classes.
               </BulletItem>
-              <BulletItem>The negation itself adds nothing — only its argument does.</BulletItem>
+              <BulletItem>The negation itself adds nothing; only its argument does.</BulletItem>
             </BulletList>
           </Section>
         </ViewContainer>
@@ -184,13 +184,13 @@ export const Minimal: Story = {
 }
 
 export const SmallScreen: Story = {
-  name: 'Small screen — desktop-only notice',
+  name: 'Small screen, desktop-only notice',
   globals: { viewport: { value: 'mobile1', isRotated: false } },
   parameters: {
     docs: {
       description: {
         story:
-          'Below `lg` the whole app is replaced by the `ViewportGate` notice — no collapsed sidebar, no hamburger. ' +
+          'Below `lg` the whole app is replaced by the `ViewportGate` notice: no collapsed sidebar, no hamburger. ' +
           'Pass `smallScreenNotice` for on-brand copy; here it is the default message.',
       },
     },

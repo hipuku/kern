@@ -20,7 +20,7 @@ export const InParagraph: Story = {
     <p className="type-p-sm text-void-60">
       The dataset is{' '}
       <ExternalLink href="https://github.com/meodai/color-names">meodai/color-names</ExternalLink>
-      {' '}— over 30,000 hand-curated English colour names.
+      , over 30,000 hand-curated English colour names.
     </p>
   ),
 }
@@ -34,7 +34,7 @@ export const CitationBlock: Story = {
         <ExternalLink href="https://www.jstor.org/stable/411222">
           Berlin &amp; Kay (1969), <em>Basic Color Terms</em>
         </ExternalLink>
-        {' '}— colour categories have focal points where naming is universal, and boundaries where it is contested.
+        , which found that colour categories have focal points where naming is universal, and boundaries where it is contested.
       </p>
       <p className="type-p-sm text-void-60">
         ΔE thresholds follow{' '}

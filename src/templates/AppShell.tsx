@@ -12,9 +12,9 @@ export interface AppShellProps {
   onNavigate: (id: string) => void
   /** Text colour for the active nav item. Defaults to the `--primary` role. */
   accentActiveClass?: string
-  /** Social links beside the logo — typically a `SocialBar`. */
+  /** Social links beside the logo, typically a `SocialBar`. */
   social?: ReactNode
-  /** Credit line at the foot of the sidebar — typically a `Colophon`. */
+  /** Credit line at the foot of the sidebar, typically a `Colophon`. */
   colophon?: ReactNode
   /** The active view. */
   children: ReactNode
@@ -38,7 +38,7 @@ export interface AppShellProps {
  * scrolling main region.
  *
  * **Why this is a template.** Atomic design's template layer is where page
- * structure lives — the arrangement of regions, independent of what fills them.
+ * structure lives: the arrangement of regions, independent of what fills them.
  * kern had no such layer, so all three experiments hand-wrote the same
  * `App.tsx`: the same flex container, the same `<main>` classes, the same
  * `ErrorBoundary` wrapper. Three copies of a layout is three places for it to

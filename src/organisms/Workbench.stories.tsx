@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'The stage-and-rail region a simulation view is built from — a `CanvasStage` taking the free width beside ' +
+          'The stage-and-rail region a simulation view is built from: a `CanvasStage` taking the free width beside ' +
           'a control rail of `ChipGroup`, `ParamSlider` and `TransportControls`. The organism owns the two-column ' +
           'arrangement; the view fills the two slots.',
       },
@@ -59,8 +59,8 @@ export const Default: Story = {
                   </ToggleChip>
                 ))}
               </ChipGroup>
-              <ParamSlider label="f — feed" value={f} min={0.01} max={0.08} step={0.001} onChange={setF} />
-              <ParamSlider label="k — kill" value={k} min={0.04} max={0.075} step={0.001} onChange={setK} />
+              <ParamSlider label="f (feed)" value={f} min={0.01} max={0.08} step={0.001} onChange={setF} />
+              <ParamSlider label="k (kill)" value={k} min={0.04} max={0.075} step={0.001} onChange={setK} />
               <TransportControls
                 running={running}
                 onToggle={() => setRunning((r) => !r)}

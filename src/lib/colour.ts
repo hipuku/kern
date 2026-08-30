@@ -2,7 +2,7 @@
  * Colour maths for the token layer.
  *
  * This lived inside `Colours.stories.tsx`, which meant the only code that could
- * measure kern's contrast was a Storybook page — documentation that reports a
+ * measure kern's contrast was a Storybook page: documentation that reports a
  * number nobody can assert on. Moved here so `contrast.test.ts` can fail the
  * build on an inaccessible pairing using exactly the same arithmetic the
  * published contrast matrix displays.
@@ -46,7 +46,7 @@ export function contrastRatio(a: string, b: string): number {
 export interface Oklch {
   /** Perceptual lightness, 0–1. */
   L: number
-  /** Chroma — 0 is a true neutral. */
+  /** Chroma. 0 is a true neutral. */
   C: number
   /** Hue angle in degrees. */
   H: number

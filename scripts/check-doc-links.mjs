@@ -3,7 +3,7 @@
  *
  *   npm run check:links     (run after build-storybook; CI does)
  *
- * Story IDs are derived from the *export name*, not the `name` field — so a
+ * Story IDs are derived from the *export name* rather than the `name` field, so a
  * story exported as `All` and displayed as "All colours" is
  * `tokens-colours--all`, and a hand-written link to `--all-colours` looks
  * entirely reasonable and 404s. That is exactly the bug this catches: the
@@ -37,7 +37,7 @@ for (const file of readdirSync(docsDir).filter((f) => f.endsWith('.mdx'))) {
   for (const [, id] of contents.matchAll(linkPattern)) {
     checked++
     if (!entries.has(id)) {
-      console.error(`✗ ${file}: no such story or docs page — ${id}`)
+      console.error(`✗ ${file}: no such story or docs page: ${id}`)
       broken++
     }
   }

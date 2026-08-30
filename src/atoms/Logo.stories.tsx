@@ -59,7 +59,7 @@ export const ReducedMotion: Story = {
           }
         `}</style>
         <div className="flex items-center gap-2 type-p-sm text-void-60">
-          <span>Hover — no animation fires:</span>
+          <span>Hover, and no animation fires:</span>
           <Story />
         </div>
       </>

@@ -1,5 +1,5 @@
 /*
- * Storybook's stylesheet entry. Consumers use kern.css instead — kern does not
+ * Storybook's stylesheet entry. Consumers use kern.css instead, since kern does not
  * bring its own Tailwind, but its Storybook has to.
  */
 

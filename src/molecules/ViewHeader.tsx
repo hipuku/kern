@@ -7,7 +7,7 @@ export interface ViewHeaderProps extends Omit<ComponentPropsWithRef<'div'>, 'tit
   /**
    * Heading level. Defaults to `h1`, which is right when the view is the page.
    * Drop to `h2` when the header sits inside a larger page that already has an
-   * `h1` — skipping or repeating levels is the most common heading-order
+   * `h1`. Skipping or repeating levels is the most common heading-order
    * failure in an app built from view components.
    */
   as?: 'h1' | 'h2' | 'h3'

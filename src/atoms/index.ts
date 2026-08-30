@@ -1,5 +1,5 @@
 /**
- * Atoms — single-purpose primitives.
+ * Atoms: single-purpose primitives.
  *
  * The hard rule is directional: an atom never reaches *up* a layer (no molecule,
  * organism or template import). Composition *within* the layer is allowed but

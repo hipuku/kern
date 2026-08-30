@@ -1,5 +1,5 @@
 /*
- * The kern stylesheet entry — tokens plus the component CSS that cannot be
+ * The kern stylesheet entry: tokens plus the component CSS that cannot be
  * expressed as utilities. This is what a consuming experiment imports:
  *
  *   @import "../node_modules/kern/src/kern.css";

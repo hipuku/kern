@@ -15,7 +15,7 @@ export interface TransportControlsProps extends ComponentPropsWithRef<'div'> {
 }
 
 /**
- * Play/pause and reset for a running thing — a simulation, a playback.
+ * Play/pause and reset for a running thing: a simulation, a playback.
  *
  * gray-scott built this twice, once with a hand-rolled play/pause button that
  * forked `Button`'s focus treatment. Here both are `IconButton`s, so the label

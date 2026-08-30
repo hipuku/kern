@@ -3,7 +3,7 @@ import { cn } from '../lib/utils'
 
 export interface CanvasStageProps extends ComponentPropsWithRef<'div'> {
   /**
-   * Constrain the frame to a square — the shape of the simulation grids.
+   * Constrain the frame to a square, the shape of the simulation grids.
    * On by default; turn off for a stage with its own aspect ratio.
    */
   square?: boolean
@@ -18,7 +18,7 @@ export interface CanvasStageProps extends ComponentPropsWithRef<'div'> {
  *
  * gray-scott framed four canvases with the identical
  * `relative rounded-card overflow-hidden border bg-background` block. This is
- * that frame — the chrome, not the pixels. The canvas, its worker and its
+ * that frame: the chrome rather than the pixels. The canvas, its worker and its
  * overlays stay with the view; the stage just holds them.
  */
 export function CanvasStage({ square = true, className, children, ...props }: CanvasStageProps) {

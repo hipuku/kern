@@ -33,7 +33,7 @@ export interface ViewContainerProps
  * The content-column counterpart to `AppShell`.
  *
  * `AppShell` owns the page chrome (sidebar + scrolling `<main>`); `ViewContainer`
- * owns the column that chrome wraps — the centred, width-capped stack a single
+ * owns the column that chrome wraps: the centred, width-capped stack a single
  * view fills. Splitting them keeps the shell ignorant of any one view's measure
  * and lets a wide view opt out simply by not using it.
  */

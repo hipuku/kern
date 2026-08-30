@@ -8,7 +8,7 @@ export type BulletListProps = ComponentPropsWithRef<'ul'>
  *
  * kern shipped `BulletItem` (the `<li>`) but not the list around it, so every
  * About view hand-wrote the same `flex flex-col gap-3 list-none p-0 m-0` wrapper
- * — the half of the pair a component library exists to absorb. The default gap
+ * It is the half of the pair a component library exists to absorb. The default gap
  * can be overridden through `className` (twMerge lets a later `gap-*` win).
  *
  * ```tsx

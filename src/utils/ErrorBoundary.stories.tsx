@@ -18,7 +18,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 function ThrowOnMount(): never {
-  throw new Error('Intentional render error — thrown by ThrowOnMount story fixture.')
+  throw new Error('Intentional render error, thrown by the ThrowOnMount story fixture.')
 }
 
 export const Triggered: Story = {

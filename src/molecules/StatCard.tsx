@@ -17,7 +17,7 @@ export interface StatCardProps extends ComponentPropsWithRef<'div'> {
   /**
    * Accent for the badge. Defaults to neutral.
    *
-   * This replaces the old pair of overlapping props — a `variant`
+   * This replaces the old pair of overlapping props: a `variant`
    * (`positive` / `warning` / `info` / `neutral`) that mapped onto four fixed
    * accents, plus a `badgeColour` that set the accent directly, with `variant`
    * silently winning when both were passed. One prop, one meaning.
@@ -26,7 +26,7 @@ export interface StatCardProps extends ComponentPropsWithRef<'div'> {
 }
 
 /**
- * A single figure with its label — the unit a results grid is built from.
+ * A single figure with its label: the unit a results grid is built from.
  */
 export function StatCard({
   label,

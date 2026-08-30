@@ -7,7 +7,7 @@ import { cn } from '../lib/utils'
  *
  * `rounded-card border bg-surface-raised border-line` was spelled out by hand in
  * `StatCard`, `CalloutCard`, the `AppSidebar` hamburger and four token-story
- * pages — the single most-repeated surface in the system, and exactly the kind
+ * pages: the single most-repeated surface in the system, and exactly the kind
  * of primitive that quietly drifts (one copy on `border-line`, another on
  * `border-line-strong`) when no atom owns it.
  *
@@ -36,7 +36,7 @@ export interface CardProps
     VariantProps<typeof cardVariants> {}
 
 /**
- * A raised surface — the object a results grid, a callout or a stat is drawn on.
+ * A raised surface: the object a results grid, a callout or a stat is drawn on.
  *
  * Deliberately only the surface: no flex, no gap, no typography. Those are the
  * consumer's layout, and baking them in here would make the atom refuse to be

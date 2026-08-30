@@ -26,7 +26,7 @@ describe('accent maps', () => {
   it('pairs neutral text with a surface it can actually be read on', () => {
     // The neutral chip is the one accent pairing that is two void steps rather
     // than a tint, so its contrast is not covered by the accent checks.
-    // It was ink-muted on surface-hover — 3.77:1 — until v1.1.
+    // It was ink-muted on surface-hover, 3.77:1, until v1.1.
     const ratio = contrastRatio(voidScale['60'], voidScale[surfaceRoles['surface-hover'].step])
     expect(ratio).toBeGreaterThanOrEqual(4.5)
   })

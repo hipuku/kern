@@ -4,8 +4,8 @@ import { cn } from '../lib/utils'
 import { focusRing } from '../lib/focus'
 
 /**
- * kern had no Button. Three places hand-rolled one — `IconButton`, `ToolLink`,
- * and the retry control inside `ErrorBoundary` — each with its own padding,
+ * kern had no Button. Three places hand-rolled one: `IconButton`, `ToolLink`,
+ * and the retry control inside `ErrorBoundary`, each with its own padding,
  * radius, transition duration and focus treatment. This is the one definition
  * they now share.
  *
@@ -31,7 +31,7 @@ export const buttonVariants = cva(
         ghost: 'text-ink-body hover:text-ink-title hover:bg-surface-raised',
         /**
          * Reads as a link, behaves as a button. For in-prose actions that
-         * navigate the app rather than the web — those are genuinely buttons and
+         * navigate the app rather than the web. Those are genuinely buttons and
          * must not be anchors, but they should look like links.
          */
         link: 'text-(--primary) hover:opacity-70 transition-opacity underline-offset-[3px] hover:underline',
@@ -61,7 +61,7 @@ export interface ButtonProps
 
 /**
  * The button primitive. Extends the native `<button>` element, so `type`,
- * `disabled`, `title`, `aria-*`, `ref` and every event handler pass through —
+ * `disabled`, `title`, `aria-*`, `ref` and every event handler pass through,
  * kern's previous buttons accepted only `onClick`, which meant a form could not
  * submit with one and nothing could be disabled.
  *

@@ -11,7 +11,7 @@ export default meta
 type Story = StoryObj
 
 /**
- * The utility for each role, spelled out — Tailwind scans for complete class
+ * The utility for each role, spelled out, because Tailwind scans for complete class
  * strings, so `rounded-${name}` would compile to nothing.
  */
 const ROLE_CLASS: Record<keyof typeof radiusRoles, string> = {
@@ -36,9 +36,9 @@ export const Scale: Story = {
       description="Four decisions, named by what they wrap rather than by their size."
     >
       <p className="type-p-sm text-ink-body max-w-[62ch]">
-        The system was already consistent about these — 37 <code className="type-code">rounded-xl</code>,
+        The system was already consistent about these: 37 <code className="type-code">rounded-xl</code>,
         13 <code className="type-code">rounded-lg</code> and 8 <code className="type-code">rounded-full</code>{' '}
-        across kern and the three experiments — but expressed as sizes, plus two arbitrary{' '}
+        across kern and the three experiments, but expressed as sizes, plus two arbitrary{' '}
         <code className="type-code">rounded-[4px]</code> and <code className="type-code">rounded-[3px]</code>{' '}
         escape hatches that were really a missing fourth step.
       </p>

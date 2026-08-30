@@ -16,7 +16,7 @@ export interface AppSidebarProps {
   activeId: string
   onNavigate: (id: string) => void
   accentActiveClass?: string
-  /** Social links shown in the header, right of the logo — typically a `SocialBar`. */
+  /** Social links shown in the header, right of the logo, typically a `SocialBar`. */
   social?: ReactNode
   colophon?: ReactNode
 }
@@ -24,9 +24,9 @@ export interface AppSidebarProps {
 /**
  * The fixed navigation rail every experiment is built beside.
  *
- * Desktop-only by design. kern used to carry a full responsive collapse here —
+ * Desktop-only by design. kern used to carry a full responsive collapse here,
  * a hamburger, a backdrop, slide-in transforms and a `mobileOpen` state threaded
- * up through `AppShell` — but these tools are not built for small screens, and
+ * up through `AppShell`, but these tools are not built for small screens, and
  * pretending otherwise cost more than it bought. Below the `lg` breakpoint the
  * app shows a `ViewportGate` notice instead of a cramped sidebar, so this
  * component only ever renders at desktop width.

@@ -32,7 +32,7 @@ const DEFAULT_FILLS: HoverFills = {
  * component named after one brand, and within this system there is only one
  * logo. An experiment's own wordmark is a `Wordmark`.
  *
- * The animation is CSS, in `styles/logo.css` — `@property` registrations and
+ * The animation is CSS, in `styles/logo.css`: `@property` registrations and
  * keyframes cannot be expressed as utilities. It is suppressed wholesale under
  * `prefers-reduced-motion`.
  */

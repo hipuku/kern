@@ -52,7 +52,7 @@ export const CheekyNotice: Story = {
     docs: {
       description: {
         story:
-          'The `notice` prop takes any node, so each experiment can speak in its own voice — a specificity pun, a ' +
+          'The `notice` prop takes any node, so each experiment can speak in its own voice: a specificity pun, a ' +
           'colour-space quip, a reaction-diffusion aside. Supply just the content; the gate centres it.',
       },
     },
@@ -66,7 +66,7 @@ export const CheekyNotice: Story = {
             <code className="font-mono text-solstice">#desktop</code>
           </p>
           <p className="type-p-sm text-ink-body">
-            specifi is desktop-only for now. Open it on a wider screen — higher specificity wins.
+            specifi is desktop-only for now. Open it on a wider screen. Higher specificity wins.
           </p>
         </div>
       }
