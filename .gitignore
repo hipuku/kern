@@ -3,5 +3,5 @@ dist/
 storybook-static/
 .DS_Store
 
-# Working notes — local only, never committed
+# Working notes. Local only, never committed.
 ATOMIC_AUDIT.md
