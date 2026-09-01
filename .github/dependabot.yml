@@ -1,0 +1,55 @@
+# The last repo here without this file, which is how it accumulated six
+# advisories in silence, one of them critical, while the other five were being
+# triaged. Nothing shipped was affected, since every one of them sat in a
+# devDependency and kern is consumed as pinned source rather than installed,
+# but a public repo in a portfolio wears its security tab.
+#
+# Weekly and grouped, so a review is one pull request rather than nine. Grouped
+# by what moves together, with the lessons the other repos paid for already
+# applied.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      react:
+        patterns: ['react', 'react-dom', '@types/react', '@types/react-dom']
+      # Storybook's addons version with Storybook, not against it. Listed by
+      # name because eslint-plugin-storybook matches neither '@storybook/*' nor
+      # the core, and a major of it alone cannot pass until the core moves too.
+      storybook:
+        patterns:
+          - 'storybook'
+          - '@storybook/*'
+          - 'eslint-plugin-storybook'
+      # The test runner and its environments are their own group. Grouped with
+      # the linters, one vitest major holds every lint patch behind it, which is
+      # the shape of the delay that let the critical sit here.
+      test:
+        patterns: ['vitest', '@vitest/*', 'vitest-axe', 'jsdom', '@testing-library/*']
+      build:
+        patterns: ['vite', 'vite-node', '@vitejs/*', 'tailwindcss', '@tailwindcss/*']
+      tooling:
+        patterns: ['eslint*', '@eslint/*', 'typescript-eslint', 'globals']
+    commit-message:
+      prefix: 'deps'
+    ignore:
+      # @types/node describes the runtime CI installs rather than the newest
+      # release line. A major here typechecks against APIs the running Node
+      # does not have.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      # TypeScript 7 is the native rewrite, deferred across every repo here so
+      # they move together. Recorded rather than closed: a closed pull request
+      # comes back on the next run and says nothing about why it was refused.
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
