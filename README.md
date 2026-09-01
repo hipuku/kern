@@ -43,28 +43,37 @@ kern is installed from GitHub and resolved via a Vite path alias.
 "dependencies": { "kern": "github:hipuku/kern#v1.2.0" }
 ```
 
-```ts
-// vite.config.ts
-resolve: {
-  alias: { '@kern': path.resolve(__dirname, 'node_modules/kern/src') },
-}
-```
-
-Tailwind v4 only scans within the project root, so each consumer's `index.css` must import kern's stylesheet *and* register its source for class scanning. Without the second line the classes are absent, and components render unstyled with no error:
-
-```css
-@import "tailwindcss";
-@import "../node_modules/kern/src/kern.css";
-@source "../node_modules/kern/src";
-```
-
-Then import from the package root:
+No alias, and no build step. kern ships its TypeScript and declares entry points for it, so
+your bundler resolves the package the way it resolves any other:
 
 ```ts
 import { AppShell, ParamSlider, ToggleChip } from 'kern'
 ```
 
-Layer barrels (`kern/atoms`, `kern/molecules`, …) exist when you want to be explicit about which tier you are reaching into. Avoid deep-importing individual files: those paths are not public API, and components do move between layers.
+Layer barrels exist when you want to be explicit about which tier you are reaching into:
+
+```ts
+import { ToggleChip } from 'kern/atoms'
+import { palette, type AccentName } from 'kern/tokens'
+```
+
+**Deep imports are not possible, by design.** `kern/src/atoms/Input` fails with
+`ERR_PACKAGE_PATH_NOT_EXPORTED`, because the `exports` map lists the barrels and nothing else.
+That is the point: file paths are not public API and components do move between layers —
+`ErrorBoundary` went from `organisms/` to `utils/` without a breaking change, which is only
+true while nobody can import it by path.
+
+Tailwind v4 only scans within the project root, so each consumer's `index.css` must import
+kern's stylesheet *and* register its source for class scanning. Without the second line the
+classes are absent and components render unstyled with no error. The `@source` line stays a
+relative path because it is a filesystem glob rather than a module import — it never goes
+through package resolution:
+
+```css
+@import "tailwindcss";
+@import "kern/kern.css";
+@source "../node_modules/kern/src";
+```
 
 ## Local development
 
