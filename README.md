@@ -59,14 +59,14 @@ import { palette, type AccentName } from 'kern/tokens'
 
 **Deep imports are not possible, by design.** `kern/src/atoms/Input` fails with
 `ERR_PACKAGE_PATH_NOT_EXPORTED`, because the `exports` map lists the barrels and nothing else.
-That is the point: file paths are not public API and components do move between layers —
+That is the point: file paths are not public API and components do move between layers.
 `ErrorBoundary` went from `organisms/` to `utils/` without a breaking change, which is only
 true while nobody can import it by path.
 
 Tailwind v4 only scans within the project root, so each consumer's `index.css` must import
 kern's stylesheet *and* register its source for class scanning. Without the second line the
 classes are absent and components render unstyled with no error. The `@source` line stays a
-relative path because it is a filesystem glob rather than a module import — it never goes
+relative path because it is a filesystem glob rather than a module import, so it never goes
 through package resolution:
 
 ```css
