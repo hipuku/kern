@@ -55,6 +55,7 @@
     "tokens": "vite-node scripts/build-tokens.mjs",
     "tokens:check": "vite-node scripts/build-tokens.mjs -- --check",
     "lint": "eslint .",
+    "lint:prose": "node scripts/check-punctuation.mjs",
     "check:links": "node scripts/check-doc-links.mjs"
   },
   "dependencies": {
