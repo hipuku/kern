@@ -76,7 +76,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
-    "@testing-library/user-event": "^14.6.6",
+    "@testing-library/user-event": "^14.6.7",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
@@ -92,7 +92,7 @@
     "typescript-eslint": "^8.69.0",
     "vite": "^8.2.2",
     "vite-node": "^6.0.0",
-    "vitest": "^4.1.11",
+    "vitest": "^5.0.0",
     "vitest-axe": "^0.1.0"
   }
 }
