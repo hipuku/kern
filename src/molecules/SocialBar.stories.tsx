@@ -27,6 +27,11 @@ export const InSidebarHeader: Story = {
   ),
 }
 
+export const WebsiteOnly: Story = {
+  name: 'Website only',
+  args: { siteName: 'tokenise', githubUrl: undefined },
+}
+
 export const CustomWebsite: Story = {
   name: 'Custom website URL',
   args: {

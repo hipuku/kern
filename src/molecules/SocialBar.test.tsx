@@ -19,6 +19,12 @@ describe('SocialBar', () => {
     )
   })
 
+  it('shows the website link alone when no repo is given', () => {
+    render(<SocialBar siteName="specifi" />)
+    expect(screen.getByRole('link', { name: /specifi website/ })).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /GitHub/ })).not.toBeInTheDocument()
+  })
+
   it('has no axe violations', async () => {
     const { container } = render(
       <SocialBar githubUrl="https://github.com/hipuku/specifi" siteName="specifi" />,

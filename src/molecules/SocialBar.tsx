@@ -8,8 +8,12 @@ import { cn } from '../lib/utils'
 const HIPUKU_URL = 'https://www.hipuku.dev'
 
 export interface SocialBarProps {
-  /** Full GitHub repo URL, e.g. `https://github.com/hipuku/specifi`. */
-  githubUrl: string
+  /**
+   * Full GitHub repo URL, e.g. `https://github.com/hipuku/specifi`. Omit it and
+   * the bar shows the website link alone, for an experiment whose source is not
+   * public or not worth pointing at.
+   */
+  githubUrl?: string
   /**
    * The experiment's name, used for the website link's accessible label
    * (e.g. `specifi` → "specifi website").
@@ -28,7 +32,8 @@ interface Link {
 
 /**
  * The portfolio-standard row of social links shown in each experiment's sidebar
- * header: a globe linking to hipuku.dev and a GitHub link to the source repo.
+ * header: a globe linking to hipuku.dev and, when a repo URL is given, a GitHub
+ * link to the source.
  * Encapsulates the convention so every experiment gets the same bar from one
  * repo URL instead of hand-rolling an identical array.
  *
@@ -39,7 +44,7 @@ interface Link {
 export function SocialBar({ githubUrl, siteName, websiteUrl = HIPUKU_URL, className }: SocialBarProps) {
   const links: Link[] = [
     { Icon: Globe, label: `${siteName} website`, href: websiteUrl },
-    { Icon: GitHubIcon, label: 'GitHub', href: githubUrl },
+    ...(githubUrl ? [{ Icon: GitHubIcon, label: 'GitHub', href: githubUrl }] : []),
   ]
 
   return (
