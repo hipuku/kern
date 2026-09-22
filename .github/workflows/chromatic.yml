@@ -1,0 +1,62 @@
+name: Chromatic
+
+# Both events, because Chromatic needs both to work at all.
+#
+# A baseline is promoted when Chromatic builds the base branch. Running on pull
+# requests alone means main is never built, no baseline is ever promoted, and
+# every pull request re-reports the same changes against nothing. haus's
+# workflow ran that way for weeks and produced no visual diff at any point.
+#
+# Publishing here is also what puts kern in the Storybook Showcase, which
+# indexes Storybooks published on Chromatic rather than taking submissions.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  visual:
+    name: Visual regression
+    runs-on: ubuntu-latest
+    # Skips cleanly rather than failing red when the token is absent, on a fork
+    # or before anyone has set it. The fork guard applies to pull requests only:
+    # a push event has no `pull_request` context.
+    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Chromatic diffs against a baseline commit, so it needs the history to
+          # find one. With a shallow clone every run looks like the first run and
+          # every story reads as a change.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm install
+
+      - name: Publish to Chromatic
+        if: ${{ env.CHROMATIC_PROJECT_TOKEN != '' }}
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        uses: chromaui/action@v13
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          # A visual change is for a human to accept or reject. Failing the build
+          # on one would mean every intentional design change arrives as a red
+          # tick, which is how teams learn to merge past this job.
+          exitZeroOnChanges: true
+          # Nothing is auto-accepted. Design work here goes straight to main, so
+          # accepting on main would accept every change unseen, which is the
+          # mistake haus#36 recorded. Changes wait in the Chromatic UI instead.
+          autoAcceptChanges: false
+
+      - name: Say why this was skipped
+        if: ${{ env.CHROMATIC_PROJECT_TOKEN == '' }}
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: echo "CHROMATIC_PROJECT_TOKEN is not set, so nothing was published."
