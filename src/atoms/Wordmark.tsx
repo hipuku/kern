@@ -11,7 +11,7 @@ type Size = 'sm' | 'md' | 'lg'
  * same size, because a mark's bounding box is a typographic accident: what
  * fills it depends on which letters the name happens to contain. Measured
  * across the tools' marks at a uniform 28px box, the x-heights came out
- * between 14.9px and 18.3px, a 23% spread, because one name spends height on
+ * between 14.9px and 19.7px, a 32% spread, because one name spends height on
  * the descender of a p while another spends it on the ascender of an h.
  *
  * x-height is what the eye reads as size, so it is what the scale is defined

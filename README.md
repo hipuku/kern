@@ -40,7 +40,7 @@ kern is installed from GitHub and resolved via a Vite path alias.
 
 ```jsonc
 // package.json
-"dependencies": { "kern": "github:hipuku/kern#v1.2.0" }
+"dependencies": { "kern": "github:hipuku/kern#v1.5.0" }
 ```
 
 No alias, and no build step. kern ships its TypeScript and declares entry points for it, so

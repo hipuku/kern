@@ -29,25 +29,25 @@ export const experiments: ExperimentBrand[] = [
   {
     name: 'hexicon',
     src: '/brand/hexicon.svg',
-    // 15.7 / 24, no descender, so the box is mostly ascender.
-    xHeightRatio: 0.654,
+    // 16.3 / 24, the o. No descender, so the box is mostly ascender.
+    xHeightRatio: 0.678,
     accentClass: 'text-pulsar',
     hoverFills: { hi: 'var(--color-pulsar)', pu: 'var(--color-orbit)', ku: 'var(--color-tidal)' },
   },
   {
     name: 'specifi',
     src: '/brand/specifi.svg',
-    // 18.6 / 35. The p's descender makes this the tallest box of the three,
-    // which is why it looked smallest at a shared box height.
-    xHeightRatio: 0.531,
+    // 18.6 / 35, the e. The p's descender makes this the tallest box of the
+    // marks, which is why it looked smallest at a shared box height.
+    xHeightRatio: 0.532,
     accentClass: 'text-solstice',
     hoverFills: { hi: 'var(--color-orbit)', pu: 'var(--color-solstice)', ku: 'var(--color-supernova)' },
   },
   {
     name: 'gray-scott',
     src: '/brand/gray-scott.svg',
-    // 16.3 / 28, descenders on g and y.
-    xHeightRatio: 0.582,
+    // 16.5 / 28, the o. Descenders on g and y.
+    xHeightRatio: 0.590,
     accentClass: 'text-nebula',
     hoverFills: { hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' },
   },

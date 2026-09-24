@@ -121,7 +121,7 @@ index.css                   Storybook's entry: Tailwind + kern.css + docs CSS
 kern is versioned by git tag, and consumers pin one:
 
 ```jsonc
-"kern": "github:hipuku/kern#v1.2.0"
+"kern": "github:hipuku/kern#v1.5.0"
 ```
 
 Until v1 the tools depended on an unpinned `github:hipuku/kern`, which resolves to whatever `main` is at install time, so an unrelated change to the library could break a tool on a routine reinstall and no breaking change to kern was ever safe. Pinning is what makes it possible to change an API properly instead of accumulating compatibility shims: tag a new major, and each tool adopts on its own schedule by bumping one line.

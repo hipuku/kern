@@ -20,7 +20,7 @@ describe('Wordmark', () => {
     // The point of the whole exercise. A shared *box* height leaves the marks
     // looking different sizes, because what fills the box depends on which
     // letters the name happens to contain: at a uniform 28px box the measured
-    // x-heights were 18.3 / 14.9 / 16.3 px. Normalising on x-height instead
+    // x-heights run from 14.9 to 19.7 px. Normalising on x-height instead
     // means the rendered heights differ but the letterforms match.
     for (const { name, src, xHeightRatio } of experiments) {
       const { unmount } = render(<Wordmark src={src} name={name} xHeightRatio={xHeightRatio} />)

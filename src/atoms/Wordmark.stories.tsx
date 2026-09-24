@@ -75,7 +75,7 @@ export const Normalisation: Story = {
           'Left: every mark at the same box height, which is what a shared `h-7` gives you. The marks read as ' +
           'different sizes because the box is a typographic accident: one name spends its height on the ' +
           'descender of a p, another on the ascender of an h. Measured at a uniform 28px box the ' +
-          'x-heights came out 18.3, 14.9 and 16.3 px.\n\n' +
+          'x-heights run from 14.9 to 19.7 px.\n\n' +
           'Right: the same marks normalised on x-height. The boxes now differ; the letterforms match.',
       },
     },
