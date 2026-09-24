@@ -196,8 +196,7 @@ export type LineRole = keyof typeof lineRoles
 /**
  * The accent seam. Components reference these and never a named colour, so an
  * experiment sets them once in its own `index.css` and every shared component
- * follows. kern's own default is pulsar; specifi uses solstice, gray-scott
- * nebula.
+ * follows. kern's own default is pulsar; each experiment picks its own.
  */
 export const accentRoles = {
   primary: { value: 'var(--color-pulsar)', description: 'The experiment accent: active states, emphasis.' },

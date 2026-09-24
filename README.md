@@ -15,9 +15,9 @@ The shared component library and design tokens behind the hipuku experiments, co
 
 kern and [haus](https://github.com/hipuku/haus) are separate design systems, and which one you want depends on how you consume it.
 
-haus publishes W3C DTCG tokens and React components to npm, for consumers it does not know. kern is github-pinned and source-only, and holds the parts three in-house tools share.
+haus publishes W3C DTCG tokens and React components to npm, for consumers it does not know. kern is github-pinned and source-only, and holds the parts the in-house experiments share.
 
-The split is what lets kern change an API. It knows all three of its consumers by name and each pins a tag, so v1 could be a breaking rebuild that shipped, sat unused, and was adopted one app at a time.
+The split is what lets kern change an API. It knows every one of its consumers by name and each pins a tag, so v1 could be a breaking rebuild that shipped, sat unused, and was adopted one app at a time.
 
 ## Stack
 
@@ -97,7 +97,7 @@ To see kern edits live inside a consuming experiment, symlink it (the git instal
 
 ```bash
 cd kern && npm link
-cd ../gray-scott && npm link kern
+cd ../your-experiment && npm link kern
 ```
 
 The symlink does not survive `npm install`, so re-run `npm link kern` after any reinstall.

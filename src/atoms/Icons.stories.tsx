@@ -20,7 +20,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'The complete icon vocabulary used across kern and the three experiments. ' +
+          'The complete icon vocabulary used across kern and the experiments. ' +
           'Interface glyphs come from **lucide-react**; brand marks that lucide does ' +
           'not provide live as hand-rolled SVGs in `atoms/Icons.tsx`. Every icon is a ' +
           '`currentColor` component taking a `className`, so they are interchangeable ' +

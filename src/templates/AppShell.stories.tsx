@@ -29,8 +29,8 @@ const meta = {
       description: {
         component:
           'The full-page layout every experiment is built on. Atomic design puts page structure in the template ' +
-          'layer, the arrangement of regions independent of what fills them, and kern had no such layer, so all ' +
-          'three experiments hand-wrote the same App.tsx: the same flex container, the same `<main>` classes, the ' +
+          'layer, the arrangement of regions independent of what fills them, and kern had no such layer, so ' +
+          'every experiment hand-wrote the same App.tsx: the same flex container, the same `<main>` classes, the ' +
           'same ErrorBoundary wrapper.\n\n' +
           'Desktop-only: the shell is wrapped in a `ViewportGate`, so below the `lg` breakpoint the viewer sees a ' +
           'short notice instead of a squeezed layout.',

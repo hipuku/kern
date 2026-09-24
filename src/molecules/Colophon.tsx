@@ -16,7 +16,7 @@ export interface ColophonProps extends ComponentPropsWithRef<'div'> {
 }
 
 /**
- * The credit line at the foot of the sidebar: "2026 © specifi by hipuku".
+ * The credit line at the foot of the sidebar: "2026 © <experiment> by hipuku".
  *
  * Each experiment used to assemble this by hand from a `<span>` and a
  * `Logo`, which is exactly the kind of small, repeated, always-identical

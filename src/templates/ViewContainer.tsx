@@ -4,8 +4,8 @@ import { cn } from '../lib/utils'
 
 /**
  * The centred single-column frame every view opens with:
- * `mx-auto w-full flex flex-col` at a capped width. All three experiments spell
- * this out at the top of ~13 view files, varying only the max-width and the
+ * `mx-auto w-full flex flex-col` at a capped width. The experiments spelled
+ * this out at the top of every view file, varying only the max-width and the
  * vertical rhythm.
  */
 export const viewContainerVariants = cva('mx-auto w-full flex flex-col', {

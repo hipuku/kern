@@ -24,7 +24,7 @@ const meta = {
           'A multi-line text field, for pasting a stylesheet or a list of colours.\n\n' +
           'It shares `inputChrome` with `Input` rather than restating the surface, the border-only ' +
           'focus and the error state, so the two cannot drift. They were separate hand-rolled copies ' +
-          'in hexicon and specifi.',
+          'in two of the experiments.',
       },
     },
   },

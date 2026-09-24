@@ -39,10 +39,9 @@ export interface AppShellProps {
  *
  * **Why this is a template.** Atomic design's template layer is where page
  * structure lives: the arrangement of regions, independent of what fills them.
- * kern had no such layer, so all three experiments hand-wrote the same
- * `App.tsx`: the same flex container, the same `<main>` classes, the same
- * `ErrorBoundary` wrapper. Three copies of a layout is three places for it to
- * drift.
+ * kern had no such layer, so every experiment hand-wrote the same `App.tsx`:
+ * the same flex container, the same `<main>` classes, the same `ErrorBoundary`
+ * wrapper. Every copy of a layout is another place for it to drift.
  *
  * **Desktop-only.** The whole shell is wrapped in a `ViewportGate`, so below the
  * `lg` breakpoint the viewer gets a short notice instead of a squeezed layout.

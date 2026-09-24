@@ -10,10 +10,9 @@ type Size = 'sm' | 'md' | 'lg'
  * Setting every wordmark to the same box height does not make them look the
  * same size, because a mark's bounding box is a typographic accident: what
  * fills it depends on which letters the name happens to contain. Measured
- * across the three experiments at a uniform 28px box, the x-heights came out
- * 18.3px (hexicon), 14.9px (specifi) and 16.3px (gray-scott), a 23% spread,
- * because "specifi" spends height on the descender of its p while "hexicon"
- * spends it on the ascender of its h.
+ * across the experiments' marks at a uniform 28px box, the x-heights came out
+ * between 14.9px and 18.3px, a 23% spread, because one name spends height on
+ * the descender of a p while another spends it on the ascender of an h.
  *
  * x-height is what the eye reads as size, so it is what the scale is defined
  * in. The rendered box height is derived from it per mark.
@@ -50,7 +49,7 @@ export interface WordmarkProps extends Omit<ComponentPropsWithRef<'img'>, 'heigh
    *
    * Measure it once per mark: the height of a round lowercase letter that sits
    * on the baseline with no ascender or descender (`e`, `o`, `c`, `s`), divided
-   * by the viewBox height. The three experiments' values are in `wordmarks.ts`.
+   * by the viewBox height. The experiments' values are in `wordmarks.ts`.
    *
    * Omit it and the mark falls back to a fixed box height, which is correct-ish and
    * better than demanding every consumer measure their own artwork.
@@ -64,8 +63,8 @@ export interface WordmarkProps extends Omit<ComponentPropsWithRef<'img'>, 'heigh
  * An experiment's wordmark, normalised so marks of different letterforms read
  * at the same size.
  *
- * All three experiments hand-wrote this as a bare `<img>` in their `App.tsx`,
- * and had already drifted, hexicon at `h-5` against `h-7` for the other two.
+ * The experiments each hand-wrote this as a bare `<img>` in their `App.tsx`,
+ * and had already drifted, one at `h-5` against `h-7` for the others.
  * Sharing one component fixed the box height; sharing one *metric* is what
  * actually makes them look uniform.
  *

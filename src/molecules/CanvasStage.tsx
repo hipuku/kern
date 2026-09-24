@@ -16,7 +16,7 @@ export interface CanvasStageProps extends ComponentPropsWithRef<'div'> {
  * `position: relative` so overlays (a `CanvasReadout`, a crosshair) can be placed
  * against it.
  *
- * gray-scott framed four canvases with the identical
+ * One experiment framed four canvases with the identical
  * `relative rounded-card overflow-hidden border bg-background` block. This is
  * that frame: the chrome rather than the pixels. The canvas, its worker and its
  * overlays stay with the view; the stage just holds them.

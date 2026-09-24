@@ -41,7 +41,7 @@ export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'type'>
  *
  * The house input pattern was written down in DESIGN_SYSTEM.md: the surface,
  * the border-only focus, the placeholder rule and the error state. It existed
- * only as prose, and three files across two experiments implemented it by hand.
+ * only as prose, and several experiments implemented it by hand.
  *
  * Renders in the mono face by default: every text input across the experiments
  * takes a hex code, a CSS selector or a number, none of which should be set in

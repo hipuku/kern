@@ -21,7 +21,7 @@ const RESIZE: Record<NonNullable<TextareaProps['resize']>, string> = {
  * A multi-line text field, for pasting a stylesheet or a list of colours.
  *
  * Shares `inputChrome` with `Input` rather than restating it, so the two cannot
- * drift. They were separate hand-rolled copies in hexicon and specifi.
+ * drift. They were separate hand-rolled copies in two of the experiments.
  */
 export function Textarea({ invalid, resize = 'vertical', className, ...props }: TextareaProps) {
   return (

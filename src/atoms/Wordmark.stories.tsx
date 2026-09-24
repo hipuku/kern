@@ -16,8 +16,8 @@ const meta = {
     docs: {
       description: {
         component:
-          'All three experiments hand-wrote this as a bare `<img>` in their App.tsx, and had already drifted: ' +
-          'hexicon rendered at `h-5` while specifi and gray-scott used `h-7`, so the sidebar header sat at a ' +
+          'The experiments each hand-wrote this as a bare `<img>` in their App.tsx, and had already drifted: ' +
+          'one rendered at `h-5` while the others used `h-7`, so the sidebar header sat at a ' +
           'different height depending on which experiment you were looking at.\n\n' +
           'For the hipuku brand lettermark itself, use `Logo`.',
       },
@@ -44,12 +44,12 @@ export const Sizes: Story = {
 }
 
 export const TheExperiments: Story = {
-  name: 'The three experiments',
+  name: 'Experiment marks',
   parameters: {
     docs: {
       description: {
         story:
-          'The actual marks the three experiments ship, at the shared `md` height, which is the drift this ' +
+          'Marks the experiments ship, at the shared `md` height, which is the drift this ' +
           'atom exists to stop.',
       },
     },
@@ -73,8 +73,8 @@ export const Normalisation: Story = {
       description: {
         story:
           'Left: every mark at the same box height, which is what a shared `h-7` gives you. The marks read as ' +
-          'different sizes because the box is a typographic accident: "specifi" spends its height on the ' +
-          'descender of the p, "hexicon" on the ascender of the h. Measured at a uniform 28px box the ' +
+          'different sizes because the box is a typographic accident: one name spends its height on the ' +
+          'descender of a p, another on the ascender of an h. Measured at a uniform 28px box the ' +
           'x-heights came out 18.3, 14.9 and 16.3 px.\n\n' +
           'Right: the same marks normalised on x-height. The boxes now differ; the letterforms match.',
       },

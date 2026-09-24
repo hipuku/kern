@@ -9,14 +9,14 @@ const HIPUKU_URL = 'https://www.hipuku.dev'
 
 export interface SocialBarProps {
   /**
-   * Full GitHub repo URL, e.g. `https://github.com/hipuku/specifi`. Omit it and
+   * Full GitHub repo URL, e.g. `https://github.com/hipuku/<experiment>`. Omit it and
    * the bar shows the website link alone, for an experiment whose source is not
    * public or not worth pointing at.
    */
   githubUrl?: string
   /**
    * The experiment's name, used for the GitHub link's accessible label
-   * (e.g. `specifi` → "specifi on GitHub").
+   * (e.g. `<experiment>` → "<experiment> on GitHub").
    */
   siteName: string
   /** Where the globe icon points. Defaults to the hipuku.dev home site. */

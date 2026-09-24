@@ -13,8 +13,8 @@ export interface EmptyStateProps extends Omit<ComponentPropsWithRef<'div'>, 'tit
 /**
  * The "no input yet / no results / try an example" region.
  *
- * Every tool has one: specifi's "No selectors found" and "Try an example",
- * hexicon's "No #hex codes found" and "Add at least 2 colours", and each was a
+ * Every tool has one, such as "No selectors found", "Try an example" or "Add
+ * at least 2 colours", and each was a
  * bare `<p>` (plus, in one case, a hand-rolled row of example buttons). This is
  * the shared shape: a message, optionally a lead line, optionally a row of
  * actions to get the user unstuck.
