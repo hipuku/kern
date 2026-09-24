@@ -15,7 +15,7 @@ const config: StorybookConfig = {
     { from: '../logo.svg', to: '/brand/logo.svg' },
     { from: '../wordmark.svg', to: '/brand/wordmark.svg' },
     { from: '../og.png', to: '/og.png' },
-    // The consuming experiments' own wordmarks. Copies, so that the sidebar and
+    // The consuming tools' own wordmarks. Copies, so that the sidebar and
     // shell stories can show the real marks rather than a text placeholder or a
     // hand-transcribed SVG path. The latter is asset data that goes stale
     // silently when the source file is redrawn.

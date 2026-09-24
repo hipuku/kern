@@ -26,8 +26,8 @@ describe('SocialBar', () => {
   })
 
   it('labels each link with where it goes', () => {
-    // The globe points at hipuku.dev, not at the experiment, so naming it after
-    // the experiment announced one destination and opened another.
+    // The globe points at hipuku.dev, not at the tool, so naming it after
+    // the tool announced one destination and opened another.
     render(<SocialBar githubUrl="https://github.com/hipuku/specifi" siteName="specifi" />)
     expect(screen.getByRole('link', { name: 'hipuku.dev (opens in new tab)' })).toHaveAttribute(
       'href',

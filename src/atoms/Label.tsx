@@ -14,7 +14,7 @@ export interface LabelProps extends ComponentPropsWithRef<'label'> {
  * The small-caps label that names a control, a card, or a section.
  *
  * `type-annotation-sc text-ink-body` appeared 77 times across kern and the three
- * experiments: the single most repeated class pair in the system, and one that
+ * tools: the single most repeated class pair in the system, and one that
  * had already drifted onto `text-ink-muted` in one place.
  *
  * Small caps come from `font-variant-caps` via the type role, never from the

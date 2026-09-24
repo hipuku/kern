@@ -9,16 +9,16 @@ const meta = {
   args: { src: '/brand/wordmark.svg', name: 'kern' },
   argTypes: {
     size: { control: 'select', options: ['sm', 'md', 'lg'], description: 'Rendered height. md is the house default for a sidebar header.' },
-    name: { control: 'text', description: "The experiment's name. Becomes the alt text, so it is required." },
+    name: { control: 'text', description: "The tool's name. Becomes the alt text, so it is required." },
     href: { control: 'text', description: 'Wraps the mark in a link. Omit for a mark that is not clickable.' },
   },
   parameters: {
     docs: {
       description: {
         component:
-          'The experiments each hand-wrote this as a bare `<img>` in their App.tsx, and had already drifted: ' +
+          'The tools each hand-wrote this as a bare `<img>` in their App.tsx, and had already drifted: ' +
           'one rendered at `h-5` while the others used `h-7`, so the sidebar header sat at a ' +
-          'different height depending on which experiment you were looking at.\n\n' +
+          'different height depending on which tool you were looking at.\n\n' +
           'For the hipuku brand lettermark itself, use `Logo`.',
       },
     },
@@ -44,12 +44,12 @@ export const Sizes: Story = {
 }
 
 export const TheExperiments: Story = {
-  name: 'Experiment marks',
+  name: 'Tool marks',
   parameters: {
     docs: {
       description: {
         story:
-          'Marks the experiments ship, at the shared `md` height, which is the drift this ' +
+          'Marks the tools ship, at the shared `md` height, which is the drift this ' +
           'atom exists to stop.',
       },
     },

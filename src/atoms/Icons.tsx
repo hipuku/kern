@@ -1,5 +1,5 @@
 // Custom brand/glyph icons that lucide-react doesn't provide.
-// Everything else in the experiments uses lucide directly; this module is the
+// Everything else in the tools uses lucide directly; this module is the
 // home for the handful of SVGs we hand-roll (brand marks, etc.). Each is a
 // currentColor SVG that takes a className for sizing/colour, so it drops into
 // the same slots as a lucide icon.

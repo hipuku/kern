@@ -16,7 +16,7 @@ export interface ExternalLinkProps extends ComponentPropsWithRef<'a'> {
  * accessibility footgun, so the system provides one that cannot be got wrong.
  *
  * Renders in `--link`, which kern now defines (it previously consumed the role
- * without declaring it, so the atom was unstyled outside an experiment).
+ * without declaring it, so the atom was unstyled outside a tool).
  */
 export function ExternalLink({ href, children, className, ...props }: ExternalLinkProps) {
   return (

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Info, Hash, Map, GitCompare, Search, ListChecks } from 'lucide-react'
+import { Info, Hash, Map, GitCompare, Search, ListChecks, ArrowLeftRight, Columns4, FileSearch } from 'lucide-react'
 import { AppSidebar } from './AppSidebar'
 import { Wordmark } from '../atoms/Wordmark'
 import { Colophon } from '../molecules/Colophon'
@@ -45,7 +45,7 @@ const specifiNav = [
   { id: 'rank',    label: 'Rank a stylesheet',     icon: ListChecks },
 ]
 
-const [hexicon, specifi, grayScott] = experiments
+const [hexicon, specifi, grayScott, tokenise] = experiments
 
 export const Hexicon: Story = {
   render: () => {
@@ -101,6 +101,30 @@ export const GrayScott: Story = {
         accentActiveClass={grayScott.accentClass}
         social={<SocialBar siteName="gray-scott" githubUrl="https://github.com/hipuku/gray-scott" />}
         colophon={<Colophon name={grayScott.name} hoverFills={grayScott.hoverFills} />}
+      />
+    )
+  },
+}
+
+const tokeniseNav = [
+  { id: 'about',      label: 'About this tool', icon: Info           },
+  { id: 'convert',    label: 'Convert tokens',  icon: ArrowLeftRight },
+  { id: 'compare',    label: 'Compare a token', icon: Columns4       },
+  { id: 'difference', label: 'Check a file',    icon: FileSearch     },
+]
+
+export const Tokenise: Story = {
+  render: () => {
+    const [active, setActive] = useState('convert')
+    return (
+      <AppSidebar
+        logo={<Wordmark src={tokenise.src} name={tokenise.name} xHeightRatio={tokenise.xHeightRatio} />}
+        navItems={tokeniseNav}
+        activeId={active}
+        onNavigate={setActive}
+        accentActiveClass={tokenise.accentClass}
+        social={<SocialBar siteName="tokenise" githubUrl="https://github.com/hipuku/tokenise" />}
+        colophon={<Colophon name={tokenise.name} hoverFills={tokenise.hoverFills} />}
       />
     )
   },

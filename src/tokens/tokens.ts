@@ -36,7 +36,7 @@ export interface ColourRamp {
 
 /**
  * The named accents, ordered by hue as they appear in the palette documentation.
- * Each experiment picks one as its `--primary`.
+ * Each tool picks one as its `--primary`.
  */
 export const palette = {
   nebula:    { dark: '#0D7A4F', base: '#15AD70', light: '#B4EDCF' },
@@ -126,7 +126,7 @@ export type VoidStep = keyof typeof voidScale
  * meant editing 44 call sites instead of one token.
  *
  * Each role is a `:root` custom property pointing at a primitive, so an
- * experiment can retint any of them without forking a component.
+ * tool can retint any of them without forking a component.
  */
 export const surfaceRoles = {
   'surface-page':   { step: '0',  description: 'The page background.' },
@@ -195,11 +195,11 @@ export type LineRole = keyof typeof lineRoles
 
 /**
  * The accent seam. Components reference these and never a named colour, so an
- * experiment sets them once in its own `index.css` and every shared component
- * follows. kern's own default is pulsar; each experiment picks its own.
+ * tool sets them once in its own `index.css` and every shared component
+ * follows. kern's own default is pulsar; each tool picks its own.
  */
 export const accentRoles = {
-  primary: { value: 'var(--color-pulsar)', description: 'The experiment accent: active states, emphasis.' },
+  primary: { value: 'var(--color-pulsar)', description: 'The tool accent: active states, emphasis.' },
   ring:    { value: 'var(--color-pulsar)', description: 'Focus ring. Tracks the accent.' },
   link:    { value: 'var(--color-pulsar)', description: 'Inline links in prose.' },
 } as const

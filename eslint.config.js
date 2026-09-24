@@ -7,7 +7,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 /**
  * kern was the only project in the portfolio without a lint config; the three
- * experiments each had one. This matches their setup, minus react-refresh
+ * tools each had one. This matches their setup, minus react-refresh
  * (kern ships no app, so the fast-refresh boundary rules do not apply) and plus
  * the Storybook plugin, since most of this repo is stories.
  */

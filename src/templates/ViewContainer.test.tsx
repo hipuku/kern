@@ -12,7 +12,7 @@ describe('ViewContainer', () => {
 
   it('holds the reading measure to the two documented widths', () => {
     // The measure is the point of the template: a tool view that grows to the
-    // window is unreadable at 2560px, which is what every experiment did before
+    // window is unreadable at 2560px, which is what every tool did before
     // this existed.
     expect(viewContainerVariants({ width: 'lg' })).toContain('max-w-3xl')
     expect(viewContainerVariants({ width: 'md' })).toContain('max-w-2xl')

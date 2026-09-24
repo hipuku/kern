@@ -5,7 +5,7 @@ import { ViewportGate } from './ViewportGate'
 import { ErrorBoundary } from '../utils/ErrorBoundary'
 
 export interface AppShellProps {
-  /** The experiment's wordmark, for the sidebar header. */
+  /** The tool's wordmark, for the sidebar header. */
   logo: ReactNode
   navItems: NavItem[]
   activeId: string
@@ -23,7 +23,7 @@ export interface AppShellProps {
   /**
    * On-brand copy for the desktop-only notice shown below the `lg` breakpoint.
    * Defaults to `ViewportGate`'s plain message; pass a node for something with
-   * the experiment's own voice.
+   * the tool's own voice.
    */
   smallScreenNotice?: ReactNode
   /**
@@ -34,12 +34,12 @@ export interface AppShellProps {
 }
 
 /**
- * The full-page layout every experiment is built on: a fixed sidebar beside a
+ * The full-page layout every tool is built on: a fixed sidebar beside a
  * scrolling main region.
  *
  * **Why this is a template.** Atomic design's template layer is where page
  * structure lives: the arrangement of regions, independent of what fills them.
- * kern had no such layer, so every experiment hand-wrote the same `App.tsx`:
+ * kern had no such layer, so every tool hand-wrote the same `App.tsx`:
  * the same flex container, the same `<main>` classes, the same `ErrorBoundary`
  * wrapper. Every copy of a layout is another place for it to drift.
  *

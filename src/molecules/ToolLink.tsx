@@ -4,7 +4,7 @@ import { accentText, accentTextHover, type AccentColour } from '../lib/accent'
 
 export interface ToolLinkProps extends Omit<ButtonProps, 'variant' | 'size'> {
   /**
-   * Tint the link with a specific accent. Omit to use the experiment's
+   * Tint the link with a specific accent. Omit to use the tool's
    * `--primary`, which is the usual case. Pass one only when the link points
    * at something the palette already colour-codes.
    */

@@ -115,7 +115,7 @@
 
 /* ─── Theme (dark-only) ───────────────────────────────────────────────── */
 /*
- * The override seam. An experiment redefines any of these in its own
+ * The override seam. A tool redefines any of these in its own
  * index.css and every kern component follows, without forking anything.
  */
 :root {

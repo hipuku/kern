@@ -14,7 +14,7 @@ type Story = StoryObj
 
 const base = parseFloat(spacingBase) * 16
 
-/** The multiples that actually appear across kern and the experiments. */
+/** The multiples that actually appear across kern and the tools. */
 const COMMON_MULTIPLES = [1, 1.5, 2, 2.5, 3, 4, 6, 8, 10, 16]
 
 /**

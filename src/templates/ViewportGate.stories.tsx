@@ -52,7 +52,7 @@ export const CheekyNotice: Story = {
     docs: {
       description: {
         story:
-          'The `notice` prop takes any node, so each experiment can speak in its own voice: a specificity pun, a ' +
+          'The `notice` prop takes any node, so each tool can speak in its own voice: a specificity pun, a ' +
           'colour-space quip, a reaction-diffusion aside. Supply just the content; the gate centres it.',
       },
     },

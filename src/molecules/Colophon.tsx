@@ -3,22 +3,22 @@ import { cn } from '../lib/utils'
 import { Logo, type HoverFills } from '../atoms/Logo'
 
 export interface ColophonProps extends ComponentPropsWithRef<'div'> {
-  /** The experiment's name, as it should read in the credit line. */
+  /** The tool's name, as it should read in the credit line. */
   name: string
   /**
    * Year shown in the credit. Defaults to the current year, so the footer of a
-   * long-lived experiment does not quietly go stale. Every experiment
+   * long-lived tool does not quietly go stale. Every tool
    * previously hardcoded `2026`.
    */
   year?: number
-  /** Retints the logo's hover animation to the experiment's palette. */
+  /** Retints the logo's hover animation to the tool's palette. */
   hoverFills?: HoverFills
 }
 
 /**
- * The credit line at the foot of the sidebar: "2026 © <experiment> by hipuku".
+ * The credit line at the foot of the sidebar: "2026 © <tool> by hipuku".
  *
- * Each experiment used to assemble this by hand from a `<span>` and a
+ * Each tool used to assemble this by hand from a `<span>` and a
  * `Logo`, which is exactly the kind of small, repeated, always-identical
  * markup a component library exists to absorb.
  */

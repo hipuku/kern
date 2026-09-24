@@ -15,7 +15,7 @@ export interface LogoProps {
   /** Where the mark links. Pass `null` to render it as a plain, non-linked mark. */
   href?: string | null
   className?: string
-  /** Retints the hover animation to an experiment's own palette. */
+  /** Retints the hover animation to a tool's own palette. */
   hoverFills?: HoverFills
 }
 
@@ -30,7 +30,7 @@ const DEFAULT_FILLS: HoverFills = {
  *
  * Named `Logo` rather than `HipukuLogo`: a design system should not carry a
  * component named after one brand, and within this system there is only one
- * logo. An experiment's own wordmark is a `Wordmark`.
+ * logo. A tool's own wordmark is a `Wordmark`.
  *
  * The animation is CSS, in `styles/logo.css`: `@property` registrations and
  * keyframes cannot be expressed as utilities. It is suppressed wholesale under

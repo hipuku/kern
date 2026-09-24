@@ -22,7 +22,7 @@ export interface AppSidebarProps {
 }
 
 /**
- * The fixed navigation rail every experiment is built beside.
+ * The fixed navigation rail every tool is built beside.
  *
  * Desktop-only by design. kern used to carry a full responsive collapse here,
  * a hamburger, a backdrop, slide-in transforms and a `mobileOpen` state threaded

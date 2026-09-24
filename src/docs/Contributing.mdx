@@ -58,9 +58,9 @@ bare `z-40`.
 ## Adding a component
 
 **First ask whether it belongs here at all.** kern holds what more than one
-experiment shares. One experiment needing something is not evidence; build it
+tool shares. One tool needing something is not evidence; build it
 there, and move it here when a second one needs it. Extracting a pattern into
-kern means removing the inline copy from the source experiment, not leaving
+kern means removing the inline copy from the source tool, not leaving
 both.
 
 **Then decide the layer.** The test is what it depends on, not how big it looks:
@@ -123,7 +123,7 @@ CI runs all five. `main` deploys to
 
 ## Breaking changes
 
-Consuming experiments pin a git tag, so a breaking change does not reach them
+Consuming tools pin a git tag, so a breaking change does not reach them
 until they choose to bump the ref. That is what makes it safe to change an API
 properly rather than accumulating compatibility shims. Tag a new major, note the
-migration in the release, and let each experiment adopt on its own schedule.
+migration in the release, and let each tool adopt on its own schedule.

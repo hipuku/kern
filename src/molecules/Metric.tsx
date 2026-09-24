@@ -30,7 +30,7 @@ export interface MetricProps extends Omit<ComponentPropsWithRef<'div'>, 'childre
  * A single figure with its label: the compact sibling of `StatCard`.
  *
  * `StatCard` is the left-aligned card with a badge and a line of context;
- * `Metric` is just the value and its name, which the experiments reinvented four
+ * `Metric` is just the value and its name, which the tools reinvented four
  * ways (score cards, mini-scores, spec chips and ΔE cells).
  * It carries no badge and no sub-text: reach for `StatCard` when you need those.
  */

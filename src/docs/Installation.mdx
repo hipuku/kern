@@ -86,12 +86,12 @@ components do move between layers.
 
 ## Local development
 
-To see kern edits live inside a consuming experiment, symlink it, since the git
+To see kern edits live inside a consuming tool, symlink it, since the git
 install is a copy, so edits to `node_modules/kern` are not edits to kern.
 
 ```bash
 cd kern && npm link
-cd ../your-experiment && npm link kern
+cd ../your-tool && npm link kern
 ```
 
 The symlink does not survive `npm install`. Re-run `npm link kern` after any

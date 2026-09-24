@@ -7,14 +7,14 @@ const meta = {
   tags: ['autodocs'],
   args: { name: 'hexicon' },
   argTypes: {
-    name: { control: 'text', description: "The experiment's name, as it reads in the credit line." },
+    name: { control: 'text', description: "The tool's name, as it reads in the credit line." },
     year: { control: 'number', description: 'Defaults to the current year.' },
   },
   parameters: {
     docs: {
       description: {
         component:
-          'The credit line at the foot of the sidebar. Each experiment used to assemble this by hand from a span ' +
+          'The credit line at the foot of the sidebar. Each tool used to assemble this by hand from a span ' +
           'and a Logo, with the year hardcoded, so every footer would have quietly gone stale on 1 January.',
       },
     },
@@ -27,11 +27,11 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {}
 
 export const Retinted: Story = {
-  name: 'Retinted for an experiment',
+  name: 'Retinted for a tool',
   parameters: {
     docs: {
       description: {
-        story: "The logo's hover animation takes the experiment's own palette, so the mark belongs to the page it sits on.",
+        story: "The logo's hover animation takes the tool's own palette, so the mark belongs to the page it sits on.",
       },
     },
   },

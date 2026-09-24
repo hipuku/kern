@@ -5,22 +5,22 @@ import { Meta } from '@storybook/addon-docs/blocks'
 <div className="flex flex-col gap-4">
   <h1 className="type-h2 text-ink-title">kern</h1>
   <div className="type-p-lg text-ink-body max-w-[60ch]">
-    The design system behind the hipuku experiments: a small, opinionated set of
-    tokens and components every experiment shares.
+    The design system behind a set of browser tools: a small, opinionated set of
+    tokens and components every tool shares.
   </div>
 </div>
 
 ## What this is
 
-Each experiment is an independent app, with its own repository and deployment.
+Each tool is an independent app, with its own repository and deployment.
 Left alone they would drift: a subtly different button in each, a spacing scale
 each, a definition of "muted text" each. kern exists so that everything a visitor
 recognises as *hipuku* is defined **once**.
 
 It is deliberately small. This is not a general-purpose UI kit; it is the
-specific set of parts the experiments actually share, and nothing is
+specific set of parts the tools actually share, and nothing is
 added here speculatively. A pattern earns a place in kern by appearing in more
-than one experiment.
+than one tool.
 
 ## How it is organised
 
@@ -48,12 +48,12 @@ The last two are departures from the canonical five layers, and both are
 deliberate. **Utilities** exists because `ErrorBoundary` renders nothing in the
 ordinary case. Atomic design classifies UI, and filing control flow under
 "organism" made the word mean two different things. There is no **Pages** layer
-because kern has no pages: the experiments are the pages, and they live in their
+because kern has no pages: the tools are the pages, and they live in their
 own repositories.
 
 ## What is already decided
 
-These are settled. They are recorded here so that a new experiment does not
+These are settled. They are recorded here so that a new tool does not
 re-litigate them.
 
 - **Dark only.** There is no light theme and no plan for one. The void scale
@@ -66,7 +66,7 @@ re-litigate them.
   leading and tracking utilities are replaced by the `.type-*` composites.
 - **Small caps come from `font-variant-caps`,** applied by `.type-annotation-sc`.
   Never the `uppercase` class.
-- **Every experiment picks one accent** as its `--primary`. Components reference
+- **Every tool picks one accent** as its `--primary`. Components reference
   the semantic role, never a named colour, so retinting is a one-line change.
 
 <div className="h-px bg-line-subtle my-10" />

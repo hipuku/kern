@@ -4,7 +4,7 @@ import { cn } from '../lib/utils'
 
 /**
  * The centred single-column frame every view opens with:
- * `mx-auto w-full flex flex-col` at a capped width. The experiments spelled
+ * `mx-auto w-full flex flex-col` at a capped width. The tools spelled
  * this out at the top of every view file, varying only the max-width and the
  * vertical rhythm.
  */

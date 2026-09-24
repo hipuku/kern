@@ -25,7 +25,7 @@ export const buttonVariants = cva(
       variant: {
         /** The default: a raised control on the void surface. */
         surface: 'bg-surface-raised border border-line text-ink-body hover:text-ink-title hover:border-line-strong',
-        /** Carries the experiment accent. For the one primary action in a view. */
+        /** Carries the tool accent. For the one primary action in a view. */
         accent: 'bg-(--primary)/15 border border-(--primary)/40 text-(--primary) hover:bg-(--primary)/25',
         /** No chrome until hovered. For dense toolbars and repeated controls. */
         ghost: 'text-ink-body hover:text-ink-title hover:bg-surface-raised',

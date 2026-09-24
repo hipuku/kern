@@ -5,7 +5,7 @@
  * supported. Before this file existed there was no API surface at all:
  * consumers deep-imported `@kern/atoms/ToggleChip`, which made every file path
  * in the library a public contract and meant no file could be renamed or moved
- * without breaking an experiment. `ErrorBoundary` moving from `organisms/` to
+ * without breaking a tool. `ErrorBoundary` moving from `organisms/` to
  * `utils/` in this release would have been a breaking change under that model;
  * through this barrel it is invisible.
  *

@@ -6,7 +6,7 @@
  * the default outline, and keyboard users meet three different systems. Any
  * interactive element in kern composes this rather than spelling it out.
  *
- * `ring-(--ring)` tracks the semantic role, so an experiment that retints
+ * `ring-(--ring)` tracks the semantic role, so a tool that retints
  * `--ring` in its own `index.css` retints every focus ring kern renders.
  *
  * Note the Tailwind v4 parenthesis syntax: `ring-(--ring)`, never

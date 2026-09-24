@@ -25,7 +25,7 @@ export interface ToolViewProps extends Omit<ComponentPropsWithRef<'div'>, 'title
  * The scaffold every tool view is built on: a `ViewHeader`, an optional input
  * region, and a body that swaps to an empty state when there is nothing to show.
  *
- * The experiments repeat this shape (header, then inputs, then results or an
+ * The tools repeat this shape (header, then inputs, then results or an
  * empty message) view after view, each re-deriving the "which do I render"
  * branch inline. `ToolView` owns the arrangement and that branch, so a view is
  * reduced to its actual content.

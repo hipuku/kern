@@ -5,7 +5,7 @@ export interface ErrorBoundaryProps {
   children: ReactNode
   /**
    * Replaces the default fallback. Receives the error and a reset callback, so
-   * an experiment can render its own recovery UI without reimplementing the
+   * a tool can render its own recovery UI without reimplementing the
    * boundary.
    */
   fallback?: (error: Error, reset: () => void) => ReactNode

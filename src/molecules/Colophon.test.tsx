@@ -4,7 +4,7 @@ import { Colophon } from './Colophon'
 
 describe('Colophon', () => {
   it('defaults to the current year rather than a hardcoded one', () => {
-    // Every experiment used to hardcode 2026, so the footer of a long-lived
+    // Every tool used to hardcode 2026, so the footer of a long-lived
     // page went stale on 1 January and nobody noticed. This test fails on the
     // day someone puts a literal back.
     render(<Colophon name="specifi" />)

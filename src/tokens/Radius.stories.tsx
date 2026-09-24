@@ -38,7 +38,7 @@ export const Scale: Story = {
       <p className="type-p-sm text-ink-body max-w-[62ch]">
         The system was already consistent about these: 37 <code className="type-code">rounded-xl</code>,
         13 <code className="type-code">rounded-lg</code> and 8 <code className="type-code">rounded-full</code>{' '}
-        across kern and the experiments, but expressed as sizes, plus two arbitrary{' '}
+        across kern and the tools, but expressed as sizes, plus two arbitrary{' '}
         <code className="type-code">rounded-[4px]</code> and <code className="type-code">rounded-[3px]</code>{' '}
         escape hatches that were really a missing fourth step.
       </p>

@@ -9,14 +9,14 @@ const HIPUKU_URL = 'https://www.hipuku.dev'
 
 export interface SocialBarProps {
   /**
-   * Full GitHub repo URL, e.g. `https://github.com/hipuku/<experiment>`. Omit it and
-   * the bar shows the website link alone, for an experiment whose source is not
+   * Full GitHub repo URL, e.g. `https://github.com/hipuku/<tool>`. Omit it and
+   * the bar shows the website link alone, for a tool whose source is not
    * public or not worth pointing at.
    */
   githubUrl?: string
   /**
-   * The experiment's name, used for the GitHub link's accessible label
-   * (e.g. `<experiment>` → "<experiment> on GitHub").
+   * The tool's name, used for the GitHub link's accessible label
+   * (e.g. `<tool>` → "<tool> on GitHub").
    */
   siteName: string
   /** Where the globe icon points. Defaults to the hipuku.dev home site. */
@@ -36,14 +36,14 @@ interface Link {
 }
 
 /**
- * The portfolio-standard row of social links shown in each experiment's sidebar
+ * The portfolio-standard row of social links shown in each tool's sidebar
  * header: a globe linking to hipuku.dev and, when a repo URL is given, a GitHub
  * link to the source.
- * Encapsulates the convention so every experiment gets the same bar from one
+ * Encapsulates the convention so every tool gets the same bar from one
  * repo URL instead of hand-rolling an identical array.
  *
  * Both destinations are off-site, so the links open in a new tab via
- * `IconLink`'s `external`, which keeps the experiment open behind them and adds
+ * `IconLink`'s `external`, which keeps the tool open behind them and adds
  * the `rel="noopener"` and new-tab announcement the hand-rolled version lacked.
  */
 export function SocialBar({

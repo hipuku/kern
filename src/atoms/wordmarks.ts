@@ -1,5 +1,5 @@
 /**
- * The consuming experiments, for stories that need a real wordmark.
+ * The consuming tools, for stories that need a real wordmark.
  *
  * The sidebar and shell stories previously hand-transcribed hexicon's and
  * specifi's SVG paths inline, hundreds of characters of asset data duplicated
@@ -7,7 +7,7 @@
  * and gray-scott had no mark at all so its story used a text placeholder.
  * These are served from `brand/` as static assets instead.
  *
- * Not part of kern's public API: an experiment already has its own wordmark in
+ * Not part of kern's public API: a tool already has its own wordmark in
  * its `public/` folder and passes that path to `Wordmark` directly.
  */
 export interface ExperimentBrand {
@@ -19,9 +19,9 @@ export interface ExperimentBrand {
    * over the viewBox height. See `Wordmark` for why size is defined this way.
    */
   xHeightRatio: number
-  /** The experiment's `--primary` accent, for the active nav item. */
+  /** The tool's `--primary` accent, for the active nav item. */
   accentClass: string
-  /** Retints the Logo hover animation to the experiment's palette. */
+  /** Retints the Logo hover animation to the tool's palette. */
   hoverFills: { hi: string; pu: string; ku: string }
 }
 
@@ -50,5 +50,14 @@ export const experiments: ExperimentBrand[] = [
     xHeightRatio: 0.582,
     accentClass: 'text-nebula',
     hoverFills: { hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' },
+  },
+  {
+    name: 'tokenise',
+    src: '/brand/tokenise.svg',
+    // 113.2 / 161, the o. No descender, so the box above the x-height is
+    // ascender: the t, the k and the dot of the i.
+    xHeightRatio: 0.703,
+    accentClass: 'text-flare',
+    hoverFills: { hi: 'var(--color-flare)', pu: 'var(--color-solstice)', ku: 'var(--color-dusk)' },
   },
 ]

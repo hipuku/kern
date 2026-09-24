@@ -152,7 +152,7 @@ function buildPrimitives() {
 
   lines.push('/* ─── Theme (dark-only) ───────────────────────────────────────────────── */')
   lines.push('/*')
-  lines.push(' * The override seam. An experiment redefines any of these in its own')
+  lines.push(' * The override seam. A tool redefines any of these in its own')
   lines.push(' * index.css and every kern component follows, without forking anything.')
   lines.push(' */')
   lines.push(':root {')

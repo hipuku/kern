@@ -13,9 +13,9 @@ describe('ToolLink', () => {
     expect(onClick).toHaveBeenCalledOnce()
   })
 
-  it('uses the experiment accent unless told otherwise', () => {
+  it('uses the tool accent unless told otherwise', () => {
     // Omitting `colour` is the usual case: the link takes --primary and follows
-    // whatever the experiment's theme is. Passing one is for a link pointing at
+    // whatever the tool's theme is. Passing one is for a link pointing at
     // something the palette already colour-codes.
     const { rerender } = render(<ToolLink data-testid="l">Go</ToolLink>)
     const primary = screen.getByTestId('l').className

@@ -142,7 +142,7 @@ export const Roles: Story = {
 
       <TokenSection title="Accent seam">
         <p className="type-annotation text-ink-muted max-w-[62ch]">
-          The three roles an experiment redefines to retint every shared component. kern&rsquo;s own
+          The three roles a tool redefines to retint every shared component. kern&rsquo;s own
           default is pulsar.
         </p>
         <ScrollRegion label="Accent roles">

@@ -48,7 +48,7 @@ describe('AppShell', () => {
   })
 
   it('wraps the app in an error boundary unless asked not to', () => {
-    // The default matters: an uncaught render error in an experiment blanks the
+    // The default matters: an uncaught render error in a tool blanks the
     // page, and these are public demos.
     const Bomb = () => { throw new Error('boom') }
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {})

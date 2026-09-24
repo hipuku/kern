@@ -14,7 +14,7 @@ export interface ChipGroupProps extends Omit<ComponentPropsWithRef<'div'>, 'chil
  *
  * The chips are already an atom (`ToggleChip`); what recurred untyped was the
  * label-over-a-wrap layout, in groups like "Pattern", "Speed" and "Try an
- * example" across the experiments. The label is tied to the chips with `role="group"` +
+ * example" across the tools. The label is tied to the chips with `role="group"` +
  * `aria-label`, so assistive technology announces "Pattern, group" as focus
  * enters, the wrapping every hand-rolled copy left off.
  *

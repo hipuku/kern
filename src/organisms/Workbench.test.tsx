@@ -24,7 +24,7 @@ describe('Workbench', () => {
 
   it('lets a caller widen the control rail', () => {
     // Defaults to w-52. A simulation with long-labelled sliders needs more, and
-    // the alternative iseach experiment restyling the container from outside.
+    // the alternative is each tool restyling the container from outside.
     const { container } = render(
       <Workbench stage={<p>S</p>} controls={<p>C</p>} railClassName="w-80" />,
     )

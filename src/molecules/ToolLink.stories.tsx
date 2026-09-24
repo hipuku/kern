@@ -14,7 +14,7 @@ const meta = {
     colour: {
       control: 'select',
       options: [undefined, ...accentColours],
-      description: 'Tint the link with a specific accent. Omit to use the experiment --primary.',
+      description: 'Tint the link with a specific accent. Omit to use the tool --primary.',
     },
     children: { control: 'text' },
     onClick: { action: 'clicked' },

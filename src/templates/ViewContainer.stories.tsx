@@ -15,7 +15,7 @@ const meta = {
       description: {
         component:
           'The centred, width-capped column a single view fills: the content-column counterpart to `AppShell`. ' +
-          'Every experiment hand-wrote this frame at the top of every view.',
+          'Every tool hand-wrote this frame at the top of every view.',
       },
     },
   },

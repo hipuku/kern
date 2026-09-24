@@ -1,6 +1,6 @@
 # kern
 
-The shared component library and design tokens behind the hipuku experiments, consumed as TypeScript source with no build step. Live Storybook at [kern.hipuku.dev](https://kern.hipuku.dev).
+The shared component library and design tokens behind a set of browser tools, consumed as TypeScript source with no build step. Live Storybook at [kern.hipuku.dev](https://kern.hipuku.dev).
 
 ## Features
 
@@ -15,7 +15,7 @@ The shared component library and design tokens behind the hipuku experiments, co
 
 kern and [haus](https://github.com/hipuku/haus) are separate design systems, and which one you want depends on how you consume it.
 
-haus publishes W3C DTCG tokens and React components to npm, for consumers it does not know. kern is github-pinned and source-only, and holds the parts the in-house experiments share.
+haus publishes W3C DTCG tokens and React components to npm, for consumers it does not know. kern is github-pinned and source-only, and holds the parts the in-house tools share.
 
 The split is what lets kern change an API. It knows every one of its consumers by name and each pins a tag, so v1 could be a breaking rebuild that shipped, sat unused, and was adopted one app at a time.
 
@@ -32,7 +32,7 @@ The split is what lets kern change an API. It knows every one of its consumers b
 | Tests | Vitest + vitest-axe + Testing Library |
 | Lint | ESLint 10 (flat config) |
 
-## Using kern in an experiment
+## Using kern in a tool
 
 kern is installed from GitHub and resolved via a Vite path alias.
 
@@ -93,11 +93,11 @@ npm run storybook      # localhost:6006
 
 CI runs `tokens:check`, `lint`, `typecheck`, `test`, `build-storybook` and `check:links`. `main` deploys to kern.hipuku.dev automatically.
 
-To see kern edits live inside a consuming experiment, symlink it (the git install is a copy):
+To see kern edits live inside a consuming tool, symlink it (the git install is a copy):
 
 ```bash
 cd kern && npm link
-cd ../your-experiment && npm link kern
+cd ../your-tool && npm link kern
 ```
 
 The symlink does not survive `npm install`, so re-run `npm link kern` after any reinstall.
