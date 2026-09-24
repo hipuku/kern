@@ -15,12 +15,17 @@ export interface SocialBarProps {
    */
   githubUrl?: string
   /**
-   * The experiment's name, used for the website link's accessible label
-   * (e.g. `specifi` → "specifi website").
+   * The experiment's name, used for the GitHub link's accessible label
+   * (e.g. `specifi` → "specifi on GitHub").
    */
   siteName: string
   /** Where the globe icon points. Defaults to the hipuku.dev home site. */
   websiteUrl?: string
+  /**
+   * The globe link's accessible label, which names where it goes. Defaults to
+   * "hipuku.dev", the default destination, so set it whenever `websiteUrl` is.
+   */
+  websiteLabel?: string
   className?: string
 }
 
@@ -41,10 +46,19 @@ interface Link {
  * `IconLink`'s `external`, which keeps the experiment open behind them and adds
  * the `rel="noopener"` and new-tab announcement the hand-rolled version lacked.
  */
-export function SocialBar({ githubUrl, siteName, websiteUrl = HIPUKU_URL, className }: SocialBarProps) {
+export function SocialBar({
+  githubUrl,
+  siteName,
+  websiteUrl = HIPUKU_URL,
+  websiteLabel = 'hipuku.dev',
+  className,
+}: SocialBarProps) {
+  // Each label names the link's destination. The globe used to be labelled
+  // "<siteName> website" while it pointed at hipuku.dev, so a screen reader
+  // announced one place and opened another.
   const links: Link[] = [
-    { Icon: Globe, label: `${siteName} website`, href: websiteUrl },
-    ...(githubUrl ? [{ Icon: GitHubIcon, label: 'GitHub', href: githubUrl }] : []),
+    { Icon: Globe, label: websiteLabel, href: websiteUrl },
+    ...(githubUrl ? [{ Icon: GitHubIcon, label: `${siteName} on GitHub`, href: githubUrl }] : []),
   ]
 
   return (

@@ -38,5 +38,6 @@ export const CustomWebsite: Story = {
     siteName: 'specifi',
     githubUrl: 'https://github.com/hipuku/specifi',
     websiteUrl: 'https://example.com',
+    websiteLabel: 'Example site',
   },
 }
