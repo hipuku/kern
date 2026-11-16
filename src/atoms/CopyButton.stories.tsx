@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { CopyButton } from './CopyButton'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { CopyButton } from "./CopyButton";
 
 const meta = {
-  title: 'Atoms/CopyButton',
+  title: "Atoms/CopyButton",
   component: CopyButton,
-  tags: ['autodocs'],
-  args: { text: 'Midnight Blue' },
-} satisfies Meta<typeof CopyButton>
+  tags: ["autodocs"],
+  args: { text: "Midnight Blue" },
+} satisfies Meta<typeof CopyButton>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /**
  * Bound to args rather than a render function, so the controls in the docs
@@ -24,4 +24,4 @@ export const Default: Story = {
       <CopyButton {...args} />
     </div>
   ),
-}
+};

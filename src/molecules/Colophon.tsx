@@ -1,18 +1,18 @@
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
-import { Logo, type HoverFills } from '../atoms/Logo'
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
+import { Logo, type HoverFills } from "../atoms/Logo";
 
-export interface ColophonProps extends ComponentPropsWithRef<'div'> {
+export interface ColophonProps extends ComponentPropsWithRef<"div"> {
   /** The tool's name, as it should read in the credit line. */
-  name: string
+  name: string;
   /**
    * Year shown in the credit. Defaults to the current year, so the footer of a
    * long-lived tool does not quietly go stale. Every tool
    * previously hardcoded `2026`.
    */
-  year?: number
+  year?: number;
   /** Retints the logo's hover animation to the tool's palette. */
-  hoverFills?: HoverFills
+  hoverFills?: HoverFills;
 }
 
 /**
@@ -30,9 +30,11 @@ export function Colophon({
   ...props
 }: ColophonProps) {
   return (
-    <div className={cn('flex items-center gap-2', className)} {...props}>
-      <span>{year} © {name} by</span>
+    <div className={cn("flex items-center gap-2", className)} {...props}>
+      <span>
+        {year} © {name} by
+      </span>
       <Logo hoverFills={hoverFills} />
     </div>
-  )
+  );
 }

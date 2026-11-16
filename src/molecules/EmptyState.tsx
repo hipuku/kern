@@ -1,13 +1,13 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
 
-export interface EmptyStateProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
+export interface EmptyStateProps extends Omit<ComponentPropsWithRef<"div">, "title"> {
   /** Optional lead line above the message: "Try an example", "Nothing yet". */
-  title?: string
+  title?: string;
   /** The message body. */
-  children: ReactNode
+  children: ReactNode;
   /** Optional actions row, e.g. a set of example `ToggleChip`s. */
-  actions?: ReactNode
+  actions?: ReactNode;
 }
 
 /**
@@ -25,10 +25,10 @@ export interface EmptyStateProps extends Omit<ComponentPropsWithRef<'div'>, 'tit
  */
 export function EmptyState({ title, children, actions, className, ...props }: EmptyStateProps) {
   return (
-    <div className={cn('flex flex-col gap-3', className)} {...props}>
+    <div className={cn("flex flex-col gap-3", className)} {...props}>
       {title && <p className="type-p-sm text-ink-lead">{title}</p>}
       <p className="type-p-sm text-ink-body">{children}</p>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
     </div>
-  )
+  );
 }

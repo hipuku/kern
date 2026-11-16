@@ -1,27 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { StatusChip } from './StatusChip'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { StatusChip } from "./StatusChip";
 
 const meta = {
-  title: 'Atoms/StatusChip',
+  title: "Atoms/StatusChip",
   component: StatusChip,
-  tags: ['autodocs'],
-  args: { children: 'Contested zone', colour: 'orbit' },
+  tags: ["autodocs"],
+  args: { children: "Contested zone", colour: "orbit" },
   argTypes: {
     colour: {
-      control: 'select',
-      options: ['nebula', 'aurora', 'tidal', 'orbit', 'pulsar', 'quasar', 'corona', 'dusk', 'flare', 'solstice', 'supernova', 'neutral'],
-      description: 'Named accent that tints the chip.',
+      control: "select",
+      options: [
+        "nebula",
+        "aurora",
+        "tidal",
+        "orbit",
+        "pulsar",
+        "quasar",
+        "corona",
+        "dusk",
+        "flare",
+        "solstice",
+        "supernova",
+        "neutral",
+      ],
+      description: "Named accent that tints the chip.",
     },
-    children: { control: 'text', description: 'Chip label.' },
+    children: { control: "text", description: "Chip label." },
   },
-} satisfies Meta<typeof StatusChip>
+} satisfies Meta<typeof StatusChip>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { children: 'Contested zone', colour: 'orbit' },
-}
+  args: { children: "Contested zone", colour: "orbit" },
+};
 
 export const AllColours: Story = {
   render: () => (
@@ -40,4 +53,4 @@ export const AllColours: Story = {
       <StatusChip colour="neutral">Monotonic</StatusChip>
     </div>
   ),
-}
+};

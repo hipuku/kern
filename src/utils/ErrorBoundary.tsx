@@ -1,20 +1,20 @@
-import { Component, type ErrorInfo, type ReactNode } from 'react'
-import { Button } from '../atoms/Button'
+import { Component, type ErrorInfo, type ReactNode } from "react";
+import { Button } from "../atoms/Button";
 
 export interface ErrorBoundaryProps {
-  children: ReactNode
+  children: ReactNode;
   /**
    * Replaces the default fallback. Receives the error and a reset callback, so
    * a tool can render its own recovery UI without reimplementing the
    * boundary.
    */
-  fallback?: (error: Error, reset: () => void) => ReactNode
+  fallback?: (error: Error, reset: () => void) => ReactNode;
   /** Called when an error is caught, for reporting to an external service. */
-  onError?: (error: Error, info: ErrorInfo) => void
+  onError?: (error: Error, info: ErrorInfo) => void;
 }
 
 interface ErrorBoundaryState {
-  error: Error | null
+  error: Error | null;
 }
 
 /**
@@ -31,24 +31,24 @@ interface ErrorBoundaryState {
  * error.
  */
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  state: ErrorBoundaryState = { error: null }
+  state: ErrorBoundaryState = { error: null };
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return { error }
+    return { error };
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error('[ErrorBoundary]', error, info.componentStack)
-    this.props.onError?.(error, info)
+    console.error("[ErrorBoundary]", error, info.componentStack);
+    this.props.onError?.(error, info);
   }
 
-  reset = () => this.setState({ error: null })
+  reset = () => this.setState({ error: null });
 
   render() {
-    const { error } = this.state
-    if (!error) return this.props.children
+    const { error } = this.state;
+    if (!error) return this.props.children;
 
-    if (this.props.fallback) return this.props.fallback(error, this.reset)
+    if (this.props.fallback) return this.props.fallback(error, this.reset);
 
     return (
       <div
@@ -58,9 +58,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
         <div className="flex flex-col gap-4 max-w-md w-full text-center p-8">
           <p className="type-h4 text-ink-title">Something went wrong</p>
           <p className="type-code text-ink-body">{error.message}</p>
-          <Button onClick={this.reset} className="self-center">Try again</Button>
+          <Button onClick={this.reset} className="self-center">
+            Try again
+          </Button>
         </div>
       </div>
-    )
+    );
   }
 }

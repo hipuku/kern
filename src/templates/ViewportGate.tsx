@@ -1,14 +1,14 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from "react";
 
 export interface ViewportGateProps {
   /** The app. Shown only at the `lg` breakpoint and above. */
-  children: ReactNode
+  children: ReactNode;
   /**
    * Shown *instead* of the app below `lg`. Defaults to a plain desktop-only
    * message; pass your own node for on-brand copy. It is placed centred on a
    * full-height page. Supply the content rather than the layout.
    */
-  notice?: ReactNode
+  notice?: ReactNode;
 }
 
 /**
@@ -43,5 +43,5 @@ export function ViewportGate({ children, notice }: ViewportGateProps) {
         )}
       </div>
     </>
-  )
+  );
 }

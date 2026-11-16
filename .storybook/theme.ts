@@ -1,5 +1,5 @@
-import { create } from 'storybook/theming'
-import { voidScale, palette, fonts } from '../src/tokens/tokens'
+import { create } from "storybook/theming";
+import { voidScale, palette, fonts } from "../src/tokens/tokens";
 
 /**
  * kern's Storybook theme, built from the token source rather than a second set
@@ -11,12 +11,12 @@ import { voidScale, palette, fonts } from '../src/tokens/tokens'
  * the documentation contradicts the thing it documents.
  */
 export const kernTheme = create({
-  base: 'dark',
+  base: "dark",
 
-  brandTitle: 'kern',
-  brandImage: '/brand/wordmark.svg',
-  brandUrl: 'https://kern.hipuku.dev',
-  brandTarget: '_self',
+  brandTitle: "kern",
+  brandImage: "/brand/wordmark.svg",
+  brandUrl: "https://kern.hipuku.dev",
+  brandTarget: "_self",
 
   fontBase: fonts.sans,
   fontCode: fonts.mono,
@@ -43,4 +43,4 @@ export const kernTheme = create({
   inputBorder: voidScale[30],
   inputTextColor: voidScale[90],
   inputBorderRadius: 8,
-})
+});

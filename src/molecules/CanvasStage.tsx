@@ -1,14 +1,14 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
 
-export interface CanvasStageProps extends ComponentPropsWithRef<'div'> {
+export interface CanvasStageProps extends ComponentPropsWithRef<"div"> {
   /**
    * Constrain the frame to a square, the shape of the simulation grids.
    * On by default; turn off for a stage with its own aspect ratio.
    */
-  square?: boolean
+  square?: boolean;
   /** The `<canvas>` and any absolutely-positioned overlays (readouts, crosshair). */
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -25,13 +25,13 @@ export function CanvasStage({ square = true, className, children, ...props }: Ca
   return (
     <div
       className={cn(
-        'relative rounded-card overflow-hidden border border-line bg-background',
-        square && 'aspect-square',
+        "relative rounded-card overflow-hidden border border-line bg-background",
+        square && "aspect-square",
         className,
       )}
       {...props}
     >
       {children}
     </div>
-  )
+  );
 }

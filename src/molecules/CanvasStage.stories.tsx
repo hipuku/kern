@@ -1,34 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { CanvasStage } from './CanvasStage'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { CanvasStage } from "./CanvasStage";
 
 const meta = {
-  title: 'Molecules/CanvasStage',
+  title: "Molecules/CanvasStage",
   component: CanvasStage,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
         component:
-          'A framed, clipped, `position: relative` container for a `<canvas>` and its overlays. The chrome only: ' +
-          'the pixels, worker and readouts stay with the view.',
+          "A framed, clipped, `position: relative` container for a `<canvas>` and its overlays. The chrome only: " +
+          "the pixels, worker and readouts stay with the view.",
       },
     },
   },
   args: { square: true },
-  argTypes: { square: { control: 'boolean' } },
-} satisfies Meta
+  argTypes: { square: { control: "boolean" } },
+} satisfies Meta;
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 // A stand-in for the simulation canvas: a simple gradient fill.
 const FakeCanvas = () => (
   <div
     className="w-full h-full"
-    style={{ background: 'radial-gradient(circle at 30% 30%, var(--color-nebula), var(--color-background) 70%)' }}
+    style={{
+      background:
+        "radial-gradient(circle at 30% 30%, var(--color-nebula), var(--color-background) 70%)",
+    }}
   />
-)
+);
 
 export const Default: Story = {
   render: (args) => (
@@ -38,10 +41,10 @@ export const Default: Story = {
       </CanvasStage>
     </div>
   ),
-}
+};
 
 export const WithOverlay: Story = {
-  name: 'With an overlay readout',
+  name: "With an overlay readout",
   render: () => (
     <div className="w-[360px]">
       <CanvasStage>
@@ -52,4 +55,4 @@ export const WithOverlay: Story = {
       </CanvasStage>
     </div>
   ),
-}
+};

@@ -83,15 +83,22 @@
   color: var(--color-void-60);
 }
 
-.sbdocs :where(strong) { color: var(--color-void-80); font-weight: 600; }
-.sbdocs :where(em) { color: var(--color-void-70); }
+.sbdocs :where(strong) {
+  color: var(--color-void-80);
+  font-weight: 600;
+}
+.sbdocs :where(em) {
+  color: var(--color-void-70);
+}
 
 .sbdocs :where(a) {
   color: var(--link);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.sbdocs :where(a):hover { opacity: 0.8; }
+.sbdocs :where(a):hover {
+  opacity: 0.8;
+}
 
 .sbdocs :where(hr) {
   border: none;
@@ -159,7 +166,9 @@
   border-bottom: 1px solid var(--color-void-20);
 }
 
-.sbdocs :where(table tr:last-child td) { border-bottom: none; }
+.sbdocs :where(table tr:last-child td) {
+  border-bottom: none;
+}
 
 /*
  * The props table the autodocs addon generates is its own component, not
@@ -251,7 +260,7 @@
  * background image so it takes the button's colour and follows it on hover.
  */
 .sbdocs .docblock-source button::before {
-  content: '';
+  content: "";
   width: 0.875rem;
   height: 0.875rem;
   flex-shrink: 0;

@@ -1,6 +1,6 @@
-import { cva, type VariantProps } from 'class-variance-authority'
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
+import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
 
 /**
  * The raised-panel surface, in one place.
@@ -15,7 +15,7 @@ import { cn } from '../lib/utils'
  * molecule building its own layout on top (a titled `Panel`), can borrow the
  * classes without restating them.
  */
-export const cardVariants = cva('rounded-card border bg-surface-raised border-line', {
+export const cardVariants = cva("rounded-card border bg-surface-raised border-line", {
   variants: {
     /**
      * Interior padding. `md` (`p-4`) is the results-grid card; `sm` (`px-4 py-3`)
@@ -23,17 +23,16 @@ export const cardVariants = cva('rounded-card border bg-surface-raised border-li
      * content (a table, a swatch strip) supply the padding itself.
      */
     padding: {
-      none: '',
-      sm: 'px-4 py-3',
-      md: 'p-4',
+      none: "",
+      sm: "px-4 py-3",
+      md: "p-4",
     },
   },
-  defaultVariants: { padding: 'md' },
-})
+  defaultVariants: { padding: "md" },
+});
 
 export interface CardProps
-  extends ComponentPropsWithRef<'div'>,
-    VariantProps<typeof cardVariants> {}
+  extends ComponentPropsWithRef<"div">, VariantProps<typeof cardVariants> {}
 
 /**
  * A raised surface: the object a results grid, a callout or a stat is drawn on.
@@ -43,5 +42,5 @@ export interface CardProps
  * anything but one component's card.
  */
 export function Card({ padding, className, ...props }: CardProps) {
-  return <div className={cn(cardVariants({ padding }), className)} {...props} />
+  return <div className={cn(cardVariants({ padding }), className)} {...props} />;
 }

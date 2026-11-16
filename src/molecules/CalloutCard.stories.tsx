@@ -1,39 +1,54 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { CalloutCard } from './CalloutCard'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { CalloutCard } from "./CalloutCard";
 
 const meta = {
-  title: 'Molecules/CalloutCard',
+  title: "Molecules/CalloutCard",
   component: CalloutCard,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
-    colour:   'supernova',
-    label:    '3 near-identical pairs',
-    children: 'Colours within ΔE 2.5 may be indistinguishable at small sizes or under reduced colour sensitivity.',
+    colour: "supernova",
+    label: "3 near-identical pairs",
+    children:
+      "Colours within ΔE 2.5 may be indistinguishable at small sizes or under reduced colour sensitivity.",
   },
   argTypes: {
     colour: {
-      control: 'select',
-      options: ['nebula', 'aurora', 'tidal', 'orbit', 'pulsar', 'quasar', 'corona', 'dusk', 'flare', 'solstice', 'supernova', 'neutral'],
-      description: 'Colour of the label line. Communicates the semantic register of the finding.',
+      control: "select",
+      options: [
+        "nebula",
+        "aurora",
+        "tidal",
+        "orbit",
+        "pulsar",
+        "quasar",
+        "corona",
+        "dusk",
+        "flare",
+        "solstice",
+        "supernova",
+        "neutral",
+      ],
+      description: "Colour of the label line. Communicates the semantic register of the finding.",
     },
     label: {
-      control: 'text',
-      description: 'Short finding headline rendered in the accent colour. Omit for a plain single-body callout.',
+      control: "text",
+      description:
+        "Short finding headline rendered in the accent colour. Omit for a plain single-body callout.",
     },
     children: {
-      control: 'text',
-      description: 'Explanation copy rendered in void-60 beneath the label.',
+      control: "text",
+      description: "Explanation copy rendered in void-60 beneath the label.",
     },
   },
-} satisfies Meta<typeof CalloutCard>
+} satisfies Meta<typeof CalloutCard>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const AllColours: Story = {
-  name: 'All colours',
+  name: "All colours",
   render: () => (
     <div className="flex flex-col gap-3 w-[400px]">
       <CalloutCard colour="supernova" label="3 near-identical pairs">
@@ -53,12 +68,12 @@ export const AllColours: Story = {
       </CalloutCard>
     </div>
   ),
-}
+};
 
 export const NoLabel: Story = {
-  name: 'No label (body only)',
+  name: "No label (body only)",
   args: {
-    label:    undefined,
-    children: 'Both selectors have equal specificity. Source order decides.',
+    label: undefined,
+    children: "Both selectors have equal specificity. Source order decides.",
   },
-}
+};

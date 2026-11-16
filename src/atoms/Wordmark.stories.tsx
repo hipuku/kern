@@ -1,39 +1,49 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Wordmark } from './Wordmark'
-import { experiments } from './wordmarks'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Wordmark } from "./Wordmark";
+import { experiments } from "./wordmarks";
 
 const meta = {
-  title: 'Atoms/Wordmark',
+  title: "Atoms/Wordmark",
   component: Wordmark,
-  tags: ['autodocs'],
-  args: { src: '/brand/wordmark.svg', name: 'kern' },
+  tags: ["autodocs"],
+  args: { src: "/brand/wordmark.svg", name: "kern" },
   argTypes: {
-    size: { control: 'select', options: ['sm', 'md', 'lg'], description: 'Rendered height. md is the house default for a sidebar header.' },
-    name: { control: 'text', description: "The tool's name. Becomes the alt text, so it is required." },
-    href: { control: 'text', description: 'Wraps the mark in a link. Omit for a mark that is not clickable.' },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Rendered height. md is the house default for a sidebar header.",
+    },
+    name: {
+      control: "text",
+      description: "The tool's name. Becomes the alt text, so it is required.",
+    },
+    href: {
+      control: "text",
+      description: "Wraps the mark in a link. Omit for a mark that is not clickable.",
+    },
   },
   parameters: {
     docs: {
       description: {
         component:
-          'The tools each hand-wrote this as a bare `<img>` in their App.tsx, and had already drifted: ' +
-          'one rendered at `h-5` while the others used `h-7`, so the sidebar header sat at a ' +
-          'different height depending on which tool you were looking at.\n\n' +
-          'For the hipuku brand lettermark itself, use `Logo`.',
+          "The tools each hand-wrote this as a bare `<img>` in their App.tsx, and had already drifted: " +
+          "one rendered at `h-5` while the others used `h-7`, so the sidebar header sat at a " +
+          "different height depending on which tool you were looking at.\n\n" +
+          "For the hipuku brand lettermark itself, use `Logo`.",
       },
     },
   },
-} satisfies Meta<typeof Wordmark>
+} satisfies Meta<typeof Wordmark>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const Sizes: Story = {
   render: () => (
     <div className="flex items-end gap-6">
-      {(['sm', 'md', 'lg'] as const).map((size) => (
+      {(["sm", "md", "lg"] as const).map((size) => (
         <div key={size} className="flex flex-col items-start gap-2">
           <Wordmark src="/brand/wordmark.svg" name="kern" size={size} />
           <span className="type-annotation font-mono text-ink-muted">{size}</span>
@@ -41,16 +51,16 @@ export const Sizes: Story = {
       ))}
     </div>
   ),
-}
+};
 
 export const TheExperiments: Story = {
-  name: 'Tool marks',
+  name: "Tool marks",
   parameters: {
     docs: {
       description: {
         story:
-          'Marks the tools ship, at the shared `md` height, which is the drift this ' +
-          'atom exists to stop.',
+          "Marks the tools ship, at the shared `md` height, which is the drift this " +
+          "atom exists to stop.",
       },
     },
   },
@@ -64,28 +74,30 @@ export const TheExperiments: Story = {
       ))}
     </div>
   ),
-}
+};
 
 export const Normalisation: Story = {
-  name: 'Why size means x-height',
+  name: "Why size means x-height",
   parameters: {
     docs: {
       description: {
         story:
-          'Left: every mark at the same box height, which is what a shared `h-7` gives you. The marks read as ' +
-          'different sizes because the box is a typographic accident: one name spends its height on the ' +
-          'descender of a p, another on the ascender of an h. Measured at a uniform 28px box the ' +
-          'x-heights run from 14.9 to 19.7 px.\n\n' +
-          'Right: the same marks normalised on x-height. The boxes now differ; the letterforms match.',
+          "Left: every mark at the same box height, which is what a shared `h-7` gives you. The marks read as " +
+          "different sizes because the box is a typographic accident: one name spends its height on the " +
+          "descender of a p, another on the ascender of an h. Measured at a uniform 28px box the " +
+          "x-heights run from 14.9 to 19.7 px.\n\n" +
+          "Right: the same marks normalised on x-height. The boxes now differ; the letterforms match.",
       },
     },
   },
   render: () => (
     <div className="flex gap-16">
-      {([
-        ['Same box height', false],
-        ['Same x-height', true],
-      ] as const).map(([heading, normalised]) => (
+      {(
+        [
+          ["Same box height", false],
+          ["Same x-height", true],
+        ] as const
+      ).map(([heading, normalised]) => (
         <div key={heading} className="flex flex-col gap-5">
           <span className="type-annotation-sc text-ink-muted">{heading}</span>
           {experiments.map(({ name, src, xHeightRatio }) => (
@@ -100,12 +112,12 @@ export const Normalisation: Story = {
       ))}
     </div>
   ),
-}
+};
 
 export const Linked: Story = {
-  name: 'As a link',
+  name: "As a link",
   parameters: {
-    docs: { description: { story: 'Tab to it: a linked wordmark takes the standard focus ring.' } },
+    docs: { description: { story: "Tab to it: a linked wordmark takes the standard focus ring." } },
   },
-  args: { href: 'https://kern.hipuku.dev' },
-}
+  args: { href: "https://kern.hipuku.dev" },
+};

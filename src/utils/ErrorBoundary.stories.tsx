@@ -1,28 +1,29 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ErrorBoundary } from './ErrorBoundary'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 const meta = {
-  title: 'Utilities/ErrorBoundary',
+  title: "Utilities/ErrorBoundary",
   component: ErrorBoundary,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
     // These stories need local state or a throwing child, so they cannot be
     // driven by args. Hiding the panel is honest; leaving it visible advertises
     // controls that do nothing.
     controls: { disable: true },
- layout: 'fullscreen' },
+    layout: "fullscreen",
+  },
   args: { children: null },
-} satisfies Meta<typeof ErrorBoundary>
+} satisfies Meta<typeof ErrorBoundary>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 function ThrowOnMount(): never {
-  throw new Error('Intentional render error, thrown by the ThrowOnMount story fixture.')
+  throw new Error("Intentional render error, thrown by the ThrowOnMount story fixture.");
 }
 
 export const Triggered: Story = {
-  name: 'Triggered (error state)',
+  name: "Triggered (error state)",
   decorators: [
     (Story) => (
       <ErrorBoundary>
@@ -31,10 +32,10 @@ export const Triggered: Story = {
     ),
   ],
   render: () => <ThrowOnMount />,
-}
+};
 
 export const Passthrough: Story = {
-  name: 'Passthrough (no error)',
+  name: "Passthrough (no error)",
   render: () => (
     <ErrorBoundary>
       <div className="flex items-center justify-center h-screen">
@@ -42,4 +43,4 @@ export const Passthrough: Story = {
       </div>
     </ErrorBoundary>
   ),
-}
+};

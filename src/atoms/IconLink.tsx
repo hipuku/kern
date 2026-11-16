@@ -1,16 +1,16 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { focusRing } from '../lib/focus'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { focusRing } from "../lib/focus";
 
-export interface IconLinkProps extends ComponentPropsWithRef<'a'> {
-  href: string
+export interface IconLinkProps extends ComponentPropsWithRef<"a"> {
+  href: string;
   /**
    * Required, not optional. An icon-only link has no accessible name from its
    * contents, so without this a screen reader announces only "link". TypeScript
    * enforces what a lint rule otherwise would, the same contract `IconButton`
    * makes for buttons.
    */
-  'aria-label': string
+  "aria-label": string;
   /**
    * The link leaves the site: opens in a new tab with `rel="noopener noreferrer"`,
    * and appends "(opens in new tab)" to the accessible name so the change of
@@ -22,9 +22,9 @@ export interface IconLinkProps extends ComponentPropsWithRef<'a'> {
    * child (the trick `ExternalLink` uses for its visible-text links) would be
    * silently ignored here.
    */
-  external?: boolean
+  external?: boolean;
   /** A single icon, conventionally `w-4 h-4`. */
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -38,7 +38,7 @@ export interface IconLinkProps extends ComponentPropsWithRef<'a'> {
  */
 export function IconLink({
   external,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
   className,
   children,
   ...props
@@ -46,9 +46,9 @@ export function IconLink({
   return (
     <a
       aria-label={external ? `${ariaLabel} (opens in new tab)` : ariaLabel}
-      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={cn(
-        'text-ink-body inline-flex rounded transition-all duration-200 motion-safe:hover:scale-125',
+        "text-ink-body inline-flex rounded transition-all duration-200 motion-safe:hover:scale-125",
         focusRing,
         className,
       )}
@@ -56,5 +56,5 @@ export function IconLink({
     >
       {children}
     </a>
-  )
+  );
 }

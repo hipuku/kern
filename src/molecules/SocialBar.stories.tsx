@@ -1,43 +1,43 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { SocialBar } from './SocialBar'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { SocialBar } from "./SocialBar";
 
 const meta = {
-  title: 'Molecules/SocialBar',
+  title: "Molecules/SocialBar",
   component: SocialBar,
-  tags: ['autodocs'],
-  parameters: { layout: 'padded' },
+  tags: ["autodocs"],
+  parameters: { layout: "padded" },
   args: {
-    siteName: 'gray-scott',
-    githubUrl: 'https://github.com/hipuku/gray-scott',
+    siteName: "gray-scott",
+    githubUrl: "https://github.com/hipuku/gray-scott",
   },
-} satisfies Meta<typeof SocialBar>
+} satisfies Meta<typeof SocialBar>;
 
-export default meta
-type Story = StoryObj<typeof SocialBar>
+export default meta;
+type Story = StoryObj<typeof SocialBar>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const InSidebarHeader: Story = {
-  name: 'In a sidebar header',
+  name: "In a sidebar header",
   render: (args) => (
     <div className="flex items-center justify-between w-[300px] bg-void-10 p-8 rounded-xl">
       <span className="type-h4 text-void-90">logo</span>
       <SocialBar {...args} />
     </div>
   ),
-}
+};
 
 export const WebsiteOnly: Story = {
-  name: 'Website only',
-  args: { siteName: 'tokenise', githubUrl: undefined },
-}
+  name: "Website only",
+  args: { siteName: "tokenise", githubUrl: undefined },
+};
 
 export const CustomWebsite: Story = {
-  name: 'Custom website URL',
+  name: "Custom website URL",
   args: {
-    siteName: 'specifi',
-    githubUrl: 'https://github.com/hipuku/specifi',
-    websiteUrl: 'https://example.com',
-    websiteLabel: 'Example site',
+    siteName: "specifi",
+    githubUrl: "https://github.com/hipuku/specifi",
+    websiteUrl: "https://example.com",
+    websiteLabel: "Example site",
   },
-}
+};

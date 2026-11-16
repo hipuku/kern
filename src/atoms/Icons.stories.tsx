@@ -1,39 +1,61 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import type { ComponentType } from 'react'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { ComponentType } from "react";
 import {
-  ArrowLeftRight, Beaker, Check, ChevronDown, ChevronRight, Columns2, Columns4,
-  Copy, FileSearch, GitCompare, Globe, Grid3x3, Hash, Info, ListChecks, Map, Menu,
-  Pause, Play, RotateCcw, Search, Trash2, Upload, Waves, X,
-} from 'lucide-react'
-import { GitHubIcon } from './Icons'
+  ArrowLeftRight,
+  Beaker,
+  Check,
+  ChevronDown,
+  ChevronRight,
+  Columns2,
+  Columns4,
+  Copy,
+  FileSearch,
+  GitCompare,
+  Globe,
+  Grid3x3,
+  Hash,
+  Info,
+  ListChecks,
+  Map,
+  Menu,
+  Pause,
+  Play,
+  RotateCcw,
+  Search,
+  Trash2,
+  Upload,
+  Waves,
+  X,
+} from "lucide-react";
+import { GitHubIcon } from "./Icons";
 
 const meta = {
-  title: 'Atoms/Icons',
-  tags: ['autodocs'],
+  title: "Atoms/Icons",
+  tags: ["autodocs"],
   parameters: {
     // These stories need local state or a throwing child, so they cannot be
     // driven by args. Hiding the panel is honest; leaving it visible advertises
     // controls that do nothing.
     controls: { disable: true },
 
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
         component:
-          'The complete icon vocabulary used across kern and the tools. ' +
-          'Interface glyphs come from **lucide-react**; brand marks that lucide does ' +
-          'not provide live as hand-rolled SVGs in `atoms/Icons.tsx`. Every icon is a ' +
-          '`currentColor` component taking a `className`, so they are interchangeable ' +
-          'in any icon slot: `IconButton`, `SocialBar`, `AppSidebar` nav items.',
+          "The complete icon vocabulary used across kern and the tools. " +
+          "Interface glyphs come from **lucide-react**; brand marks that lucide does " +
+          "not provide live as hand-rolled SVGs in `atoms/Icons.tsx`. Every icon is a " +
+          "`currentColor` component taking a `className`, so they are interchangeable " +
+          "in any icon slot: `IconButton`, `SocialBar`, `AppSidebar` nav items.",
       },
     },
   },
-} satisfies Meta
+} satisfies Meta;
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
-type Icon = ComponentType<{ className?: string }>
+type Icon = ComponentType<{ className?: string }>;
 
 function IconGrid({ icons }: { icons: { name: string; Icon: Icon }[] }) {
   return (
@@ -48,41 +70,39 @@ function IconGrid({ icons }: { icons: { name: string; Icon: Icon }[] }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-const brand: { name: string; Icon: Icon }[] = [
-  { name: 'GitHubIcon', Icon: GitHubIcon },
-]
+const brand: { name: string; Icon: Icon }[] = [{ name: "GitHubIcon", Icon: GitHubIcon }];
 
 // lucide-react glyphs actually imported somewhere across kern + the tools.
 const lucide: { name: string; Icon: Icon }[] = [
-  { name: 'ArrowLeftRight', Icon: ArrowLeftRight },
-  { name: 'Beaker', Icon: Beaker },
-  { name: 'Check', Icon: Check },
-  { name: 'ChevronDown', Icon: ChevronDown },
-  { name: 'ChevronRight', Icon: ChevronRight },
-  { name: 'Columns2', Icon: Columns2 },
-  { name: 'Columns4', Icon: Columns4 },
-  { name: 'Copy', Icon: Copy },
-  { name: 'FileSearch', Icon: FileSearch },
-  { name: 'GitCompare', Icon: GitCompare },
-  { name: 'Globe', Icon: Globe },
-  { name: 'Grid3x3', Icon: Grid3x3 },
-  { name: 'Hash', Icon: Hash },
-  { name: 'Info', Icon: Info },
-  { name: 'ListChecks', Icon: ListChecks },
-  { name: 'Map', Icon: Map },
-  { name: 'Menu', Icon: Menu },
-  { name: 'Pause', Icon: Pause },
-  { name: 'Play', Icon: Play },
-  { name: 'RotateCcw', Icon: RotateCcw },
-  { name: 'Search', Icon: Search },
-  { name: 'Trash2', Icon: Trash2 },
-  { name: 'Upload', Icon: Upload },
-  { name: 'Waves', Icon: Waves },
-  { name: 'X', Icon: X },
-]
+  { name: "ArrowLeftRight", Icon: ArrowLeftRight },
+  { name: "Beaker", Icon: Beaker },
+  { name: "Check", Icon: Check },
+  { name: "ChevronDown", Icon: ChevronDown },
+  { name: "ChevronRight", Icon: ChevronRight },
+  { name: "Columns2", Icon: Columns2 },
+  { name: "Columns4", Icon: Columns4 },
+  { name: "Copy", Icon: Copy },
+  { name: "FileSearch", Icon: FileSearch },
+  { name: "GitCompare", Icon: GitCompare },
+  { name: "Globe", Icon: Globe },
+  { name: "Grid3x3", Icon: Grid3x3 },
+  { name: "Hash", Icon: Hash },
+  { name: "Info", Icon: Info },
+  { name: "ListChecks", Icon: ListChecks },
+  { name: "Map", Icon: Map },
+  { name: "Menu", Icon: Menu },
+  { name: "Pause", Icon: Pause },
+  { name: "Play", Icon: Play },
+  { name: "RotateCcw", Icon: RotateCcw },
+  { name: "Search", Icon: Search },
+  { name: "Trash2", Icon: Trash2 },
+  { name: "Upload", Icon: Upload },
+  { name: "Waves", Icon: Waves },
+  { name: "X", Icon: X },
+];
 
 export const Catalog: Story = {
   render: () => (
@@ -97,4 +117,4 @@ export const Catalog: Story = {
       </section>
     </div>
   ),
-}
+};

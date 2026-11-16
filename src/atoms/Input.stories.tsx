@@ -1,34 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Input } from './Input'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Input } from "./Input";
 
 const meta = {
-  title: 'Atoms/Input',
+  title: "Atoms/Input",
   component: Input,
-  tags: ['autodocs'],
-  args: { placeholder: '#7193ED' },
+  tags: ["autodocs"],
+  args: { placeholder: "#7193ED" },
   argTypes: {
-    invalid: { control: 'boolean', description: 'Applies the error treatment and sets aria-invalid.' },
-    disabled: { control: 'boolean' },
-    placeholder: { control: 'text' },
+    invalid: {
+      control: "boolean",
+      description: "Applies the error treatment and sets aria-invalid.",
+    },
+    disabled: { control: "boolean" },
+    placeholder: { control: "text" },
   },
   parameters: {
     docs: {
       description: {
         component:
-          'The house input pattern was written down in DESIGN_SYSTEM.md, the surface, the border-only focus, ' +
-          'the placeholder rule and the error state, but it existed only as prose, and three files across two ' +
-          'tools implemented it by hand.\n\n' +
-          'Focus is a border change rather than a ring: this is the one deliberate exception to kern\'s focus ' +
-          'treatment, because a ring drawn outside a full-width field crowds the fields above and below it.',
+          "The house input pattern was written down in DESIGN_SYSTEM.md, the surface, the border-only focus, " +
+          "the placeholder rule and the error state, but it existed only as prose, and three files across two " +
+          "tools implemented it by hand.\n\n" +
+          "Focus is a border change rather than a ring: this is the one deliberate exception to kern's focus " +
+          "treatment, because a ring drawn outside a full-width field crowds the fields above and below it.",
       },
     },
   },
-} satisfies Meta<typeof Input>
+} satisfies Meta<typeof Input>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const States: Story = {
   render: () => (
@@ -39,4 +42,4 @@ export const States: Story = {
       <Input disabled placeholder="Disabled" />
     </div>
   ),
-}
+};

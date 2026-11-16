@@ -1,8 +1,8 @@
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
-import { focusRing } from '../lib/focus'
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
+import { focusRing } from "../lib/focus";
 
-type Size = 'sm' | 'md' | 'lg'
+type Size = "sm" | "md" | "lg";
 
 /**
  * Target **x-height** in px, not box height.
@@ -21,7 +21,7 @@ const X_HEIGHT: Record<Size, number> = {
   sm: 12,
   md: 16,
   lg: 20,
-}
+};
 
 /**
  * Fallback box heights, used when a mark's `xHeightRatio` is unknown. Matches
@@ -31,18 +31,21 @@ const BOX_HEIGHT: Record<Size, number> = {
   sm: 20,
   md: 28,
   lg: 36,
-}
+};
 
-export interface WordmarkProps extends Omit<ComponentPropsWithRef<'img'>, 'height' | 'src' | 'alt'> {
+export interface WordmarkProps extends Omit<
+  ComponentPropsWithRef<"img">,
+  "height" | "src" | "alt"
+> {
   /** Path to the wordmark asset, usually served from the app's `public/`. */
-  src: string
+  src: string;
   /**
    * The tool's name. Becomes the image's alt text, so it is required:
    * a wordmark is meaningful content, not decoration, and an unlabelled one
    * leaves a screen reader announcing the filename.
    */
-  name: string
-  size?: Size
+  name: string;
+  size?: Size;
   /**
    * The mark's x-height as a fraction of its viewBox height, which is what lets
    * `size` mean x-height rather than box height.
@@ -54,9 +57,9 @@ export interface WordmarkProps extends Omit<ComponentPropsWithRef<'img'>, 'heigh
    * Omit it and the mark falls back to a fixed box height, which is correct-ish and
    * better than demanding every consumer measure their own artwork.
    */
-  xHeightRatio?: number
+  xHeightRatio?: number;
   /** Wraps the mark in a link. Omit for a mark that is not clickable. */
-  href?: string
+  href?: string;
 }
 
 /**
@@ -73,16 +76,14 @@ export interface WordmarkProps extends Omit<ComponentPropsWithRef<'img'>, 'heigh
 export function Wordmark({
   src,
   name,
-  size = 'md',
+  size = "md",
   xHeightRatio,
   href,
   className,
   style,
   ...props
 }: WordmarkProps) {
-  const height = xHeightRatio
-    ? X_HEIGHT[size] / xHeightRatio
-    : BOX_HEIGHT[size]
+  const height = xHeightRatio ? X_HEIGHT[size] / xHeightRatio : BOX_HEIGHT[size];
 
   const img = (
     <img
@@ -90,16 +91,16 @@ export function Wordmark({
       alt={name}
       // Height is computed per mark, so it cannot be a utility class.
       style={{ height: `${height}px`, ...style }}
-      className={cn('w-auto', className)}
+      className={cn("w-auto", className)}
       {...props}
     />
-  )
+  );
 
-  if (!href) return img
+  if (!href) return img;
 
   return (
-    <a href={href} className={cn('inline-flex rounded-inline', focusRing)}>
+    <a href={href} className={cn("inline-flex rounded-inline", focusRing)}>
       {img}
     </a>
-  )
+  );
 }

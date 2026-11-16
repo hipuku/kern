@@ -21,16 +21,16 @@ The split is what lets kern change an API. It knows every one of its consumers b
 
 ## Stack
 
-| Layer | Tech |
-|---|---|
-| Framework | React 19 |
-| Styling | Tailwind CSS v4 (Vite plugin) + CSS custom properties |
-| Variants | class-variance-authority |
-| Language | TypeScript 6 |
-| Icons | lucide-react (peer dependency) |
-| Docs | Storybook 10 + a11y addon |
-| Tests | Vitest + vitest-axe + Testing Library |
-| Lint | ESLint 10 (flat config) |
+| Layer     | Tech                                                  |
+| --------- | ----------------------------------------------------- |
+| Framework | React 19                                              |
+| Styling   | Tailwind CSS v4 (Vite plugin) + CSS custom properties |
+| Variants  | class-variance-authority                              |
+| Language  | TypeScript 6                                          |
+| Icons     | lucide-react (peer dependency)                        |
+| Docs      | Storybook 10 + a11y addon                             |
+| Tests     | Vitest + vitest-axe + Testing Library                 |
+| Lint      | ESLint 10 (flat config)                               |
 
 ## Using kern in a tool
 
@@ -47,14 +47,14 @@ No alias, and no build step. kern ships its TypeScript and declares entry points
 your bundler resolves the package the way it resolves any other:
 
 ```ts
-import { AppShell, ParamSlider, ToggleChip } from 'kern'
+import { AppShell, ParamSlider, ToggleChip } from "kern";
 ```
 
 Layer barrels exist when you want to be explicit about which tier you are reaching into:
 
 ```ts
-import { ToggleChip } from 'kern/atoms'
-import { palette, type AccentName } from 'kern/tokens'
+import { ToggleChip } from "kern/atoms";
+import { palette, type AccentName } from "kern/tokens";
 ```
 
 **Deep imports are not possible, by design.** `kern/src/atoms/Input` fails with
@@ -64,7 +64,7 @@ That is the point: file paths are not public API and components do move between 
 true while nobody can import it by path.
 
 Tailwind v4 only scans within the project root, so each consumer's `index.css` must import
-kern's stylesheet *and* register its source for class scanning. Without the second line the
+kern's stylesheet _and_ register its source for class scanning. Without the second line the
 classes are absent and components render unstyled with no error. The `@source` line stays a
 relative path because it is a filesystem glob rather than a module import, so it never goes
 through package resolution:
@@ -82,16 +82,19 @@ npm install
 npm run storybook      # localhost:6006
 ```
 
-| Script | What it does |
-|---|---|
-| `npm run tokens` | Regenerate the token CSS from `src/tokens/tokens.ts` |
-| `npm run tokens:check` | Fail if the committed token CSS is stale |
-| `npm run lint` | ESLint |
-| `npm run typecheck` | `tsc --noEmit` |
-| `npm test` | Vitest |
-| `npm run build-storybook` | Production Storybook build |
+| Script                    | What it does                                         |
+| ------------------------- | ---------------------------------------------------- |
+| `npm run tokens`          | Regenerate the token CSS from `src/tokens/tokens.ts` |
+| `npm run tokens:check`    | Fail if the committed token CSS is stale             |
+| `npm run lint`            | ESLint                                               |
+| `npm run format`          | Prettier, writing                                    |
+| `npm run format:check`    | Prettier, checking only                              |
+| `npm run typecheck`       | `tsc --noEmit`                                       |
+| `npm test`                | Vitest                                               |
+| `npm run build-storybook` | Production Storybook build                           |
 
-CI runs `tokens:check`, `lint`, `typecheck`, `test`, `build-storybook` and `check:links`. `main` deploys to kern.hipuku.dev automatically.
+CI runs one job per check: `Lint` (`tokens:check`, `lint`, `lint:prose`), `Format`, `Typecheck`,
+`Test`, then `Build` (`build-storybook` and `check:links`) once lint, typecheck and test pass. `main` deploys to kern.hipuku.dev automatically.
 
 To see kern edits live inside a consuming tool, symlink it (the git install is a copy):
 

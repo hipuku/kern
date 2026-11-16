@@ -1,9 +1,9 @@
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
-import { focusRing } from '../lib/focus'
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
+import { focusRing } from "../lib/focus";
 
-export interface ExternalLinkProps extends ComponentPropsWithRef<'a'> {
-  href: string
+export interface ExternalLinkProps extends ComponentPropsWithRef<"a"> {
+  href: string;
 }
 
 /**
@@ -25,8 +25,8 @@ export function ExternalLink({ href, children, className, ...props }: ExternalLi
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'cursor-pointer text-(--link) underline underline-offset-[3px] rounded-inline',
-        'hover:opacity-80 transition-opacity duration-(--duration-fast)',
+        "cursor-pointer text-(--link) underline underline-offset-[3px] rounded-inline",
+        "hover:opacity-80 transition-opacity duration-(--duration-fast)",
         focusRing,
         className,
       )}
@@ -35,5 +35,5 @@ export function ExternalLink({ href, children, className, ...props }: ExternalLi
       {children}
       <span className="sr-only"> (opens in new tab)</span>
     </a>
-  )
+  );
 }

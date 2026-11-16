@@ -1,10 +1,10 @@
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
-import { accentText, accentTint, type AccentColour } from '../lib/accent'
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
+import { accentText, accentTint, type AccentColour } from "../lib/accent";
 
-export interface StatusChipProps extends ComponentPropsWithRef<'span'> {
+export interface StatusChipProps extends ComponentPropsWithRef<"span"> {
   /** Which accent to carry. See the Colours token page for the palette. */
-  colour: AccentColour
+  colour: AccentColour;
 }
 
 /**
@@ -18,12 +18,12 @@ export function StatusChip({ colour, className, ...props }: StatusChipProps) {
   return (
     <span
       className={cn(
-        'type-annotation font-medium px-2 py-0.5 rounded-pill',
+        "type-annotation font-medium px-2 py-0.5 rounded-pill",
         accentText[colour],
         accentTint[colour],
         className,
       )}
       {...props}
     />
-  )
+  );
 }

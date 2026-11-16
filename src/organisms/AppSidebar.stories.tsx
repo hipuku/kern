@@ -1,18 +1,28 @@
-import { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Info, Hash, Map, GitCompare, Search, ListChecks, ArrowLeftRight, Columns4, FileSearch } from 'lucide-react'
-import { AppSidebar } from './AppSidebar'
-import { Wordmark } from '../atoms/Wordmark'
-import { Colophon } from '../molecules/Colophon'
-import { experiments } from '../atoms/wordmarks'
-import { SocialBar } from '../molecules/SocialBar'
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  Info,
+  Hash,
+  Map,
+  GitCompare,
+  Search,
+  ListChecks,
+  ArrowLeftRight,
+  Columns4,
+  FileSearch,
+} from "lucide-react";
+import { AppSidebar } from "./AppSidebar";
+import { Wordmark } from "../atoms/Wordmark";
+import { Colophon } from "../molecules/Colophon";
+import { experiments } from "../atoms/wordmarks";
+import { SocialBar } from "../molecules/SocialBar";
 
 const meta = {
-  title: 'Organisms/AppSidebar',
+  title: "Organisms/AppSidebar",
   component: AppSidebar,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     // Every story here holds the active-item state locally, so none can be
     // driven by args. Hiding the panel is honest; leaving it visible advertises
     // controls that do nothing.
@@ -26,33 +36,35 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta
+} satisfies Meta;
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 const hexiconNav = [
-  { id: 'about',      label: 'About',             icon: Info       },
-  { id: 'name',       label: 'Name a colour',      icon: Hash       },
-  { id: 'structure',  label: 'Map a palette',       icon: Map        },
-  { id: 'difference', label: 'Compare two colours', icon: GitCompare },
-]
+  { id: "about", label: "About", icon: Info },
+  { id: "name", label: "Name a colour", icon: Hash },
+  { id: "structure", label: "Map a palette", icon: Map },
+  { id: "difference", label: "Compare two colours", icon: GitCompare },
+];
 
 const specifiNav = [
-  { id: 'about',   label: 'About this tool',      icon: Info       },
-  { id: 'analyse', label: 'Analyse a selector',    icon: Search     },
-  { id: 'compare', label: 'Compare two selectors', icon: GitCompare },
-  { id: 'rank',    label: 'Rank a stylesheet',     icon: ListChecks },
-]
+  { id: "about", label: "About this tool", icon: Info },
+  { id: "analyse", label: "Analyse a selector", icon: Search },
+  { id: "compare", label: "Compare two selectors", icon: GitCompare },
+  { id: "rank", label: "Rank a stylesheet", icon: ListChecks },
+];
 
-const [hexicon, specifi, grayScott, tokenise] = experiments
+const [hexicon, specifi, grayScott, tokenise] = experiments;
 
 export const Hexicon: Story = {
   render: () => {
-    const [active, setActive] = useState('name')
+    const [active, setActive] = useState("name");
     return (
       <AppSidebar
-        logo={<Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />}
+        logo={
+          <Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />
+        }
         navItems={hexiconNav}
         activeId={active}
         onNavigate={setActive}
@@ -60,16 +72,18 @@ export const Hexicon: Story = {
         social={<SocialBar siteName="hexicon" githubUrl="https://github.com/hipuku/hexicon" />}
         colophon={<Colophon name={hexicon.name} hoverFills={hexicon.hoverFills} />}
       />
-    )
+    );
   },
-}
+};
 
 export const Specifi: Story = {
   render: () => {
-    const [active, setActive] = useState('analyse')
+    const [active, setActive] = useState("analyse");
     return (
       <AppSidebar
-        logo={<Wordmark src={specifi.src} name={specifi.name} xHeightRatio={specifi.xHeightRatio} />}
+        logo={
+          <Wordmark src={specifi.src} name={specifi.name} xHeightRatio={specifi.xHeightRatio} />
+        }
         navItems={specifiNav}
         activeId={active}
         onNavigate={setActive}
@@ -77,48 +91,58 @@ export const Specifi: Story = {
         social={<SocialBar siteName="specifi" githubUrl="https://github.com/hipuku/specifi" />}
         colophon={<Colophon name={specifi.name} hoverFills={specifi.hoverFills} />}
       />
-    )
+    );
   },
-}
+};
 
 const grayScottNav = [
-  { id: 'about',    label: 'About this tool',   icon: Info       },
-  { id: 'simulate', label: 'Simulate',          icon: Hash       },
-  { id: 'isolate',  label: 'Channels',          icon: GitCompare },
-  { id: 'space',    label: 'Parameter space',   icon: Map        },
-]
+  { id: "about", label: "About this tool", icon: Info },
+  { id: "simulate", label: "Simulate", icon: Hash },
+  { id: "isolate", label: "Channels", icon: GitCompare },
+  { id: "space", label: "Parameter space", icon: Map },
+];
 
 export const GrayScott: Story = {
-  name: 'gray-scott',
+  name: "gray-scott",
   render: () => {
-    const [active, setActive] = useState('simulate')
+    const [active, setActive] = useState("simulate");
     return (
       <AppSidebar
-        logo={<Wordmark src={grayScott.src} name={grayScott.name} xHeightRatio={grayScott.xHeightRatio} />}
+        logo={
+          <Wordmark
+            src={grayScott.src}
+            name={grayScott.name}
+            xHeightRatio={grayScott.xHeightRatio}
+          />
+        }
         navItems={grayScottNav}
         activeId={active}
         onNavigate={setActive}
         accentActiveClass={grayScott.accentClass}
-        social={<SocialBar siteName="gray-scott" githubUrl="https://github.com/hipuku/gray-scott" />}
+        social={
+          <SocialBar siteName="gray-scott" githubUrl="https://github.com/hipuku/gray-scott" />
+        }
         colophon={<Colophon name={grayScott.name} hoverFills={grayScott.hoverFills} />}
       />
-    )
+    );
   },
-}
+};
 
 const tokeniseNav = [
-  { id: 'about',      label: 'About this tool', icon: Info           },
-  { id: 'convert',    label: 'Convert tokens',  icon: ArrowLeftRight },
-  { id: 'compare',    label: 'Compare a token', icon: Columns4       },
-  { id: 'difference', label: 'Check a file',    icon: FileSearch     },
-]
+  { id: "about", label: "About this tool", icon: Info },
+  { id: "convert", label: "Convert tokens", icon: ArrowLeftRight },
+  { id: "compare", label: "Compare a token", icon: Columns4 },
+  { id: "difference", label: "Check a file", icon: FileSearch },
+];
 
 export const Tokenise: Story = {
   render: () => {
-    const [active, setActive] = useState('convert')
+    const [active, setActive] = useState("convert");
     return (
       <AppSidebar
-        logo={<Wordmark src={tokenise.src} name={tokenise.name} xHeightRatio={tokenise.xHeightRatio} />}
+        logo={
+          <Wordmark src={tokenise.src} name={tokenise.name} xHeightRatio={tokenise.xHeightRatio} />
+        }
         navItems={tokeniseNav}
         activeId={active}
         onNavigate={setActive}
@@ -126,39 +150,43 @@ export const Tokenise: Story = {
         social={<SocialBar siteName="tokenise" githubUrl="https://github.com/hipuku/tokenise" />}
         colophon={<Colophon name={tokenise.name} hoverFills={tokenise.hoverFills} />}
       />
-    )
+    );
   },
-}
+};
 
 export const Minimal: Story = {
-  name: 'Minimal (no social links, no colophon)',
+  name: "Minimal (no social links, no colophon)",
   render: () => {
-    const [active, setActive] = useState('about')
+    const [active, setActive] = useState("about");
     return (
       <AppSidebar
-        logo={<Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />}
+        logo={
+          <Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />
+        }
         navItems={hexiconNav}
         activeId={active}
         onNavigate={setActive}
       />
-    )
+    );
   },
-}
+};
 
 export const KeyboardNav: Story = {
-  name: 'Keyboard navigation',
+  name: "Keyboard navigation",
   parameters: {
     docs: {
       description: {
-        story: 'Tab through the sidebar to inspect focus rings on nav buttons and social links.',
+        story: "Tab through the sidebar to inspect focus rings on nav buttons and social links.",
       },
     },
   },
   render: () => {
-    const [active, setActive] = useState('about')
+    const [active, setActive] = useState("about");
     return (
       <AppSidebar
-        logo={<Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />}
+        logo={
+          <Wordmark src={hexicon.src} name={hexicon.name} xHeightRatio={hexicon.xHeightRatio} />
+        }
         navItems={hexiconNav}
         activeId={active}
         onNavigate={setActive}
@@ -166,6 +194,6 @@ export const KeyboardNav: Story = {
         social={<SocialBar siteName="hexicon" githubUrl="https://github.com/hipuku/hexicon" />}
         colophon={<Colophon name={hexicon.name} hoverFills={hexicon.hoverFills} />}
       />
-    )
+    );
   },
-}
+};

@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { focusRing } from '../lib/focus'
+import type { ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { focusRing } from "../lib/focus";
 
 interface TokenPageProps {
-  title: string
-  description?: string
-  children: ReactNode
+  title: string;
+  description?: string;
+  children: ReactNode;
 }
 
 export function TokenPage({ title, description, children }: TokenPageProps) {
@@ -17,7 +17,7 @@ export function TokenPage({ title, description, children }: TokenPageProps) {
       </div>
       {children}
     </div>
-  )
+  );
 }
 
 export function TokenSection({ title, children }: { title: string; children: ReactNode }) {
@@ -26,7 +26,7 @@ export function TokenSection({ title, children }: { title: string; children: Rea
       <span className="type-annotation-sc text-void-60">{title}</span>
       {children}
     </div>
-  )
+  );
 }
 
 /**
@@ -46,12 +46,9 @@ export function ScrollRegion({ label, children }: { label: string; children: Rea
       tabIndex={0}
       role="region"
       aria-label={label}
-      className={cn(
-        'rounded-xl border border-void-30 overflow-x-auto',
-        focusRing,
-      )}
+      className={cn("rounded-xl border border-void-30 overflow-x-auto", focusRing)}
     >
       {children}
     </div>
-  )
+  );
 }
