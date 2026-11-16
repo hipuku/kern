@@ -33,9 +33,13 @@ export default defineConfig([
   },
   // Atomic tiers, one direction of dependency only (DESIGN.md, Component
   // hierarchy). Stories and tests are documentation and may compose upwards.
+  // Patterns are matched against the import string, not the resolved file, so
+  // each tier is banned at any depth of ../ as the barrel ("../molecules") or
+  // anything inside it ("../../molecules/Field"). Anchored to the leading
+  // ../ so src/lib/utils is not mistaken for the utils tier.
   {
     files: ["src/atoms/**/*.{ts,tsx}"],
-    ignores: ["**/*.stories.tsx", "**/*.test.tsx"],
+    ignores: ["**/*.stories.tsx", "**/*.test.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
         "error",
@@ -43,7 +47,7 @@ export default defineConfig([
           patterns: [
             { group: ["@/*"], message: "Imports inside kern are relative, never @/." },
             {
-              group: ["../molecules/*", "../organisms/*", "../templates/*", "../utils/*"],
+              regex: "^(\\.\\./)+(molecules|organisms|templates|utils)(/|$)",
               message: "Atoms depend on tokens and src/lib only.",
             },
           ],
@@ -53,7 +57,7 @@ export default defineConfig([
   },
   {
     files: ["src/molecules/**/*.{ts,tsx}"],
-    ignores: ["**/*.stories.tsx", "**/*.test.tsx"],
+    ignores: ["**/*.stories.tsx", "**/*.test.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
         "error",
@@ -61,7 +65,7 @@ export default defineConfig([
           patterns: [
             { group: ["@/*"], message: "Imports inside kern are relative, never @/." },
             {
-              group: ["../organisms/*", "../templates/*"],
+              regex: "^(\\.\\./)+(organisms|templates)(/|$)",
               message: "Molecules compose atoms, not organisms or templates.",
             },
           ],
@@ -71,7 +75,7 @@ export default defineConfig([
   },
   {
     files: ["src/organisms/**/*.{ts,tsx}"],
-    ignores: ["**/*.stories.tsx", "**/*.test.tsx"],
+    ignores: ["**/*.stories.tsx", "**/*.test.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
         "error",
@@ -79,7 +83,7 @@ export default defineConfig([
           patterns: [
             { group: ["@/*"], message: "Imports inside kern are relative, never @/." },
             {
-              group: ["../templates/*"],
+              regex: "^(\\.\\./)+(templates)(/|$)",
               message: "Organisms do not import templates.",
             },
           ],
@@ -89,7 +93,7 @@ export default defineConfig([
   },
   {
     files: ["src/lib/**/*.{ts,tsx}"],
-    ignores: ["**/*.stories.tsx", "**/*.test.tsx"],
+    ignores: ["**/*.stories.tsx", "**/*.test.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
         "error",
@@ -97,13 +101,7 @@ export default defineConfig([
           patterns: [
             { group: ["@/*"], message: "Imports inside kern are relative, never @/." },
             {
-              group: [
-                "../atoms/*",
-                "../molecules/*",
-                "../organisms/*",
-                "../templates/*",
-                "../utils/*",
-              ],
+              regex: "^(\\.\\./)+(atoms|molecules|organisms|templates|utils)(/|$)",
               message: "src/lib holds foundations components compose; it imports no component.",
             },
           ],
