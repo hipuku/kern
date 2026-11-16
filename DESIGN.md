@@ -192,8 +192,10 @@ and it shipped a 2.6:1 label underneath it. A scrolling token table is a focusab
 **Decision.** CI fails on:
 
 - a stale generated token CSS (`tokens:check`);
-- an import that breaks the tier order or uses `@/` in atoms, molecules, organisms or `src/lib`
-  (stories and tests are exempt), an accessibility rule, or a dropped promise (ESLint);
+- an import path that climbs straight into a higher tier (`../molecules`, `../../organisms/AppSidebar`)
+  or uses `@/`, in atoms, molecules, organisms or `src/lib` (stories and tests are exempt). The rule
+  matches the import string, not the resolved file, so a path that detours through another folder
+  is not caught. Also an accessibility rule, or a dropped promise (ESLint);
 - a component without a story, a declared ink and surface pairing below WCAG AA, or an axe violation
   (tests). The contrast test checks the pairings `tokens.ts` declares; it does not read which classes
   a component uses;
