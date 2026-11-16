@@ -34,6 +34,19 @@ export default defineConfig([
     rules: { ...jsxA11y.configs.recommended.rules },
   },
   {
+    // Promises, checked with type information. A clipboard write or a dynamic
+    // import that nobody awaits fails without a word, and an async function
+    // passed where a void callback is expected swallows its rejection.
+    files: ["src/**/*.{ts,tsx}"],
+    languageOptions: {
+      parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
+    },
+    rules: {
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-misused-promises": "error",
+    },
+  },
+  {
     // An effect or callback that reads a value it does not list goes stale
     // silently, so a missing dependency fails rather than warns.
     files: ["**/*.{ts,tsx}"],

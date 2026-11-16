@@ -48,7 +48,7 @@ export function CopyButton({ text, feedbackMs = 1500, className, ...props }: Cop
     <Button
       variant="ghost"
       size="icon"
-      onClick={handleCopy}
+      onClick={() => void handleCopy()}
       aria-label={copied ? `Copied ${text}` : `Copy ${text}`}
       className={cn("p-0 text-ink-muted hover:bg-transparent", className)}
       {...props}
