@@ -1,5 +1,6 @@
 import js from "@eslint/js";
 import globals from "globals";
+import jsxA11y from "eslint-plugin-jsx-a11y-x";
 import reactHooks from "eslint-plugin-react-hooks";
 import storybook from "eslint-plugin-storybook";
 import tseslint from "typescript-eslint";
@@ -24,6 +25,13 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+  },
+  {
+    // The recommended accessibility set. eslint-plugin-jsx-a11y does not support
+    // ESLint 10, so this is its maintained fork, as in drift.
+    files: ["src/**/*.tsx"],
+    ...jsxA11y.configs.recommended,
+    rules: { ...jsxA11y.configs.recommended.rules },
   },
   {
     // An effect or callback that reads a value it does not list goes stale
