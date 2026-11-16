@@ -27,11 +27,11 @@ export interface ColourRamp {
    * Do not use it as a "pressed" or "active" state on dark: it is darker than
    * the base and loses contrast against the void surfaces.
    */
-  dark: string
+  dark: string;
   /** The default. Text, icons, and active states on dark surfaces. */
-  base: string
+  base: string;
   /** The hover state for interactive text carrying this accent. */
-  light: string
+  light: string;
 }
 
 /**
@@ -39,23 +39,23 @@ export interface ColourRamp {
  * Each tool picks one as its `--primary`.
  */
 export const palette = {
-  nebula:    { dark: '#0D7A4F', base: '#15AD70', light: '#B4EDCF' },
-  aurora:    { dark: '#5A9E3A', base: '#82D25D', light: '#C5F0A9' },
-  tidal:     { dark: '#3FA8A1', base: '#68D0CA', light: '#B3EBE4' },
-  orbit:     { dark: '#4A9FD0', base: '#73BDE7', light: '#C4E5F7' },
-  pulsar:    { dark: '#4468D8', base: '#7193ED', light: '#C2CFFA' },
-  quasar:    { dark: '#9B72E6', base: '#BF9FF1', light: '#E4D6FB' },
-  corona:    { dark: '#F28BAD', base: '#F9C3D6', light: '#FCE4EE' },
-  dusk:      { dark: '#E0B090', base: '#F5D4C0', light: '#FAF0E8' },
-  flare:     { dark: '#C83D25', base: '#E15E42', light: '#F0A090' },
-  solstice:  { dark: '#D46A0A', base: '#F78D2C', light: '#FDE4C0' },
-  supernova: { dark: '#D4A000', base: '#FFC700', light: '#FFE480' },
-} as const satisfies Record<string, ColourRamp>
+  nebula: { dark: "#0D7A4F", base: "#15AD70", light: "#B4EDCF" },
+  aurora: { dark: "#5A9E3A", base: "#82D25D", light: "#C5F0A9" },
+  tidal: { dark: "#3FA8A1", base: "#68D0CA", light: "#B3EBE4" },
+  orbit: { dark: "#4A9FD0", base: "#73BDE7", light: "#C4E5F7" },
+  pulsar: { dark: "#4468D8", base: "#7193ED", light: "#C2CFFA" },
+  quasar: { dark: "#9B72E6", base: "#BF9FF1", light: "#E4D6FB" },
+  corona: { dark: "#F28BAD", base: "#F9C3D6", light: "#FCE4EE" },
+  dusk: { dark: "#E0B090", base: "#F5D4C0", light: "#FAF0E8" },
+  flare: { dark: "#C83D25", base: "#E15E42", light: "#F0A090" },
+  solstice: { dark: "#D46A0A", base: "#F78D2C", light: "#FDE4C0" },
+  supernova: { dark: "#D4A000", base: "#FFC700", light: "#FFE480" },
+} as const satisfies Record<string, ColourRamp>;
 
-export type AccentName = keyof typeof palette
+export type AccentName = keyof typeof palette;
 
 /** Every accent name, in palette order. */
-export const accentNames = Object.keys(palette) as AccentName[]
+export const accentNames = Object.keys(palette) as AccentName[];
 
 /**
  * The three opacities at which an accent is used as chrome rather than as text.
@@ -73,10 +73,10 @@ export const accentOpacity = {
   tintHover: 25,
   /** Border of an accent-carrying control. */
   border: 40,
-} as const
+} as const;
 
 /** @deprecated Use `accentOpacity.tint`. Kept so the name resolves during migration. */
-export const accentTintPercent = accentOpacity.tint
+export const accentTintPercent = accentOpacity.tint;
 
 /**
  * The neutral ramp, dark to light. `void-0` is the page background and
@@ -100,19 +100,19 @@ export const accentTintPercent = accentOpacity.tint
  *     one job. Moved to sit evenly between `void-70` and `void-90`.
  */
 export const voidScale = {
-  '0':  '#121213',
-  '10': '#1F1F20',
-  '20': '#2B2B2C',
-  '30': '#383839',
-  '40': '#575759',
-  '50': '#929295',
-  '60': '#B1B1B3',
-  '70': '#D3D3D5',
-  '80': '#E2E2E5',
-  '90': '#F1F1F4',
-} as const
+  "0": "#121213",
+  "10": "#1F1F20",
+  "20": "#2B2B2C",
+  "30": "#383839",
+  "40": "#575759",
+  "50": "#929295",
+  "60": "#B1B1B3",
+  "70": "#D3D3D5",
+  "80": "#E2E2E5",
+  "90": "#F1F1F4",
+} as const;
 
-export type VoidStep = keyof typeof voidScale
+export type VoidStep = keyof typeof voidScale;
 
 // ─── Semantic colour roles ───────────────────────────────────────────────────
 
@@ -129,13 +129,19 @@ export type VoidStep = keyof typeof voidScale
  * tool can retint any of them without forking a component.
  */
 export const surfaceRoles = {
-  'surface-page':   { step: '0',  description: 'The page background.' },
-  'surface-panel':  { step: '10', description: 'Sidebar, code blocks: regions recessed from the page.' },
-  'surface-raised': { step: '20', description: 'Cards, chips, controls. The most common surface text sits on.' },
-  'surface-hover':  { step: '30', description: 'Hover state of a raised control.' },
-} as const satisfies Record<string, { step: VoidStep; description: string }>
+  "surface-page": { step: "0", description: "The page background." },
+  "surface-panel": {
+    step: "10",
+    description: "Sidebar, code blocks: regions recessed from the page.",
+  },
+  "surface-raised": {
+    step: "20",
+    description: "Cards, chips, controls. The most common surface text sits on.",
+  },
+  "surface-hover": { step: "30", description: "Hover state of a raised control." },
+} as const satisfies Record<string, { step: VoidStep; description: string }>;
 
-export type SurfaceRole = keyof typeof surfaceRoles
+export type SurfaceRole = keyof typeof surfaceRoles;
 
 /**
  * Each ink role declares the surfaces it may be placed on, and
@@ -150,32 +156,35 @@ export type SurfaceRole = keyof typeof surfaceRoles
  * theory.
  */
 export const inkRoles = {
-  'ink-title': {
-    step: '90',
-    description: 'View titles and headings. The brightest text.',
-    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  "ink-title": {
+    step: "90",
+    description: "View titles and headings. The brightest text.",
+    surfaces: ["surface-page", "surface-panel", "surface-raised", "surface-hover"],
   },
-  'ink-strong': {
-    step: '80',
-    description: 'Emphasised values inside body copy: a stat figure, a readout.',
-    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  "ink-strong": {
+    step: "80",
+    description: "Emphasised values inside body copy: a stat figure, a readout.",
+    surfaces: ["surface-page", "surface-panel", "surface-raised", "surface-hover"],
   },
-  'ink-lead': {
-    step: '70',
-    description: 'Introductory and descriptive text below a title.',
-    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  "ink-lead": {
+    step: "70",
+    description: "Introductory and descriptive text below a title.",
+    surfaces: ["surface-page", "surface-panel", "surface-raised", "surface-hover"],
   },
-  'ink-body': {
-    step: '60',
-    description: 'Default body and label text. The workhorse of the system.',
-    surfaces: ['surface-page', 'surface-panel', 'surface-raised', 'surface-hover'],
+  "ink-body": {
+    step: "60",
+    description: "Default body and label text. The workhorse of the system.",
+    surfaces: ["surface-page", "surface-panel", "surface-raised", "surface-hover"],
   },
-  'ink-muted': {
-    step: '50',
-    description: 'Annotations, captions, deliberately de-emphasised detail.',
-    surfaces: ['surface-page', 'surface-panel', 'surface-raised'],
+  "ink-muted": {
+    step: "50",
+    description: "Annotations, captions, deliberately de-emphasised detail.",
+    surfaces: ["surface-page", "surface-panel", "surface-raised"],
   },
-} as const satisfies Record<string, { step: VoidStep; description: string; surfaces: readonly SurfaceRole[] }>
+} as const satisfies Record<
+  string,
+  { step: VoidStep; description: string; surfaces: readonly SurfaceRole[] }
+>;
 
 /**
  * `on` records the surface each line is drawn against, because a border is only
@@ -185,13 +194,21 @@ export const inkRoles = {
  * inside a card.
  */
 export const lineRoles = {
-  'line-subtle': { step: '20', description: 'Dividers between rows of content on the page.', on: 'surface-page' },
-  'line':        { step: '30', description: 'The edge of a card or control.',                 on: 'surface-page' },
-  'line-strong': { step: '40', description: 'Hover state of a control edge. Decorative, never text.', on: 'surface-raised' },
-} as const satisfies Record<string, { step: VoidStep; description: string; on: SurfaceRole }>
+  "line-subtle": {
+    step: "20",
+    description: "Dividers between rows of content on the page.",
+    on: "surface-page",
+  },
+  line: { step: "30", description: "The edge of a card or control.", on: "surface-page" },
+  "line-strong": {
+    step: "40",
+    description: "Hover state of a control edge. Decorative, never text.",
+    on: "surface-raised",
+  },
+} as const satisfies Record<string, { step: VoidStep; description: string; on: SurfaceRole }>;
 
-export type InkRole = keyof typeof inkRoles
-export type LineRole = keyof typeof lineRoles
+export type InkRole = keyof typeof inkRoles;
+export type LineRole = keyof typeof lineRoles;
 
 /**
  * The accent seam. Components reference these and never a named colour, so an
@@ -199,12 +216,15 @@ export type LineRole = keyof typeof lineRoles
  * follows. kern's own default is pulsar; each tool picks its own.
  */
 export const accentRoles = {
-  primary: { value: 'var(--color-pulsar)', description: 'The tool accent: active states, emphasis.' },
-  ring:    { value: 'var(--color-pulsar)', description: 'Focus ring. Tracks the accent.' },
-  link:    { value: 'var(--color-pulsar)', description: 'Inline links in prose.' },
-} as const
+  primary: {
+    value: "var(--color-pulsar)",
+    description: "The tool accent: active states, emphasis.",
+  },
+  ring: { value: "var(--color-pulsar)", description: "Focus ring. Tracks the accent." },
+  link: { value: "var(--color-pulsar)", description: "Inline links in prose." },
+} as const;
 
-export type AccentRole = keyof typeof accentRoles
+export type AccentRole = keyof typeof accentRoles;
 
 /**
  * Aliases kept for the base layer and for components that style a whole page
@@ -213,9 +233,9 @@ export type AccentRole = keyof typeof accentRoles
  * expect.
  */
 export const baseRoles = {
-  background: { step: '0',  description: 'Alias of surface-page, for the body element.' },
-  foreground: { step: '90', description: 'Alias of ink-title, for the body element.' },
-} as const satisfies Record<string, { step: VoidStep; description: string }>
+  background: { step: "0", description: "Alias of surface-page, for the body element." },
+  foreground: { step: "90", description: "Alias of ink-title, for the body element." },
+} as const satisfies Record<string, { step: VoidStep; description: string }>;
 
 // ─── Type ────────────────────────────────────────────────────────────────────
 
@@ -226,15 +246,15 @@ export const baseRoles = {
  */
 export interface TypeStyle {
   /** `font-size`, occasionally a clamp() for the fluid heading roles. */
-  size: string
+  size: string;
   /** Must be a weight Parkinsans actually ships. See `fontWeights`. */
-  weight: number
-  lineHeight: number
-  tracking: string
+  weight: number;
+  lineHeight: number;
+  tracking: string;
   /** Renders in the mono face. */
-  mono?: boolean
+  mono?: boolean;
   /** Applies `font-variant-caps: all-small-caps`, never the `uppercase` class. */
-  smallCaps?: boolean
+  smallCaps?: boolean;
 }
 
 /**
@@ -245,26 +265,62 @@ export interface TypeStyle {
  * browser silently substituted 300, and the token had never described what
  * rendered. Both now declare 300 explicitly.
  */
-export const fontWeights = [300, 400, 500, 600, 700, 800] as const
+export const fontWeights = [300, 400, 500, 600, 700, 800] as const;
 
 const TYPE_SCALE = {
-  'display':       { size: 'clamp(3.5rem, 7vw + 1rem, 7.125rem)',      weight: 800, lineHeight: 0.95, tracking: '-0.03em'  },
-  'h1':            { size: 'clamp(2.625rem, 5vw + 0.75rem, 5.1875rem)', weight: 300, lineHeight: 1.05, tracking: '-0.025em' },
-  'h2':            { size: 'clamp(2rem, 3.5vw + 0.5rem, 3.75rem)',      weight: 300, lineHeight: 1.1,  tracking: '-0.02em'  },
-  'h3':            { size: 'clamp(1.5rem, 2.5vw + 0.25rem, 2.5rem)',    weight: 600, lineHeight: 1.2,  tracking: '-0.015em' },
-  'h4':            { size: 'clamp(1.25rem, 1.5vw + 0.25rem, 1.75rem)',  weight: 600, lineHeight: 1.3,  tracking: '-0.01em'  },
-  'h5':            { size: 'clamp(1.125rem, 1vw + 0.25rem, 1.375rem)',  weight: 500, lineHeight: 1.4,  tracking: '-0.005em' },
-  'h6':            { size: '1.125rem',                                  weight: 500, lineHeight: 1.5,  tracking: '0em'      },
-  'p-lg':          { size: '1.375rem',                                  weight: 400, lineHeight: 1.4,  tracking: '0em'      },
-  'p-base':        { size: '1.125rem',                                  weight: 400, lineHeight: 1.15, tracking: '0em'      },
-  'p-sm':          { size: '1rem',                                      weight: 400, lineHeight: 1.7,  tracking: '0.01em'   },
-  'annotation':    { size: '0.8125rem',                                 weight: 400, lineHeight: 1.7,  tracking: '0.01em'   },
-  'annotation-sc': { size: '1rem',                                      weight: 400, lineHeight: 1.5,  tracking: '0.08em', smallCaps: true },
-  'button':        { size: '1rem',                                      weight: 500, lineHeight: 1.0,  tracking: '0.02em'   },
-  'code':          { size: '0.9375rem',                                 weight: 400, lineHeight: 1.7,  tracking: '0em',    mono: true },
-} as const satisfies Record<string, TypeStyle>
+  display: {
+    size: "clamp(3.5rem, 7vw + 1rem, 7.125rem)",
+    weight: 800,
+    lineHeight: 0.95,
+    tracking: "-0.03em",
+  },
+  h1: {
+    size: "clamp(2.625rem, 5vw + 0.75rem, 5.1875rem)",
+    weight: 300,
+    lineHeight: 1.05,
+    tracking: "-0.025em",
+  },
+  h2: {
+    size: "clamp(2rem, 3.5vw + 0.5rem, 3.75rem)",
+    weight: 300,
+    lineHeight: 1.1,
+    tracking: "-0.02em",
+  },
+  h3: {
+    size: "clamp(1.5rem, 2.5vw + 0.25rem, 2.5rem)",
+    weight: 600,
+    lineHeight: 1.2,
+    tracking: "-0.015em",
+  },
+  h4: {
+    size: "clamp(1.25rem, 1.5vw + 0.25rem, 1.75rem)",
+    weight: 600,
+    lineHeight: 1.3,
+    tracking: "-0.01em",
+  },
+  h5: {
+    size: "clamp(1.125rem, 1vw + 0.25rem, 1.375rem)",
+    weight: 500,
+    lineHeight: 1.4,
+    tracking: "-0.005em",
+  },
+  h6: { size: "1.125rem", weight: 500, lineHeight: 1.5, tracking: "0em" },
+  "p-lg": { size: "1.375rem", weight: 400, lineHeight: 1.4, tracking: "0em" },
+  "p-base": { size: "1.125rem", weight: 400, lineHeight: 1.15, tracking: "0em" },
+  "p-sm": { size: "1rem", weight: 400, lineHeight: 1.7, tracking: "0.01em" },
+  annotation: { size: "0.8125rem", weight: 400, lineHeight: 1.7, tracking: "0.01em" },
+  "annotation-sc": {
+    size: "1rem",
+    weight: 400,
+    lineHeight: 1.5,
+    tracking: "0.08em",
+    smallCaps: true,
+  },
+  button: { size: "1rem", weight: 500, lineHeight: 1.0, tracking: "0.02em" },
+  code: { size: "0.9375rem", weight: 400, lineHeight: 1.7, tracking: "0em", mono: true },
+} as const satisfies Record<string, TypeStyle>;
 
-export type TypeRole = keyof typeof TYPE_SCALE
+export type TypeRole = keyof typeof TYPE_SCALE;
 
 /**
  * Re-exported as `Record<TypeRole, TypeStyle>` rather than the inferred literal
@@ -273,18 +329,18 @@ export type TypeRole = keyof typeof TYPE_SCALE
  * unreadable at a call site that iterates the roles. Keys stay exact; only the
  * values widen to the declared interface.
  */
-export const typeScale: Record<TypeRole, TypeStyle> = TYPE_SCALE
+export const typeScale: Record<TypeRole, TypeStyle> = TYPE_SCALE;
 
 /** Every type role, in scale order. */
-export const typeRoles = Object.keys(TYPE_SCALE) as TypeRole[]
+export const typeRoles = Object.keys(TYPE_SCALE) as TypeRole[];
 
 export const fonts = {
   sans: "'Parkinsans', system-ui, sans-serif",
   mono: "'Geist Mono', 'Fira Code', monospace",
-} as const
+} as const;
 
 /** The body default: the role every unstyled block of text falls back to. */
-export const bodyTypeRole: TypeRole = 'p-sm'
+export const bodyTypeRole: TypeRole = "p-sm";
 
 // ─── Spacing ─────────────────────────────────────────────────────────────────
 
@@ -298,7 +354,7 @@ export const bodyTypeRole: TypeRole = 'p-sm'
  * ever referenced those custom properties. They looked correct only because
  * both scales happen to be 4px-based.
  */
-export const spacingBase = '0.25rem'
+export const spacingBase = "0.25rem";
 
 /**
  * Named spacing for the layout decisions that recur. These are the rhythm the
@@ -310,15 +366,15 @@ export const spacingBase = '0.25rem'
  * system makes.
  */
 export const spacingRoles = {
-  tight:   { value: '0.25rem', description: 'Between items in a dense list.' },
-  field:   { value: '0.5rem',  description: 'Between a label and its control.' },
-  card:    { value: '0.75rem', description: 'Between elements inside a card.' },
-  section: { value: '1rem',    description: 'Between blocks within a section.' },
-  view:    { value: '1.5rem',  description: 'Between sections of a view.' },
-  major:   { value: '2rem',    description: 'Between major regions of the page.' },
-} as const
+  tight: { value: "0.25rem", description: "Between items in a dense list." },
+  field: { value: "0.5rem", description: "Between a label and its control." },
+  card: { value: "0.75rem", description: "Between elements inside a card." },
+  section: { value: "1rem", description: "Between blocks within a section." },
+  view: { value: "1.5rem", description: "Between sections of a view." },
+  major: { value: "2rem", description: "Between major regions of the page." },
+} as const;
 
-export type SpacingRole = keyof typeof spacingRoles
+export type SpacingRole = keyof typeof spacingRoles;
 
 // ─── Radius ──────────────────────────────────────────────────────────────────
 
@@ -329,13 +385,13 @@ export type SpacingRole = keyof typeof spacingRoles
  * `rounded-[3px]` escape hatches that were really a missing fourth step.
  */
 export const radiusRoles = {
-  inline:  { value: '4px',    description: 'Inline code and other in-text chrome.' },
-  control: { value: '8px',    description: 'Chips, small buttons, inputs.' },
-  card:    { value: '12px',   description: 'Cards, panels, medium buttons.' },
-  pill:    { value: '9999px', description: 'Status chips and anything fully rounded.' },
-} as const
+  inline: { value: "4px", description: "Inline code and other in-text chrome." },
+  control: { value: "8px", description: "Chips, small buttons, inputs." },
+  card: { value: "12px", description: "Cards, panels, medium buttons." },
+  pill: { value: "9999px", description: "Status chips and anything fully rounded." },
+} as const;
 
-export type RadiusRole = keyof typeof radiusRoles
+export type RadiusRole = keyof typeof radiusRoles;
 
 // ─── Layering ────────────────────────────────────────────────────────────────
 
@@ -345,12 +401,12 @@ export type RadiusRole = keyof typeof radiusRoles
  * relationship between them had to be reconstructed by reading all three.
  */
 export const zIndexRoles = {
-  backdrop: { value: 30, description: 'A scrim behind a floating panel or overlay.' },
-  panel:    { value: 40, description: 'A floating panel, above the scrim.' },
-  control:  { value: 50, description: 'A control that must stay above a floating panel.' },
-} as const
+  backdrop: { value: 30, description: "A scrim behind a floating panel or overlay." },
+  panel: { value: 40, description: "A floating panel, above the scrim." },
+  control: { value: 50, description: "A control that must stay above a floating panel." },
+} as const;
 
-export type ZIndexRole = keyof typeof zIndexRoles
+export type ZIndexRole = keyof typeof zIndexRoles;
 
 // ─── Breakpoints ─────────────────────────────────────────────────────────────
 
@@ -366,29 +422,44 @@ export const breakpoints = {
   md: 768,
   lg: 1024,
   xl: 1280,
-} as const
+} as const;
 
-export type Breakpoint = keyof typeof breakpoints
+export type Breakpoint = keyof typeof breakpoints;
 
 // ─── Motion ──────────────────────────────────────────────────────────────────
 
 export const easing = {
-  standard:   { value: 'cubic-bezier(0.2, 0, 0, 1)',   use: 'The default. Most transitions between two resting states.' },
-  decelerate: { value: 'cubic-bezier(0, 0, 0.2, 1)',   use: 'Elements entering the viewport: fast in, gentle settle.' },
-  accelerate: { value: 'cubic-bezier(0.4, 0, 1, 1)',   use: 'Elements leaving the viewport: gentle start, fast exit.' },
-  sharp:      { value: 'cubic-bezier(0.4, 0, 0.6, 1)', use: 'Quick, decisive changes that stay on screen.' },
-  smooth:     { value: 'cubic-bezier(0.45, 0, 0.55, 1)', use: 'Symmetric ease for looping or reversible motion.' },
-} as const
+  standard: {
+    value: "cubic-bezier(0.2, 0, 0, 1)",
+    use: "The default. Most transitions between two resting states.",
+  },
+  decelerate: {
+    value: "cubic-bezier(0, 0, 0.2, 1)",
+    use: "Elements entering the viewport: fast in, gentle settle.",
+  },
+  accelerate: {
+    value: "cubic-bezier(0.4, 0, 1, 1)",
+    use: "Elements leaving the viewport: gentle start, fast exit.",
+  },
+  sharp: {
+    value: "cubic-bezier(0.4, 0, 0.6, 1)",
+    use: "Quick, decisive changes that stay on screen.",
+  },
+  smooth: {
+    value: "cubic-bezier(0.45, 0, 0.55, 1)",
+    use: "Symmetric ease for looping or reversible motion.",
+  },
+} as const;
 
-export type EasingName = keyof typeof easing
+export type EasingName = keyof typeof easing;
 
 export const duration = {
-  instant: { value: '0.1s',  use: 'Colour and opacity on hover.' },
-  fast:    { value: '0.15s', use: 'Small state changes: chips, icon buttons.' },
-  base:    { value: '0.2s',  use: 'The default for interactive feedback.' },
-  slow:    { value: '0.3s',  use: 'Panels and drawers moving across the screen.' },
-  enter:   { value: '0.4s',  use: 'First appearance of a region or a decorative flourish.' },
-  reduced: { value: '0s',    use: 'Substituted wholesale under prefers-reduced-motion.' },
-} as const
+  instant: { value: "0.1s", use: "Colour and opacity on hover." },
+  fast: { value: "0.15s", use: "Small state changes: chips, icon buttons." },
+  base: { value: "0.2s", use: "The default for interactive feedback." },
+  slow: { value: "0.3s", use: "Panels and drawers moving across the screen." },
+  enter: { value: "0.4s", use: "First appearance of a region or a decorative flourish." },
+  reduced: { value: "0s", use: "Substituted wholesale under prefers-reduced-motion." },
+} as const;
 
-export type DurationName = keyof typeof duration
+export type DurationName = keyof typeof duration;

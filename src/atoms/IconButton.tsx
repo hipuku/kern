@@ -1,15 +1,15 @@
-import type { ReactNode } from 'react'
-import { Button, type ButtonProps } from './Button'
+import type { ReactNode } from "react";
+import { Button, type ButtonProps } from "./Button";
 
-export interface IconButtonProps extends Omit<ButtonProps, 'size' | 'children'> {
+export interface IconButtonProps extends Omit<ButtonProps, "size" | "children"> {
   /**
    * Required, not optional. An icon-only control has no accessible name from
    * its contents, so without this a screen reader announces it as just
    * "button". TypeScript enforces what a lint rule otherwise would.
    */
-  'aria-label': string
+  "aria-label": string;
   /** A single icon. Sized by the icon itself, conventionally `w-4 h-4`. */
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -25,5 +25,5 @@ export function IconButton({ children, ...props }: IconButtonProps) {
     <Button size="icon" {...props}>
       {children}
     </Button>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
 
-export type BulletListProps = ComponentPropsWithRef<'ul'>
+export type BulletListProps = ComponentPropsWithRef<"ul">;
 
 /**
  * The `<ul>` that holds `BulletItem`s.
@@ -19,7 +19,5 @@ export type BulletListProps = ComponentPropsWithRef<'ul'>
  * ```
  */
 export function BulletList({ className, ...props }: BulletListProps) {
-  return (
-    <ul className={cn('flex flex-col gap-3 list-none p-0 m-0', className)} {...props} />
-  )
+  return <ul className={cn("flex flex-col gap-3 list-none p-0 m-0", className)} {...props} />;
 }

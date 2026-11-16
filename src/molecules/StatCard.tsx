@@ -1,19 +1,19 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { Card } from '../atoms/Card'
-import { StatusChip } from '../atoms/StatusChip'
-import { Label } from '../atoms/Label'
-import type { AccentColour } from '../lib/accent'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { Card } from "../atoms/Card";
+import { StatusChip } from "../atoms/StatusChip";
+import { Label } from "../atoms/Label";
+import type { AccentColour } from "../lib/accent";
 
-export interface StatCardProps extends ComponentPropsWithRef<'div'> {
+export interface StatCardProps extends ComponentPropsWithRef<"div"> {
   /** What the number is. Rendered in small caps. */
-  label: string
+  label: string;
   /** The number itself, or any short node. */
-  value: ReactNode
+  value: ReactNode;
   /** A line of context below the value. */
-  sub?: string
+  sub?: string;
   /** Text for the chip beside the value. Without it, `badgeColour` does nothing. */
-  badge?: string
+  badge?: string;
   /**
    * Accent for the badge. Defaults to neutral.
    *
@@ -22,7 +22,7 @@ export interface StatCardProps extends ComponentPropsWithRef<'div'> {
    * accents, plus a `badgeColour` that set the accent directly, with `variant`
    * silently winning when both were passed. One prop, one meaning.
    */
-  badgeColour?: AccentColour
+  badgeColour?: AccentColour;
 }
 
 /**
@@ -33,12 +33,12 @@ export function StatCard({
   value,
   sub,
   badge,
-  badgeColour = 'neutral',
+  badgeColour = "neutral",
   className,
   ...props
 }: StatCardProps) {
   return (
-    <Card className={cn('flex flex-col gap-2', className)} {...props}>
+    <Card className={cn("flex flex-col gap-2", className)} {...props}>
       {/* as="span": this names the card, not a form control. */}
       <Label as="span">{label}</Label>
       <div className="flex items-baseline gap-2">
@@ -47,5 +47,5 @@ export function StatCard({
       </div>
       {sub && <p className="type-annotation text-ink-body">{sub}</p>}
     </Card>
-  )
+  );
 }

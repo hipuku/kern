@@ -57,10 +57,10 @@ export {
   type InkRole,
   type LineRole,
   type AccentRole,
-} from './tokens/tokens'
+} from "./tokens/tokens";
 
 // ─── Foundations ─────────────────────────────────────────────────────────────
-export { cn } from './lib/utils'
+export { cn } from "./lib/utils";
 export {
   contrastRatio,
   relativeLuminance,
@@ -68,27 +68,27 @@ export {
   hexToRgb,
   wcagLevel,
   type Oklch,
-} from './lib/colour'
-export { focusRing } from './lib/focus'
+} from "./lib/colour";
+export { focusRing } from "./lib/focus";
 export {
   accentColours,
   accentText,
   accentTint,
   accentTextHover,
   type AccentColour,
-} from './lib/accent'
+} from "./lib/accent";
 
 // ─── Atoms ───────────────────────────────────────────────────────────────────
-export * from './atoms'
+export * from "./atoms";
 
 // ─── Molecules ───────────────────────────────────────────────────────────────
-export * from './molecules'
+export * from "./molecules";
 
 // ─── Organisms ───────────────────────────────────────────────────────────────
-export * from './organisms'
+export * from "./organisms";
 
 // ─── Templates ───────────────────────────────────────────────────────────────
-export * from './templates'
+export * from "./templates";
 
 // ─── Utilities ───────────────────────────────────────────────────────────────
-export * from './utils'
+export * from "./utils";

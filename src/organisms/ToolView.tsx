@@ -1,24 +1,24 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { ViewHeader } from '../molecules/ViewHeader'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { ViewHeader } from "../molecules/ViewHeader";
 
-export interface ToolViewProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
-  title: string
-  description: string
+export interface ToolViewProps extends Omit<ComponentPropsWithRef<"div">, "title"> {
+  title: string;
+  description: string;
   /** Heading level for the `ViewHeader`. Defaults to `h1`. See `ViewHeader`. */
-  as?: 'h1' | 'h2' | 'h3'
+  as?: "h1" | "h2" | "h3";
   /** The entry region, inputs and controls, shown between the header and the body. */
-  input?: ReactNode
+  input?: ReactNode;
   /**
    * Shown in place of `children` when `isEmpty` is true, typically an
    * `EmptyState`. Keeping the empty branch here means every tool decides "no
    * result yet" the same way instead of scattering the condition through its JSX.
    */
-  empty?: ReactNode
+  empty?: ReactNode;
   /** When true, render `empty` instead of `children`. */
-  isEmpty?: boolean
+  isEmpty?: boolean;
   /** The results / body of the tool. */
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -46,10 +46,10 @@ export function ToolView({
   ...props
 }: ToolViewProps) {
   return (
-    <div className={cn('flex flex-col gap-8', className)} {...props}>
+    <div className={cn("flex flex-col gap-8", className)} {...props}>
       <ViewHeader title={title} description={description} as={as} />
       {input}
       {isEmpty && empty != null ? empty : children}
     </div>
-  )
+  );
 }

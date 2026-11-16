@@ -1,14 +1,14 @@
-import { cn } from '../lib/utils'
-import { Button, type ButtonProps } from '../atoms/Button'
-import { accentText, accentTextHover, type AccentColour } from '../lib/accent'
+import { cn } from "../lib/utils";
+import { Button, type ButtonProps } from "../atoms/Button";
+import { accentText, accentTextHover, type AccentColour } from "../lib/accent";
 
-export interface ToolLinkProps extends Omit<ButtonProps, 'variant' | 'size'> {
+export interface ToolLinkProps extends Omit<ButtonProps, "variant" | "size"> {
   /**
    * Tint the link with a specific accent. Omit to use the tool's
    * `--primary`, which is the usual case. Pass one only when the link points
    * at something the palette already colour-codes.
    */
-  colour?: AccentColour
+  colour?: AccentColour;
 }
 
 /**
@@ -25,11 +25,11 @@ export function ToolLink({ colour, className, ...props }: ToolLinkProps) {
       variant="link"
       size="md"
       className={cn(
-        'type-p-sm font-medium text-left',
-        colour && cn(accentText[colour], accentTextHover[colour], 'hover:opacity-100'),
+        "type-p-sm font-medium text-left",
+        colour && cn(accentText[colour], accentTextHover[colour], "hover:opacity-100"),
         className,
       )}
       {...props}
     />
-  )
+  );
 }

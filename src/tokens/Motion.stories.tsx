@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import { RotateCcw } from 'lucide-react'
-import { IconButton } from '../atoms/IconButton'
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { TokenPage, ScrollRegion } from './TokenPage'
-import { easing, duration } from './tokens'
+import { useState } from "react";
+import { RotateCcw } from "lucide-react";
+import { IconButton } from "../atoms/IconButton";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { TokenPage, ScrollRegion } from "./TokenPage";
+import { easing, duration } from "./tokens";
 
 const meta = {
-  title: 'Tokens/Motion',
-  parameters: { layout: 'padded' },
-} satisfies Meta
+  title: "Tokens/Motion",
+  parameters: { layout: "padded" },
+} satisfies Meta;
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -23,7 +23,7 @@ const EASINGS = Object.entries(easing).map(([name, { value, use }]) => ({
   name: `ease-${name}`,
   curve: value,
   description: use,
-}))
+}));
 
 const DURATIONS = Object.entries(duration).map(([name, { value, use }]) => ({
   token: `--duration-${name}`,
@@ -31,18 +31,24 @@ const DURATIONS = Object.entries(duration).map(([name, { value, use }]) => ({
   value,
   ms: `${parseFloat(value) * 1000}ms`,
   use,
-}))
+}));
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function EasingRow({ token, name, curve, description, last }: typeof EASINGS[number] & { last: boolean }) {
-  const [running, setRunning] = useState(false)
+function EasingRow({
+  token,
+  name,
+  curve,
+  description,
+  last,
+}: (typeof EASINGS)[number] & { last: boolean }) {
+  const [running, setRunning] = useState(false);
   const trigger = () => {
-    setRunning(false)
-    requestAnimationFrame(() => requestAnimationFrame(() => setRunning(true)))
-  }
+    setRunning(false);
+    requestAnimationFrame(() => requestAnimationFrame(() => setRunning(true)));
+  };
   return (
-    <tr className={last ? '' : 'border-b border-void-20'}>
+    <tr className={last ? "" : "border-b border-void-20"}>
       <td className="px-4 py-3 whitespace-nowrap">
         <code className="type-annotation font-mono text-pulsar">{name}</code>
       </td>
@@ -58,9 +64,11 @@ function EasingRow({ token, name, curve, description, last }: typeof EASINGS[num
             <div
               className="absolute top-0.5 bottom-0.5 left-0.5 w-5 rounded bg-pulsar"
               style={{
-                transform: running ? 'translateX(calc(100cqw - 1.375rem - 0.125rem))' : 'translateX(0)',
-                transition: running ? `transform var(--duration-slow) var(${token})` : 'none',
-                containerType: 'inline-size',
+                transform: running
+                  ? "translateX(calc(100cqw - 1.375rem - 0.125rem))"
+                  : "translateX(0)",
+                transition: running ? `transform var(--duration-slow) var(${token})` : "none",
+                containerType: "inline-size",
               }}
             />
           </div>
@@ -75,17 +83,24 @@ function EasingRow({ token, name, curve, description, last }: typeof EASINGS[num
         </div>
       </td>
     </tr>
-  )
+  );
 }
 
-function DurationRow({ token, name, value, ms, use, last }: typeof DURATIONS[number] & { last: boolean }) {
-  const [running, setRunning] = useState(false)
+function DurationRow({
+  token,
+  name,
+  value,
+  ms,
+  use,
+  last,
+}: (typeof DURATIONS)[number] & { last: boolean }) {
+  const [running, setRunning] = useState(false);
   const trigger = () => {
-    setRunning(false)
-    requestAnimationFrame(() => requestAnimationFrame(() => setRunning(true)))
-  }
+    setRunning(false);
+    requestAnimationFrame(() => requestAnimationFrame(() => setRunning(true)));
+  };
   return (
-    <tr className={last ? '' : 'border-b border-void-20'}>
+    <tr className={last ? "" : "border-b border-void-20"}>
       <td className="px-4 py-3 whitespace-nowrap">
         <code className="type-annotation font-mono text-pulsar">{name}</code>
       </td>
@@ -108,66 +123,82 @@ function DurationRow({ token, name, value, ms, use, last }: typeof DURATIONS[num
           <div
             className="absolute inset-0 bg-pulsar/20 rounded"
             style={{
-              transform: running ? 'scale(1)' : 'scale(0)',
+              transform: running ? "scale(1)" : "scale(0)",
               opacity: running ? 0 : 1,
               transition: running
                 ? `transform var(${token}) var(--ease-decelerate), opacity var(${token}) var(--ease-decelerate)`
-                : 'none',
+                : "none",
             }}
           />
         </button>
       </td>
     </tr>
-  )
+  );
 }
 
 // ─── Stories ──────────────────────────────────────────────────────────────────
 
 export const Easings: Story = {
-  name: 'Easing curves',
+  name: "Easing curves",
   render: () => (
     <TokenPage title="Motion" description="Easing curves and durations for all transitions.">
       <ScrollRegion label="Easing curves">
         <table className="w-auto min-w-full">
           <thead>
             <tr className="border-b border-void-20">
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Token</th>
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Curve</th>
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Use</th>
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Preview</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                Token
+              </th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                Curve
+              </th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                Use
+              </th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                Preview
+              </th>
             </tr>
           </thead>
           <tbody>
-            {EASINGS.map((e, i) => <EasingRow key={e.name} {...e} last={i === EASINGS.length - 1} />)}
+            {EASINGS.map((e, i) => (
+              <EasingRow key={e.name} {...e} last={i === EASINGS.length - 1} />
+            ))}
           </tbody>
         </table>
       </ScrollRegion>
     </TokenPage>
   ),
-}
+};
 
 export const ReducedMotion: Story = {
-  name: 'Reduced motion',
+  name: "Reduced motion",
   parameters: {
     docs: {
       description: {
-        story: 'All animated components use `motion-safe:` Tailwind variants so transitions are skipped automatically under `prefers-reduced-motion: reduce`. The `--duration-reduced: 0s` token is the explicit zero-duration override for any component that needs to reference it directly. The two boxes below demonstrate: the left box respects the OS setting via `motion-safe:`, the right box hardcodes `--duration-reduced` directly.',
+        story:
+          "All animated components use `motion-safe:` Tailwind variants so transitions are skipped automatically under `prefers-reduced-motion: reduce`. The `--duration-reduced: 0s` token is the explicit zero-duration override for any component that needs to reference it directly. The two boxes below demonstrate: the left box respects the OS setting via `motion-safe:`, the right box hardcodes `--duration-reduced` directly.",
       },
     },
   },
   render: () => {
-    const [on, setOn] = useState(false)
+    const [on, setOn] = useState(false);
     return (
-      <TokenPage title="Reduced motion" description="How the design system handles prefers-reduced-motion.">
+      <TokenPage
+        title="Reduced motion"
+        description="How the design system handles prefers-reduced-motion."
+      >
         <div className="flex gap-4">
           <button
             type="button"
-            onClick={() => setOn(v => !v)}
+            onClick={() => setOn((v) => !v)}
             className="type-annotation font-mono bg-void-20 border border-void-30 hover:bg-void-30 rounded-lg px-3 py-1.5 cursor-pointer transition-colors duration-150"
           >
             Toggle
           </button>
-          <span className="type-annotation text-void-60 self-center">Click to animate, then enable OS reduced motion and click again</span>
+          <span className="type-annotation text-void-60 self-center">
+            Click to animate, then enable OS reduced motion and click again
+          </span>
         </div>
         <div className="flex gap-6">
           <div className="flex flex-col gap-2">
@@ -175,7 +206,7 @@ export const ReducedMotion: Story = {
             <div className="w-48 h-12 rounded-lg bg-void-20 border border-void-30 relative overflow-hidden">
               <div
                 className="absolute inset-y-1 left-1 w-10 rounded bg-pulsar motion-safe:transition-transform motion-safe:duration-300"
-                style={{ transform: on ? 'translateX(144px)' : 'translateX(0)' }}
+                style={{ transform: on ? "translateX(144px)" : "translateX(0)" }}
               />
             </div>
             <span className="type-annotation text-void-50">Skipped when OS motion is off</span>
@@ -186,7 +217,7 @@ export const ReducedMotion: Story = {
               <div
                 className="absolute inset-y-1 left-1 w-10 rounded bg-orbit"
                 style={{
-                  transform: on ? 'translateX(144px)' : 'translateX(0)',
+                  transform: on ? "translateX(144px)" : "translateX(0)",
                   transition: `transform var(--duration-reduced) var(--ease-standard)`,
                 }}
               />
@@ -195,9 +226,9 @@ export const ReducedMotion: Story = {
           </div>
         </div>
       </TokenPage>
-    )
+    );
   },
-}
+};
 
 export const Durations: Story = {
   render: () => (
@@ -206,18 +237,30 @@ export const Durations: Story = {
         <table className="w-auto min-w-full">
           <thead>
             <tr className="border-b border-void-20">
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Token</th>
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">ms</th>
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">s</th>
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Use</th>
-              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">Preview</th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                Token
+              </th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                ms
+              </th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                s
+              </th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                Use
+              </th>
+              <th className="type-annotation-sc text-void-60 text-left px-4 py-2 font-normal whitespace-nowrap">
+                Preview
+              </th>
             </tr>
           </thead>
           <tbody>
-            {DURATIONS.map((d, i) => <DurationRow key={d.name} {...d} last={i === DURATIONS.length - 1} />)}
+            {DURATIONS.map((d, i) => (
+              <DurationRow key={d.name} {...d} last={i === DURATIONS.length - 1} />
+            ))}
           </tbody>
         </table>
       </ScrollRegion>
     </TokenPage>
   ),
-}
+};

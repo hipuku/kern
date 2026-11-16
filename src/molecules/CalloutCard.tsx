@@ -1,13 +1,13 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { Card } from '../atoms/Card'
-import { accentText, type AccentColour } from '../lib/accent'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { Card } from "../atoms/Card";
+import { accentText, type AccentColour } from "../lib/accent";
 
-export interface CalloutCardProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
+export interface CalloutCardProps extends Omit<ComponentPropsWithRef<"div">, "title"> {
   /** Accent for the label. The card chrome stays neutral either way. */
-  colour: AccentColour
+  colour: AccentColour;
   /** Optional heading line, tinted with `colour`. */
-  label?: ReactNode
+  label?: ReactNode;
 }
 
 /**
@@ -19,11 +19,9 @@ export interface CalloutCardProps extends Omit<ComponentPropsWithRef<'div'>, 'ti
  */
 export function CalloutCard({ colour, label, children, className, ...props }: CalloutCardProps) {
   return (
-    <Card padding="sm" className={cn('flex flex-col gap-1', className)} {...props}>
-      {label != null && (
-        <p className={cn('type-annotation', accentText[colour])}>{label}</p>
-      )}
+    <Card padding="sm" className={cn("flex flex-col gap-1", className)} {...props}>
+      {label != null && <p className={cn("type-annotation", accentText[colour])}>{label}</p>}
       <p className="type-annotation text-ink-body">{children}</p>
     </Card>
-  )
+  );
 }

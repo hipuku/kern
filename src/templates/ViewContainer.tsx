@@ -1,6 +1,6 @@
-import { cva, type VariantProps } from 'class-variance-authority'
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
+import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
 
 /**
  * The centred single-column frame every view opens with:
@@ -8,26 +8,25 @@ import { cn } from '../lib/utils'
  * this out at the top of every view file, varying only the max-width and the
  * vertical rhythm.
  */
-export const viewContainerVariants = cva('mx-auto w-full flex flex-col', {
+export const viewContainerVariants = cva("mx-auto w-full flex flex-col", {
   variants: {
     /** Reading measure. `lg` (`max-w-3xl`) is the default column; `md` (`max-w-2xl`) for a narrower tool. */
     width: {
-      md: 'max-w-2xl',
-      lg: 'max-w-3xl',
+      md: "max-w-2xl",
+      lg: "max-w-3xl",
     },
     /** Vertical rhythm between the blocks a view stacks. */
     gap: {
-      sm: 'gap-6',
-      md: 'gap-8',
-      lg: 'gap-12',
+      sm: "gap-6",
+      md: "gap-8",
+      lg: "gap-12",
     },
   },
-  defaultVariants: { width: 'lg', gap: 'md' },
-})
+  defaultVariants: { width: "lg", gap: "md" },
+});
 
 export interface ViewContainerProps
-  extends ComponentPropsWithRef<'div'>,
-    VariantProps<typeof viewContainerVariants> {}
+  extends ComponentPropsWithRef<"div">, VariantProps<typeof viewContainerVariants> {}
 
 /**
  * The content-column counterpart to `AppShell`.
@@ -38,5 +37,5 @@ export interface ViewContainerProps
  * and lets a wide view opt out simply by not using it.
  */
 export function ViewContainer({ width, gap, className, ...props }: ViewContainerProps) {
-  return <div className={cn(viewContainerVariants({ width, gap }), className)} {...props} />
+  return <div className={cn(viewContainerVariants({ width, gap }), className)} {...props} />;
 }

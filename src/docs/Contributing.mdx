@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Getting started/Contributing" />
 
@@ -24,7 +24,7 @@ npm run tokens:check   # what CI runs; exits 1 if the committed CSS is stale
 ```
 
 Nothing else should hardcode a token value. The Storybook token pages render
-straight from `tokens.ts`, which is the point: documentation that is *computed*
+straight from `tokens.ts`, which is the point: documentation that is _computed_
 from the system cannot describe a system that no longer ships.
 
 `contrast.test.ts` asserts every permitted ink/surface pairing clears WCAG AA,
@@ -37,15 +37,15 @@ whether that pairing is actually readable.
 
 Use a **semantic role**, not a void step:
 
-| Instead of | Use |
-|---|---|
-| `bg-void-20` | `bg-surface-raised` |
-| `bg-void-10` | `bg-surface-panel` |
-| `text-void-90` | `text-ink-title` |
-| `text-void-60` | `text-ink-body` |
-| `text-void-50` | `text-ink-muted` |
+| Instead of       | Use                  |
+| ---------------- | -------------------- |
+| `bg-void-20`     | `bg-surface-raised`  |
+| `bg-void-10`     | `bg-surface-panel`   |
+| `text-void-90`   | `text-ink-title`     |
+| `text-void-60`   | `text-ink-body`      |
+| `text-void-50`   | `text-ink-muted`     |
 | `border-void-20` | `border-line-subtle` |
-| `border-void-30` | `border-line` |
+| `border-void-30` | `border-line`        |
 
 The primitives are the ramp; the roles are what the ramp is for. A component
 reaching for `void-40` directly is the tell that a role is missing: that step
@@ -65,13 +65,13 @@ both.
 
 **Then decide the layer.** The test is what it depends on, not how big it looks:
 
-| Layer | Test |
-|---|---|
-| Atom | Uses tokens only. No other kern component. |
-| Molecule | Composes atoms. Has one job. |
-| Organism | A region of the interface. May own local state. |
+| Layer    | Test                                                   |
+| -------- | ------------------------------------------------------ |
+| Atom     | Uses tokens only. No other kern component.             |
+| Molecule | Composes atoms. Has one job.                           |
+| Organism | A region of the interface. May own local state.        |
 | Template | Arranges regions. Knows nothing about what fills them. |
-| Utility | Behaviour with no UI of its own in the ordinary case. |
+| Utility  | Behaviour with no UI of its own in the ordinary case.  |
 
 Dependencies point one way. An atom that imports a molecule is a sign the
 boundary is in the wrong place.

@@ -1,16 +1,16 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { focusRing } from '../lib/focus'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { focusRing } from "../lib/focus";
 
-export interface DataTableProps extends Omit<ComponentPropsWithRef<'table'>, 'children'> {
-  columns: string[]
-  rows: ReactNode[][]
+export interface DataTableProps extends Omit<ComponentPropsWithRef<"table">, "children"> {
+  columns: string[];
+  rows: ReactNode[][];
   /**
    * Names the table for assistive technology. A bare `<table>` is announced
    * only as "table"; on a page with several, that is not enough to tell them
    * apart. Rendered as a visually-hidden `<caption>`.
    */
-  caption?: string
+  caption?: string;
 }
 
 /**
@@ -32,14 +32,11 @@ export function DataTable({ columns, rows, caption, className, ...props }: DataT
       tabIndex={0}
       // A region with no accessible name is its own violation, so only claim
       // the role when there is a caption to name it with.
-      role={caption ? 'region' : undefined}
+      role={caption ? "region" : undefined}
       aria-label={caption}
-      className={cn(
-        'rounded-card border border-line overflow-x-auto',
-        focusRing,
-      )}
+      className={cn("rounded-card border border-line overflow-x-auto", focusRing)}
     >
-      <table className={cn('w-full', className)} {...props}>
+      <table className={cn("w-full", className)} {...props}>
         {caption && <caption className="sr-only">{caption}</caption>}
         <thead>
           <tr className="border-b border-line-subtle">
@@ -49,7 +46,11 @@ export function DataTable({ columns, rows, caption, className, ...props }: DataT
               // Not the Label atom: a <th> is already the naming element for
               // its column, and wrapping one in a <label> or <span> would add a
               // redundant node. It borrows the same type role.
-              <th key={col} scope="col" className="text-left px-4 py-2 type-annotation-sc text-ink-body">
+              <th
+                key={col}
+                scope="col"
+                className="text-left px-4 py-2 type-annotation-sc text-ink-body"
+              >
                 {col}
               </th>
             ))}
@@ -57,7 +58,7 @@ export function DataTable({ columns, rows, caption, className, ...props }: DataT
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className={i < rows.length - 1 ? 'border-b border-line-subtle' : ''}>
+            <tr key={i} className={i < rows.length - 1 ? "border-b border-line-subtle" : ""}>
               {row.map((cell, j) => (
                 <td key={j} className="px-4 py-2.5 type-annotation text-ink-body">
                   {cell}
@@ -68,5 +69,5 @@ export function DataTable({ columns, rows, caption, className, ...props }: DataT
         </tbody>
       </table>
     </div>
-  )
+  );
 }

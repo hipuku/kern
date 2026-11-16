@@ -1,11 +1,11 @@
-import { cn } from '../lib/utils'
-import { Button, type ButtonProps } from './Button'
+import { cn } from "../lib/utils";
+import { Button, type ButtonProps } from "./Button";
 
-export interface ToggleChipProps extends Omit<ButtonProps, 'variant' | 'size'> {
+export interface ToggleChipProps extends Omit<ButtonProps, "variant" | "size"> {
   /** Whether this chip is the selected one in its group. */
-  active: boolean
+  active: boolean;
   /** Render the label in the monospace face, for values, counts and symbols. */
-  mono?: boolean
+  mono?: boolean;
 }
 
 /**
@@ -20,10 +20,10 @@ export function ToggleChip({ active, mono = false, className, ...props }: Toggle
   return (
     <Button
       size="sm"
-      variant={active ? 'accent' : 'surface'}
+      variant={active ? "accent" : "surface"}
       aria-pressed={active}
-      className={cn(mono && 'font-mono', className)}
+      className={cn(mono && "font-mono", className)}
       {...props}
     />
-  )
+  );
 }

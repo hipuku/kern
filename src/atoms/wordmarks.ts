@@ -11,53 +11,61 @@
  * its `public/` folder and passes that path to `Wordmark` directly.
  */
 export interface ExperimentBrand {
-  name: string
-  src: string
+  name: string;
+  src: string;
   /**
    * x-height as a fraction of the mark's viewBox height, measured from the
    * artwork: the height of a round lowercase letter sitting on the baseline,
    * over the viewBox height. See `Wordmark` for why size is defined this way.
    */
-  xHeightRatio: number
+  xHeightRatio: number;
   /** The tool's `--primary` accent, for the active nav item. */
-  accentClass: string
+  accentClass: string;
   /** Retints the Logo hover animation to the tool's palette. */
-  hoverFills: { hi: string; pu: string; ku: string }
+  hoverFills: { hi: string; pu: string; ku: string };
 }
 
 export const experiments: ExperimentBrand[] = [
   {
-    name: 'hexicon',
-    src: '/brand/hexicon.svg',
+    name: "hexicon",
+    src: "/brand/hexicon.svg",
     // 16.3 / 24, the o. No descender, so the box is mostly ascender.
     xHeightRatio: 0.678,
-    accentClass: 'text-pulsar',
-    hoverFills: { hi: 'var(--color-pulsar)', pu: 'var(--color-orbit)', ku: 'var(--color-tidal)' },
+    accentClass: "text-pulsar",
+    hoverFills: { hi: "var(--color-pulsar)", pu: "var(--color-orbit)", ku: "var(--color-tidal)" },
   },
   {
-    name: 'specifi',
-    src: '/brand/specifi.svg',
+    name: "specifi",
+    src: "/brand/specifi.svg",
     // 18.6 / 35, the e. The p's descender makes this the tallest box of the
     // marks, which is why it looked smallest at a shared box height.
     xHeightRatio: 0.532,
-    accentClass: 'text-solstice',
-    hoverFills: { hi: 'var(--color-orbit)', pu: 'var(--color-solstice)', ku: 'var(--color-supernova)' },
+    accentClass: "text-solstice",
+    hoverFills: {
+      hi: "var(--color-orbit)",
+      pu: "var(--color-solstice)",
+      ku: "var(--color-supernova)",
+    },
   },
   {
-    name: 'gray-scott',
-    src: '/brand/gray-scott.svg',
+    name: "gray-scott",
+    src: "/brand/gray-scott.svg",
     // 16.5 / 28, the o. Descenders on g and y.
-    xHeightRatio: 0.590,
-    accentClass: 'text-nebula',
-    hoverFills: { hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' },
+    xHeightRatio: 0.59,
+    accentClass: "text-nebula",
+    hoverFills: {
+      hi: "var(--color-nebula)",
+      pu: "var(--color-supernova)",
+      ku: "var(--color-solstice)",
+    },
   },
   {
-    name: 'tokenise',
-    src: '/brand/tokenise.svg',
+    name: "tokenise",
+    src: "/brand/tokenise.svg",
     // 113.2 / 161, the o. No descender, so the box above the x-height is
     // ascender: the t, the k and the dot of the i.
     xHeightRatio: 0.703,
-    accentClass: 'text-flare',
-    hoverFills: { hi: 'var(--color-flare)', pu: 'var(--color-solstice)', ku: 'var(--color-dusk)' },
+    accentClass: "text-flare",
+    hoverFills: { hi: "var(--color-flare)", pu: "var(--color-solstice)", ku: "var(--color-dusk)" },
   },
-]
+];

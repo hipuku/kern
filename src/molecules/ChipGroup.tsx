@@ -1,12 +1,12 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { Label } from '../atoms/Label'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { Label } from "../atoms/Label";
 
-export interface ChipGroupProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
+export interface ChipGroupProps extends Omit<ComponentPropsWithRef<"div">, "children"> {
   /** Names the group, rendered as a small-caps `Label` and as the group's accessible name. */
-  label: string
+  label: string;
   /** The chips, typically `ToggleChip`s. */
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -24,11 +24,11 @@ export interface ChipGroupProps extends Omit<ComponentPropsWithRef<'div'>, 'chil
  */
 export function ChipGroup({ label, children, className, ...props }: ChipGroupProps) {
   return (
-    <div className={cn('flex flex-col gap-2', className)} {...props}>
+    <div className={cn("flex flex-col gap-2", className)} {...props}>
       <Label as="span">{label}</Label>
       <div role="group" aria-label={label} className="flex flex-wrap gap-2">
         {children}
       </div>
     </div>
-  )
+  );
 }

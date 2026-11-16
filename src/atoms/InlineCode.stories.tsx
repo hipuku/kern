@@ -1,26 +1,28 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { InlineCode } from './InlineCode'
-import { accentColours } from '../lib/accent'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { InlineCode } from "./InlineCode";
+import { accentColours } from "../lib/accent";
 
 const meta = {
-  title: 'Atoms/InlineCode',
+  title: "Atoms/InlineCode",
   component: InlineCode,
-  tags: ['autodocs'],
-  args: { children: '.nav-link' },
+  tags: ["autodocs"],
+  args: { children: ".nav-link" },
   argTypes: {
     colour: {
-      control: 'select',
+      control: "select",
       options: accentColours,
-      description: 'Accent to render the code in. Defaults to orbit.',
+      description: "Accent to render the code in. Defaults to orbit.",
     },
-    children: { control: 'text', description: 'Code content.' },
-    className: { control: 'text', description: 'Additional Tailwind classes for one-off overrides.' },
+    children: { control: "text", description: "Code content." },
+    className: {
+      control: "text",
+      description: "Additional Tailwind classes for one-off overrides.",
+    },
   },
-} satisfies Meta<typeof InlineCode>
+} satisfies Meta<typeof InlineCode>;
 
-export default meta
-type Story = StoryObj<typeof meta>
-
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /**
  * Bound to args rather than a render function, so the controls in the docs
@@ -28,10 +30,10 @@ type Story = StoryObj<typeof meta>
  * which left the documented argTypes inert: a props table advertising
  * controls that did nothing.
  */
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const AllVariants: Story = {
-  name: 'All colour variants',
+  name: "All colour variants",
   render: () => (
     <div className="flex flex-col gap-2">
       {accentColours.map((colour) => (
@@ -42,12 +44,13 @@ export const AllVariants: Story = {
       ))}
     </div>
   ),
-}
+};
 
 export const InSentence: Story = {
   render: () => (
     <p className="type-p-sm text-void-60">
-      Use <InlineCode>.is()</InlineCode> to match any selector in a list, or <InlineCode colour="tidal">:where()</InlineCode> for zero-specificity grouping.
+      Use <InlineCode>.is()</InlineCode> to match any selector in a list, or{" "}
+      <InlineCode colour="tidal">:where()</InlineCode> for zero-specificity grouping.
     </p>
   ),
-}
+};

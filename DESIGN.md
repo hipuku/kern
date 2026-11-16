@@ -90,7 +90,7 @@ Three tiers:
 
 The middle tier was missing until v1.1. The neutral half of the system had no semantic layer at all: components reached straight for `bg-void-20` and `text-void-60`, and the roles were real but unnamed. `text-void-60` appeared 136 times across four codebases, always meaning "body text", and a contrast fix meant editing 44 call sites rather than one token.
 
-**The ramp has two zones, deliberately.** Steps 0–30 are surfaces and sit close together (ΔL ≈ 0.05), which is what an elevation step should be; their low contrast *ratios* against each other are not a defect, because contrast ratio is the wrong measure for two adjacent surfaces. Steps 50–90 carry text. Step 40 is the transition and is decorative only: at 2.60:1 on the page background it must never carry text, which is why it is named `line-strong` rather than given an ink role.
+**The ramp has two zones, deliberately.** Steps 0–30 are surfaces and sit close together (ΔL ≈ 0.05), which is what an elevation step should be; their low contrast _ratios_ against each other are not a defect, because contrast ratio is the wrong measure for two adjacent surfaces. Steps 50–90 carry text. Step 40 is the transition and is decorative only: at 2.60:1 on the page background it must never carry text, which is why it is named `line-strong` rather than given an ink role.
 
 **Contrast is enforced.** Each ink role declares the surfaces it is permitted on, and `contrast.test.ts` asserts exactly those pairings clear WCAG AA. kern previously had a contrast matrix that measured every colour and prevented nothing. It was possible to ship a 2.6:1 label underneath it, and kern did. The colour maths lives in `lib/colour.ts` so the test and the published matrix compute identically.
 
@@ -113,7 +113,7 @@ index.css                   Storybook's entry: Tailwind + kern.css + docs CSS
 ## Alternatives considered
 
 - **Publish kern to npm.** Rejected for now. The source-alias model already gives three real consumers with zero build/version overhead; a compiled package would add a release step and fight Tailwind scanning for no gain. The public Storybook is the artefact instead. (Revisit if kern is ever consumed outside this portfolio.)
-- **A monorepo (pnpm workspace) holding kern and the tools.** Rejected, and reconsidered at v1 when the question was how to let the tools keep consuming the old library while `main` was rebuilt. It turned out not to need one: kern's git ref *is* its version, so tagging `v0.1.0` and pinning each tool to it gave the isolation with one line per app, while `main` moved on and kept deploying to kern.hipuku.dev. A monorepo would have coupled three independently-deployed subdomains into one repository and forced them to move together.
+- **A monorepo (pnpm workspace) holding kern and the tools.** Rejected, and reconsidered at v1 when the question was how to let the tools keep consuming the old library while `main` was rebuilt. It turned out not to need one: kern's git ref _is_ its version, so tagging `v0.1.0` and pinning each tool to it gave the isolation with one line per app, while `main` moved on and kept deploying to kern.hipuku.dev. A monorepo would have coupled three independently-deployed subdomains into one repository and forced them to move together.
 - **CSS-in-JS or a component-scoped stylesheet per component.** Rejected. Tailwind v4 and CSS custom properties already cover theming and variants, and a second styling system would be dead weight.
 
 ## Versioning
@@ -137,4 +137,4 @@ needed to, and be adopted per app on whatever day suited that app.
 
 ## Open questions
 
-*None currently blocking.* Add here (numbered, assigned) when a decision is outstanding.
+_None currently blocking._ Add here (numbered, assigned) when a decision is outstanding.

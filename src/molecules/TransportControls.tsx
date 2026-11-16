@@ -1,17 +1,17 @@
-import type { ComponentPropsWithRef } from 'react'
-import { Pause, Play, RotateCcw } from 'lucide-react'
-import { cn } from '../lib/utils'
-import { IconButton } from '../atoms/IconButton'
+import type { ComponentPropsWithRef } from "react";
+import { Pause, Play, RotateCcw } from "lucide-react";
+import { cn } from "../lib/utils";
+import { IconButton } from "../atoms/IconButton";
 
-export interface TransportControlsProps extends ComponentPropsWithRef<'div'> {
+export interface TransportControlsProps extends ComponentPropsWithRef<"div"> {
   /** Whether the thing being controlled is currently running. */
-  running: boolean
+  running: boolean;
   /** Toggle play/pause. */
-  onToggle: () => void
+  onToggle: () => void;
   /** Restart / re-seed. */
-  onReset: () => void
+  onReset: () => void;
   /** Accessible label for the reset control. Defaults to "Reset". */
-  resetLabel?: string
+  resetLabel?: string;
 }
 
 /**
@@ -26,18 +26,18 @@ export function TransportControls({
   running,
   onToggle,
   onReset,
-  resetLabel = 'Reset',
+  resetLabel = "Reset",
   className,
   ...props
 }: TransportControlsProps) {
   return (
-    <div className={cn('flex items-center gap-2', className)} {...props}>
-      <IconButton onClick={onToggle} aria-label={running ? 'Pause' : 'Play'}>
+    <div className={cn("flex items-center gap-2", className)} {...props}>
+      <IconButton onClick={onToggle} aria-label={running ? "Pause" : "Play"}>
         {running ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
       </IconButton>
       <IconButton onClick={onReset} aria-label={resetLabel}>
         <RotateCcw className="w-3.5 h-3.5" />
       </IconButton>
     </div>
-  )
+  );
 }

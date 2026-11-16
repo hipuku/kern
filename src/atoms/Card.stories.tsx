@@ -1,63 +1,67 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Card } from './Card'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Card } from "./Card";
 
 const meta = {
-  title: 'Atoms/Card',
+  title: "Atoms/Card",
   component: Card,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
-    padding: 'md',
-    children: 'A raised surface.',
+    padding: "md",
+    children: "A raised surface.",
   },
   argTypes: {
     padding: {
-      control: 'select',
-      options: ['none', 'sm', 'md'],
+      control: "select",
+      options: ["none", "sm", "md"],
       description:
-        '`md` (`p-4`) is the results-grid card, `sm` (`px-4 py-3`) the tighter callout, `none` for content that draws its own edge-to-edge padding.',
+        "`md` (`p-4`) is the results-grid card, `sm` (`px-4 py-3`) the tighter callout, `none` for content that draws its own edge-to-edge padding.",
     },
-    children: { control: 'text' },
+    children: { control: "text" },
   },
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
         component:
-          'The raised-panel surface (`rounded-card border bg-surface-raised border-line`) that `StatCard`, ' +
-          '`CalloutCard` and the sidebar hamburger previously each spelled out by hand. It is deliberately only the ' +
-          'surface. Flex, gap and typography stay with the consumer.',
+          "The raised-panel surface (`rounded-card border bg-surface-raised border-line`) that `StatCard`, " +
+          "`CalloutCard` and the sidebar hamburger previously each spelled out by hand. It is deliberately only the " +
+          "surface. Flex, gap and typography stay with the consumer.",
       },
     },
   },
-} satisfies Meta<typeof Card>
+} satisfies Meta<typeof Card>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => (
-    <Card {...args} className="w-[320px] type-p-sm text-ink-body" />
-  ),
-}
+  render: (args) => <Card {...args} className="w-[320px] type-p-sm text-ink-body" />,
+};
 
 export const Padding: Story = {
   render: () => (
     <div className="flex flex-col gap-3 w-[320px]">
-      <Card padding="md" className="type-annotation text-ink-body">padding=&quot;md&quot;: p-4</Card>
-      <Card padding="sm" className="type-annotation text-ink-body">padding=&quot;sm&quot;: px-4 py-3</Card>
-      <Card padding="none" className="type-annotation text-ink-body p-2">padding=&quot;none&quot;: consumer supplies its own</Card>
+      <Card padding="md" className="type-annotation text-ink-body">
+        padding=&quot;md&quot;: p-4
+      </Card>
+      <Card padding="sm" className="type-annotation text-ink-body">
+        padding=&quot;sm&quot;: px-4 py-3
+      </Card>
+      <Card padding="none" className="type-annotation text-ink-body p-2">
+        padding=&quot;none&quot;: consumer supplies its own
+      </Card>
     </div>
   ),
-}
+};
 
 export const Composed: Story = {
-  name: 'As a layout base',
+  name: "As a layout base",
   parameters: {
     docs: {
       description: {
         story:
-          'The consumer adds its own flex column and gap. This is how `StatCard` and `CalloutCard` are built on top ' +
-          'of the atom.',
+          "The consumer adds its own flex column and gap. This is how `StatCard` and `CalloutCard` are built on top " +
+          "of the atom.",
       },
     },
   },
@@ -68,4 +72,4 @@ export const Composed: Story = {
       <span className="type-annotation text-ink-body">Std dev of lightness steps.</span>
     </Card>
   ),
-}
+};

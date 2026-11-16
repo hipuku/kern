@@ -1,20 +1,20 @@
-import { useId, type ReactNode, type ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
-import { Label } from '../atoms/Label'
+import { useId, type ReactNode, type ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
+import { Label } from "../atoms/Label";
 
-export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
-  label: string
+export interface FieldProps extends Omit<ComponentPropsWithRef<"div">, "children"> {
+  label: string;
   /**
    * Receives props to spread straight onto the control. They are named exactly
    * as the DOM expects, so `{...control}` wires the label and the error message
    * without the caller restating anything. Taking a render function rather than
    * plain children is what makes that wiring impossible to forget.
    */
-  children: (control: { id: string; 'aria-describedby'?: string }) => ReactNode
+  children: (control: { id: string; "aria-describedby"?: string }) => ReactNode;
   /** Shown below the control, and announced via `aria-describedby`. */
-  error?: string
+  error?: string;
   /** Shown below the control when there is no error. */
-  hint?: string
+  hint?: string;
   /**
    * Trailing content in the label row, set hard right: a live count, a detected
    * format, a status. Style it yourself (`type-annotation text-ink-muted`); the
@@ -22,7 +22,7 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children
    * control's accessible description: the label row would otherwise read the
    * count aloud as part of the field's name.
    */
-  aside?: ReactNode
+  aside?: ReactNode;
 }
 
 /**
@@ -44,12 +44,12 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<'div'>, 'children
  * ```
  */
 export function Field({ label, children, error, hint, aside, className, ...props }: FieldProps) {
-  const id = useId()
-  const messageId = `${id}-message`
-  const message = error ?? hint
+  const id = useId();
+  const messageId = `${id}-message`;
+  const message = error ?? hint;
 
   return (
-    <div className={cn('flex flex-col gap-field', className)} {...props}>
+    <div className={cn("flex flex-col gap-field", className)} {...props}>
       {aside != null ? (
         <div className="flex items-baseline justify-between gap-2">
           <Label htmlFor={id}>{label}</Label>
@@ -58,18 +58,18 @@ export function Field({ label, children, error, hint, aside, className, ...props
       ) : (
         <Label htmlFor={id}>{label}</Label>
       )}
-      {children({ id, 'aria-describedby': message ? messageId : undefined })}
+      {children({ id, "aria-describedby": message ? messageId : undefined })}
       {message && (
         <p
           id={messageId}
           // Announce an error when it appears; a hint is static and does not
           // need interrupting for.
-          role={error ? 'alert' : undefined}
-          className={cn('type-annotation', error ? 'text-flare' : 'text-ink-muted')}
+          role={error ? "alert" : undefined}
+          className={cn("type-annotation", error ? "text-flare" : "text-ink-muted")}
         >
           {message}
         </p>
       )}
     </div>
-  )
+  );
 }

@@ -1,36 +1,36 @@
-import { type ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { AppSidebar, type NavItem } from '../organisms/AppSidebar'
-import { ViewportGate } from './ViewportGate'
-import { ErrorBoundary } from '../utils/ErrorBoundary'
+import { type ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { AppSidebar, type NavItem } from "../organisms/AppSidebar";
+import { ViewportGate } from "./ViewportGate";
+import { ErrorBoundary } from "../utils/ErrorBoundary";
 
 export interface AppShellProps {
   /** The tool's wordmark, for the sidebar header. */
-  logo: ReactNode
-  navItems: NavItem[]
-  activeId: string
-  onNavigate: (id: string) => void
+  logo: ReactNode;
+  navItems: NavItem[];
+  activeId: string;
+  onNavigate: (id: string) => void;
   /** Text colour for the active nav item. Defaults to the `--primary` role. */
-  accentActiveClass?: string
+  accentActiveClass?: string;
   /** Social links beside the logo, typically a `SocialBar`. */
-  social?: ReactNode
+  social?: ReactNode;
   /** Credit line at the foot of the sidebar, typically a `Colophon`. */
-  colophon?: ReactNode
+  colophon?: ReactNode;
   /** The active view. */
-  children: ReactNode
+  children: ReactNode;
   /** Class for the `<main>` scroll region, if a view needs different padding. */
-  mainClassName?: string
+  mainClassName?: string;
   /**
    * On-brand copy for the desktop-only notice shown below the `lg` breakpoint.
    * Defaults to `ViewportGate`'s plain message; pass a node for something with
    * the tool's own voice.
    */
-  smallScreenNotice?: ReactNode
+  smallScreenNotice?: ReactNode;
   /**
    * Wrap the tree in an `ErrorBoundary`. On by default: a render error in one
    * view should show a recoverable fallback rather than a blank page.
    */
-  errorBoundary?: boolean
+  errorBoundary?: boolean;
 }
 
 /**
@@ -73,12 +73,10 @@ export function AppShell({
           social={social}
           colophon={colophon}
         />
-        <main className={cn('flex-1 h-full overflow-y-auto p-10', mainClassName)}>
-          {children}
-        </main>
+        <main className={cn("flex-1 h-full overflow-y-auto p-10", mainClassName)}>{children}</main>
       </div>
     </ViewportGate>
-  )
+  );
 
-  return errorBoundary ? <ErrorBoundary>{shell}</ErrorBoundary> : shell
+  return errorBoundary ? <ErrorBoundary>{shell}</ErrorBoundary> : shell;
 }

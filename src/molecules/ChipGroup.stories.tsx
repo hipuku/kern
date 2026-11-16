@@ -1,30 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState } from 'react'
-import { ChipGroup } from './ChipGroup'
-import { ToggleChip } from '../atoms/ToggleChip'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { ChipGroup } from "./ChipGroup";
+import { ToggleChip } from "../atoms/ToggleChip";
 
 const meta = {
-  title: 'Molecules/ChipGroup',
+  title: "Molecules/ChipGroup",
   component: ChipGroup,
-  tags: ['autodocs'],
-  parameters: { layout: 'padded' },
+  tags: ["autodocs"],
+  parameters: { layout: "padded" },
   args: {
-    label: 'Pattern',
+    label: "Pattern",
     // A static default so the type is satisfied; the stories below drive the
     // real, stateful single-select group through `render`.
-    children: <ToggleChip active onClick={() => {}}>Coral</ToggleChip>,
+    children: (
+      <ToggleChip active onClick={() => {}}>
+        Coral
+      </ToggleChip>
+    ),
   },
-  argTypes: { label: { control: 'text' } },
-} satisfies Meta<typeof ChipGroup>
+  argTypes: { label: { control: "text" } },
+} satisfies Meta<typeof ChipGroup>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-const PATTERNS = ['Coral', 'Leopard', 'Mitosis', 'Solitons']
+const PATTERNS = ["Coral", "Leopard", "Mitosis", "Solitons"];
 
 export const Default: Story = {
   render: (args) => {
-    const [active, setActive] = useState('Coral')
+    const [active, setActive] = useState("Coral");
     return (
       <ChipGroup {...args}>
         {PATTERNS.map((p) => (
@@ -33,14 +37,14 @@ export const Default: Story = {
           </ToggleChip>
         ))}
       </ChipGroup>
-    )
+    );
   },
-}
+};
 
 export const Mono: Story = {
-  name: 'Monospace values (speed)',
+  name: "Monospace values (speed)",
   render: () => {
-    const [speed, setSpeed] = useState(1)
+    const [speed, setSpeed] = useState(1);
     return (
       <ChipGroup label="Speed">
         {[1, 2, 4, 8].map((s) => (
@@ -49,6 +53,6 @@ export const Mono: Story = {
           </ToggleChip>
         ))}
       </ChipGroup>
-    )
+    );
   },
-}
+};

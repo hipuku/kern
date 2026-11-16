@@ -17,7 +17,7 @@
  * `AccentColour` derives from the palette, adding a colour to the token source
  * turns these into compile errors rather than silently missing classes.
  */
-import { accentNames, type AccentName } from '../tokens/tokens'
+import { accentNames, type AccentName } from "../tokens/tokens";
 
 /**
  * An accent, or the neutral grey used when a thing is deliberately unemphasised
@@ -25,29 +25,29 @@ import { accentNames, type AccentName } from '../tokens/tokens'
  * onto the void scale, which is why this is its own type rather than
  * `AccentName`.
  */
-export type AccentColour = AccentName | 'neutral'
+export type AccentColour = AccentName | "neutral";
 
 /**
  * Every selectable accent, in palette order with neutral last. Derived from the
  * token source so it cannot fall out of step with the palette.
  */
-export const accentColours: AccentColour[] = [...accentNames, 'neutral']
+export const accentColours: AccentColour[] = [...accentNames, "neutral"];
 
 /** Foreground text in the accent. */
 export const accentText: Record<AccentColour, string> = {
-  nebula:    'text-nebula',
-  aurora:    'text-aurora',
-  tidal:     'text-tidal',
-  orbit:     'text-orbit',
-  pulsar:    'text-pulsar',
-  quasar:    'text-quasar',
-  corona:    'text-corona',
-  dusk:      'text-dusk',
-  flare:     'text-flare',
-  solstice:  'text-solstice',
-  supernova: 'text-supernova',
-  neutral:   'text-ink-body',
-}
+  nebula: "text-nebula",
+  aurora: "text-aurora",
+  tidal: "text-tidal",
+  orbit: "text-orbit",
+  pulsar: "text-pulsar",
+  quasar: "text-quasar",
+  corona: "text-corona",
+  dusk: "text-dusk",
+  flare: "text-flare",
+  solstice: "text-solstice",
+  supernova: "text-supernova",
+  neutral: "text-ink-body",
+};
 
 /**
  * A 15% wash of the accent, for chip and badge backgrounds. Neutral uses a flat
@@ -58,32 +58,32 @@ export const accentText: Record<AccentColour, string> = {
  * system putting the lowest ink on the highest surface.
  */
 export const accentTint: Record<AccentColour, string> = {
-  nebula:    'bg-nebula/15',
-  aurora:    'bg-aurora/15',
-  tidal:     'bg-tidal/15',
-  orbit:     'bg-orbit/15',
-  pulsar:    'bg-pulsar/15',
-  quasar:    'bg-quasar/15',
-  corona:    'bg-corona/15',
-  dusk:      'bg-dusk/15',
-  flare:     'bg-flare/15',
-  solstice:  'bg-solstice/15',
-  supernova: 'bg-supernova/15',
-  neutral:   'bg-surface-hover',
-}
+  nebula: "bg-nebula/15",
+  aurora: "bg-aurora/15",
+  tidal: "bg-tidal/15",
+  orbit: "bg-orbit/15",
+  pulsar: "bg-pulsar/15",
+  quasar: "bg-quasar/15",
+  corona: "bg-corona/15",
+  dusk: "bg-dusk/15",
+  flare: "bg-flare/15",
+  solstice: "bg-solstice/15",
+  supernova: "bg-supernova/15",
+  neutral: "bg-surface-hover",
+};
 
 /** Hover state for interactive text in the accent, stepping up to the light ramp. */
 export const accentTextHover: Record<AccentColour, string> = {
-  nebula:    'hover:text-nebula-light',
-  aurora:    'hover:text-aurora-light',
-  tidal:     'hover:text-tidal-light',
-  orbit:     'hover:text-orbit-light',
-  pulsar:    'hover:text-pulsar-light',
-  quasar:    'hover:text-quasar-light',
-  corona:    'hover:text-corona-light',
-  dusk:      'hover:text-dusk-light',
-  flare:     'hover:text-flare-light',
-  solstice:  'hover:text-solstice-light',
-  supernova: 'hover:text-supernova-light',
-  neutral:   'hover:text-ink-title',
-}
+  nebula: "hover:text-nebula-light",
+  aurora: "hover:text-aurora-light",
+  tidal: "hover:text-tidal-light",
+  orbit: "hover:text-orbit-light",
+  pulsar: "hover:text-pulsar-light",
+  quasar: "hover:text-quasar-light",
+  corona: "hover:text-corona-light",
+  dusk: "hover:text-dusk-light",
+  flare: "hover:text-flare-light",
+  solstice: "hover:text-solstice-light",
+  supernova: "hover:text-supernova-light",
+  neutral: "hover:text-ink-title",
+};

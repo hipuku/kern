@@ -1,9 +1,9 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import storybook from 'eslint-plugin-storybook'
-import tseslint from 'typescript-eslint'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import storybook from "eslint-plugin-storybook";
+import tseslint from "typescript-eslint";
+import { defineConfig, globalIgnores } from "eslint/config";
 
 /**
  * kern was the only project in the portfolio without a lint config; the three
@@ -12,14 +12,14 @@ import { defineConfig, globalIgnores } from 'eslint/config'
  * the Storybook plugin, since most of this repo is stories.
  */
 export default defineConfig([
-  globalIgnores(['storybook-static', 'src/styles/*.css']),
+  globalIgnores(["storybook-static", "src/styles/*.css"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
-      storybook.configs['flat/recommended'],
+      storybook.configs["flat/recommended"],
     ],
     languageOptions: {
       globals: globals.browser,
@@ -29,20 +29,20 @@ export default defineConfig([
     // Stories are documentation. Render functions there legitimately use hooks
     // to drive interactive examples, which is not a component boundary the
     // rules-of-hooks lint can recognise.
-    files: ['**/*.stories.tsx'],
+    files: ["**/*.stories.tsx"],
     rules: {
-      'react-hooks/rules-of-hooks': 'off',
+      "react-hooks/rules-of-hooks": "off",
       // Placeholder handlers in story args exist to declare a signature, so
       // their parameters are deliberately unused. The leading underscore is the
       // convention for that everywhere else in the config's defaults.
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     },
   },
   {
     // The generator runs in Node and imports the TypeScript token source.
-    files: ['scripts/**/*.mjs'],
+    files: ["scripts/**/*.mjs"],
     languageOptions: {
       globals: globals.node,
     },
   },
-])
+]);

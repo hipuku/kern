@@ -1,13 +1,13 @@
-import type { ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
+import type { ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
 
-export interface LabelProps extends ComponentPropsWithRef<'label'> {
+export interface LabelProps extends ComponentPropsWithRef<"label"> {
   /**
    * Renders a `<span>` instead of a `<label>`. Use when the text names a region
    * rather than a form control. A `<label>` with no control to point at is a
    * lie to assistive technology.
    */
-  as?: 'label' | 'span'
+  as?: "label" | "span";
 }
 
 /**
@@ -21,11 +21,11 @@ export interface LabelProps extends ComponentPropsWithRef<'label'> {
  * `uppercase` class: uppercasing in CSS changes the letterforms the font was
  * drawn with and is read aloud letter-by-letter by some screen readers.
  */
-export function Label({ as: Component = 'label', className, ...props }: LabelProps) {
+export function Label({ as: Component = "label", className, ...props }: LabelProps) {
   return (
     <Component
-      className={cn('type-annotation-sc text-ink-body', className)}
-      {...(props as ComponentPropsWithRef<'label'>)}
+      className={cn("type-annotation-sc text-ink-body", className)}
+      {...(props as ComponentPropsWithRef<"label">)}
     />
-  )
+  );
 }

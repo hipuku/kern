@@ -1,24 +1,26 @@
-import { useId, type ComponentPropsWithRef } from 'react'
-import { cn } from '../lib/utils'
-import { focusRing } from '../lib/focus'
-import { Label } from '../atoms/Label'
+import { useId, type ComponentPropsWithRef } from "react";
+import { cn } from "../lib/utils";
+import { focusRing } from "../lib/focus";
+import { Label } from "../atoms/Label";
 
-export interface ParamSliderProps
-  extends Omit<ComponentPropsWithRef<'input'>, 'onChange' | 'value' | 'type'> {
-  label: string
-  value: number
-  min: number
-  max: number
-  step: number
-  onChange: (value: number) => void
+export interface ParamSliderProps extends Omit<
+  ComponentPropsWithRef<"input">,
+  "onChange" | "value" | "type"
+> {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (value: number) => void;
   /** How the current value is displayed. Defaults to three decimal places. */
-  format?: (value: number) => string
+  format?: (value: number) => string;
   /** Class for the wrapper. The input itself takes `inputClassName`. */
-  className?: string
-  inputClassName?: string
+  className?: string;
+  inputClassName?: string;
 }
 
-const defaultFormat = (v: number) => v.toFixed(3)
+const defaultFormat = (v: number) => v.toFixed(3);
 
 /**
  * A labelled range input with a live readout: the control the simulation
@@ -44,13 +46,17 @@ export function ParamSlider({
   inputClassName,
   ...props
 }: ParamSliderProps) {
-  const id = useId()
+  const id = useId();
 
   return (
-    <div className={cn('flex flex-col gap-1.5', className)}>
+    <div className={cn("flex flex-col gap-1.5", className)}>
       <div className="flex items-center justify-between">
-        <Label htmlFor={id} className="cursor-pointer">{label}</Label>
-        <span aria-hidden="true" className="type-code text-ink-strong">{format(value)}</span>
+        <Label htmlFor={id} className="cursor-pointer">
+          {label}
+        </Label>
+        <span aria-hidden="true" className="type-code text-ink-strong">
+          {format(value)}
+        </span>
       </div>
       <input
         id={id}
@@ -61,12 +67,12 @@ export function ParamSlider({
         value={value}
         onChange={(e) => onChange(parseFloat(e.target.value))}
         className={cn(
-          'w-full h-1 rounded-full appearance-none cursor-pointer bg-surface-hover accent-(--primary)',
+          "w-full h-1 rounded-full appearance-none cursor-pointer bg-surface-hover accent-(--primary)",
           focusRing,
           inputClassName,
         )}
         {...props}
       />
     </div>
-  )
+  );
 }

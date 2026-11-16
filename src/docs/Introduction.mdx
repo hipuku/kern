@@ -1,12 +1,12 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Getting started/Introduction" />
 
 <div className="flex flex-col gap-4">
   <h1 className="type-h2 text-ink-title">kern</h1>
   <div className="type-p-lg text-ink-body max-w-[60ch]">
-    The design system behind a set of browser tools: a small, opinionated set of
-    tokens and components every tool shares.
+    The design system behind a set of browser tools: a small, opinionated set of tokens and
+    components every tool shares.
   </div>
 </div>
 
@@ -15,7 +15,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 Each tool is an independent app, with its own repository and deployment.
 Left alone they would drift: a subtly different button in each, a spacing scale
 each, a definition of "muted text" each. kern exists so that everything a visitor
-recognises as *hipuku* is defined **once**.
+recognises as _hipuku_ is defined **once**.
 
 It is deliberately small. This is not a general-purpose UI kit; it is the
 specific set of parts the tools actually share, and nothing is
@@ -30,12 +30,21 @@ the ones above.
 
 <div className="flex flex-col gap-2 my-6">
   {[
-    ['Tokens',    'The values everything else is built from: colour, type, spacing, motion. Generated from one source file.'],
-    ['Atoms',     'Single-purpose primitives. Depend on tokens only. Button, Input, Label, StatusChip…'],
-    ['Molecules', 'Small compositions of atoms plus layout. Field, StatCard, ParamSlider, DataTable…'],
-    ['Organisms', 'Full regions of the interface, which may own local state. AppSidebar.'],
-    ['Templates', 'Page structure, independent of the content that fills it. AppShell.'],
-    ['Utilities', 'Behaviour with no UI of its own in the ordinary case. ErrorBoundary.'],
+    [
+      "Tokens",
+      "The values everything else is built from: colour, type, spacing, motion. Generated from one source file.",
+    ],
+    [
+      "Atoms",
+      "Single-purpose primitives. Depend on tokens only. Button, Input, Label, StatusChip…",
+    ],
+    [
+      "Molecules",
+      "Small compositions of atoms plus layout. Field, StatCard, ParamSlider, DataTable…",
+    ],
+    ["Organisms", "Full regions of the interface, which may own local state. AppSidebar."],
+    ["Templates", "Page structure, independent of the content that fills it. AppShell."],
+    ["Utilities", "Behaviour with no UI of its own in the ordinary case. ErrorBoundary."],
   ].map(([name, description]) => (
     <div key={name} className="flex gap-4 items-baseline">
       <span className="type-annotation-sc text-ink-title w-24 shrink-0">{name}</span>
@@ -72,6 +81,10 @@ re-litigate them.
 <div className="h-px bg-line-subtle my-10" />
 
 <p className="type-annotation text-ink-muted">
-  Source on <a href="https://github.com/hipuku/kern" className="text-(--link)">GitHub</a>.
-  Architecture and the reasoning behind these decisions are in <code className="type-code">DESIGN.md</code>.
+  Source on{" "}
+  <a href="https://github.com/hipuku/kern" className="text-(--link)">
+    GitHub
+  </a>
+  . Architecture and the reasoning behind these decisions are in{" "}
+  <code className="type-code">DESIGN.md</code>.
 </p>

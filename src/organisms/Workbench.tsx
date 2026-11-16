@@ -1,13 +1,13 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
 
-export interface WorkbenchProps extends ComponentPropsWithRef<'div'> {
+export interface WorkbenchProps extends ComponentPropsWithRef<"div"> {
   /** The visual stage, typically a `CanvasStage`. Takes the remaining width. */
-  stage: ReactNode
+  stage: ReactNode;
   /** The control rail: `ChipGroup`s, `ParamSlider`s, `TransportControls`. */
-  controls: ReactNode
+  controls: ReactNode;
   /** Width class for the control rail. Defaults to `w-52`. */
-  railClassName?: string
+  railClassName?: string;
 }
 
 /**
@@ -22,11 +22,11 @@ export interface WorkbenchProps extends ComponentPropsWithRef<'div'> {
  */
 export function Workbench({ stage, controls, railClassName, className, ...props }: WorkbenchProps) {
   return (
-    <div className={cn('flex flex-1 gap-6 min-h-0', className)} {...props}>
+    <div className={cn("flex flex-1 gap-6 min-h-0", className)} {...props}>
       <div className="flex-1 min-w-0 min-h-0 flex justify-center">{stage}</div>
-      <div className={cn('shrink-0 flex flex-col gap-5 overflow-y-auto', railClassName ?? 'w-52')}>
+      <div className={cn("shrink-0 flex flex-col gap-5 overflow-y-auto", railClassName ?? "w-52")}>
         {controls}
       </div>
     </div>
-  )
+  );
 }

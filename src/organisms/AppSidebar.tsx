@@ -1,24 +1,24 @@
-import { type ComponentType, type ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { focusRing } from '../lib/focus'
+import { type ComponentType, type ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { focusRing } from "../lib/focus";
 
 export interface NavItem {
-  id: string
-  label: string
+  id: string;
+  label: string;
   // ComponentType rather than LucideIcon so that consumers on a different
   // lucide-react version don't hit a nominal type mismatch via npm link.
-  icon: ComponentType<{ className?: string }>
+  icon: ComponentType<{ className?: string }>;
 }
 
 export interface AppSidebarProps {
-  logo: ReactNode
-  navItems: NavItem[]
-  activeId: string
-  onNavigate: (id: string) => void
-  accentActiveClass?: string
+  logo: ReactNode;
+  navItems: NavItem[];
+  activeId: string;
+  onNavigate: (id: string) => void;
+  accentActiveClass?: string;
   /** Social links shown in the header, right of the logo, typically a `SocialBar`. */
-  social?: ReactNode
-  colophon?: ReactNode
+  social?: ReactNode;
+  colophon?: ReactNode;
 }
 
 /**
@@ -36,7 +36,7 @@ export function AppSidebar({
   navItems,
   activeId,
   onNavigate,
-  accentActiveClass = 'text-(--primary)',
+  accentActiveClass = "text-(--primary)",
   social,
   colophon,
 }: AppSidebarProps) {
@@ -44,8 +44,8 @@ export function AppSidebar({
     <aside
       aria-label="Main navigation"
       className={cn(
-        'flex flex-col justify-between shrink-0 h-full overflow-y-auto p-8 w-[360px]',
-        'bg-surface-panel border-r border-line-subtle',
+        "flex flex-col justify-between shrink-0 h-full overflow-y-auto p-8 w-[360px]",
+        "bg-surface-panel border-r border-line-subtle",
       )}
     >
       <div className="flex flex-col gap-16 w-full">
@@ -56,33 +56,35 @@ export function AppSidebar({
 
         <nav className="flex flex-col gap-4 w-full">
           {navItems.map(({ id, label, icon: Icon }) => {
-            const isActive = activeId === id
+            const isActive = activeId === id;
             return (
               <button
                 key={id}
                 type="button"
                 onClick={() => onNavigate(id)}
-                aria-current={isActive ? 'page' : undefined}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  'group flex items-center gap-3 w-full text-left px-4 py-3 rounded-card cursor-pointer',
-                  'type-p-sm transition-all duration-200',
-                  'bg-surface-raised hover:bg-surface-hover',
-                  'text-ink-body hover:text-ink-title motion-safe:hover:translate-x-1',
+                  "group flex items-center gap-3 w-full text-left px-4 py-3 rounded-card cursor-pointer",
+                  "type-p-sm transition-all duration-200",
+                  "bg-surface-raised hover:bg-surface-hover",
+                  "text-ink-body hover:text-ink-title motion-safe:hover:translate-x-1",
                   focusRing,
-                  isActive && cn('bg-surface-hover font-medium motion-safe:hover:translate-x-0', accentActiveClass),
+                  isActive &&
+                    cn(
+                      "bg-surface-hover font-medium motion-safe:hover:translate-x-0",
+                      accentActiveClass,
+                    ),
                 )}
               >
                 <Icon className="w-4 h-4 shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-110" />
                 <span>{label}</span>
               </button>
-            )
+            );
           })}
         </nav>
       </div>
 
-      {colophon && (
-        <div className="type-p-sm text-ink-body">{colophon}</div>
-      )}
+      {colophon && <div className="type-p-sm text-ink-body">{colophon}</div>}
     </aside>
-  )
+  );
 }

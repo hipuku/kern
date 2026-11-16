@@ -1,3 +1,5 @@
+# One job per check, named exactly as the main ruleset requires them, so a
+# failure says which check broke and each can be required on its own.
 name: CI
 
 on:
@@ -5,45 +7,101 @@ on:
     branches: [main]
   pull_request:
 
+# Read-only: CI checks code, it never writes to the repo.
+permissions:
+  contents: read
+
+# A second push to the same branch makes the first run irrelevant.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
-
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
-
-      - run: npm install
+      - run: npm ci
 
       # The token CSS is generated from src/tokens/tokens.ts but committed, so
       # that kern stays source-only with no build step for consumers. This is
       # what keeps the committed copy honest.
-      - name: Check token CSS is in sync
+      - name: Token CSS in sync
         run: npm run tokens:check
 
-      - name: Lint
+      - name: ESLint
+        if: always()
         run: npm run lint
 
       # House style does not use an em dash. Ratcheted against a baseline rather
       # than absolute: a rule that could only pass after a mechanical rewrite of
       # every file would have been turned off instead of adopted.
-      - name: Lint prose
+      - name: Prose
+        if: always()
         run: npm run lint:prose
 
-      - name: Typecheck
-        run: npm run typecheck
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
 
-      - name: Test
-        run: npm test
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
 
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [lint, typecheck, test]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
       - name: Build Storybook
         run: npm run build-storybook
 
       # Story IDs come from the export name, not the displayed name, so a
       # hand-written docs link can look right and 404. Checked against the
       # index.json the build just emitted.
-      - name: Check docs links resolve
+      - name: Docs links resolve
         run: npm run check:links

@@ -1,29 +1,29 @@
-import type { ComponentPropsWithRef, ReactNode } from 'react'
-import { cn } from '../lib/utils'
-import { Card } from '../atoms/Card'
-import { Label } from '../atoms/Label'
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { cn } from "../lib/utils";
+import { Card } from "../atoms/Card";
+import { Label } from "../atoms/Label";
 
-export interface MetricProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
+export interface MetricProps extends Omit<ComponentPropsWithRef<"div">, "children"> {
   /** What the figure is, rendered in small caps. */
-  label: string
+  label: string;
   /** The figure itself. */
-  value: ReactNode
+  value: ReactNode;
   /**
    * `vertical` (default) stacks a large centred value above its label: the score
    * tile in a results row. `horizontal` sets a compact value beside its label,
    * the inline chip a per-axis breakdown is built from.
    */
-  orientation?: 'vertical' | 'horizontal'
+  orientation?: "vertical" | "horizontal";
   /**
    * Draw the raised `Card` surface. On by default; turn it off for a bare inline
    * value+label that sits inside another surface.
    */
-  surface?: boolean
+  surface?: boolean;
   /**
    * Class for the value span. The default is `type-h4 font-mono text-ink-title`;
    * override it to colour the value, e.g. a specificity axis in its own accent.
    */
-  valueClassName?: string
+  valueClassName?: string;
 }
 
 /**
@@ -37,25 +37,25 @@ export interface MetricProps extends Omit<ComponentPropsWithRef<'div'>, 'childre
 export function Metric({
   label,
   value,
-  orientation = 'vertical',
+  orientation = "vertical",
   surface = true,
   valueClassName,
   className,
   ...props
 }: MetricProps) {
-  const vertical = orientation === 'vertical'
+  const vertical = orientation === "vertical";
 
   const content = (
     <>
-      <span className={cn(valueClassName ?? 'type-h4 font-mono text-ink-title')}>{value}</span>
+      <span className={cn(valueClassName ?? "type-h4 font-mono text-ink-title")}>{value}</span>
       {/* as="span": this names the figure, not a form control. */}
       <Label as="span">{label}</Label>
     </>
-  )
+  );
 
   const layout = vertical
-    ? 'flex flex-col items-center justify-center text-center gap-1.5'
-    : 'flex items-center gap-2'
+    ? "flex flex-col items-center justify-center text-center gap-1.5"
+    : "flex items-center gap-2";
 
   return surface ? (
     <Card className={cn(layout, className)} {...props}>
@@ -65,5 +65,5 @@ export function Metric({
     <div className={cn(layout, className)} {...props}>
       {content}
     </div>
-  )
+  );
 }

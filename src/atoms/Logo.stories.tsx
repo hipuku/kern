@@ -1,51 +1,64 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Logo } from './Logo'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Logo } from "./Logo";
 
 const meta = {
-  title: 'Atoms/Logo',
+  title: "Atoms/Logo",
   component: Logo,
-  tags: ['autodocs'],
-} satisfies Meta<typeof Logo>
+  tags: ["autodocs"],
+} satisfies Meta<typeof Logo>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const HexiconPalette: Story = {
-  name: 'Hexicon palette (pulsar / orbit / tidal)',
+  name: "Hexicon palette (pulsar / orbit / tidal)",
   render: () => (
     <div className="flex items-center gap-2 type-p-sm text-void-60">
       <span>2026 © hexicon by</span>
       <Logo />
     </div>
   ),
-}
+};
 
 export const SpecifiPalette: Story = {
-  name: 'Specifi palette (orbit / solstice / supernova)',
+  name: "Specifi palette (orbit / solstice / supernova)",
   render: () => (
     <div className="flex items-center gap-2 type-p-sm text-void-60">
       <span>2026 © specifi by</span>
-      <Logo hoverFills={{ hi: 'var(--color-orbit)', pu: 'var(--color-solstice)', ku: 'var(--color-supernova)' }} />
+      <Logo
+        hoverFills={{
+          hi: "var(--color-orbit)",
+          pu: "var(--color-solstice)",
+          ku: "var(--color-supernova)",
+        }}
+      />
     </div>
   ),
-}
+};
 
 export const GrayScottPalette: Story = {
-  name: 'Gray-Scott palette (nebula / supernova / solstice)',
+  name: "Gray-Scott palette (nebula / supernova / solstice)",
   render: () => (
     <div className="flex items-center gap-2 type-p-sm text-void-60">
       <span>2026 © gray-scott by</span>
-      <Logo hoverFills={{ hi: 'var(--color-nebula)', pu: 'var(--color-supernova)', ku: 'var(--color-solstice)' }} />
+      <Logo
+        hoverFills={{
+          hi: "var(--color-nebula)",
+          pu: "var(--color-supernova)",
+          ku: "var(--color-solstice)",
+        }}
+      />
     </div>
   ),
-}
+};
 
 export const ReducedMotion: Story = {
-  name: 'Reduced motion',
+  name: "Reduced motion",
   parameters: {
     docs: {
       description: {
-        story: 'Under `prefers-reduced-motion: reduce`, both the letter bounce animation and fill colour transitions are suppressed via CSS. The `@media (prefers-reduced-motion: reduce)` block in `index.css` sets `transition: none` and `animation: none !important` on all `.logo-*` elements. Hover the logo to confirm nothing moves.',
+        story:
+          "Under `prefers-reduced-motion: reduce`, both the letter bounce animation and fill colour transitions are suppressed via CSS. The `@media (prefers-reduced-motion: reduce)` block in `index.css` sets `transition: none` and `animation: none !important` on all `.logo-*` elements. Hover the logo to confirm nothing moves.",
       },
     },
   },
@@ -65,4 +78,4 @@ export const ReducedMotion: Story = {
       </>
     ),
   ],
-}
+};

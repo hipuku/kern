@@ -1,41 +1,41 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState } from 'react'
-import { ToolView } from './ToolView'
-import { ViewContainer } from '../templates/ViewContainer'
-import { Field } from '../molecules/Field'
-import { Section } from '../molecules/Section'
-import { Metric } from '../molecules/Metric'
-import { EmptyState } from '../molecules/EmptyState'
-import { Input } from '../atoms/Input'
-import { ToggleChip } from '../atoms/ToggleChip'
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { ToolView } from "./ToolView";
+import { ViewContainer } from "../templates/ViewContainer";
+import { Field } from "../molecules/Field";
+import { Section } from "../molecules/Section";
+import { Metric } from "../molecules/Metric";
+import { EmptyState } from "../molecules/EmptyState";
+import { Input } from "../atoms/Input";
+import { ToggleChip } from "../atoms/ToggleChip";
 
 const meta = {
-  title: 'Organisms/ToolView',
+  title: "Organisms/ToolView",
   component: ToolView,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       description: {
         component:
-          'The scaffold every tool view shares: a `ViewHeader`, an optional input region, and a body that swaps to ' +
-          'an `EmptyState` when there is nothing to show. Shown inside a `ViewContainer` (the page column belongs to ' +
-          'the template, not to this region).',
+          "The scaffold every tool view shares: a `ViewHeader`, an optional input region, and a body that swaps to " +
+          "an `EmptyState` when there is nothing to show. Shown inside a `ViewContainer` (the page column belongs to " +
+          "the template, not to this region).",
       },
     },
   },
-} satisfies Meta
+} satisfies Meta;
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
-const EXAMPLES = ['nav > ul li.active', '#header .logo::before', 'a:not(.disabled):hover']
+const EXAMPLES = ["nav > ul li.active", "#header .logo::before", "a:not(.disabled):hover"];
 
 export const Interactive: Story = {
-  name: 'Empty → result',
+  name: "Empty → result",
   render: () => {
-    const [value, setValue] = useState('')
-    const isEmpty = value.trim().length === 0
+    const [value, setValue] = useState("");
+    const isEmpty = value.trim().length === 0;
     return (
       <div className="p-10 bg-background min-h-screen">
         <ViewContainer width="md">
@@ -70,14 +70,26 @@ export const Interactive: Story = {
           >
             <Section title="Specificity">
               <div className="grid grid-cols-3 gap-3">
-                <Metric label="[a] IDs" value={1} valueClassName="type-h4 font-mono text-solstice" />
-                <Metric label="[b] classes" value={2} valueClassName="type-h4 font-mono text-orbit" />
-                <Metric label="[c] types" value={3} valueClassName="type-h4 font-mono text-supernova" />
+                <Metric
+                  label="[a] IDs"
+                  value={1}
+                  valueClassName="type-h4 font-mono text-solstice"
+                />
+                <Metric
+                  label="[b] classes"
+                  value={2}
+                  valueClassName="type-h4 font-mono text-orbit"
+                />
+                <Metric
+                  label="[c] types"
+                  value={3}
+                  valueClassName="type-h4 font-mono text-supernova"
+                />
               </div>
             </Section>
           </ToolView>
         </ViewContainer>
       </div>
-    )
+    );
   },
-}
+};
