@@ -43,6 +43,8 @@ export function TokenSection({ title, children }: { title: string; children: Rea
 export function ScrollRegion({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div
+      // A scrolling region must take focus to be scrollable by keyboard (see above).
+      // eslint-disable-next-line jsx-a11y-x/no-noninteractive-tabindex
       tabIndex={0}
       role="region"
       aria-label={label}
