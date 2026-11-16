@@ -52,7 +52,8 @@ generated CSS.
 ### A public API
 
 **Decision.** `src/index.ts` and the per-layer barrels are the supported surface. The `exports` map
-lists the barrels and nothing else, so a deep import such as `kern/src/atoms/Input` fails with
+lists the package root, the five layer barrels, `kern/tokens`, `kern/kern.css` and
+`kern/package.json`, and nothing else, so a deep import such as `kern/src/atoms/Input` fails with
 `ERR_PACKAGE_PATH_NOT_EXPORTED`.
 
 **Reason.** Consumers used to deep-import `@kern/atoms/ToggleChip`, which made every file path a
@@ -90,10 +91,12 @@ boundary between the structure kern owns and what each tool fills it with.
 
 ### Component API contract
 
-**Decision.** Every component extends its underlying element (`ComponentPropsWithRef<'button'>` and
-so on), merges `className` through `cn()`, and takes `ref` as an ordinary prop (React 19 is a peer
+**Decision.** Every component that renders a single element extends that element's props
+(`ComponentPropsWithRef<'button'>` and so on), merges `className` through `cn()`, and takes `ref` as an ordinary prop (React 19 is a peer
 requirement). Variants come from `class-variance-authority`, and anything button-shaped composes
-`buttonVariants`.
+`buttonVariants`. Six components take a dedicated props interface instead, because they assemble
+slots rather than wrap one element: `AppShell`, `ViewportGate`, `AppSidebar`, `ErrorBoundary`,
+`SocialBar` and `Logo`.
 
 **Reason.** Before v1 each component accepted only the props someone had happened to need: nine
 silently dropped `className`, nothing could be disabled or take a ref, and `IconButton` could not be
@@ -189,9 +192,11 @@ and it shipped a 2.6:1 label underneath it. A scrolling token table is a focusab
 **Decision.** CI fails on:
 
 - a stale generated token CSS (`tokens:check`);
-- an import that breaks the tier order or uses `@/` inside kern, an accessibility rule, or a dropped
-  promise (ESLint);
-- a component without a story, an ink role off its permitted surfaces, or an axe violation (tests);
+- an import that breaks the tier order or uses `@/` in atoms, molecules, organisms or `src/lib`
+  (stories and tests are exempt), an accessibility rule, or a dropped promise (ESLint);
+- a component without a story, a declared ink and surface pairing below WCAG AA, or an axe violation
+  (tests). The contrast test checks the pairings `tokens.ts` declares; it does not read which classes
+  a component uses;
 - a docs link to a story id that does not exist (`check:links`, against the built Storybook).
 
 CodeRabbit reviews with the same rules by path. [WORKFLOW.md](WORKFLOW.md) lists the required checks.

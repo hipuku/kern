@@ -53,9 +53,10 @@ import { AppShell, ParamSlider, ToggleChip } from "kern";
 import { palette, type AccentName } from "kern/tokens";
 ```
 
-Tailwind v4 scans only within the project root, so the tool's `index.css` imports kern's stylesheet
-and registers its source. Without the `@source` line the classes are absent and components render
-unstyled with no error:
+Tailwind v4 scans only within the project root, so the tool's `src/index.css` imports kern's
+stylesheet and registers its source. The `@source` path is relative to that stylesheet; from a file
+elsewhere, adjust it. Without the line the classes are absent and components render unstyled with no
+error:
 
 ```css
 @import "tailwindcss";
@@ -75,32 +76,36 @@ npm install
 npm run storybook
 ```
 
-To see kern edits live inside a tool, link it (the git install is a copy). The link does not survive
-`npm install`, so re-run the second command after a reinstall:
+To see kern edits live inside a tool, link it (the git install is a copy). Run the first command in
+kern's root. The link does not survive `npm install`, so re-run the second after a reinstall:
 
 ```bash
-cd kern && npm link
+npm link
 ```
 
 ```bash
 cd ../your-tool && npm link kern
 ```
 
+A linked kern resolves React from its own `node_modules`, so two copies can load and hooks fail with
+an invalid hook call. Add `resolve: { dedupe: ["react", "react-dom"] }` to the tool's Vite config
+while linked.
+
 ## Scripts
 
-| Script                    | What it does                                                   |
-| ------------------------- | -------------------------------------------------------------- |
-| `npm run storybook`       | Storybook on localhost:6006                                    |
-| `npm run tokens`          | Regenerate the token CSS from `src/tokens/tokens.ts`           |
-| `npm run tokens:check`    | Fail if the committed token CSS is stale                       |
-| `npm run lint`            | ESLint                                                         |
-| `npm run lint:prose`      | Fail on a new em dash in a tracked file                        |
-| `npm run format`          | Prettier, writing                                              |
-| `npm run format:check`    | Prettier, checking only                                        |
-| `npm run typecheck`       | `tsc --noEmit`                                                 |
-| `npm test`                | Vitest, with axe on every component                            |
-| `npm run build-storybook` | Production Storybook build                                     |
-| `npm run check:links`     | Every story link in the docs pages resolves in the built index |
+| Script                    | What it does                                                       |
+| ------------------------- | ------------------------------------------------------------------ |
+| `npm run storybook`       | Storybook on localhost:6006                                        |
+| `npm run tokens`          | Regenerate the token CSS from `src/tokens/tokens.ts`               |
+| `npm run tokens:check`    | Fail if the committed token CSS is stale                           |
+| `npm run lint`            | ESLint                                                             |
+| `npm run lint:prose`      | Fail if a tracked file has more em dashes than its baseline        |
+| `npm run format`          | Prettier, writing                                                  |
+| `npm run format:check`    | Prettier, checking only                                            |
+| `npm run typecheck`       | `tsc --noEmit`                                                     |
+| `npm test`                | Vitest, with axe on every component                                |
+| `npm run build-storybook` | Production Storybook build                                         |
+| `npm run check:links`     | Every story link in the docs resolves; run `build-storybook` first |
 
 ## Stack
 
