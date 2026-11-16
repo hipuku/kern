@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# CodeRabbit reviews every pull request. It is not a required check: each comment is
+# applied as a normal commit or answered and resolved. The path instructions below are
+# the rules from DESIGN.md that a reviewer should hold this repo to.
+language: en-AU
+reviews:
+  profile: chill
+  high_level_summary: true
+  poem: false
+  request_changes_workflow: false
+  collapse_walkthrough: true
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "!**/package-lock.json"
+    - "!storybook-static/**"
+    - "!scripts/punctuation-baseline.json"
+  path_instructions:
+    - path: "src/{atoms,molecules,organisms,templates,utils}/**/*.tsx"
+      instructions: >-
+        Atomic tiers, one direction only: atoms import tokens and src/lib only, molecules may
+        add atoms, organisms may add molecules, templates arrange organisms. Imports inside kern
+        are relative, never @/. A component extends its underlying element's props, merges
+        className through cn(), takes ref as a prop, and takes variants from
+        class-variance-authority. Colour comes from the semantic roles (surface-*, ink-*,
+        line-*) and the accent seam (--primary, --ring, --link), never a named ramp or a raw
+        value. Flag interactive elements with no accessible name or keyboard handling.
+    - path: "src/styles/{primitives,typography}.css"
+      instructions: >-
+        Generated from src/tokens/tokens.ts by npm run tokens. Flag hand edits.
+    - path: "src/tokens/tokens.ts"
+      instructions: >-
+        The single source of every token value. An ink role names the surfaces it may sit on,
+        and contrast.test.ts holds those pairings to WCAG AA; flag a new ink role or surface
+        without its pairing.
+    - path: "**/*.md"
+      instructions: >-
+        Australian English. No em dashes and no spaced hyphens. Headings are topic labels, not
+        claims. No marketing language. Flag any statement the code does not support.
+chat:
+  auto_reply: true

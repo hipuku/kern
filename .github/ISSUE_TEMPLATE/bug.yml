@@ -1,0 +1,30 @@
+name: Bug
+description: A kern component, token or story does something it should not.
+labels: [fix]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should do, and what it does
+      description: The component or token, and the line in README or DESIGN it contradicts, if there is one.
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to see it
+      description: The story, or the consuming tool and view. A screenshot helps.
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: kern version
+      description: The tag or commit the consumer pins.
+      placeholder: v1.5.0
+    validations: { required: true }
+  - type: input
+    id: where
+    attributes:
+      label: Where it ran
+      description: Storybook or a consuming tool, with the browser.
+      placeholder: hexicon, Chrome 142
+    validations: { required: true }
