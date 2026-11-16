@@ -1,73 +1,61 @@
 # kern
 
-The shared component library and design tokens behind a set of browser tools, consumed as TypeScript source with no build step. Live Storybook at [kern.hipuku.dev](https://kern.hipuku.dev).
+The shared component library and design tokens behind four browser tools (hexicon, specifi,
+gray-scott and tokenise), consumed as TypeScript source with no build step. React 19 and Tailwind
+CSS v4.
 
-## Features
+![kern's wordmark on a near-black background, above the line "A design system library. Made by hipuku."](./og.png)
 
-- **38 components** in four layers: 16 atoms, 16 molecules, 3 organisms and 3 templates, plus an `ErrorBoundary` utility. Every one has its own Storybook story, and a test fails if one loses it.
-- **One token source.** Every value is declared once in `src/tokens/tokens.ts`; the CSS is generated from it and the Storybook token pages render from it, so the documentation cannot drift from what ships.
-- **Source-only distribution.** No build, no bundle. Consumers alias `@kern/*` straight at the source tree, so there is never a stale compiled copy to reason about.
-- **A public API.** `src/index.ts` and the per-layer barrels are the supported surface; file paths are not.
-- **Desktop only, gated in CSS.** These are wide-canvas tools, so v1 gates the whole app rather than asking each one to degrade its own layout. `templates/ViewportGate` renders the interface at `lg` and above and a short notice below it. The switch is `lg:` / `max-lg:` in CSS, so there is no resize listener to leak and no flash of the wrong branch on first paint.
-- **Accessible by default.** Semantic HTML first, one shared focus ring, aria-labelled controls, a Storybook a11y addon on every story, and axe assertions in every component test suite. The three remaining test files cover the accent vocabulary, the token contrast maths and the story coverage, where axe has nothing to look at.
+[![Storybook](https://img.shields.io/badge/Storybook-kern.hipuku.dev-4A6CDB?style=for-the-badge)](https://kern.hipuku.dev)
+
+## At a glance
+
+- **38 components in four layers**, one direction of dependency, held by lint.
+  [DESIGN § Atomic tiers](DESIGN.md#atomic-tiers)
+- **One token source.** Every value is declared once; the CSS and the Storybook token pages come
+  from it. [DESIGN § One source](DESIGN.md#one-source)
+- **Source only.** No build and no publish; each tool pins a git tag.
+  [DESIGN § Source only, no build](DESIGN.md#source-only-no-build)
+- **A public API.** The barrels are the surface, and deep imports fail.
+  [DESIGN § A public API](DESIGN.md#a-public-api)
+- **Contrast enforced.** Each ink role names the surfaces it may sit on, and a test holds those
+  pairings to WCAG AA. [DESIGN § Accessibility](DESIGN.md#accessibility)
+- **Pinned consumers.** All four tools are on v1.5.0. [DESIGN § Versioning](DESIGN.md#versioning)
+
+## Documentation
+
+| File                                 | Covers                                                                    |
+| ------------------------------------ | ------------------------------------------------------------------------- |
+| [Storybook](https://kern.hipuku.dev) | Guides, the living token reference, and every component with its controls |
+| [`DESIGN.md`](./DESIGN.md)           | Distribution, components, tokens, accessibility and versioning            |
+| [`WORKFLOW.md`](./WORKFLOW.md)       | Branches, pull requests, the checks that gate them, and releases          |
+| [`CHANGELOG.md`](./CHANGELOG.md)     | What each tag changed                                                     |
 
 ## Relationship to haus
 
-kern and [haus](https://github.com/hipuku/haus) are separate design systems, and which one you want depends on how you consume it.
+kern and [haus](https://github.com/hipuku/haus) are separate design systems. haus publishes W3C
+DTCG tokens and React components to npm, for consumers it does not know. kern knows each of its
+consumers by name and each pins a tag, which is what let v1 be a breaking rebuild adopted one tool at
+a time.
 
-haus publishes W3C DTCG tokens and React components to npm, for consumers it does not know. kern is github-pinned and source-only, and holds the parts the in-house tools share.
+## Install
 
-The split is what lets kern change an API. It knows every one of its consumers by name and each pins a tag, so v1 could be a breaking rebuild that shipped, sat unused, and was adopted one app at a time.
-
-## Stack
-
-| Layer     | Tech                                                  |
-| --------- | ----------------------------------------------------- |
-| Framework | React 19                                              |
-| Styling   | Tailwind CSS v4 (Vite plugin) + CSS custom properties |
-| Variants  | class-variance-authority                              |
-| Language  | TypeScript 6                                          |
-| Icons     | lucide-react (peer dependency)                        |
-| Docs      | Storybook 10 + a11y addon                             |
-| Tests     | Vitest + vitest-axe + Testing Library                 |
-| Lint      | ESLint 10 (flat config)                               |
-
-## Using kern in a tool
-
-kern is installed from GitHub and resolved via a Vite path alias.
-
-**Pin a tag.** An unpinned `github:hipuku/kern` resolves to whatever `main` happens to be at install time, so an unrelated change to the library can break your build on a routine reinstall.
+Pin a tag in the tool's `package.json`:
 
 ```jsonc
-// package.json
 "dependencies": { "kern": "github:hipuku/kern#v1.5.0" }
 ```
 
-No alias, and no build step. kern ships its TypeScript and declares entry points for it, so
-your bundler resolves the package the way it resolves any other:
+Import from the package, or from a layer barrel:
 
 ```ts
 import { AppShell, ParamSlider, ToggleChip } from "kern";
-```
-
-Layer barrels exist when you want to be explicit about which tier you are reaching into:
-
-```ts
-import { ToggleChip } from "kern/atoms";
 import { palette, type AccentName } from "kern/tokens";
 ```
 
-**Deep imports are not possible, by design.** `kern/src/atoms/Input` fails with
-`ERR_PACKAGE_PATH_NOT_EXPORTED`, because the `exports` map lists the barrels and nothing else.
-That is the point: file paths are not public API and components do move between layers.
-`ErrorBoundary` went from `organisms/` to `utils/` without a breaking change, which is only
-true while nobody can import it by path.
-
-Tailwind v4 only scans within the project root, so each consumer's `index.css` must import
-kern's stylesheet _and_ register its source for class scanning. Without the second line the
-classes are absent and components render unstyled with no error. The `@source` line stays a
-relative path because it is a filesystem glob rather than a module import, so it never goes
-through package resolution:
+Tailwind v4 scans only within the project root, so the tool's `index.css` imports kern's stylesheet
+and registers its source. Without the `@source` line the classes are absent and components render
+unstyled with no error:
 
 ```css
 @import "tailwindcss";
@@ -75,37 +63,46 @@ through package resolution:
 @source "../node_modules/kern/src";
 ```
 
-## Local development
+## Develop
+
+Node 22.12 or later (`.nvmrc`).
 
 ```bash
 npm install
-npm run storybook      # localhost:6006
 ```
 
-| Script                    | What it does                                         |
-| ------------------------- | ---------------------------------------------------- |
-| `npm run tokens`          | Regenerate the token CSS from `src/tokens/tokens.ts` |
-| `npm run tokens:check`    | Fail if the committed token CSS is stale             |
-| `npm run lint`            | ESLint                                               |
-| `npm run format`          | Prettier, writing                                    |
-| `npm run format:check`    | Prettier, checking only                              |
-| `npm run typecheck`       | `tsc --noEmit`                                       |
-| `npm test`                | Vitest                                               |
-| `npm run build-storybook` | Production Storybook build                           |
+```bash
+npm run storybook
+```
 
-CI runs one job per check: `Lint` (`tokens:check`, `lint`, `lint:prose`), `Format`, `Typecheck`,
-`Test`, then `Build` (`build-storybook` and `check:links`) once lint, typecheck and test pass. `main` deploys to kern.hipuku.dev automatically.
-
-To see kern edits live inside a consuming tool, symlink it (the git install is a copy):
+To see kern edits live inside a tool, link it (the git install is a copy). The link does not survive
+`npm install`, so re-run the second command after a reinstall:
 
 ```bash
 cd kern && npm link
+```
+
+```bash
 cd ../your-tool && npm link kern
 ```
 
-The symlink does not survive `npm install`, so re-run `npm link kern` after any reinstall.
+## Scripts
 
-## Documentation
+| Script                    | What it does                                                   |
+| ------------------------- | -------------------------------------------------------------- |
+| `npm run storybook`       | Storybook on localhost:6006                                    |
+| `npm run tokens`          | Regenerate the token CSS from `src/tokens/tokens.ts`           |
+| `npm run tokens:check`    | Fail if the committed token CSS is stale                       |
+| `npm run lint`            | ESLint                                                         |
+| `npm run lint:prose`      | Fail on a new em dash in a tracked file                        |
+| `npm run format`          | Prettier, writing                                              |
+| `npm run format:check`    | Prettier, checking only                                        |
+| `npm run typecheck`       | `tsc --noEmit`                                                 |
+| `npm test`                | Vitest, with axe on every component                            |
+| `npm run build-storybook` | Production Storybook build                                     |
+| `npm run check:links`     | Every story link in the docs pages resolves in the built index |
 
-- **[Storybook](https://kern.hipuku.dev)**: Introduction, Installation and Contributing guides, the living token reference (Colours, Typography, Spacing, Motion), and every component with its controls.
-- **[`DESIGN.md`](./DESIGN.md)**: architecture, the source-only consumption model, component hierarchy, token system, versioning, and the decisions behind them.
+## Stack
+
+React 19 · TypeScript · Tailwind CSS v4 · class-variance-authority · lucide-react · Storybook 10 ·
+Vitest · Testing Library · vitest-axe
