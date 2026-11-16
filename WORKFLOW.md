@@ -26,13 +26,14 @@ resolved conversations and a linear history, and it applies to the owner too.
 
 ## Checks
 
-| Check     | Workflow | Runs                                                                                               | Required |
-| --------- | -------- | -------------------------------------------------------------------------------------------------- | -------- |
-| Lint      | `ci.yml` | `tokens:check`, `npm run lint` (ESLint: tiers, JSX accessibility, typed promises) and `lint:prose` | Yes      |
-| Format    | `ci.yml` | `npm run format:check`                                                                             | Yes      |
-| Typecheck | `ci.yml` | `npm run typecheck`                                                                                | Yes      |
-| Test      | `ci.yml` | `npm test`                                                                                         | Yes      |
-| Build     | `ci.yml` | `npm run build-storybook` and `check:links`, after Lint, Typecheck and Test pass                   | Yes      |
+| Check     | Workflow | Runs                                                                                                          | Required |
+| --------- | -------- | ------------------------------------------------------------------------------------------------------------- | -------- |
+| Lint      | `ci.yml` | `tokens:check`, `npm run lint` (ESLint: tiers, JSX accessibility, typed promises), `lint:prose` and `lint:md` | Yes      |
+| Links     | `ci.yml` | lychee, offline: every relative link and heading anchor in the Markdown resolves                              | Yes      |
+| Format    | `ci.yml` | `npm run format:check`                                                                                        | Yes      |
+| Typecheck | `ci.yml` | `npm run typecheck`                                                                                           | Yes      |
+| Test      | `ci.yml` | `npm test`                                                                                                    | Yes      |
+| Build     | `ci.yml` | `npm run build-storybook` and `check:links`, after Lint, Typecheck and Test pass                              | Yes      |
 
 Chromatic runs visual regression on every pull request (`chromatic.yml`) and Vercel builds a
 preview; neither is a required check. What the tests hold is in

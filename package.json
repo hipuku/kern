@@ -58,7 +58,8 @@
     "lint:prose": "node scripts/check-punctuation.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check:links": "node scripts/check-doc-links.mjs"
+    "check:links": "node scripts/check-doc-links.mjs",
+    "lint:md": "markdownlint-cli2"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -89,6 +90,7 @@
     "eslint-plugin-storybook": "^10.6.7",
     "globals": "^17.14.0",
     "jsdom": "^31.0.0",
+    "markdownlint-cli2": "^0.24.1",
     "prettier": "^3.10.1",
     "storybook": "^10.5.9",
     "tailwindcss": "^4.3.0",

@@ -100,6 +100,7 @@ while linked.
 | `npm run tokens:check`    | Fail if the committed token CSS is stale                           |
 | `npm run lint`            | ESLint                                                             |
 | `npm run lint:prose`      | Fail if a tracked file has more em dashes than its baseline        |
+| `npm run lint:md`         | Markdown structure (markdownlint)                                  |
 | `npm run format`          | Prettier, writing                                                  |
 | `npm run format:check`    | Prettier, checking only                                            |
 | `npm run typecheck`       | `tsc --noEmit`                                                     |
