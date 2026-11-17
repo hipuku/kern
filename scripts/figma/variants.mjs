@@ -64,8 +64,11 @@ export function cvaVariants(src) {
       if (src[i] === "{") depth++;
       else if (src[i] === "}" && --depth === 0) break;
     }
-    // Class strings carry colons (`hover:bg-...`), so string contents go first.
-    const body = strip(src.slice(open + 1, i)).replace(/(["'`])(?:\\.|(?!\1)[^\\])*\1/g, '""');
+    // Class strings carry colons (`hover:bg-...`), so string values are masked;
+    // a quoted key (`"icon-sm":`) is kept, unquoted, for the key scanner.
+    const body = strip(src.slice(open + 1, i))
+      .replace(/(["'`])((?:\\.|(?!\1)[^\\])*)\1(?=\s*:)/g, "$2")
+      .replace(/(["'`])(?:\\.|(?!\1)[^\\])*\1/g, '""');
     const axes = {};
     // Top-level keys of `variants`, then the top-level keys of each.
     let d = 0;
@@ -108,7 +111,10 @@ export function axesOf(file, name, { aliases, palette, cva }) {
     for (const v of variantProps)
       for (const [axis, values] of Object.entries(cva[v] ?? {}))
         if (!omitted.has(axis)) axes[axis] = values;
-    for (const line of iface[2].split("\n")) {
+    // A long union is wrapped by Prettier, one member a line: join each member
+    // back onto its prop before reading it.
+    const members = iface[2].replace(/:\s*\n\s*\|/g, ": ").replace(/\n\s*\|/g, " |");
+    for (const line of members.split("\n")) {
       const p = line.match(/^\s*(\w+)\??\s*:\s*(.+?);?\s*$/);
       if (!p) continue;
       const values = unionValues(p[2], aliases, palette);

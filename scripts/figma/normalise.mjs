@@ -34,12 +34,17 @@ const figmaValue = (value) =>
 /** Items from the exported Figma file, aliases followed to their value. */
 export function figmaItems(snapshot) {
   const items = {};
-  const byName = Object.fromEntries((snapshot.variables ?? []).map((v) => [v.name, v]));
+  // Aliases resolve by variable id when the snapshot has ids (Figma names are
+  // unique only within a collection), and by name for a snapshot without them.
+  const vars = snapshot.variables ?? [];
+  const byId = Object.fromEntries(vars.filter((v) => v.id).map((v) => [v.id, v]));
+  const byName = Object.fromEntries(vars.map((v) => [v.name, v]));
   const resolve = (v, seen = new Set()) => {
     if (v.value && typeof v.value === "object" && "aliasName" in v.value) {
-      const target = byName[v.value.aliasName];
-      if (!target || seen.has(target.name)) return `unresolved ${v.value.aliasName}`;
-      seen.add(target.name);
+      const target = byId[v.value.aliasId] ?? byName[v.value.aliasName];
+      const id = target?.id ?? target?.name;
+      if (!target || seen.has(id)) return `unresolved ${v.value.aliasName}`;
+      seen.add(id);
       return resolve(target, seen);
     }
     return figmaValue(v.value);

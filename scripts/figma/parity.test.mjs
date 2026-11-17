@@ -4,7 +4,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { diff } from "./diff.mjs";
 import { figmaItems, variableKey } from "./normalise.mjs";
-import { cvaVariants, paletteKeys, statesOf, unionValues } from "./variants.mjs";
+import { axesOf, cvaVariants, paletteKeys, statesOf, unionValues } from "./variants.mjs";
 import { declarations, resolve, tintValue } from "./code.mjs";
 
 const tmp = (name, body) => {
@@ -97,12 +97,27 @@ describe("variants", () => {
     });
   });
 
+  it("keeps a quoted cva key", () => {
+    const src =
+      'const chipVariants = cva("b", {\n  variants: {\n    size: { "icon-sm": "p-1", md: "p-2" },\n  },\n});';
+    expect(cvaVariants(src)).toEqual({ chipVariants: { size: ["icon-sm", "md"] } });
+  });
+
   it("finds Tailwind state prefixes, stacked ones included, and not a prop named active", () => {
     const file = tmp(
       "X.tsx",
       'interface XProps { active: boolean }\nconst c = "motion-safe:hover:scale-125 disabled:opacity-50";',
     );
     expect(statesOf(file, {}).sort()).toEqual(["disabled", "hover"]);
+  });
+});
+
+describe("multi-line props", () => {
+  it("reads a prop whose union Prettier wrapped onto several lines", () => {
+    const file = tmp("Chip.tsx", 'interface ChipProps {\n  size?:\n    | "sm"\n    | "md";\n}\n');
+    expect(axesOf(file, "Chip", { aliases: {}, palette: [], cva: {} })).toEqual({
+      size: ["sm", "md"],
+    });
   });
 });
 

@@ -32,7 +32,7 @@ export async function exportFile(figma) {
         const property = target ? `--${target.name.replace(/\//g, "-")}` : `unresolved ${raw.id}`;
         // kern keys some variables by a class rather than a property, so the
         // alias also carries the target's Figma name, which normalise.mjs follows.
-        value = { alias: syntax ? syntax[1] : property, aliasName: target?.name };
+        value = { alias: syntax ? syntax[1] : property, aliasName: target?.name, aliasId: raw.id };
       } else if (raw && typeof raw === "object" && "r" in raw) {
         const hex = [raw.r, raw.g, raw.b]
           .map((x) =>
@@ -51,6 +51,7 @@ export async function exportFile(figma) {
       }
       variables.push({
         collection: collection.name,
+        id: v.id,
         name: v.name,
         type: v.resolvedType,
         codeSyntax: v.codeSyntax?.WEB ? { WEB: v.codeSyntax.WEB } : undefined,
@@ -84,4 +85,7 @@ export async function exportFile(figma) {
   return { capturedAt, variables, components };
 }
 
+/* A function body, as the Figma MCP server's use_figma tool runs code: its
+   last statement returns the export. To run it as a development plugin
+   instead, wrap it: `(async () => { ... })().then(r => console.log(JSON.stringify(r)))`. */
 export const pluginCode = () => `${exportFile.toString()}\nreturn await exportFile(figma)\n`;
