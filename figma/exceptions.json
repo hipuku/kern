@@ -1,0 +1,16 @@
+{
+  "about": "Differences between code and Figma that are meant to be there. Each is left out of the parity check with its reason. The check warns when an exception is no longer needed.",
+  "items": {
+    "axis CopyButton.size": "CopyButton passes Button's size through to the Button it renders, so size is compared on Button. Figma draws CopyButton's own states.",
+    "axis CopyButton.variant": "CopyButton passes Button's variant through to the Button it renders, so variant is compared on Button.",
+    "axis Field.message": "No message, a hint or an error is whether `hint` or `error` is given, drawn as variants so each exists in Figma. Code has no prop for it.",
+    "axis Input.content": "Placeholder or value is whether the field has text, drawn as variants. Code has no prop for it.",
+    "axis StatCard.badgecolour": "The colour of the StatusChip inside. Figma draws one StatCard; the colours are compared on StatusChip.",
+    "axis ToolLink.colour": "Code takes any accent; Figma draws the three the tools use, and none.",
+    "axis ViewportGate.viewport": "Above and below lg is a CSS switch on the viewport, drawn as variants so both exist in Figma. Code has no prop for it.",
+    "axis Wordmark.tool": "Code takes the asset's path (`src`); Figma draws each tool's wordmark.",
+    "component ErrorBoundary": "It renders nothing in the ordinary case. Figma draws its fallback, as the part `ErrorBoundary/Fallback`.",
+    "states AppSidebar": "Hover styles the nav items inside, drawn on the part `AppSidebar/NavItem`.",
+    "states IconButton": "IconButton renders a Button, whose hover is compared on Button. Figma draws the hover on IconButton too."
+  }
+}

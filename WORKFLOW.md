@@ -1,7 +1,7 @@
 # kern: workflow
 
 How changes get into kern: branches, pull requests, the checks that gate them, review,
-dependencies, the published Storybook and releases.
+dependencies, Figma and code in step, the published Storybook and releases.
 
 ## Contents
 
@@ -9,6 +9,7 @@ dependencies, the published Storybook and releases.
 - [Checks](#checks)
 - [Review](#review)
 - [Dependencies](#dependencies)
+- [Design sync](#design-sync)
 - [Storybook](#storybook)
 - [Releases](#releases)
 
@@ -26,14 +27,15 @@ resolved conversations and a linear history, and it applies to the owner too.
 
 ## Checks
 
-| Check     | Workflow | Runs                                                                                                          | Required |
-| --------- | -------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| Lint      | `ci.yml` | `tokens:check`, `npm run lint` (ESLint: tiers, JSX accessibility, typed promises), `lint:prose` and `lint:md` | Yes      |
-| Links     | `ci.yml` | lychee, offline: every relative link and heading anchor in the Markdown resolves                              | Yes      |
-| Format    | `ci.yml` | `npm run format:check`                                                                                        | Yes      |
-| Typecheck | `ci.yml` | `npm run typecheck`                                                                                           | Yes      |
-| Test      | `ci.yml` | `npm test`                                                                                                    | Yes      |
-| Build     | `ci.yml` | `npm run build-storybook` and `check:links`, after Lint, Typecheck and Test pass                              | Yes      |
+| Check        | Workflow           | Runs                                                                                                          | Required |
+| ------------ | ------------------ | ------------------------------------------------------------------------------------------------------------- | -------- |
+| Lint         | `ci.yml`           | `tokens:check`, `npm run lint` (ESLint: tiers, JSX accessibility, typed promises), `lint:prose` and `lint:md` | Yes      |
+| Links        | `ci.yml`           | lychee, offline: every relative link and heading anchor in the Markdown resolves                              | Yes      |
+| Format       | `ci.yml`           | `npm run format:check`                                                                                        | Yes      |
+| Typecheck    | `ci.yml`           | `npm run typecheck`                                                                                           | Yes      |
+| Test         | `ci.yml`           | `npm test`                                                                                                    | Yes      |
+| Build        | `ci.yml`           | `npm run build-storybook` and `check:links`, after Lint, Typecheck and Test pass                              | Yes      |
+| Figma parity | `figma-parity.yml` | `npm run figma:check`: tokens, tints and components against the Figma file ([Design sync](#design-sync))      | Yes      |
 
 Chromatic runs visual regression on every pull request (`chromatic.yml`) and Vercel builds a
 preview; neither is a required check. What the tests hold is in
@@ -60,6 +62,49 @@ Dependabot opens grouped pull requests every Monday, plus GitHub Actions monthly
 `deps` label. The groups keep Storybook and its addons, the test runner, the build tools and the
 linters apart, so one major update does not hold the others back. `.github/dependabot.yml` records
 the reasons.
+
+## Design sync
+
+kern's design file is [kern on Figma](https://www.figma.com/design/2a7GqQcIxWB3UErg9q4bC6/kern):
+its variables, a page per component, the icons and the consumer screens. The Figma parity check
+compares it with the code on every pull request and every push to `main`. Variables are compared
+from an exported snapshot, `figma/snapshot/kern.json`, so a variable changed in Figma is found once
+that snapshot is refreshed.
+
+### What is compared
+
+| Item                   | Code                                                                        | Figma                                          |
+| ---------------------- | --------------------------------------------------------------------------- | ---------------------------------------------- |
+| `token --spacing-card` | A palette, role or scale property in `primitives.css`, `var()` followed     | A variable, by its code syntax                 |
+| `token bg-nebula/15`   | A tint class written in `lib/accent.ts` or `Button`, as the colour it gives | A variable whose code syntax is the class      |
+| `component Button`     | A component file in a tier folder                                           | A component on its own page                    |
+| `axis Button.variant`  | A string-union prop, an alias for one, or a cva `variants` key              | A variant property of the set                  |
+| `states Button`        | The `hover:`, `active:` and `disabled:` classes it writes                   | The `Hover`, `Pressed` and `Disabled` variants |
+
+The default mode of `kern/roles` is compared; the four tool modes mirror each tool's `index.css`,
+which lives in the tools' repositories. Left out on purpose: type, motion and breakpoints (text
+styles and specs in Figma, not variables), focus (one `focusRing` everywhere), `as` and `type`
+props (they choose an element, not a look), booleans and text properties, and the icon and
+consumer pages. Differences meant to be there are listed with a reason in `figma/exceptions.json`.
+
+### How a finding is decided
+
+`figma/baseline.json` holds, for every item, the pair of values code and Figma had when the baseline
+was last accepted. Code ahead of Figma or a conflict fails the pull request; a change made only in
+Figma becomes a `drift-decision` issue, something new in Figma a `design-proposal` issue, and known
+drift is listed without failing. The `figma-later` label waives code ahead, never a conflict. The
+rules are in `scripts/figma/diff.mjs` and tested in `scripts/figma/parity.test.mjs`.
+
+Two items are known drift at the first baseline: Figma's Button has no `Disabled` state though
+the code styles one, and IconButton takes Button's `link` variant in code but not in Figma.
+
+### Where Figma is read from
+
+Components are read live from Figma's REST API with the `FIGMA_TOKEN` repository secret. Variables
+need an Enterprise plan for that, so they come from the snapshot, exported through Figma's Plugin
+API: `npm run figma:check -- --plugin-code` prints the export to run in Figma, and
+`npm run figma:check -- --save <file>` stores its result. Without the token, everything comes from
+the snapshot, and the report says so.
 
 ## Storybook
 

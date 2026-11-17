@@ -59,7 +59,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:links": "node scripts/check-doc-links.mjs",
-    "lint:md": "markdownlint-cli2"
+    "lint:md": "markdownlint-cli2",
+    "figma:check": "node scripts/figma/check.mjs",
+    "figma:accept": "node scripts/figma/check.mjs --accept"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
