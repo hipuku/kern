@@ -200,6 +200,9 @@ and it shipped a 2.6:1 label underneath it. A scrolling token table is a focusab
   (tests). The contrast test checks the pairings `tokens.ts` declares; it does not read which classes
   a component uses;
 - a docs link to a story id that does not exist (`check:links`, against the built Storybook).
+- a token, tint or component that has moved in code and not in Figma (`figma:check`, against the
+  [Figma file](https://www.figma.com/design/2a7GqQcIxWB3UErg9q4bC6/kern); see
+  [WORKFLOW.md § Design sync](WORKFLOW.md#design-sync)).
 
 CodeRabbit reviews with the same rules by path. [WORKFLOW.md](WORKFLOW.md) lists the required checks.
 

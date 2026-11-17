@@ -1,0 +1,569 @@
+{
+  "acceptedAt": "2026-11-17T05:30:09.766Z",
+  "items": {
+    "axis Button.size": {
+      "code": "icon|md|sm",
+      "figma": "icon|md|sm"
+    },
+    "axis Button.variant": {
+      "code": "accent|ghost|link|surface",
+      "figma": "accent|ghost|link|surface"
+    },
+    "axis CalloutCard.colour": {
+      "code": "aurora|corona|dusk|flare|nebula|neutral|orbit|pulsar|quasar|solstice|supernova|tidal",
+      "figma": "aurora|corona|dusk|flare|nebula|neutral|orbit|pulsar|quasar|solstice|supernova|tidal"
+    },
+    "axis Card.padding": {
+      "code": "md|none|sm",
+      "figma": "md|none|sm"
+    },
+    "axis IconButton.variant": {
+      "code": "accent|ghost|link|surface",
+      "figma": "accent|ghost|surface"
+    },
+    "axis InlineCode.colour": {
+      "code": "aurora|corona|dusk|flare|nebula|neutral|orbit|pulsar|quasar|solstice|supernova|tidal",
+      "figma": "aurora|corona|dusk|flare|nebula|neutral|orbit|pulsar|quasar|solstice|supernova|tidal"
+    },
+    "axis Metric.orientation": {
+      "code": "horizontal|vertical",
+      "figma": "horizontal|vertical"
+    },
+    "axis StatusChip.colour": {
+      "code": "aurora|corona|dusk|flare|nebula|neutral|orbit|pulsar|quasar|solstice|supernova|tidal",
+      "figma": "aurora|corona|dusk|flare|nebula|neutral|orbit|pulsar|quasar|solstice|supernova|tidal"
+    },
+    "axis Textarea.resize": {
+      "code": "none|vertical",
+      "figma": "none|vertical"
+    },
+    "axis ViewContainer.gap": {
+      "code": "lg|md|sm",
+      "figma": "lg|md|sm"
+    },
+    "axis ViewContainer.width": {
+      "code": "lg|md",
+      "figma": "lg|md"
+    },
+    "axis Wordmark.size": {
+      "code": "lg|md|sm",
+      "figma": "lg|md|sm"
+    },
+    "component AppShell": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component AppSidebar": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component BulletItem": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component BulletList": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Button": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component CalloutCard": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component CanvasStage": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Card": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ChipGroup": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Colophon": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component CopyButton": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component DataTable": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component EmptyState": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ExternalLink": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Field": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component IconButton": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component IconLink": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component InlineCode": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Input": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Label": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Logo": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Metric": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ParamSlider": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Section": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component SocialBar": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component StatCard": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component StatusChip": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Textarea": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ToggleChip": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ToolLink": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ToolView": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component TransportControls": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ViewContainer": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ViewHeader": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component ViewportGate": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Wordmark": {
+      "code": "component",
+      "figma": "component"
+    },
+    "component Workbench": {
+      "code": "component",
+      "figma": "component"
+    },
+    "states Button": {
+      "code": "disabled|hover",
+      "figma": "hover"
+    },
+    "states CopyButton": {
+      "code": "hover",
+      "figma": "hover"
+    },
+    "states ExternalLink": {
+      "code": "hover",
+      "figma": "hover"
+    },
+    "states IconLink": {
+      "code": "hover",
+      "figma": "hover"
+    },
+    "states Input": {
+      "code": "disabled",
+      "figma": "disabled"
+    },
+    "states Logo": {
+      "code": "hover",
+      "figma": "hover"
+    },
+    "states ToolLink": {
+      "code": "hover",
+      "figma": "hover"
+    },
+    "token --background": {
+      "code": "#121213",
+      "figma": "#121213"
+    },
+    "token --color-aurora": {
+      "code": "#82d25d",
+      "figma": "#82d25d"
+    },
+    "token --color-aurora-dark": {
+      "code": "#5a9e3a",
+      "figma": "#5a9e3a"
+    },
+    "token --color-aurora-light": {
+      "code": "#c5f0a9",
+      "figma": "#c5f0a9"
+    },
+    "token --color-corona": {
+      "code": "#f9c3d6",
+      "figma": "#f9c3d6"
+    },
+    "token --color-corona-dark": {
+      "code": "#f28bad",
+      "figma": "#f28bad"
+    },
+    "token --color-corona-light": {
+      "code": "#fce4ee",
+      "figma": "#fce4ee"
+    },
+    "token --color-dusk": {
+      "code": "#f5d4c0",
+      "figma": "#f5d4c0"
+    },
+    "token --color-dusk-dark": {
+      "code": "#e0b090",
+      "figma": "#e0b090"
+    },
+    "token --color-dusk-light": {
+      "code": "#faf0e8",
+      "figma": "#faf0e8"
+    },
+    "token --color-flare": {
+      "code": "#e15e42",
+      "figma": "#e15e42"
+    },
+    "token --color-flare-dark": {
+      "code": "#c83d25",
+      "figma": "#c83d25"
+    },
+    "token --color-flare-light": {
+      "code": "#f0a090",
+      "figma": "#f0a090"
+    },
+    "token --color-nebula": {
+      "code": "#15ad70",
+      "figma": "#15ad70"
+    },
+    "token --color-nebula-dark": {
+      "code": "#0d7a4f",
+      "figma": "#0d7a4f"
+    },
+    "token --color-nebula-light": {
+      "code": "#b4edcf",
+      "figma": "#b4edcf"
+    },
+    "token --color-orbit": {
+      "code": "#73bde7",
+      "figma": "#73bde7"
+    },
+    "token --color-orbit-dark": {
+      "code": "#4a9fd0",
+      "figma": "#4a9fd0"
+    },
+    "token --color-orbit-light": {
+      "code": "#c4e5f7",
+      "figma": "#c4e5f7"
+    },
+    "token --color-pulsar": {
+      "code": "#7193ed",
+      "figma": "#7193ed"
+    },
+    "token --color-pulsar-dark": {
+      "code": "#4468d8",
+      "figma": "#4468d8"
+    },
+    "token --color-pulsar-light": {
+      "code": "#c2cffa",
+      "figma": "#c2cffa"
+    },
+    "token --color-quasar": {
+      "code": "#bf9ff1",
+      "figma": "#bf9ff1"
+    },
+    "token --color-quasar-dark": {
+      "code": "#9b72e6",
+      "figma": "#9b72e6"
+    },
+    "token --color-quasar-light": {
+      "code": "#e4d6fb",
+      "figma": "#e4d6fb"
+    },
+    "token --color-solstice": {
+      "code": "#f78d2c",
+      "figma": "#f78d2c"
+    },
+    "token --color-solstice-dark": {
+      "code": "#d46a0a",
+      "figma": "#d46a0a"
+    },
+    "token --color-solstice-light": {
+      "code": "#fde4c0",
+      "figma": "#fde4c0"
+    },
+    "token --color-supernova": {
+      "code": "#ffc700",
+      "figma": "#ffc700"
+    },
+    "token --color-supernova-dark": {
+      "code": "#d4a000",
+      "figma": "#d4a000"
+    },
+    "token --color-supernova-light": {
+      "code": "#ffe480",
+      "figma": "#ffe480"
+    },
+    "token --color-tidal": {
+      "code": "#68d0ca",
+      "figma": "#68d0ca"
+    },
+    "token --color-tidal-dark": {
+      "code": "#3fa8a1",
+      "figma": "#3fa8a1"
+    },
+    "token --color-tidal-light": {
+      "code": "#b3ebe4",
+      "figma": "#b3ebe4"
+    },
+    "token --color-void-0": {
+      "code": "#121213",
+      "figma": "#121213"
+    },
+    "token --color-void-10": {
+      "code": "#1f1f20",
+      "figma": "#1f1f20"
+    },
+    "token --color-void-20": {
+      "code": "#2b2b2c",
+      "figma": "#2b2b2c"
+    },
+    "token --color-void-30": {
+      "code": "#383839",
+      "figma": "#383839"
+    },
+    "token --color-void-40": {
+      "code": "#575759",
+      "figma": "#575759"
+    },
+    "token --color-void-50": {
+      "code": "#929295",
+      "figma": "#929295"
+    },
+    "token --color-void-60": {
+      "code": "#b1b1b3",
+      "figma": "#b1b1b3"
+    },
+    "token --color-void-70": {
+      "code": "#d3d3d5",
+      "figma": "#d3d3d5"
+    },
+    "token --color-void-80": {
+      "code": "#e2e2e5",
+      "figma": "#e2e2e5"
+    },
+    "token --color-void-90": {
+      "code": "#f1f1f4",
+      "figma": "#f1f1f4"
+    },
+    "token --foreground": {
+      "code": "#f1f1f4",
+      "figma": "#f1f1f4"
+    },
+    "token --ink-body": {
+      "code": "#b1b1b3",
+      "figma": "#b1b1b3"
+    },
+    "token --ink-lead": {
+      "code": "#d3d3d5",
+      "figma": "#d3d3d5"
+    },
+    "token --ink-muted": {
+      "code": "#929295",
+      "figma": "#929295"
+    },
+    "token --ink-strong": {
+      "code": "#e2e2e5",
+      "figma": "#e2e2e5"
+    },
+    "token --ink-title": {
+      "code": "#f1f1f4",
+      "figma": "#f1f1f4"
+    },
+    "token --line": {
+      "code": "#383839",
+      "figma": "#383839"
+    },
+    "token --line-strong": {
+      "code": "#575759",
+      "figma": "#575759"
+    },
+    "token --line-subtle": {
+      "code": "#2b2b2c",
+      "figma": "#2b2b2c"
+    },
+    "token --link": {
+      "code": "#7193ed",
+      "figma": "#7193ed"
+    },
+    "token --primary": {
+      "code": "#7193ed",
+      "figma": "#7193ed"
+    },
+    "token --radius-card": {
+      "code": "12",
+      "figma": "12"
+    },
+    "token --radius-control": {
+      "code": "8",
+      "figma": "8"
+    },
+    "token --radius-inline": {
+      "code": "4",
+      "figma": "4"
+    },
+    "token --radius-pill": {
+      "code": "9999",
+      "figma": "9999"
+    },
+    "token --ring": {
+      "code": "#7193ed",
+      "figma": "#7193ed"
+    },
+    "token --spacing": {
+      "code": "4",
+      "figma": "4"
+    },
+    "token --spacing-card": {
+      "code": "12",
+      "figma": "12"
+    },
+    "token --spacing-field": {
+      "code": "8",
+      "figma": "8"
+    },
+    "token --spacing-major": {
+      "code": "32",
+      "figma": "32"
+    },
+    "token --spacing-section": {
+      "code": "16",
+      "figma": "16"
+    },
+    "token --spacing-tight": {
+      "code": "4",
+      "figma": "4"
+    },
+    "token --spacing-view": {
+      "code": "24",
+      "figma": "24"
+    },
+    "token --surface-hover": {
+      "code": "#383839",
+      "figma": "#383839"
+    },
+    "token --surface-page": {
+      "code": "#121213",
+      "figma": "#121213"
+    },
+    "token --surface-panel": {
+      "code": "#1f1f20",
+      "figma": "#1f1f20"
+    },
+    "token --surface-raised": {
+      "code": "#2b2b2c",
+      "figma": "#2b2b2c"
+    },
+    "token bg-(--primary)/15": {
+      "code": "#7193ed26",
+      "figma": "#7193ed26"
+    },
+    "token bg-(--primary)/25": {
+      "code": "#7193ed40",
+      "figma": "#7193ed40"
+    },
+    "token bg-aurora/15": {
+      "code": "#82d25d26",
+      "figma": "#82d25d26"
+    },
+    "token bg-corona/15": {
+      "code": "#f9c3d626",
+      "figma": "#f9c3d626"
+    },
+    "token bg-dusk/15": {
+      "code": "#f5d4c026",
+      "figma": "#f5d4c026"
+    },
+    "token bg-flare/15": {
+      "code": "#e15e4226",
+      "figma": "#e15e4226"
+    },
+    "token bg-nebula/15": {
+      "code": "#15ad7026",
+      "figma": "#15ad7026"
+    },
+    "token bg-orbit/15": {
+      "code": "#73bde726",
+      "figma": "#73bde726"
+    },
+    "token bg-pulsar/15": {
+      "code": "#7193ed26",
+      "figma": "#7193ed26"
+    },
+    "token bg-quasar/15": {
+      "code": "#bf9ff126",
+      "figma": "#bf9ff126"
+    },
+    "token bg-solstice/15": {
+      "code": "#f78d2c26",
+      "figma": "#f78d2c26"
+    },
+    "token bg-supernova/15": {
+      "code": "#ffc70026",
+      "figma": "#ffc70026"
+    },
+    "token bg-tidal/15": {
+      "code": "#68d0ca26",
+      "figma": "#68d0ca26"
+    },
+    "token border-(--primary)/40": {
+      "code": "#7193ed66",
+      "figma": "#7193ed66"
+    }
+  }
+}

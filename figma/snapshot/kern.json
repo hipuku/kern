@@ -1,0 +1,1448 @@
+{
+  "exportedAt": "2026-11-17T05:28:40.000Z",
+  "source": "plugin",
+  "file": {
+    "key": "2a7GqQcIxWB3UErg9q4bC6",
+    "name": "kern"
+  },
+  "variables": [
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/0",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-0)"
+      },
+      "value": {
+        "hex": "#121213"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/10",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-10)"
+      },
+      "value": {
+        "hex": "#1f1f20"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/20",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-20)"
+      },
+      "value": {
+        "hex": "#2b2b2c"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/30",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-30)"
+      },
+      "value": {
+        "hex": "#383839"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/40",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-40)"
+      },
+      "value": {
+        "hex": "#575759"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/50",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-50)"
+      },
+      "value": {
+        "hex": "#929295"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/60",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-60)"
+      },
+      "value": {
+        "hex": "#b1b1b3"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/70",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-70)"
+      },
+      "value": {
+        "hex": "#d3d3d5"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/80",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-80)"
+      },
+      "value": {
+        "hex": "#e2e2e5"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/void/90",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-void-90)"
+      },
+      "value": {
+        "hex": "#f1f1f4"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/nebula/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-nebula-dark)"
+      },
+      "value": {
+        "hex": "#0d7a4f"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/nebula/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-nebula)"
+      },
+      "value": {
+        "hex": "#15ad70"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/nebula/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-nebula-light)"
+      },
+      "value": {
+        "hex": "#b4edcf"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/aurora/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-aurora-dark)"
+      },
+      "value": {
+        "hex": "#5a9e3a"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/aurora/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-aurora)"
+      },
+      "value": {
+        "hex": "#82d25d"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/aurora/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-aurora-light)"
+      },
+      "value": {
+        "hex": "#c5f0a9"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/tidal/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-tidal-dark)"
+      },
+      "value": {
+        "hex": "#3fa8a1"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/tidal/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-tidal)"
+      },
+      "value": {
+        "hex": "#68d0ca"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/tidal/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-tidal-light)"
+      },
+      "value": {
+        "hex": "#b3ebe4"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/orbit/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-orbit-dark)"
+      },
+      "value": {
+        "hex": "#4a9fd0"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/orbit/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-orbit)"
+      },
+      "value": {
+        "hex": "#73bde7"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/orbit/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-orbit-light)"
+      },
+      "value": {
+        "hex": "#c4e5f7"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/pulsar/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-pulsar-dark)"
+      },
+      "value": {
+        "hex": "#4468d8"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/pulsar/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-pulsar)"
+      },
+      "value": {
+        "hex": "#7193ed"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/pulsar/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-pulsar-light)"
+      },
+      "value": {
+        "hex": "#c2cffa"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/quasar/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-quasar-dark)"
+      },
+      "value": {
+        "hex": "#9b72e6"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/quasar/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-quasar)"
+      },
+      "value": {
+        "hex": "#bf9ff1"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/quasar/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-quasar-light)"
+      },
+      "value": {
+        "hex": "#e4d6fb"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/corona/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-corona-dark)"
+      },
+      "value": {
+        "hex": "#f28bad"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/corona/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-corona)"
+      },
+      "value": {
+        "hex": "#f9c3d6"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/corona/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-corona-light)"
+      },
+      "value": {
+        "hex": "#fce4ee"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/dusk/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-dusk-dark)"
+      },
+      "value": {
+        "hex": "#e0b090"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/dusk/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-dusk)"
+      },
+      "value": {
+        "hex": "#f5d4c0"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/dusk/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-dusk-light)"
+      },
+      "value": {
+        "hex": "#faf0e8"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/flare/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-flare-dark)"
+      },
+      "value": {
+        "hex": "#c83d25"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/flare/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-flare)"
+      },
+      "value": {
+        "hex": "#e15e42"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/flare/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-flare-light)"
+      },
+      "value": {
+        "hex": "#f0a090"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/solstice/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-solstice-dark)"
+      },
+      "value": {
+        "hex": "#d46a0a"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/solstice/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-solstice)"
+      },
+      "value": {
+        "hex": "#f78d2c"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/solstice/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-solstice-light)"
+      },
+      "value": {
+        "hex": "#fde4c0"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/supernova/dark",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-supernova-dark)"
+      },
+      "value": {
+        "hex": "#d4a000"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/supernova/base",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-supernova)"
+      },
+      "value": {
+        "hex": "#ffc700"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/supernova/light",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--color-supernova-light)"
+      },
+      "value": {
+        "hex": "#ffe480"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/nebula/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-nebula/15"
+      },
+      "value": {
+        "hex": "#15ad7026"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/aurora/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-aurora/15"
+      },
+      "value": {
+        "hex": "#82d25d26"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/tidal/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-tidal/15"
+      },
+      "value": {
+        "hex": "#68d0ca26"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/orbit/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-orbit/15"
+      },
+      "value": {
+        "hex": "#73bde726"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/pulsar/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-pulsar/15"
+      },
+      "value": {
+        "hex": "#7193ed26"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/quasar/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-quasar/15"
+      },
+      "value": {
+        "hex": "#bf9ff126"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/corona/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-corona/15"
+      },
+      "value": {
+        "hex": "#f9c3d626"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/dusk/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-dusk/15"
+      },
+      "value": {
+        "hex": "#f5d4c026"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/flare/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-flare/15"
+      },
+      "value": {
+        "hex": "#e15e4226"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/solstice/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-solstice/15"
+      },
+      "value": {
+        "hex": "#f78d2c26"
+      }
+    },
+    {
+      "collection": "kern/primitives",
+      "name": "color/supernova/tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-supernova/15"
+      },
+      "value": {
+        "hex": "#ffc70026"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "surface/page",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--surface-page)"
+      },
+      "value": {
+        "alias": "--color-void-0",
+        "aliasName": "color/void/0"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "surface/panel",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--surface-panel)"
+      },
+      "value": {
+        "alias": "--color-void-10",
+        "aliasName": "color/void/10"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "surface/raised",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--surface-raised)"
+      },
+      "value": {
+        "alias": "--color-void-20",
+        "aliasName": "color/void/20"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "surface/hover",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--surface-hover)"
+      },
+      "value": {
+        "alias": "--color-void-30",
+        "aliasName": "color/void/30"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "ink/title",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--ink-title)"
+      },
+      "value": {
+        "alias": "--color-void-90",
+        "aliasName": "color/void/90"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "ink/strong",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--ink-strong)"
+      },
+      "value": {
+        "alias": "--color-void-80",
+        "aliasName": "color/void/80"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "ink/lead",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--ink-lead)"
+      },
+      "value": {
+        "alias": "--color-void-70",
+        "aliasName": "color/void/70"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "ink/body",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--ink-body)"
+      },
+      "value": {
+        "alias": "--color-void-60",
+        "aliasName": "color/void/60"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "ink/muted",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--ink-muted)"
+      },
+      "value": {
+        "alias": "--color-void-50",
+        "aliasName": "color/void/50"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "line/subtle",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--line-subtle)"
+      },
+      "value": {
+        "alias": "--color-void-20",
+        "aliasName": "color/void/20"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "line/default",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--line)"
+      },
+      "value": {
+        "alias": "--color-void-30",
+        "aliasName": "color/void/30"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "line/strong",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--line-strong)"
+      },
+      "value": {
+        "alias": "--color-void-40",
+        "aliasName": "color/void/40"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "base/background",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--background)"
+      },
+      "value": {
+        "alias": "--color-void-0",
+        "aliasName": "color/void/0"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "base/foreground",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--foreground)"
+      },
+      "value": {
+        "alias": "--color-void-90",
+        "aliasName": "color/void/90"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "accent/primary",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--primary)"
+      },
+      "value": {
+        "alias": "--color-pulsar",
+        "aliasName": "color/pulsar/base"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "accent/ring",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--ring)"
+      },
+      "value": {
+        "alias": "--color-pulsar",
+        "aliasName": "color/pulsar/base"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "accent/link",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "var(--link)"
+      },
+      "value": {
+        "alias": "--color-pulsar",
+        "aliasName": "color/pulsar/base"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "accent/primary-tint",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-(--primary)/15"
+      },
+      "value": {
+        "hex": "#7193ed26"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "accent/primary-tint-hover",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "bg-(--primary)/25"
+      },
+      "value": {
+        "hex": "#7193ed40"
+      }
+    },
+    {
+      "collection": "kern/roles",
+      "name": "accent/primary-border",
+      "type": "COLOR",
+      "codeSyntax": {
+        "WEB": "border-(--primary)/40"
+      },
+      "value": {
+        "hex": "#7193ed66"
+      }
+    },
+    {
+      "collection": "kern/scale",
+      "name": "spacing/base",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--spacing)"
+      },
+      "value": 4
+    },
+    {
+      "collection": "kern/scale",
+      "name": "spacing/tight",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--spacing-tight)"
+      },
+      "value": 4
+    },
+    {
+      "collection": "kern/scale",
+      "name": "spacing/field",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--spacing-field)"
+      },
+      "value": 8
+    },
+    {
+      "collection": "kern/scale",
+      "name": "spacing/card",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--spacing-card)"
+      },
+      "value": 12
+    },
+    {
+      "collection": "kern/scale",
+      "name": "spacing/section",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--spacing-section)"
+      },
+      "value": 16
+    },
+    {
+      "collection": "kern/scale",
+      "name": "spacing/view",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--spacing-view)"
+      },
+      "value": 24
+    },
+    {
+      "collection": "kern/scale",
+      "name": "spacing/major",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--spacing-major)"
+      },
+      "value": 32
+    },
+    {
+      "collection": "kern/scale",
+      "name": "radius/inline",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--radius-inline)"
+      },
+      "value": 4
+    },
+    {
+      "collection": "kern/scale",
+      "name": "radius/control",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--radius-control)"
+      },
+      "value": 8
+    },
+    {
+      "collection": "kern/scale",
+      "name": "radius/card",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--radius-card)"
+      },
+      "value": 12
+    },
+    {
+      "collection": "kern/scale",
+      "name": "radius/pill",
+      "type": "FLOAT",
+      "codeSyntax": {
+        "WEB": "var(--radius-pill)"
+      },
+      "value": 9999
+    }
+  ],
+  "components": [
+    {
+      "name": "BulletItem",
+      "page": "-> BulletItem",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "Button",
+      "page": "-> Button",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Variant",
+          "type": "VARIANT",
+          "options": ["surface", "accent", "ghost", "link"]
+        },
+        {
+          "name": "Size",
+          "type": "VARIANT",
+          "options": ["md", "sm", "icon"]
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Hover"]
+        }
+      ]
+    },
+    {
+      "name": "Card",
+      "page": "-> Card",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Padding",
+          "type": "VARIANT",
+          "options": ["md", "sm", "none"]
+        }
+      ]
+    },
+    {
+      "name": "CopyButton",
+      "page": "-> CopyButton",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Idle", "Hover", "Copied"]
+        }
+      ]
+    },
+    {
+      "name": "ExternalLink",
+      "page": "-> ExternalLink",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Hover"]
+        }
+      ]
+    },
+    {
+      "name": "IconButton",
+      "page": "-> IconButton",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Variant",
+          "type": "VARIANT",
+          "options": ["surface", "accent", "ghost"]
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Hover"]
+        }
+      ]
+    },
+    {
+      "name": "IconLink",
+      "page": "-> IconLink",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Hover"]
+        }
+      ]
+    },
+    {
+      "name": "InlineCode",
+      "page": "-> InlineCode",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Colour",
+          "type": "VARIANT",
+          "options": [
+            "orbit",
+            "nebula",
+            "aurora",
+            "tidal",
+            "pulsar",
+            "quasar",
+            "corona",
+            "dusk",
+            "flare",
+            "solstice",
+            "supernova",
+            "neutral"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "page": "-> Input",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Focus", "Invalid", "Disabled"]
+        },
+        {
+          "name": "Content",
+          "type": "VARIANT",
+          "options": ["Placeholder", "Value"]
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "page": "-> Label",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "Logo",
+      "page": "-> Logo",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Rest", "Hover"]
+        }
+      ]
+    },
+    {
+      "name": "StatusChip",
+      "page": "-> StatusChip",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Colour",
+          "type": "VARIANT",
+          "options": [
+            "nebula",
+            "aurora",
+            "tidal",
+            "orbit",
+            "pulsar",
+            "quasar",
+            "corona",
+            "dusk",
+            "flare",
+            "solstice",
+            "supernova",
+            "neutral"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Textarea",
+      "page": "-> Textarea",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Focus", "Invalid"]
+        },
+        {
+          "name": "Resize",
+          "type": "VARIANT",
+          "options": ["vertical", "none"]
+        }
+      ]
+    },
+    {
+      "name": "ToggleChip",
+      "page": "-> ToggleChip",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Active",
+          "type": "VARIANT",
+          "options": ["true", "false"]
+        },
+        {
+          "name": "Mono",
+          "type": "VARIANT",
+          "options": ["false", "true"]
+        }
+      ]
+    },
+    {
+      "name": "Wordmark",
+      "page": "-> Wordmark",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Tool",
+          "type": "VARIANT",
+          "options": ["hexicon", "specifi", "gray-scott", "tokenise"]
+        },
+        {
+          "name": "Size",
+          "type": "VARIANT",
+          "options": ["md", "sm", "lg"]
+        }
+      ]
+    },
+    {
+      "name": "BulletList",
+      "page": "-> BulletList",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "CalloutCard",
+      "page": "-> CalloutCard",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Colour",
+          "type": "VARIANT",
+          "options": [
+            "pulsar",
+            "nebula",
+            "aurora",
+            "tidal",
+            "orbit",
+            "quasar",
+            "corona",
+            "dusk",
+            "flare",
+            "solstice",
+            "supernova",
+            "neutral"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CanvasStage",
+      "page": "-> CanvasStage",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Square",
+          "type": "VARIANT",
+          "options": ["true", "false"]
+        }
+      ]
+    },
+    {
+      "name": "ChipGroup",
+      "page": "-> ChipGroup",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "Colophon",
+      "page": "-> Colophon",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "DataTable",
+      "page": "-> DataTable",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "EmptyState",
+      "page": "-> EmptyState",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "Field",
+      "page": "-> Field",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Message",
+          "type": "VARIANT",
+          "options": ["none", "hint", "error"]
+        }
+      ]
+    },
+    {
+      "name": "Metric",
+      "page": "-> Metric",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Orientation",
+          "type": "VARIANT",
+          "options": ["vertical", "horizontal"]
+        },
+        {
+          "name": "Surface",
+          "type": "VARIANT",
+          "options": ["true", "false"]
+        }
+      ]
+    },
+    {
+      "name": "ParamSlider",
+      "page": "-> ParamSlider",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "Section",
+      "page": "-> Section",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "SocialBar",
+      "page": "-> SocialBar",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "GitHub",
+          "type": "VARIANT",
+          "options": ["true", "false"]
+        }
+      ]
+    },
+    {
+      "name": "StatCard",
+      "page": "-> StatCard",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "ToolLink",
+      "page": "-> ToolLink",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Colour",
+          "type": "VARIANT",
+          "options": ["none", "pulsar", "orbit", "tidal"]
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Hover"]
+        }
+      ]
+    },
+    {
+      "name": "TransportControls",
+      "page": "-> TransportControls",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Running",
+          "type": "VARIANT",
+          "options": ["false", "true"]
+        }
+      ]
+    },
+    {
+      "name": "ViewHeader",
+      "page": "-> ViewHeader",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "AppSidebar/NavItem",
+      "page": "-> AppSidebar",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Default", "Hover", "Active"]
+        }
+      ]
+    },
+    {
+      "name": "AppSidebar",
+      "page": "-> AppSidebar",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "ToolView",
+      "page": "-> ToolView",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "options": ["Result", "Empty"]
+        }
+      ]
+    },
+    {
+      "name": "Workbench",
+      "page": "-> Workbench",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "AppShell",
+      "page": "-> AppShell",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    },
+    {
+      "name": "ViewContainer",
+      "page": "-> ViewContainer",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Width",
+          "type": "VARIANT",
+          "options": ["lg", "md"]
+        },
+        {
+          "name": "Gap",
+          "type": "VARIANT",
+          "options": ["md", "sm", "lg"]
+        }
+      ]
+    },
+    {
+      "name": "ViewportGate",
+      "page": "-> ViewportGate",
+      "type": "COMPONENT_SET",
+      "inSet": false,
+      "props": [
+        {
+          "name": "Viewport",
+          "type": "VARIANT",
+          "options": ["lg and up", "below lg"]
+        }
+      ]
+    },
+    {
+      "name": "ErrorBoundary/Fallback",
+      "page": "-> ErrorBoundary",
+      "type": "COMPONENT",
+      "inSet": false,
+      "props": []
+    }
+  ]
+}
