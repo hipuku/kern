@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-17T05:28:40.000Z",
+  "exportedAt": "2026-11-17T06:36:18.000Z",
   "source": "plugin",
   "file": {
     "key": "2a7GqQcIxWB3UErg9q4bC6",
@@ -964,7 +964,7 @@
         {
           "name": "State",
           "type": "VARIANT",
-          "options": ["Default", "Hover"]
+          "options": ["Default", "Hover", "Disabled"]
         }
       ]
     },
@@ -1016,7 +1016,7 @@
         {
           "name": "Variant",
           "type": "VARIANT",
-          "options": ["surface", "accent", "ghost"]
+          "options": ["surface", "accent", "ghost", "link"]
         },
         {
           "name": "State",

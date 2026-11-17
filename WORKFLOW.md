@@ -95,9 +95,6 @@ Figma becomes a `drift-decision` issue, something new in Figma a `design-proposa
 drift is listed without failing. The `figma-later` label waives code ahead, never a conflict. The
 rules are in `scripts/figma/diff.mjs` and tested in `scripts/figma/parity.test.mjs`.
 
-Two items are known drift at the first baseline: Figma's Button has no `Disabled` state though
-the code styles one, and IconButton takes Button's `link` variant in code but not in Figma.
-
 ### Where Figma is read from
 
 Components are read live from Figma's REST API with the `FIGMA_TOKEN` repository secret. Variables

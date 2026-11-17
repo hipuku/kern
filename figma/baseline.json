@@ -1,5 +1,5 @@
 {
-  "acceptedAt": "2026-11-17T05:30:09.766Z",
+  "acceptedAt": "2026-11-17T06:36:19.064Z",
   "items": {
     "axis Button.size": {
       "code": "icon|md|sm",
@@ -19,7 +19,7 @@
     },
     "axis IconButton.variant": {
       "code": "accent|ghost|link|surface",
-      "figma": "accent|ghost|surface"
+      "figma": "accent|ghost|link|surface"
     },
     "axis InlineCode.colour": {
       "code": "aurora|corona|dusk|flare|nebula|neutral|orbit|pulsar|quasar|solstice|supernova|tidal",
@@ -199,7 +199,7 @@
     },
     "states Button": {
       "code": "disabled|hover",
-      "figma": "hover"
+      "figma": "disabled|hover"
     },
     "states CopyButton": {
       "code": "hover",
