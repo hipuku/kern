@@ -103,6 +103,12 @@ describe("variants", () => {
     expect(cvaVariants(src)).toEqual({ chipVariants: { size: ["icon-sm", "md"] } });
   });
 
+  it("keeps a ternary's strings masked", () => {
+    const src =
+      'const chipVariants = cva("b", {\n  variants: {\n    size: { sm: compact ? "p-1" : "p-2", md: "p-3" },\n  },\n});';
+    expect(cvaVariants(src)).toEqual({ chipVariants: { size: ["sm", "md"] } });
+  });
+
   it("finds Tailwind state prefixes, stacked ones included, and not a prop named active", () => {
     const file = tmp(
       "X.tsx",
