@@ -109,6 +109,12 @@ describe("variants", () => {
     expect(cvaVariants(src)).toEqual({ chipVariants: { size: ["sm", "md"] } });
   });
 
+  it("keeps a quoted first axis", () => {
+    const src =
+      'const chipVariants = cva("b", {\n  variants: { "size": { sm: "p-1", md: "p-2" } },\n});';
+    expect(cvaVariants(src)).toEqual({ chipVariants: { size: ["sm", "md"] } });
+  });
+
   it("finds Tailwind state prefixes, stacked ones included, and not a prop named active", () => {
     const file = tmp(
       "X.tsx",

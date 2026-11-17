@@ -65,10 +65,10 @@ export function cvaVariants(src) {
       else if (src[i] === "}" && --depth === 0) break;
     }
     // Class strings carry colons (`hover:bg-...`), so string values are masked;
-    // a quoted key (`"icon-sm":`, after `{` or `,`) is kept, unquoted, for the
+    // a quoted key (`"icon-sm":`, at the start or after `{` or `,`) is kept, unquoted, for the
     // key scanner. A string before a ternary's colon is a value, and stays masked.
     const body = strip(src.slice(open + 1, i))
-      .replace(/(?<=[{,]\s*)(["'`])((?:\\.|(?!\1)[^\\])*)\1(?=\s*:)/g, "$2")
+      .replace(/(?<=(?:^|[{,])\s*)(["'`])((?:\\.|(?!\1)[^\\])*)\1(?=\s*:)/g, "$2")
       .replace(/(["'`])(?:\\.|(?!\1)[^\\])*\1/g, '""');
     const axes = {};
     // Top-level keys of `variants`, then the top-level keys of each.
